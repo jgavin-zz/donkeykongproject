@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		D91C07A118D826FD0054233A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D91C07A018D826FD0054233A /* Cocoa.framework */; };
-		D91C07AD18D826FD0054233A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D91C07AC18D826FD0054233A /* main.m */; };
+		D91C07AD18D826FD0054233A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91C07AC18D826FD0054233A /* main.cpp */; };
 		D91C07BF18D827920054233A /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = D91C07BE18D827920054233A /* SDLMain.m */; };
 		D91C07C118D8279D0054233A /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D91C07C018D8279D0054233A /* SDL.framework */; };
+		D91C07C318D828F90054233A /* donkeykong-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D91C07C218D828F90054233A /* donkeykong-Info.plist */; };
+		D91C07C918D82F6F0054233A /* hello.bmp in Resources */ = {isa = PBXBuildFile; fileRef = D91C07C518D82BC90054233A /* hello.bmp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,10 +21,14 @@
 		D91C07A318D826FD0054233A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		D91C07A418D826FD0054233A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		D91C07A518D826FD0054233A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		D91C07AC18D826FD0054233A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D91C07AC18D826FD0054233A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = donkeykong/main.cpp; sourceTree = "<group>"; };
 		D91C07BD18D827890054233A /* SDLMain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDLMain.h; sourceTree = "<group>"; };
 		D91C07BE18D827920054233A /* SDLMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDLMain.m; sourceTree = "<group>"; };
 		D91C07C018D8279D0054233A /* SDL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDL.framework; sourceTree = "<group>"; };
+		D91C07C218D828F90054233A /* donkeykong-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "donkeykong-Info.plist"; sourceTree = "<group>"; };
+		D91C07C418D829080054233A /* donkeykong-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "donkeykong-Prefix.pch"; sourceTree = "<group>"; };
+		D91C07C518D82BC90054233A /* hello.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = hello.bmp; sourceTree = "<group>"; };
+		D91C07C718D82C0D0054233A /* x.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = x.bmp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +47,7 @@
 		D91C079418D826FD0054233A = {
 			isa = PBXGroup;
 			children = (
+				D91C07AC18D826FD0054233A /* main.cpp */,
 				D91C07C018D8279D0054233A /* SDL.framework */,
 				D91C07A618D826FD0054233A /* donkeykong */,
 				D91C079F18D826FD0054233A /* Frameworks */,
@@ -88,7 +95,10 @@
 			children = (
 				D91C07BD18D827890054233A /* SDLMain.h */,
 				D91C07BE18D827920054233A /* SDLMain.m */,
-				D91C07AC18D826FD0054233A /* main.m */,
+				D91C07C518D82BC90054233A /* hello.bmp */,
+				D91C07C718D82C0D0054233A /* x.bmp */,
+				D91C07C218D828F90054233A /* donkeykong-Info.plist */,
+				D91C07C418D829080054233A /* donkeykong-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -144,6 +154,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D91C07C918D82F6F0054233A /* hello.bmp in Resources */,
+				D91C07C318D828F90054233A /* donkeykong-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,7 +166,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D91C07AD18D826FD0054233A /* main.m in Sources */,
+				D91C07AD18D826FD0054233A /* main.cpp in Sources */,
 				D91C07BF18D827920054233A /* SDLMain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -222,6 +234,7 @@
 		D91C07BB18D826FD0054233A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LIBRARY = "libstdc++";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -229,6 +242,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "donkeykong/donkeykong-Prefix.pch";
+				GCC_VERSION = "";
 				INFOPLIST_FILE = "donkeykong/donkeykong-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -238,6 +252,7 @@
 		D91C07BC18D826FD0054233A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LIBRARY = "libstdc++";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -245,6 +260,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "donkeykong/donkeykong-Prefix.pch";
+				GCC_VERSION = "";
 				INFOPLIST_FILE = "donkeykong/donkeykong-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
