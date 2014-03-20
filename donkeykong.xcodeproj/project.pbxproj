@@ -7,18 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D9048FBB18DAA71D005A8B83 /* Mario.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9048FBA18DAA71D005A8B83 /* Mario.cpp */; };
 		D91C07A118D826FD0054233A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D91C07A018D826FD0054233A /* Cocoa.framework */; };
 		D91C07AD18D826FD0054233A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91C07AC18D826FD0054233A /* main.cpp */; };
 		D91C07BF18D827920054233A /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = D91C07BE18D827920054233A /* SDLMain.m */; };
 		D91C07C118D8279D0054233A /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D91C07C018D8279D0054233A /* SDL.framework */; };
 		D91C07C318D828F90054233A /* donkeykong-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D91C07C218D828F90054233A /* donkeykong-Info.plist */; };
-		D91C07CD18D8EF750054233A /* DonkeyKongSprite.bmp in Resources */ = {isa = PBXBuildFile; fileRef = D91C07CC18D8EF750054233A /* DonkeyKongSprite.bmp */; };
 		D91C07CF18D8F0940054233A /* DonkeyKong.bmp in Resources */ = {isa = PBXBuildFile; fileRef = D91C07CE18D8F0930054233A /* DonkeyKong.bmp */; };
 		D91C07D118D8F4CC0054233A /* DonkeyKongBackground.bmp in Resources */ = {isa = PBXBuildFile; fileRef = D91C07D018D8F4CC0054233A /* DonkeyKongBackground.bmp */; };
 		D91C07D418D95D1D0054233A /* DonkeyKongGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91C07D318D95D1D0054233A /* DonkeyKongGame.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D9048FB618DAA404005A8B83 /* Mario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mario.h; sourceTree = "<group>"; };
+		D9048FBA18DAA71D005A8B83 /* Mario.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mario.cpp; sourceTree = "<group>"; };
 		D91C079D18D826FD0054233A /* donkeykong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = donkeykong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D91C07A018D826FD0054233A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D91C07A318D826FD0054233A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -30,7 +32,6 @@
 		D91C07C018D8279D0054233A /* SDL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDL.framework; sourceTree = "<group>"; };
 		D91C07C218D828F90054233A /* donkeykong-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "donkeykong-Info.plist"; sourceTree = "<group>"; };
 		D91C07C418D829080054233A /* donkeykong-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "donkeykong-Prefix.pch"; sourceTree = "<group>"; };
-		D91C07CC18D8EF750054233A /* DonkeyKongSprite.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = DonkeyKongSprite.bmp; sourceTree = "<group>"; };
 		D91C07CE18D8F0930054233A /* DonkeyKong.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = DonkeyKong.bmp; sourceTree = "<group>"; };
 		D91C07D018D8F4CC0054233A /* DonkeyKongBackground.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = DonkeyKongBackground.bmp; sourceTree = "<group>"; };
 		D91C07D218D95BAD0054233A /* DonkeyKongGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DonkeyKongGame.h; sourceTree = "<group>"; };
@@ -103,9 +104,10 @@
 				D91C07AC18D826FD0054233A /* main.cpp */,
 				D91C07D218D95BAD0054233A /* DonkeyKongGame.h */,
 				D91C07D318D95D1D0054233A /* DonkeyKongGame.cpp */,
+				D9048FB618DAA404005A8B83 /* Mario.h */,
+				D9048FBA18DAA71D005A8B83 /* Mario.cpp */,
 				D91C07D018D8F4CC0054233A /* DonkeyKongBackground.bmp */,
 				D91C07CE18D8F0930054233A /* DonkeyKong.bmp */,
-				D91C07CC18D8EF750054233A /* DonkeyKongSprite.bmp */,
 				D91C07C218D828F90054233A /* donkeykong-Info.plist */,
 				D91C07C418D829080054233A /* donkeykong-Prefix.pch */,
 			);
@@ -164,7 +166,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D91C07C318D828F90054233A /* donkeykong-Info.plist in Resources */,
-				D91C07CD18D8EF750054233A /* DonkeyKongSprite.bmp in Resources */,
 				D91C07CF18D8F0940054233A /* DonkeyKong.bmp in Resources */,
 				D91C07D118D8F4CC0054233A /* DonkeyKongBackground.bmp in Resources */,
 			);
@@ -180,6 +181,7 @@
 				D91C07AD18D826FD0054233A /* main.cpp in Sources */,
 				D91C07BF18D827920054233A /* SDLMain.m in Sources */,
 				D91C07D418D95D1D0054233A /* DonkeyKongGame.cpp in Sources */,
+				D9048FBB18DAA71D005A8B83 /* Mario.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +300,7 @@
 				D91C07BC18D826FD0054233A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
