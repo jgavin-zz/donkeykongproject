@@ -7,6 +7,9 @@
 //
 
 #include "Mario.h"
+#include <math.h>
+#include <iostream>
+using namespace std;
 
 //Constructor, sets parameters and loads surface
 Mario::Mario(){
@@ -14,7 +17,8 @@ Mario::Mario(){
     width = 20;
     xpos = 130;
     ypos = 435;
-    currentState = 4;
+    vy = -25;
+    currentState = 11;
     currentFrame = 1;
     maxFrames = 2;
     marioSurface = SDL_LoadBMP("/Users/jgavin/Documents/donkeykong/donkeykong/DonkeyKong.bmp");
@@ -53,12 +57,11 @@ void Mario::updateAnimation(){
 
 void Mario::move(){
     double dt = .5;
-    vx = 15;
-    vy = -6;
+    vx = 10;
+    ay = 9.8;
+    vy = vy + ay * dt;
     xpos = xpos + vx * dt;
     ypos = ypos + vy * dt;
-    
-    
 }
 
 
@@ -78,25 +81,107 @@ void Mario::setAnimation(){
             spritesheety = 0;
             currentFrame = 1;
             maxFrames = 1;
+            height = 20;
+            width = 20;
             break;
         case 2: //Facing right
             spritesheetx = 153;
             spritesheety = 0;
             currentFrame = 1;
             maxFrames = 1;
+            height = 20;
+            width = 20;
             break;
         case 3: //Running left
             spritesheetx = 92;
             spritesheety = 0;
             currentFrame = 1;
             maxFrames = 2;
+            height = 20;
+            width = 20;
             break;
         case 4: //Running right
             spritesheetx = 172;
             spritesheety = 0;
             currentFrame = 1;
             maxFrames = 2;
+            height = 20;
+            width = 20;
             break;
+        case 5: //Running left with hammer
+            spritesheetx = 69;
+            spritesheety = 40;
+            currentFrame = 1;
+            maxFrames = 2;
+            height = 31;
+            width = 27;
+            break;
+        case 6: //Running right with hammer
+            spritesheetx = 183;
+            spritesheety = 40;
+            currentFrame = 1;
+            maxFrames = 2;
+            height = 31;
+            width = 27;
+            break;
+        case 7: //Facing left with hammer
+            spritesheetx = 97;
+            spritesheety = 40;
+            currentFrame = 1;
+            maxFrames = 2;
+            height = 31;
+            width = 27;
+            break;
+        case 8: //Facing left with hammer
+            spritesheetx = 156;
+            spritesheety = 40;
+            currentFrame = 1;
+            maxFrames = 2;
+            height = 31;
+            width = 27;
+            break;
+        case 9: //Climbing left
+            spritesheetx = 163;
+            spritesheety = 20;
+            currentFrame = 1;
+            maxFrames = 1;
+            height = 20;
+            width = 19;
+            break;
+        case 10: //Climbing right
+            spritesheetx = 123;
+            spritesheety = 20;
+            currentFrame = 1;
+            maxFrames = 1;
+            height = 20;
+            width = 19;
+            break;
+        case 11: //Facing ladder
+            spritesheetx = 142;
+            spritesheety = 20;
+            currentFrame = 1;
+            maxFrames = 1;
+            height = 20;
+            width = 19;
+            break;
+        case 12: //Jumping left
+            spritesheetx = 92;
+            spritesheety = 0;
+            currentFrame = 1;
+            maxFrames = 1;
+            height = 20;
+            width = 20;
+            break;
+        case 13: //Jumping right
+            spritesheetx = 194;
+            spritesheety = 0;
+            currentFrame = 1;
+            maxFrames = 1;
+            height = 20;
+            width = 20;
+            break;
+            
+            
     }
 }
 

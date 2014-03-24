@@ -41,8 +41,8 @@ private:
     int spritesheety;
     int height;
     int width;
-    double xpos;
-    double ypos;
+    int xpos;
+    int ypos;
     double vx;
     double vy;
     double ay;
