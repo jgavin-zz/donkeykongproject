@@ -1,4 +1,4 @@
 DonkeyKong
 ==========
 
-Repository for Donkey Kong final project
+Repository for Donkey Kong final project.
