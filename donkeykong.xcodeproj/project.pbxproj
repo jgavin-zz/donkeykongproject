@@ -1,0 +1,310 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D9048FBB18DAA71D005A8B83 /* Mario.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9048FBA18DAA71D005A8B83 /* Mario.cpp */; };
+		D91C07A118D826FD0054233A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D91C07A018D826FD0054233A /* Cocoa.framework */; };
+		D91C07AD18D826FD0054233A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91C07AC18D826FD0054233A /* main.cpp */; };
+		D91C07BF18D827920054233A /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = D91C07BE18D827920054233A /* SDLMain.m */; };
+		D91C07C118D8279D0054233A /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D91C07C018D8279D0054233A /* SDL.framework */; };
+		D91C07C318D828F90054233A /* donkeykong-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D91C07C218D828F90054233A /* donkeykong-Info.plist */; };
+		D91C07CF18D8F0940054233A /* DonkeyKong.bmp in Resources */ = {isa = PBXBuildFile; fileRef = D91C07CE18D8F0930054233A /* DonkeyKong.bmp */; };
+		D91C07D118D8F4CC0054233A /* DonkeyKongBackground.bmp in Resources */ = {isa = PBXBuildFile; fileRef = D91C07D018D8F4CC0054233A /* DonkeyKongBackground.bmp */; };
+		D91C07D418D95D1D0054233A /* DonkeyKongGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91C07D318D95D1D0054233A /* DonkeyKongGame.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D9048FB618DAA404005A8B83 /* Mario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mario.h; sourceTree = "<group>"; };
+		D9048FBA18DAA71D005A8B83 /* Mario.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mario.cpp; sourceTree = "<group>"; };
+		D91C079D18D826FD0054233A /* donkeykong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = donkeykong.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D91C07A018D826FD0054233A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		D91C07A318D826FD0054233A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		D91C07A418D826FD0054233A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		D91C07A518D826FD0054233A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D91C07AC18D826FD0054233A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		D91C07BD18D827890054233A /* SDLMain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDLMain.h; sourceTree = "<group>"; };
+		D91C07BE18D827920054233A /* SDLMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDLMain.m; sourceTree = "<group>"; };
+		D91C07C018D8279D0054233A /* SDL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDL.framework; sourceTree = "<group>"; };
+		D91C07C218D828F90054233A /* donkeykong-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "donkeykong-Info.plist"; sourceTree = "<group>"; };
+		D91C07C418D829080054233A /* donkeykong-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "donkeykong-Prefix.pch"; sourceTree = "<group>"; };
+		D91C07CE18D8F0930054233A /* DonkeyKong.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = DonkeyKong.bmp; sourceTree = "<group>"; };
+		D91C07D018D8F4CC0054233A /* DonkeyKongBackground.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = DonkeyKongBackground.bmp; sourceTree = "<group>"; };
+		D91C07D218D95BAD0054233A /* DonkeyKongGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DonkeyKongGame.h; sourceTree = "<group>"; };
+		D91C07D318D95D1D0054233A /* DonkeyKongGame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DonkeyKongGame.cpp; sourceTree = "<group>"; };
+		D9F8A1A018DFAFBA00B96292 /* makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = makefile; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D91C079A18D826FD0054233A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D91C07A118D826FD0054233A /* Cocoa.framework in Frameworks */,
+				D91C07C118D8279D0054233A /* SDL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D91C079418D826FD0054233A = {
+			isa = PBXGroup;
+			children = (
+				D91C07C018D8279D0054233A /* SDL.framework */,
+				D91C07A618D826FD0054233A /* donkeykong */,
+				D91C079F18D826FD0054233A /* Frameworks */,
+				D91C079E18D826FD0054233A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D91C079E18D826FD0054233A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D91C079D18D826FD0054233A /* donkeykong.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D91C079F18D826FD0054233A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D91C07A018D826FD0054233A /* Cocoa.framework */,
+				D91C07A218D826FD0054233A /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D91C07A218D826FD0054233A /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D91C07A318D826FD0054233A /* AppKit.framework */,
+				D91C07A418D826FD0054233A /* CoreData.framework */,
+				D91C07A518D826FD0054233A /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		D91C07A618D826FD0054233A /* donkeykong */ = {
+			isa = PBXGroup;
+			children = (
+				D91C07A718D826FD0054233A /* Supporting Files */,
+			);
+			path = donkeykong;
+			sourceTree = "<group>";
+		};
+		D91C07A718D826FD0054233A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D91C07BD18D827890054233A /* SDLMain.h */,
+				D91C07BE18D827920054233A /* SDLMain.m */,
+				D91C07AC18D826FD0054233A /* main.cpp */,
+				D91C07D218D95BAD0054233A /* DonkeyKongGame.h */,
+				D91C07D318D95D1D0054233A /* DonkeyKongGame.cpp */,
+				D9048FB618DAA404005A8B83 /* Mario.h */,
+				D9048FBA18DAA71D005A8B83 /* Mario.cpp */,
+				D9F8A1A018DFAFBA00B96292 /* makefile */,
+				D91C07D018D8F4CC0054233A /* DonkeyKongBackground.bmp */,
+				D91C07CE18D8F0930054233A /* DonkeyKong.bmp */,
+				D91C07C218D828F90054233A /* donkeykong-Info.plist */,
+				D91C07C418D829080054233A /* donkeykong-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D91C079C18D826FD0054233A /* donkeykong */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D91C07BA18D826FD0054233A /* Build configuration list for PBXNativeTarget "donkeykong" */;
+			buildPhases = (
+				D91C079918D826FD0054233A /* Sources */,
+				D91C079A18D826FD0054233A /* Frameworks */,
+				D91C079B18D826FD0054233A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = donkeykong;
+			productName = donkeykong;
+			productReference = D91C079D18D826FD0054233A /* donkeykong.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D91C079518D826FD0054233A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Jacob Gavin";
+			};
+			buildConfigurationList = D91C079818D826FD0054233A /* Build configuration list for PBXProject "donkeykong" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D91C079418D826FD0054233A;
+			productRefGroup = D91C079E18D826FD0054233A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D91C079C18D826FD0054233A /* donkeykong */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D91C079B18D826FD0054233A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D91C07C318D828F90054233A /* donkeykong-Info.plist in Resources */,
+				D91C07CF18D8F0940054233A /* DonkeyKong.bmp in Resources */,
+				D91C07D118D8F4CC0054233A /* DonkeyKongBackground.bmp in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D91C079918D826FD0054233A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D91C07AD18D826FD0054233A /* main.cpp in Sources */,
+				D91C07BF18D827920054233A /* SDLMain.m in Sources */,
+				D91C07D418D95D1D0054233A /* DonkeyKongGame.cpp in Sources */,
+				D9048FBB18DAA71D005A8B83 /* Mario.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		D91C07B818D826FD0054233A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		D91C07B918D826FD0054233A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		D91C07BB18D826FD0054233A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libstdc++";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "donkeykong/donkeykong-Prefix.pch";
+				GCC_VERSION = "";
+				INFOPLIST_FILE = "donkeykong/donkeykong-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		D91C07BC18D826FD0054233A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libstdc++";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "donkeykong/donkeykong-Prefix.pch";
+				GCC_VERSION = "";
+				INFOPLIST_FILE = "donkeykong/donkeykong-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D91C079818D826FD0054233A /* Build configuration list for PBXProject "donkeykong" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D91C07B818D826FD0054233A /* Debug */,
+				D91C07B918D826FD0054233A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D91C07BA18D826FD0054233A /* Build configuration list for PBXNativeTarget "donkeykong" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D91C07BB18D826FD0054233A /* Debug */,
+				D91C07BC18D826FD0054233A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D91C079518D826FD0054233A /* Project object */;
+}
