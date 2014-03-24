@@ -66,10 +66,11 @@ void DonkeyKongGame::cleanUp(){
 //Function to create gameplay
 void DonkeyKongGame::playDonkeyKong(){
     int count = 1;
-    while(count < 20){
+    while(count < 100){
         Display();
         SDL_Delay(150);
         mario.updateAnimation();
+        mario.move();
         count++;
     }
     SDL_Quit();

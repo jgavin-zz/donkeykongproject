@@ -36,6 +36,7 @@
 		D91C07D018D8F4CC0054233A /* DonkeyKongBackground.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = DonkeyKongBackground.bmp; sourceTree = "<group>"; };
 		D91C07D218D95BAD0054233A /* DonkeyKongGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DonkeyKongGame.h; sourceTree = "<group>"; };
 		D91C07D318D95D1D0054233A /* DonkeyKongGame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DonkeyKongGame.cpp; sourceTree = "<group>"; };
+		D9F8A1A018DFAFBA00B96292 /* makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = makefile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +107,7 @@
 				D91C07D318D95D1D0054233A /* DonkeyKongGame.cpp */,
 				D9048FB618DAA404005A8B83 /* Mario.h */,
 				D9048FBA18DAA71D005A8B83 /* Mario.cpp */,
+				D9F8A1A018DFAFBA00B96292 /* makefile */,
 				D91C07D018D8F4CC0054233A /* DonkeyKongBackground.bmp */,
 				D91C07CE18D8F0930054233A /* DonkeyKong.bmp */,
 				D91C07C218D828F90054233A /* donkeykong-Info.plist */,

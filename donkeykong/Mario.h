@@ -41,11 +41,11 @@ private:
     int spritesheety;
     int height;
     int width;
-    int xpos;
-    int ypos;
-    int vx;
-    int vy;
-    int ay;
+    double xpos;
+    double ypos;
+    double vx;
+    double vy;
+    double ay;
     int currentState;
     int currentFrame;
     int maxFrames;

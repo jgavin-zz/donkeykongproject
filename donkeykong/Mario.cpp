@@ -14,7 +14,7 @@ Mario::Mario(){
     width = 20;
     xpos = 130;
     ypos = 435;
-    currentState = 3;
+    currentState = 4;
     currentFrame = 1;
     maxFrames = 2;
     marioSurface = SDL_LoadBMP("/Users/jgavin/Documents/donkeykong/donkeykong/DonkeyKong.bmp");
@@ -52,6 +52,11 @@ void Mario::updateAnimation(){
 }
 
 void Mario::move(){
+    double dt = .5;
+    vx = 15;
+    vy = -6;
+    xpos = xpos + vx * dt;
+    ypos = ypos + vy * dt;
     
     
 }
