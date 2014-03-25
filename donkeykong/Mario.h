@@ -26,9 +26,14 @@ public:
     
     void handle_input(SDL_Event);
     
+    int checkOnGround();
+    
+    
+    
 private:
     
     int direction;
+    int onGround;
     
 };
 
