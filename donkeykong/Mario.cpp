@@ -217,8 +217,8 @@ void Mario::handle_input(SDL_Event event)
         {
             case SDLK_UP: vy += height / 2; break;
             case SDLK_DOWN: vy -= height / 2; break;
-            case SDLK_LEFT: vx += width / 2; currentState = 12; setAnimation(); break;
-            case SDLK_RIGHT: vx -= width / 2; currentState = 1; setAnimation(); break;
+            case SDLK_LEFT: vx += width / 2; currentState = 1; setAnimation(); break;
+            case SDLK_RIGHT: vx -= width / 2; currentState = 2; setAnimation(); break;
         }
     }
 }
