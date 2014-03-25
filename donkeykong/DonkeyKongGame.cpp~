@@ -63,8 +63,8 @@ void DonkeyKongGame::playDonkeyKong(){
                 //Quit the program
                 quit = true;
             }
-            mario.updateAnimation();
         }
+        mario.updateAnimation();
         mario.move();
         Display();
     }

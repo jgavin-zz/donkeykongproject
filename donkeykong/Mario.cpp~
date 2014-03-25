@@ -61,13 +61,6 @@ void Mario::updateAnimation(){
 
 void Mario::move(){
     double dt = .5;
-    vx = 10;
-    ay = 9.8;
-    if((ypos+height) >= 456){
-        ay = 0;
-        vy =  0;
-    }
-    vy = vy + ay * dt;
     xpos = xpos + vx * dt;
     ypos = ypos + vy * dt;
 }
@@ -203,8 +196,8 @@ void Mario::handle_input(SDL_Event event)
         {
             case SDLK_UP: vy -= height / 2; break;
             case SDLK_DOWN: vy += height / 2; break;
-            case SDLK_LEFT: vx -= width / 2; currentState = 3; setAnimation(); break;
-            case SDLK_RIGHT: vx += width / 2; currentState = 2; setAnimation(); break;
+            case SDLK_LEFT: vx -= width / 2; currentState = 3; updateAnimation(); break;
+            case SDLK_RIGHT: vx += width / 2; currentState = 2; updateAnimation(); break;
         }
     }
     //If a key was released
@@ -215,8 +208,8 @@ void Mario::handle_input(SDL_Event event)
         {
             case SDLK_UP: vy += height / 2; break;
             case SDLK_DOWN: vy -= height / 2; break;
-            case SDLK_LEFT: vx += width / 2; currentState = 12; setAnimation(); break;
-            case SDLK_RIGHT: vx -= width / 2; currentState = 1; setAnimation(); break;
+            case SDLK_LEFT: vx += width / 2; currentState = 12; updateAnimation(); break;
+            case SDLK_RIGHT: vx -= width / 2; currentState = 1; updateAnimation(); break;
         }
     }
 }
