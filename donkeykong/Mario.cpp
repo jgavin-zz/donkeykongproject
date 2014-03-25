@@ -59,6 +59,10 @@ void Mario::move(){
     double dt = .5;
     vx = 10;
     ay = 9.8;
+    if((ypos+height) >= 456){
+        ay = 0;
+        vy =  0;
+    }
     vy = vy + ay * dt;
     xpos = xpos + vx * dt;
     ypos = ypos + vy * dt;
