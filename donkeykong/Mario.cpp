@@ -52,7 +52,7 @@ void Mario::display(SDL_Surface* Surf_Dest, SDL_Surface* Surf_Src, int X, int Y,
     
 }
 
-//Display function takes in parameters of clipping from sprite sheet, makes rectangle, and blits the rectangle
+//Display function takes in parameters of clipping from sprite sheet, makes rectangle, and blits the rectangle, only used for mario display when climbing = 1
 void Mario::climbingdisplay(SDL_Surface* Surf_Dest, SDL_Surface* Surf_Src, int X, int Y, int X2, int Y2, int W, int H) {
     
     SDL_Rect DestR;
@@ -223,10 +223,10 @@ void Mario::handle_input(SDL_Event event)
         //Adjust the velocity
         switch( event.key.keysym.sym )
         {
-            case SDLK_UP: vy = -height / 8; climbing = 1; currentState = 9; setAnimation(); break;
-            case SDLK_DOWN: vy = height / 8; climbing = 1; currentState = 9; setAnimation(); break;
-            case SDLK_LEFT: vx = -width / 5; currentState = 3; climbing = 0; setAnimation(); break;
-            case SDLK_RIGHT: vx = width / 5; currentState = 4; climbing = 0; setAnimation(); break;
+            case SDLK_UP: vy = -2; climbing = 1; currentState = 9; setAnimation(); break;
+            case SDLK_DOWN: vy = 2; climbing = 1; currentState = 9; setAnimation(); break;
+            case SDLK_LEFT: vx = -4; currentState = 3; climbing = 0; setAnimation(); break;
+            case SDLK_RIGHT: vx = 4; currentState = 4; climbing = 0; setAnimation(); break;
         }
     }
     //If a key was released
