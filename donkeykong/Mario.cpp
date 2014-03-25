@@ -27,7 +27,7 @@ Mario::Mario(){
     oldTime = 0;
     frameRate = 100;
     climbing = 0;
-    marioSurface = SDL_LoadBMP("/Users/jgavin/Documents/donkeykong/donkeykong/DonkeyKong.bmp");
+    marioSurface = SDL_LoadBMP("DonkeyKong.bmp");
     setAnimation();
     Transparent(marioSurface, 255, 0, 255);
     
