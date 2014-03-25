@@ -10,6 +10,7 @@
 #define DONKEYKONGGAME_H
 
 #include <SDL/SDL.h>
+#include "Object.h"
 #include "Mario.h"
 
 class DonkeyKongGame{

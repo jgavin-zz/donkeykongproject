@@ -9,6 +9,7 @@
 #include <SDL/SDL.h>
 #include <iostream>
 #include "DonkeyKongGame.h"
+#include "Object.h"
 #include "Mario.h"
 
 using namespace std;
@@ -31,7 +32,7 @@ void DonkeyKongGame::Display(){
     SDL_BlitSurface( background, NULL, screen, NULL );
     
     if(mario.getclimbing() == 0){
-    mario.display(screen, mario.getMarioSurface(), mario.getxpos(), mario.getypos(),mario.getspritesheetx() + mario.getcurrentframe()*mario.getwidth(), mario.getspritesheety(), mario.getwidth(), mario.getheight());
+    mario.display(screen, mario.getMarioSurface(), mario.getxpos(), mario.getypos(), mario.getspritesheetx() + mario.getcurrentframe()*mario.getwidth(), mario.getspritesheety(), mario.getwidth(), mario.getheight());
     }
     if(mario.getclimbing() == 1){
         mario.climbingdisplay(screen, mario.getMarioSurface(), mario.getxpos(), mario.getypos(),mario.getspritesheetx() + mario.getcurrentframe()*mario.getwidth()*2, mario.getspritesheety(), mario.getwidth(), mario.getheight());

@@ -9,59 +9,24 @@
 #ifndef MARIO_H
 #define MARIO_H
 
+#include "Object.h"
 #include <SDL/SDL.h>
 #include <string>
 using namespace std;
 
-class Mario{
+class Mario : public Object{
     
 public:
-    Mario();//Constructor
+    Mario();//Default Constructor
     
-    void display(SDL_Surface*, SDL_Surface*, int, int, int, int, int, int);//Displays mario
-    void climbingdisplay(SDL_Surface*, SDL_Surface*, int, int, int, int, int, int);//Displays mario
-    
-    void updateAnimation();//Increments frame
     void move();
     
-    //Get functions
-    SDL_Surface* getMarioSurface();
-    int getspritesheetx();
-    int getspritesheety();
-    int getheight();
-    int getwidth();
-    int getxpos();
-    int getypos();
-    int getcurrentframe();
-    int getcurrentstate();
-    int getclimbing();
-    int getoldtime();
-    int getframerate();
     
-    void setAnimation();//Sets animation parameters according to animation state
-    void setcurrentstate(int);
+    virtual void setAnimation();//Sets animation parameters according to animation state
     
-    void Transparent(SDL_Surface* Surf_Dest, int R, int G, int B);//Makes pink background of mario image transparent
-
     void handle_input(SDL_Event);
     
 private:
-    int spritesheetx;
-    int spritesheety;
-    int height;
-    int width;
-    int xpos;
-    int ypos;
-    double vx;
-    double vy;
-    double ay;
-    int currentState;
-    int currentFrame;
-    int maxFrames;
-    int climbing;
-    int oldTime;
-    int frameRate;
-    SDL_Surface* marioSurface;
     
 };
 

@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Jacob Gavin. All rights reserved.
 //
 
+#include "Object.h"
 #include "Mario.h"
 #include <math.h>
 #include <iostream>
@@ -14,73 +15,9 @@
 using namespace std;
 
 //Constructor, sets parameters and loads surface
-Mario::Mario(){
-    height = 20;
-    width = 20;
-    xpos = 130;
-    ypos = 435;
-    vy = 0;
-    vx = 0;
-    currentState = 1;
-    currentFrame = 1;
-    maxFrames = 2;
-    oldTime = 0;
-    frameRate = 100;
-    climbing = 0;
-    marioSurface = SDL_LoadBMP("DonkeyKong.bmp");
-    setAnimation();
-    Transparent(marioSurface, 255, 0, 255);
-    
+Mario::Mario() : Object(20, 20, 130, 435, 0, 0, 0, 1, 1, 2, 0, 0, 100){
 }
 
-//Display function takes in parameters of clipping from sprite sheet, makes rectangle, and blits the rectangle
-void Mario::display(SDL_Surface* Surf_Dest, SDL_Surface* Surf_Src, int X, int Y, int X2, int Y2, int W, int H) {
-    
-    SDL_Rect DestR;
-    
-    DestR.x = X;
-    DestR.y = Y;
-    
-    SDL_Rect SrcR;
-    
-    SrcR.x = X2;
-    SrcR.y = Y2;
-    SrcR.w = W;
-    SrcR.h = H;
-    
-    SDL_BlitSurface(Surf_Src, &SrcR, Surf_Dest, &DestR);
-    
-}
-
-//Display function takes in parameters of clipping from sprite sheet, makes rectangle, and blits the rectangle, only used for mario display when climbing = 1
-void Mario::climbingdisplay(SDL_Surface* Surf_Dest, SDL_Surface* Surf_Src, int X, int Y, int X2, int Y2, int W, int H) {
-    
-    SDL_Rect DestR;
-    
-    DestR.x = X;
-    DestR.y = Y;
-    
-    SDL_Rect SrcR;
-    
-    SrcR.x = X2;
-    SrcR.y = Y2;
-    SrcR.w = W;
-    SrcR.h = H;
-    
-    SDL_BlitSurface(Surf_Src, &SrcR, Surf_Dest, &DestR);
-    
-}
-
-
-//Function updates animation frames
-void Mario::updateAnimation(){
-    oldTime = SDL_GetTicks();
-    currentFrame++;
-    if(currentFrame >= maxFrames) {
-        currentFrame = 0;
-    }
-    //(*this).setAnimation();
-}
 
 void Mario::move(){
     double dt = .5;
@@ -94,14 +31,6 @@ void Mario::move(){
     ypos = ypos + vy * dt;
 }
 
-
-SDL_Surface* Mario::getMarioSurface(){
-    return marioSurface;
-}
-
-int Mario::getspritesheetx(){
-    return spritesheetx;
-}
 
 //Function sets animation parameters according to state of mario
 void Mario::setAnimation(){
@@ -243,54 +172,4 @@ void Mario::handle_input(SDL_Event event)
     }
 }
 
-int Mario::getspritesheety(){
-    return spritesheety;
-}
-
-int Mario::getheight(){
-    return height;
-}
-
-int Mario::getwidth(){
-    return width;
-}
-
-int Mario::getxpos(){
-    return xpos;
-}
-
-int Mario::getypos(){
-    return ypos;
-}
-
-int Mario::getcurrentframe(){
-    return currentFrame;
-}
-
-int Mario::getcurrentstate(){
-    return currentState;
-}
-
-void Mario::setcurrentstate(int state){
-    currentState = state;
-}
-
-int Mario::getclimbing(){
-    return climbing;
-}
-
-int Mario::getoldtime(){
-    return oldTime;
-}
-
-int Mario::getframerate(){
-    return frameRate;
-}
-
-//Function makes pink background on mario surface transparent
-void Mario::Transparent(SDL_Surface* Surf_Dest, int R, int G, int B) {
-    
-    SDL_SetColorKey(Surf_Dest, SDL_SRCCOLORKEY | SDL_RLEACCEL, SDL_MapRGB(Surf_Dest->format, R, G, B));
-    
-}
 
