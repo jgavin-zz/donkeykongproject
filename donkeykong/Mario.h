@@ -19,6 +19,8 @@ public:
     Mario();//Constructor
     
     void display(SDL_Surface*, SDL_Surface*, int, int, int, int, int, int);//Displays mario
+    void climbingdisplay(SDL_Surface*, SDL_Surface*, int, int, int, int, int, int);//Displays mario
+    
     void updateAnimation();//Increments frame
     void move();
     
@@ -31,14 +33,17 @@ public:
     int getxpos();
     int getypos();
     int getcurrentframe();
+    int getcurrentstate();
+    int getclimbing();
+    int getoldtime();
+    int getframerate();
     
     void setAnimation();//Sets animation parameters according to animation state
+    void setcurrentstate(int);
     
     void Transparent(SDL_Surface* Surf_Dest, int R, int G, int B);//Makes pink background of mario image transparent
 
     void handle_input(SDL_Event);
-    int OldTime;
-    int FrameRate;
     
 private:
     int spritesheetx;
@@ -53,6 +58,9 @@ private:
     int currentState;
     int currentFrame;
     int maxFrames;
+    int climbing;
+    int oldTime;
+    int frameRate;
     SDL_Surface* marioSurface;
     
 };

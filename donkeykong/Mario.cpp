@@ -24,8 +24,9 @@ Mario::Mario(){
     currentState = 1;
     currentFrame = 1;
     maxFrames = 2;
-    OldTime = 0;
-    FrameRate = 100;
+    oldTime = 0;
+    frameRate = 100;
+    climbing = 0;
     marioSurface = SDL_LoadBMP("/Users/jgavin/Documents/donkeykong/donkeykong/DonkeyKong.bmp");
     setAnimation();
     Transparent(marioSurface, 255, 0, 255);
@@ -51,10 +52,29 @@ void Mario::display(SDL_Surface* Surf_Dest, SDL_Surface* Surf_Src, int X, int Y,
     
 }
 
+//Display function takes in parameters of clipping from sprite sheet, makes rectangle, and blits the rectangle
+void Mario::climbingdisplay(SDL_Surface* Surf_Dest, SDL_Surface* Surf_Src, int X, int Y, int X2, int Y2, int W, int H) {
+    
+    SDL_Rect DestR;
+    
+    DestR.x = X;
+    DestR.y = Y;
+    
+    SDL_Rect SrcR;
+    
+    SrcR.x = X2;
+    SrcR.y = Y2;
+    SrcR.w = W;
+    SrcR.h = H;
+    
+    SDL_BlitSurface(Surf_Src, &SrcR, Surf_Dest, &DestR);
+    
+}
+
 
 //Function updates animation frames
 void Mario::updateAnimation(){
-    OldTime = SDL_GetTicks();
+    oldTime = SDL_GetTicks();
     currentFrame++;
     if(currentFrame >= maxFrames) {
         currentFrame = 0;
@@ -65,11 +85,11 @@ void Mario::updateAnimation(){
 void Mario::move(){
     double dt = .5;
     ay = 9.8;
-    if((ypos+height) >= 456){
+    /*if((ypos+height) >= 456){
         ay = 0;
         vy =  0;
-    }
-    vy = vy + ay * dt;
+    }*/
+    //vy = vy + ay * dt;
     xpos = xpos + vx * dt;
     ypos = ypos + vy * dt;
 }
@@ -150,15 +170,15 @@ void Mario::setAnimation(){
             height = 31;
             width = 27;
             break;
-        case 9: //Climbing left
-            spritesheetx = 163;
+        case 9: //Climbing
+            spritesheetx = 123;
             spritesheety = 20;
             currentFrame = 1;
-            maxFrames = 1;
+            maxFrames = 2;
             height = 20;
             width = 19;
             break;
-        case 10: //Climbing right
+        case 10: //Stopped on ladder
             spritesheetx = 123;
             spritesheety = 20;
             currentFrame = 1;
@@ -203,10 +223,10 @@ void Mario::handle_input(SDL_Event event)
         //Adjust the velocity
         switch( event.key.keysym.sym )
         {
-            case SDLK_UP: vy -= height / 2; break;
-            case SDLK_DOWN: vy += height / 2; break;
-            case SDLK_LEFT: vx -= width / 2; currentState = 3; setAnimation(); break;
-            case SDLK_RIGHT: vx += width / 2; currentState = 4; setAnimation(); break;
+            case SDLK_UP: vy = -height / 8; climbing = 1; currentState = 9; setAnimation(); break;
+            case SDLK_DOWN: vy = height / 8; climbing = 1; currentState = 9; setAnimation(); break;
+            case SDLK_LEFT: vx = -width / 5; currentState = 3; climbing = 0; setAnimation(); break;
+            case SDLK_RIGHT: vx = width / 5; currentState = 4; climbing = 0; setAnimation(); break;
         }
     }
     //If a key was released
@@ -215,10 +235,10 @@ void Mario::handle_input(SDL_Event event)
         //Adjust the velocity
         switch( event.key.keysym.sym )
         {
-            case SDLK_UP: vy += height / 2; break;
-            case SDLK_DOWN: vy -= height / 2; break;
-            case SDLK_LEFT: vx += width / 2; currentState = 1; setAnimation(); break;
-            case SDLK_RIGHT: vx -= width / 2; currentState = 2; setAnimation(); break;
+            case SDLK_UP: vy = 0; currentState = 10; climbing = 0; setAnimation(); break;
+            case SDLK_DOWN: vy = 0; currentState = 10; climbing = 0; setAnimation(); break;
+            case SDLK_LEFT: vx = 0; currentState = 1; climbing = 0; setAnimation(); break;
+            case SDLK_RIGHT: vx = 0; currentState = 2; climbing = 0; setAnimation(); break;
         }
     }
 }
@@ -245,6 +265,26 @@ int Mario::getypos(){
 
 int Mario::getcurrentframe(){
     return currentFrame;
+}
+
+int Mario::getcurrentstate(){
+    return currentState;
+}
+
+void Mario::setcurrentstate(int state){
+    currentState = state;
+}
+
+int Mario::getclimbing(){
+    return climbing;
+}
+
+int Mario::getoldtime(){
+    return oldTime;
+}
+
+int Mario::getframerate(){
+    return frameRate;
 }
 
 //Function makes pink background on mario surface transparent

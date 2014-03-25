@@ -30,7 +30,12 @@ void DonkeyKongGame::Display(){
     //Apply image to screen
     SDL_BlitSurface( background, NULL, screen, NULL );
     
+    if(mario.getclimbing() == 0){
     mario.display(screen, mario.getMarioSurface(), mario.getxpos(), mario.getypos(),mario.getspritesheetx() + mario.getcurrentframe()*mario.getwidth(), mario.getspritesheety(), mario.getwidth(), mario.getheight());
+    }
+    if(mario.getclimbing() == 1){
+        mario.climbingdisplay(screen, mario.getMarioSurface(), mario.getxpos(), mario.getypos(),mario.getspritesheetx() + mario.getcurrentframe()*mario.getwidth()*2, mario.getspritesheety(), mario.getwidth(), mario.getheight());
+    }
 
 
    SDL_Flip(screen);
@@ -53,12 +58,12 @@ void DonkeyKongGame::playDonkeyKong(){
     Display();
     while( quit == false )
     {
-        if(mario.OldTime + mario.FrameRate < SDL_GetTicks()) {
+        if(mario.getoldtime() + mario.getframerate() < SDL_GetTicks()) {
             mario.updateAnimation();
         }
         while( SDL_PollEvent( &event ) )
         {
-            if(mario.OldTime + mario.FrameRate < SDL_GetTicks()) {
+            if(mario.getoldtime() + mario.getframerate() < SDL_GetTicks()) {
                 mario.updateAnimation();
             }
             //Handle events for Mario
