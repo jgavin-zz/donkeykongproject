@@ -18,7 +18,7 @@ SDL_Event event;
 DonkeyKongGame::DonkeyKongGame(){
     SDL_Init( SDL_INIT_EVERYTHING );
     screen = SDL_SetVideoMode( 550, 471, 32, SDL_SWSURFACE );
-    background = SDL_LoadBMP("DonkeyKongBackground.bmp");
+    background = SDL_LoadBMP("/Users/jgavin/Documents/donkeykong/donkeykong/DonkeyKongBackground.bmp");
 }
 
 
@@ -53,8 +53,14 @@ void DonkeyKongGame::playDonkeyKong(){
     Display();
     while( quit == false )
     {
+        if(mario.OldTime + mario.FrameRate < SDL_GetTicks()) {
+            mario.updateAnimation();
+        }
         while( SDL_PollEvent( &event ) )
         {
+            if(mario.OldTime + mario.FrameRate < SDL_GetTicks()) {
+                mario.updateAnimation();
+            }
             //Handle events for Mario
             mario.handle_input(event);
             //If the user has Xed out the window

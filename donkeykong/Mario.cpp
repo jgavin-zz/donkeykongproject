@@ -24,7 +24,9 @@ Mario::Mario(){
     currentState = 1;
     currentFrame = 1;
     maxFrames = 2;
-    marioSurface = SDL_LoadBMP("DonkeyKong.bmp");
+    OldTime = 0;
+    FrameRate = 100;
+    marioSurface = SDL_LoadBMP("/Users/jgavin/Documents/donkeykong/donkeykong/DonkeyKong.bmp");
     setAnimation();
     Transparent(marioSurface, 255, 0, 255);
     
@@ -52,16 +54,16 @@ void Mario::display(SDL_Surface* Surf_Dest, SDL_Surface* Surf_Src, int X, int Y,
 
 //Function updates animation frames
 void Mario::updateAnimation(){
+    OldTime = SDL_GetTicks();
     currentFrame++;
     if(currentFrame >= maxFrames) {
         currentFrame = 0;
     }
-    (*this).setAnimation();
+    //(*this).setAnimation();
 }
 
 void Mario::move(){
     double dt = .5;
-    vx = 10;
     ay = 9.8;
     if((ypos+height) >= 456){
         ay = 0;
@@ -204,7 +206,7 @@ void Mario::handle_input(SDL_Event event)
             case SDLK_UP: vy -= height / 2; break;
             case SDLK_DOWN: vy += height / 2; break;
             case SDLK_LEFT: vx -= width / 2; currentState = 3; setAnimation(); break;
-            case SDLK_RIGHT: vx += width / 2; currentState = 2; setAnimation(); break;
+            case SDLK_RIGHT: vx += width / 2; currentState = 4; setAnimation(); break;
         }
     }
     //If a key was released

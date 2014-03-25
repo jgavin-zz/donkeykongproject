@@ -37,6 +37,8 @@ public:
     void Transparent(SDL_Surface* Surf_Dest, int R, int G, int B);//Makes pink background of mario image transparent
 
     void handle_input(SDL_Event);
+    int OldTime;
+    int FrameRate;
     
 private:
     int spritesheetx;
