@@ -19,7 +19,7 @@ SDL_Event event;
 DonkeyKongGame::DonkeyKongGame(){
     SDL_Init( SDL_INIT_EVERYTHING );
     screen = SDL_SetVideoMode( 550, 471, 32, SDL_SWSURFACE );
-    background = SDL_LoadBMP("DonkeyKongBackground.bmp");
+    background = SDL_LoadBMP("/Users/jgavin/Documents/donkeykong/donkeykong/DonkeyKongBackground.bmp");
 }
 
 

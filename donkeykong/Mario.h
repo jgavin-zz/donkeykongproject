@@ -28,6 +28,8 @@ public:
     
 private:
     
+    int direction;
+    
 };
 
 #endif

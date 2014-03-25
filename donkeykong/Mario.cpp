@@ -16,19 +16,23 @@ using namespace std;
 
 //Constructor, sets parameters and loads surface
 Mario::Mario() : Object(20, 20, 130, 435, 0, 0, 0, 1, 1, 2, 0, 0, 100){
+    direction = 1;
 }
 
 
 void Mario::move(){
     double dt = .5;
-    ay = 9.8;
-    /*if((ypos+height) >= 456){
-        ay = 0;
-        vy =  0;
-    }*/
-    //vy = vy + ay * dt;
+    ay = 3;
+    if(climbing == 0){
+        if((ypos+height) >= 456){
+            ay = 0;
+            vy =  0;
+        }
+    }
+    if( climbing == 0) vy = vy + ay * dt;
     xpos = xpos + vx * dt;
     ypos = ypos + vy * dt;
+    if( ypos+ height > 455) ypos = 454 - height;
 }
 
 
@@ -152,10 +156,17 @@ void Mario::handle_input(SDL_Event event)
         //Adjust the velocity
         switch( event.key.keysym.sym )
         {
+            case SDLK_a: vy = -12; climbing = 0; ypos--;
+                if(direction == 1) currentState = 13;
+                setAnimation();
+                break;
+                if(direction == 0) currentState = 12;
+                setAnimation();
+                break;
             case SDLK_UP: vy = -2; climbing = 1; currentState = 9; setAnimation(); break;
             case SDLK_DOWN: vy = 2; climbing = 1; currentState = 9; setAnimation(); break;
-            case SDLK_LEFT: vx = -4; currentState = 3; climbing = 0; setAnimation(); break;
-            case SDLK_RIGHT: vx = 4; currentState = 4; climbing = 0; setAnimation(); break;
+            case SDLK_LEFT: vx = -4; currentState = 3; climbing = 0; direction = 0; setAnimation(); break;
+            case SDLK_RIGHT: vx = 4; currentState = 4; climbing = 0; setAnimation(); direction = 1; break;
         }
     }
     //If a key was released
