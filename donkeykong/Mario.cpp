@@ -17,7 +17,7 @@ using namespace std;
 //Constructor, sets parameters and loads surface
 Mario::Mario() : Object(20, 20, 130, 435, 0, 0, 0, 1, 1, 2, 0, 0, 100){
     direction = 1;
-    onGround = 1;
+    onFloor = 1;
 }
 
 
@@ -34,7 +34,7 @@ void Mario::move(){
     xpos = xpos + vx * dt;
     ypos = ypos + vy * dt;
     //if( ypos+ height > 455) ypos = 454 - height;
-    if( checkOnGround() ) ypos = 454 - height;
+    if( checkOnFloor() ) ypos = 454 - height;
     cout << "vx = " << vx << endl;
 }
 
@@ -191,7 +191,7 @@ void Mario::handle_input(SDL_Event event)
     }
 }
 
-int Mario::checkOnGround(){
+int Mario::checkOnFloor(){
     if( ypos + height > 455) return 1;
     return 0;
 }

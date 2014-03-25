@@ -9,6 +9,7 @@
 #ifndef DONKEYKONGGAME_H
 #define DONKEYKONGGAME_H
 
+#include "Floor.h"
 #include <SDL/SDL.h>
 #include "Object.h"
 #include "Mario.h"
@@ -28,11 +29,15 @@ public:
     void playDonkeyKong(); //Initiates gameplay and calls all other functions
     
     void applyBackground(int, int, SDL_Surface*, SDL_Surface*);
+    
+    void initializeFloors();
+    
 private:
     
     SDL_Surface* screen;//Screen surface
     SDL_Surface* background;//Surface for game background
     Mario mario;//Mario object
+    Floor floors[6];
     
 };
 

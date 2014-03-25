@@ -17,6 +17,7 @@
 		D91C07D118D8F4CC0054233A /* DonkeyKongBackground.bmp in Resources */ = {isa = PBXBuildFile; fileRef = D91C07D018D8F4CC0054233A /* DonkeyKongBackground.bmp */; };
 		D91C07D418D95D1D0054233A /* DonkeyKongGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91C07D318D95D1D0054233A /* DonkeyKongGame.cpp */; };
 		D91FAF5418E225E500BF9BD6 /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91FAF5318E225E400BF9BD6 /* Object.cpp */; };
+		D91FAF5718E23B7800BF9BD6 /* Floor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91FAF5618E23B7800BF9BD6 /* Floor.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,8 @@
 		D91C07D318D95D1D0054233A /* DonkeyKongGame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DonkeyKongGame.cpp; sourceTree = "<group>"; };
 		D91FAF5218E225DD00BF9BD6 /* Object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Object.h; sourceTree = "<group>"; };
 		D91FAF5318E225E400BF9BD6 /* Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Object.cpp; sourceTree = "<group>"; };
+		D91FAF5518E23B5600BF9BD6 /* Floor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Floor.h; sourceTree = "<group>"; };
+		D91FAF5618E23B7800BF9BD6 /* Floor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Floor.cpp; sourceTree = "<group>"; };
 		D9F8A1A018DFAFBA00B96292 /* makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = makefile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,6 +115,8 @@
 				D91FAF5318E225E400BF9BD6 /* Object.cpp */,
 				D9048FB618DAA404005A8B83 /* Mario.h */,
 				D9048FBA18DAA71D005A8B83 /* Mario.cpp */,
+				D91FAF5518E23B5600BF9BD6 /* Floor.h */,
+				D91FAF5618E23B7800BF9BD6 /* Floor.cpp */,
 				D9F8A1A018DFAFBA00B96292 /* makefile */,
 				D91C07D018D8F4CC0054233A /* DonkeyKongBackground.bmp */,
 				D91C07CE18D8F0930054233A /* DonkeyKong.bmp */,
@@ -190,6 +195,7 @@
 				D91C07D418D95D1D0054233A /* DonkeyKongGame.cpp in Sources */,
 				D9048FBB18DAA71D005A8B83 /* Mario.cpp in Sources */,
 				D91FAF5418E225E500BF9BD6 /* Object.cpp in Sources */,
+				D91FAF5718E23B7800BF9BD6 /* Floor.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
