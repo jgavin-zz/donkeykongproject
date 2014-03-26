@@ -19,7 +19,8 @@ SDL_Event event;
 DonkeyKongGame::DonkeyKongGame(){
     SDL_Init( SDL_INIT_EVERYTHING );
     screen = SDL_SetVideoMode( 550, 471, 32, SDL_SWSURFACE );
-    background = SDL_LoadBMP("DonkeyKongBackground.bmp");
+    background = SDL_LoadBMP("/Users/jgavin/Documents/donkeykong/donkeykong/DonkeyKongBackground.bmp");
+    initializeFloors();
 }
 
 
@@ -32,10 +33,10 @@ void DonkeyKongGame::Display(){
     SDL_BlitSurface( background, NULL, screen, NULL );
     
     if(mario.getclimbing() == 0){
-    (*this).mario.display(screen, (*this).mario.getMarioSurface(), (*this).mario.getxpos(), (*this).mario.getypos(),(*this).mario.getspritesheetx() + (*this).mario.getcurrentframe()*(*this).mario.getwidth(), (*this).mario.getspritesheety(), (*this).mario.getwidth(), (*this).mario.getheight());
+    mario.display(screen, mario.getMarioSurface(), mario.getxpos(), mario.getypos(), mario.getspritesheetx() + mario.getcurrentframe()*mario.getwidth(), mario.getspritesheety(), mario.getwidth(), mario.getheight());
     }
-    if((*this).mario.getclimbing() == 1){
-        (*this).mario.climbingdisplay(screen, mario.getMarioSurface(), mario.getxpos(), mario.getypos(),mario.getspritesheetx() + mario.getcurrentframe()*mario.getwidth()*2, mario.getspritesheety(), mario.getwidth(), mario.getheight());
+    if(mario.getclimbing() == 1){
+        mario.climbingdisplay(screen, mario.getMarioSurface(), mario.getxpos(), mario.getypos(),mario.getspritesheetx() + mario.getcurrentframe()*mario.getwidth()*2, mario.getspritesheety(), mario.getwidth(), mario.getheight());
     }
 
 
@@ -81,4 +82,9 @@ void DonkeyKongGame::playDonkeyKong(){
         Display();
     }
     SDL_Quit();
+}
+
+//Function to initialize floors
+void DonkeyKongGame::initializeFloors(){
+    floors[0].setslope(.4);
 }

@@ -1,7 +1,7 @@
 all:	main
 
-main: main.o DonkeyKongGame.o Mario.o
-	g++ -lSDL  main.o DonkeyKongGame.o Mario.o -o main
+main: main.o DonkeyKongGame.o Mario.o Object.o Floor.o
+	g++ -lSDL  main.o DonkeyKongGame.o Mario.o Object.o Floor.o -o main
 
 main.o: main.cpp
 	g++ -c main.cpp
