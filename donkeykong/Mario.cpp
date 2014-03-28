@@ -26,12 +26,12 @@ Mario::Mario() : Object(20, 20, 130, 435, 0, 0, 0, 1, 1, 2, 0, 0, 100){
 void Mario::move(){
     double dt = .5;
     ay = 2;
-    if(climbing == 0){
+    /*if(climbing == 0){
         if(onFloor){
             ay = 0;
             vy =  0;
         }
-    }
+    }*/
     if( climbing == 0) vy = vy + ay * dt;
     xpos = xpos + vx * dt;
     ypos = ypos + vy * dt;
