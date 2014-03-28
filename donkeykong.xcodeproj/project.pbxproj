@@ -20,6 +20,21 @@
 		D91FAF5718E23B7800BF9BD6 /* Floor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91FAF5618E23B7800BF9BD6 /* Floor.cpp */; };
 		D93CD74418E4F46800B7ECD2 /* DonkeyKong.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D93CD74318E4F46800B7ECD2 /* DonkeyKong.cpp */; };
 		D93CD74718E4F55700B7ECD2 /* Peach.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D93CD74618E4F55700B7ECD2 /* Peach.cpp */; };
+		D93CD75818E5031C00B7ECD2 /* DonkeyKongGame.cpp~ in Resources */ = {isa = PBXBuildFile; fileRef = D93CD74818E5031A00B7ECD2 /* DonkeyKongGame.cpp~ */; };
+		D93CD75918E5031C00B7ECD2 /* DonkeyKongGame.o in Frameworks */ = {isa = PBXBuildFile; fileRef = D93CD74918E5031A00B7ECD2 /* DonkeyKongGame.o */; };
+		D93CD75A18E5031C00B7ECD2 /* main in Resources */ = {isa = PBXBuildFile; fileRef = D93CD74A18E5031A00B7ECD2 /* main */; };
+		D93CD75B18E5031C00B7ECD2 /* main.o in Frameworks */ = {isa = PBXBuildFile; fileRef = D93CD74B18E5031A00B7ECD2 /* main.o */; };
+		D93CD75C18E5031C00B7ECD2 /* Mario.o in Frameworks */ = {isa = PBXBuildFile; fileRef = D93CD74C18E5031A00B7ECD2 /* Mario.o */; };
+		D93CD75D18E5031C00B7ECD2 /* Object.cpp~ in Resources */ = {isa = PBXBuildFile; fileRef = D93CD74D18E5031B00B7ECD2 /* Object.cpp~ */; };
+		D93CD75E18E5031C00B7ECD2 /* Object.h~ in Resources */ = {isa = PBXBuildFile; fileRef = D93CD74E18E5031B00B7ECD2 /* Object.h~ */; };
+		D93CD75F18E5031C00B7ECD2 /* Object.o in Frameworks */ = {isa = PBXBuildFile; fileRef = D93CD74F18E5031B00B7ECD2 /* Object.o */; };
+		D93CD76018E5031C00B7ECD2 /* DonkeyKongGame.h~ in Resources */ = {isa = PBXBuildFile; fileRef = D93CD75018E5031B00B7ECD2 /* DonkeyKongGame.h~ */; };
+		D93CD76118E5031C00B7ECD2 /* Mario.cpp~ in Resources */ = {isa = PBXBuildFile; fileRef = D93CD75118E5031B00B7ECD2 /* Mario.cpp~ */; };
+		D93CD76218E5031C00B7ECD2 /* Mario.h~ in Resources */ = {isa = PBXBuildFile; fileRef = D93CD75218E5031B00B7ECD2 /* Mario.h~ */; };
+		D93CD76318E5031C00B7ECD2 /* main.cpp~ in Resources */ = {isa = PBXBuildFile; fileRef = D93CD75318E5031B00B7ECD2 /* main.cpp~ */; };
+		D93CD76418E5031C00B7ECD2 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D93CD75418E5031C00B7ECD2 /* Timer.cpp */; };
+		D93CD76518E5031C00B7ECD2 /* Timer.cpp~ in Resources */ = {isa = PBXBuildFile; fileRef = D93CD75518E5031C00B7ECD2 /* Timer.cpp~ */; };
+		D93CD76618E5031C00B7ECD2 /* Timer.h~ in Resources */ = {isa = PBXBuildFile; fileRef = D93CD75718E5031C00B7ECD2 /* Timer.h~ */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +63,22 @@
 		D93CD74318E4F46800B7ECD2 /* DonkeyKong.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DonkeyKong.cpp; sourceTree = "<group>"; };
 		D93CD74518E4F55700B7ECD2 /* Peach.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Peach.h; sourceTree = "<group>"; };
 		D93CD74618E4F55700B7ECD2 /* Peach.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Peach.cpp; sourceTree = "<group>"; };
+		D93CD74818E5031A00B7ECD2 /* DonkeyKongGame.cpp~ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "DonkeyKongGame.cpp~"; sourceTree = "<group>"; };
+		D93CD74918E5031A00B7ECD2 /* DonkeyKongGame.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = DonkeyKongGame.o; sourceTree = "<group>"; };
+		D93CD74A18E5031A00B7ECD2 /* main */ = {isa = PBXFileReference; lastKnownFileType = file; path = main; sourceTree = "<group>"; };
+		D93CD74B18E5031A00B7ECD2 /* main.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = main.o; sourceTree = "<group>"; };
+		D93CD74C18E5031A00B7ECD2 /* Mario.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = Mario.o; sourceTree = "<group>"; };
+		D93CD74D18E5031B00B7ECD2 /* Object.cpp~ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Object.cpp~"; sourceTree = "<group>"; };
+		D93CD74E18E5031B00B7ECD2 /* Object.h~ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Object.h~"; sourceTree = "<group>"; };
+		D93CD74F18E5031B00B7ECD2 /* Object.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = Object.o; sourceTree = "<group>"; };
+		D93CD75018E5031B00B7ECD2 /* DonkeyKongGame.h~ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "DonkeyKongGame.h~"; sourceTree = "<group>"; };
+		D93CD75118E5031B00B7ECD2 /* Mario.cpp~ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Mario.cpp~"; sourceTree = "<group>"; };
+		D93CD75218E5031B00B7ECD2 /* Mario.h~ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Mario.h~"; sourceTree = "<group>"; };
+		D93CD75318E5031B00B7ECD2 /* main.cpp~ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "main.cpp~"; sourceTree = "<group>"; };
+		D93CD75418E5031C00B7ECD2 /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cpp; sourceTree = "<group>"; };
+		D93CD75518E5031C00B7ECD2 /* Timer.cpp~ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Timer.cpp~"; sourceTree = "<group>"; };
+		D93CD75618E5031C00B7ECD2 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
+		D93CD75718E5031C00B7ECD2 /* Timer.h~ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Timer.h~"; sourceTree = "<group>"; };
 		D9F8A1A018DFAFBA00B96292 /* makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = makefile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -58,6 +89,10 @@
 			files = (
 				D91C07A118D826FD0054233A /* Cocoa.framework in Frameworks */,
 				D91C07C118D8279D0054233A /* SDL.framework in Frameworks */,
+				D93CD75918E5031C00B7ECD2 /* DonkeyKongGame.o in Frameworks */,
+				D93CD75B18E5031C00B7ECD2 /* main.o in Frameworks */,
+				D93CD75C18E5031C00B7ECD2 /* Mario.o in Frameworks */,
+				D93CD75F18E5031C00B7ECD2 /* Object.o in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +157,22 @@
 				D93CD74218E4F46800B7ECD2 /* DonkeyKong.h */,
 				D93CD74318E4F46800B7ECD2 /* DonkeyKong.cpp */,
 				D91FAF5218E225DD00BF9BD6 /* Object.h */,
+				D93CD74818E5031A00B7ECD2 /* DonkeyKongGame.cpp~ */,
+				D93CD74918E5031A00B7ECD2 /* DonkeyKongGame.o */,
+				D93CD74A18E5031A00B7ECD2 /* main */,
+				D93CD74B18E5031A00B7ECD2 /* main.o */,
+				D93CD74C18E5031A00B7ECD2 /* Mario.o */,
+				D93CD74D18E5031B00B7ECD2 /* Object.cpp~ */,
+				D93CD74E18E5031B00B7ECD2 /* Object.h~ */,
+				D93CD74F18E5031B00B7ECD2 /* Object.o */,
+				D93CD75018E5031B00B7ECD2 /* DonkeyKongGame.h~ */,
+				D93CD75118E5031B00B7ECD2 /* Mario.cpp~ */,
+				D93CD75218E5031B00B7ECD2 /* Mario.h~ */,
+				D93CD75318E5031B00B7ECD2 /* main.cpp~ */,
+				D93CD75418E5031C00B7ECD2 /* Timer.cpp */,
+				D93CD75518E5031C00B7ECD2 /* Timer.cpp~ */,
+				D93CD75618E5031C00B7ECD2 /* Timer.h */,
+				D93CD75718E5031C00B7ECD2 /* Timer.h~ */,
 				D91FAF5318E225E400BF9BD6 /* Object.cpp */,
 				D9048FB618DAA404005A8B83 /* Mario.h */,
 				D9048FBA18DAA71D005A8B83 /* Mario.cpp */,
@@ -190,6 +241,16 @@
 				D91C07C318D828F90054233A /* donkeykong-Info.plist in Resources */,
 				D91C07CF18D8F0940054233A /* DonkeyKong.bmp in Resources */,
 				D91C07D118D8F4CC0054233A /* DonkeyKongBackground.bmp in Resources */,
+				D93CD75818E5031C00B7ECD2 /* DonkeyKongGame.cpp~ in Resources */,
+				D93CD75A18E5031C00B7ECD2 /* main in Resources */,
+				D93CD75D18E5031C00B7ECD2 /* Object.cpp~ in Resources */,
+				D93CD75E18E5031C00B7ECD2 /* Object.h~ in Resources */,
+				D93CD76018E5031C00B7ECD2 /* DonkeyKongGame.h~ in Resources */,
+				D93CD76118E5031C00B7ECD2 /* Mario.cpp~ in Resources */,
+				D93CD76218E5031C00B7ECD2 /* Mario.h~ in Resources */,
+				D93CD76318E5031C00B7ECD2 /* main.cpp~ in Resources */,
+				D93CD76518E5031C00B7ECD2 /* Timer.cpp~ in Resources */,
+				D93CD76618E5031C00B7ECD2 /* Timer.h~ in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,6 +269,7 @@
 				D91FAF5718E23B7800BF9BD6 /* Floor.cpp in Sources */,
 				D93CD74418E4F46800B7ECD2 /* DonkeyKong.cpp in Sources */,
 				D93CD74718E4F55700B7ECD2 /* Peach.cpp in Sources */,
+				D93CD76418E5031C00B7ECD2 /* Timer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
