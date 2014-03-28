@@ -27,6 +27,7 @@ SDL_Event event;
 //Constructor for DonkeyKongGame, initializes SDL, creates screen, and loads background
 DonkeyKongGame::DonkeyKongGame(){
     SDL_Init( SDL_INIT_EVERYTHING );
+    SDL_Color textColor = { 255, 255, 255 }; // it's white for now, color of text
     screen = SDL_SetVideoMode( 550, 471, 32, SDL_SWSURFACE );
     background = SDL_LoadBMP("DonkeyKongBackground.bmp");
     font = TTF_OpenFont( "kongtext.ttf", 36 ); //size 12 font
@@ -37,8 +38,7 @@ DonkeyKongGame::DonkeyKongGame(){
 
 //Display function which puts background and all objects on screen
 void DonkeyKongGame::Display(){
-    
-    SDL_Color textColor = { 255, 255, 255 }; // it's white for now, color of text
+  
     SDL_FillRect( screen, &screen->clip_rect, SDL_MapRGB( screen->format, 0xFF, 0xFF, 0xFF ) );
     
     //Apply image to screen
