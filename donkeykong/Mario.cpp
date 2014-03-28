@@ -188,11 +188,24 @@ void Mario::handle_input(SDL_Event event)
 
 int Mario::checkOnLadder(int direction){
 
-    if (xpos + width >= 200 && xpos + width <= 220)
+    if(floorNumber == 1)
     {
-        if (direction == 0)
+        if ((xpos + width >= 200 && xpos + width <= 220)||(xpos + width >= 430 && xpos + width <= 450))
         {
-            return 1;
+            if (direction == 0)
+            {
+                return 1;
+            }
+        }
+    }
+    if(floorNumber == 2)
+    {
+        if ((xpos + width >= 80 && xpos + width <= 100)||(xpos + width >= 236 && xpos + width <= 256))
+        {
+            if (direction == 0)
+            {
+                return 1;
+            }
         }
     }
     return 0;
