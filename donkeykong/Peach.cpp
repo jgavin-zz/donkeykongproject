@@ -1,18 +1,6 @@
-//
-//  Peach.cpp
-//  donkeykong
-//
+
 //  Created by Jacob Gavin on 3/27/14.
 //  Copyright (c) 2014 Jacob Gavin. All rights reserved.
-//
-
-//
-//  Peach.cpp
-//  SDL_Tutorial
-//
-//  Created by Jacob Gavin on 3/25/14.
-//  Copyright (c) 2014 Ryan Moran. All rights reserved.
-//
 
 #include "Object.h"
 #include "Peach.h"

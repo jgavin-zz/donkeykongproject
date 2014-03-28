@@ -30,6 +30,20 @@ void Mario::move(){
     if( climbing == 0) vy = vy + ay * dt;
     xpos = xpos + vx * dt;
     ypos = ypos + vy * dt;
+
+    if (xpos <= 0) {
+	xpos = 2;
+	vx = 0;
+    }
+
+    if (xpos >= 531) {
+	xpos = 529;
+	vx = 0;
+    }
+
+
+    cout << "xpos: " << xpos << endl;
+    cout << "ypos: " << ypos << endl;
 }
 
 

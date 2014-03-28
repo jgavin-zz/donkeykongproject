@@ -18,7 +18,7 @@ void DonkeyKong::updateAnimation(){
     oldTime = SDL_GetTicks();
     currentFrame++;
     if(currentFrame >= maxFrames) {
-        currentFrame = 0;
+        SDL_Delay( ( 1000 / FRAMES_PER_SECOND ) - fps.get_ticks() );
     }
     //(*this).setAnimation();
 }
