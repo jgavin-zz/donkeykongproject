@@ -20,18 +20,13 @@ Mario::Mario() : Object(20, 20, 130, 435, 0, 0, 0, 1, 1, 2, 0, 0, 100){
     onFloor = 1;
     ay = 0;
     vy = 0;
+    floorNumber = 1;
 }
 
 
 void Mario::move(){
     double dt = .5;
     ay = 2;
-    /*if(climbing == 0){
-        if(onFloor){
-            ay = 0;
-            vy =  0;
-        }
-    }*/
     if( climbing == 0) vy = vy + ay * dt;
     xpos = xpos + vx * dt;
     ypos = ypos + vy * dt;
@@ -158,12 +153,13 @@ void Mario::handle_input(SDL_Event event)
         //Adjust the velocity
         switch( event.key.keysym.sym )
         {
-            case SDLK_UP: if(checkOnLadder(0)) {vy = -8; climbing = 1; currentState = 9; setAnimation();} break;
-            case SDLK_DOWN: if(checkOnLadder(1)) {vy = 8; climbing = 1; currentState = 9; setAnimation();} break;
-            case SDLK_LEFT: vx = -12; currentState = 3; climbing = 0; direction = 0; setAnimation(); break;
-            case SDLK_RIGHT: vx = 12; currentState = 4; climbing = 0; setAnimation(); direction = 1; break;
+            case SDLK_UP: if(checkOnLadder(0)) {vy = -2; climbing = 1; currentState = 9; setAnimation();} break;
+            case SDLK_DOWN: if(checkOnLadder(1)) {vy = 2; climbing = 1; currentState = 9; setAnimation();} break;
+            case SDLK_LEFT: vx = -4; currentState = 3; climbing = 0; direction = 0; setAnimation(); break;
+            case SDLK_RIGHT: vx = 4; currentState = 4; climbing = 0; setAnimation(); direction = 1; break;
             case SDLK_a:
-                if(ypos == 454 - height){
+                if(onFloor){
+                    onFloor = 0;
                     vy = -10; climbing = 0; ypos--;
                     if(direction == 1) currentState = 13;
                     setAnimation();
@@ -185,7 +181,7 @@ void Mario::handle_input(SDL_Event event)
             case SDLK_DOWN: if (!onFloor) {vy = 0; currentState = 10; climbing = 0; setAnimation();} else {vx = 0; currentState = 2; climbing = 0; setAnimation();}  break;
             case SDLK_LEFT: vx = 0; currentState = 1; climbing = 0; setAnimation(); break;
             case SDLK_RIGHT: vx = 0; currentState = 2; climbing = 0; setAnimation(); break;
-            case SDLK_a: climbing = 0;
+            case SDLK_a: climbing = 0; 
         }
     }
 }
