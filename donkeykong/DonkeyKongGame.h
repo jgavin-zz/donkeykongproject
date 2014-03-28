@@ -25,6 +25,8 @@ public:
     SDL_Surface* OnLoad(char*); //Function to load game background
     
     void Display(); //Renders all of the game objects and background onto the screen
+
+    void Music();
     
     void cleanUp(); //Cleans up all of the object in the game when it is finished
     

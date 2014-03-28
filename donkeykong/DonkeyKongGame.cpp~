@@ -17,12 +17,14 @@
 #include "Mario.h"
 #include "Peach.h"
 #include "DonkeyKong.h"
+#include "SDL/SDL_mixer.h"
 
 using namespace std;
 
 
-
 SDL_Event event;
+//The music that will be played
+Mix_Music *music = NULL;
 
 //Constructor for DonkeyKongGame, initializes SDL, creates screen, and loads background
 DonkeyKongGame::DonkeyKongGame(){
@@ -30,12 +32,20 @@ DonkeyKongGame::DonkeyKongGame(){
     SDL_Color textColor = { 255, 255, 255 }; // it's white for now, color of text
     screen = SDL_SetVideoMode( 550, 471, 32, SDL_SWSURFACE );
     background = SDL_LoadBMP("DonkeyKongBackground.bmp");
+   
+    TTF_Font *font;
     font = TTF_OpenFont( "kongtext.ttf", 36 ); //size 12 font
     message = TTF_RenderText_Solid( font, "Current Score:", textColor );
     initializeFloors();
 }
 
 
+void DonkeyKongGame::Music() {
+   
+    Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 );
+    music = Mix_LoadMUS( "intro.wav" );
+    Mix_PlayMusic(music, -1);
+}
 //Display function which puts background and all objects on screen
 void DonkeyKongGame::Display(){
   
@@ -68,8 +78,10 @@ void DonkeyKongGame::cleanUp(){
     SDL_FreeSurface( background );
     SDL_FreeSurface( message );
     mario.cleanUp();
+    Mix_FreeMusic( music );
     
-    
+    //Quit SDL Mixer
+    Mix_CloseAudio();
     //Quit SDL
     SDL_Quit();
 }
