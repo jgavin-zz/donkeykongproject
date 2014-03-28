@@ -9,8 +9,8 @@
 #include <SDL/SDL.h>
 #include <iostream>
 #include "SDL/SDL.h"
-//#include "SDL/SDL_image.h"
-//#include "SDL/SDL_ttf.h"
+#include "SDL/SDL_image.h"
+#include "SDL/SDL_ttf.h"
 #include <string>
 #include "DonkeyKongGame.h"
 #include "Object.h"
@@ -24,20 +24,21 @@ using namespace std;
 
 SDL_Event event;
 
-//The font that's going to be used
-//TTF_Font *font = NULL;
 //Constructor for DonkeyKongGame, initializes SDL, creates screen, and loads background
 DonkeyKongGame::DonkeyKongGame(){
     SDL_Init( SDL_INIT_EVERYTHING );
+    SDL_Color textColor = { 255, 255, 255 }; // it's white for now, color of text
     screen = SDL_SetVideoMode( 550, 471, 32, SDL_SWSURFACE );
     background = SDL_LoadBMP("DonkeyKongBackground.bmp");
+    font = TTF_OpenFont( "kongtext.ttf", 36 ); //size 12 font
+    message = TTF_RenderText_Solid( font, "Current Score:", textColor );
     initializeFloors();
 }
 
 
 //Display function which puts background and all objects on screen
 void DonkeyKongGame::Display(){
-    
+  
     SDL_FillRect( screen, &screen->clip_rect, SDL_MapRGB( screen->format, 0xFF, 0xFF, 0xFF ) );
     
     //Apply image to screen
@@ -65,6 +66,7 @@ void DonkeyKongGame::cleanUp(){
     //Free the loaded image
     //SDL_FreeSurface( screen );
     SDL_FreeSurface( background );
+    SDL_FreeSurface( message );
     mario.cleanUp();
     
     

@@ -40,6 +40,8 @@ private:
     
     SDL_Surface* screen;//Screen surface
     SDL_Surface* background;//Surface for game background
+    SDL_Surface *message;
+    TTF_Font *font;
     Mario mario;//Mario object
     Peach peach; //Peach object
     DonkeyKong donkeykong; //donkeykong object
