@@ -18,6 +18,8 @@ using namespace std;
 Mario::Mario() : Object(20, 20, 130, 435, 0, 0, 0, 1, 1, 2, 0, 0, 100){
     direction = 1;
     onFloor = 1;
+    ay = 0;
+    vy = 0;
 }
 
 
