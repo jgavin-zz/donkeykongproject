@@ -26,6 +26,7 @@ public:
     
     void handle_input(SDL_Event);
     int onFloor;
+    int checkOnLadder(int);
     
 private:
     
