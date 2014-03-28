@@ -36,10 +36,10 @@ void Mario::move(){
 	vx = 0;
     }
 
-    /*if (xpos >= 431) {
-	xpos = 429;
+    if (xpos >= 531) {
+	xpos = 529;
 	vx = 0;
-    }*/
+    }
 
 
     cout << "xpos: " << xpos << endl;
