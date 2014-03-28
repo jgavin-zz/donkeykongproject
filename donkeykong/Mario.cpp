@@ -158,13 +158,12 @@ void Mario::handle_input(SDL_Event event)
         //Adjust the velocity
         switch( event.key.keysym.sym )
         {
-            case SDLK_UP: vy = -2; climbing = 1; currentState = 9; setAnimation(); break;
-            case SDLK_DOWN: vy = 2; climbing = 1; currentState = 9; setAnimation(); break;
-            case SDLK_LEFT: vx = -4; currentState = 3; climbing = 0; direction = 0; setAnimation(); break;
-            case SDLK_RIGHT: vx = 4; currentState = 4; climbing = 0; setAnimation(); direction = 1; break;
+            case SDLK_UP: if(checkOnLadder(0)) {vy = -8; climbing = 1; currentState = 9; setAnimation();} break;
+            case SDLK_DOWN: if(checkOnLadder(1)) {vy = 8; climbing = 1; currentState = 9; setAnimation();} break;
+            case SDLK_LEFT: vx = -12; currentState = 3; climbing = 0; direction = 0; setAnimation(); break;
+            case SDLK_RIGHT: vx = 12; currentState = 4; climbing = 0; setAnimation(); direction = 1; break;
             case SDLK_a:
-                if(onFloor){
-                    onFloor = 0;
+                if(ypos == 454 - height){
                     vy = -10; climbing = 0; ypos--;
                     if(direction == 1) currentState = 13;
                     setAnimation();
@@ -182,8 +181,8 @@ void Mario::handle_input(SDL_Event event)
         //Adjust the velocity
         switch( event.key.keysym.sym )
         {
-            case SDLK_UP: vy = 0; currentState = 10; climbing = 0; setAnimation(); break;
-            case SDLK_DOWN: vy = 0; currentState = 10; climbing = 0; setAnimation(); break;
+            case SDLK_UP: if (!onFloor) {vy = 0; currentState = 10; climbing = 0; setAnimation();} else {vx = 0; currentState = 2; climbing = 0; setAnimation();}  break;
+            case SDLK_DOWN: if (!onFloor) {vy = 0; currentState = 10; climbing = 0; setAnimation();} else {vx = 0; currentState = 2; climbing = 0; setAnimation();}  break;
             case SDLK_LEFT: vx = 0; currentState = 1; climbing = 0; setAnimation(); break;
             case SDLK_RIGHT: vx = 0; currentState = 2; climbing = 0; setAnimation(); break;
             case SDLK_a: climbing = 0;
@@ -191,4 +190,14 @@ void Mario::handle_input(SDL_Event event)
     }
 }
 
+int Mario::checkOnLadder(int direction){
 
+    if (xpos + width >= 200 && xpos + width <= 220)
+    {
+        if (direction == 0)
+        {
+            return 1;
+        }
+    }
+    return 0;
+}
