@@ -28,7 +28,7 @@ Object::Object(int h, int w, int x, int y, double velX, double velY, double acce
     climbing=climb;
     oldTime=oTime;
     frameRate=fRate;
-    marioSurface = SDL_LoadBMP("DonkeyKong.bmp");
+    marioSurface = SDL_LoadBMP("/Users/jgavin/Documents/donkeykong/donkeykong/DonkeyKong.bmp");
     setAnimation();
     Transparent(marioSurface, 255, 0, 255);
     
@@ -253,4 +253,8 @@ void Object::Transparent(SDL_Surface* Surf_Dest, int R, int G, int B) {
     
     SDL_SetColorKey(Surf_Dest, SDL_SRCCOLORKEY | SDL_RLEACCEL, SDL_MapRGB(Surf_Dest->format, R, G, B));
     
+}
+
+void Object::cleanUp(){
+    SDL_FreeSurface( marioSurface );
 }

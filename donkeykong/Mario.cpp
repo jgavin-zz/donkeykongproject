@@ -25,7 +25,7 @@ void Mario::move(){
     double dt = .5;
     ay = 2;
     if(climbing == 0){
-        if((ypos+height) >= 456){
+        if(onFloor){
             ay = 0;
             vy =  0;
         }
@@ -33,9 +33,6 @@ void Mario::move(){
     if( climbing == 0) vy = vy + ay * dt;
     xpos = xpos + vx * dt;
     ypos = ypos + vy * dt;
-    //if( ypos+ height > 455) ypos = 454 - height;
-    if( checkOnFloor() ) ypos = 454 - height;
-    cout << "vx = " << vx << endl;
 }
 
 
@@ -164,7 +161,8 @@ void Mario::handle_input(SDL_Event event)
             case SDLK_LEFT: vx = -4; currentState = 3; climbing = 0; direction = 0; setAnimation(); break;
             case SDLK_RIGHT: vx = 4; currentState = 4; climbing = 0; setAnimation(); direction = 1; break;
             case SDLK_a:
-                if(ypos == 454 - height){
+                if(onFloor){
+                    onFloor = 0;
                     vy = -10; climbing = 0; ypos--;
                     if(direction == 1) currentState = 13;
                     setAnimation();
@@ -189,11 +187,6 @@ void Mario::handle_input(SDL_Event event)
             case SDLK_a: climbing = 0;
         }
     }
-}
-
-int Mario::checkOnFloor(){
-    if( ypos + height > 455) return 1;
-    return 0;
 }
 
 

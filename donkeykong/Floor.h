@@ -16,13 +16,26 @@ public:
     double getslope();
     double getyint();
     
-    void setslope(int);
-    void setyint(int);
+    int getxmin();
+    int getxmax();
+    int getymin();
+    int getymax();
+    
+    void setslope(double);
+    void setyint(double);
+    void setxmin(int);
+    void setxmax(int);
+    void setymin(int);
+    void setymax(int);
     
 private:
     
     double slope;
     double yint;
+    int xmin;
+    int xmax;
+    int ymin;
+    int ymax;
     
 };
 

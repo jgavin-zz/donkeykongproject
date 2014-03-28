@@ -13,6 +13,8 @@
 #include <SDL/SDL.h>
 #include "Object.h"
 #include "Mario.h"
+#include "Peach.h"
+#include "DonkeyKong.h"
 
 class DonkeyKongGame{
     
@@ -32,11 +34,15 @@ public:
     
     void initializeFloors();
     
+    int checkOnFloor(int, int, int, int);
+    
 private:
     
     SDL_Surface* screen;//Screen surface
     SDL_Surface* background;//Surface for game background
     Mario mario;//Mario object
+    Peach peach; //Peach object
+    DonkeyKong donkeykong; //donkeykong object
     Floor floors[6];
     
 };

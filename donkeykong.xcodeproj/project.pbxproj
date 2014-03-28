@@ -18,6 +18,8 @@
 		D91C07D418D95D1D0054233A /* DonkeyKongGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91C07D318D95D1D0054233A /* DonkeyKongGame.cpp */; };
 		D91FAF5418E225E500BF9BD6 /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91FAF5318E225E400BF9BD6 /* Object.cpp */; };
 		D91FAF5718E23B7800BF9BD6 /* Floor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91FAF5618E23B7800BF9BD6 /* Floor.cpp */; };
+		D93CD74418E4F46800B7ECD2 /* DonkeyKong.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D93CD74318E4F46800B7ECD2 /* DonkeyKong.cpp */; };
+		D93CD74718E4F55700B7ECD2 /* Peach.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D93CD74618E4F55700B7ECD2 /* Peach.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,10 @@
 		D91FAF5318E225E400BF9BD6 /* Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Object.cpp; sourceTree = "<group>"; };
 		D91FAF5518E23B5600BF9BD6 /* Floor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Floor.h; sourceTree = "<group>"; };
 		D91FAF5618E23B7800BF9BD6 /* Floor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Floor.cpp; sourceTree = "<group>"; };
+		D93CD74218E4F46800B7ECD2 /* DonkeyKong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DonkeyKong.h; sourceTree = "<group>"; };
+		D93CD74318E4F46800B7ECD2 /* DonkeyKong.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DonkeyKong.cpp; sourceTree = "<group>"; };
+		D93CD74518E4F55700B7ECD2 /* Peach.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Peach.h; sourceTree = "<group>"; };
+		D93CD74618E4F55700B7ECD2 /* Peach.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Peach.cpp; sourceTree = "<group>"; };
 		D9F8A1A018DFAFBA00B96292 /* makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = makefile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,7 +116,11 @@
 				D91C07BE18D827920054233A /* SDLMain.m */,
 				D91C07AC18D826FD0054233A /* main.cpp */,
 				D91C07D218D95BAD0054233A /* DonkeyKongGame.h */,
+				D93CD74518E4F55700B7ECD2 /* Peach.h */,
+				D93CD74618E4F55700B7ECD2 /* Peach.cpp */,
 				D91C07D318D95D1D0054233A /* DonkeyKongGame.cpp */,
+				D93CD74218E4F46800B7ECD2 /* DonkeyKong.h */,
+				D93CD74318E4F46800B7ECD2 /* DonkeyKong.cpp */,
 				D91FAF5218E225DD00BF9BD6 /* Object.h */,
 				D91FAF5318E225E400BF9BD6 /* Object.cpp */,
 				D9048FB618DAA404005A8B83 /* Mario.h */,
@@ -196,6 +206,8 @@
 				D9048FBB18DAA71D005A8B83 /* Mario.cpp in Sources */,
 				D91FAF5418E225E500BF9BD6 /* Object.cpp in Sources */,
 				D91FAF5718E23B7800BF9BD6 /* Floor.cpp in Sources */,
+				D93CD74418E4F46800B7ECD2 /* DonkeyKong.cpp in Sources */,
+				D93CD74718E4F55700B7ECD2 /* Peach.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

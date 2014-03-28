@@ -63,6 +63,8 @@ public:
 
     SDL_Surface* getMarioSurface();
     
+    void cleanUp();
+    
 private:
     
 };

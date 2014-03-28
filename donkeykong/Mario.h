@@ -25,15 +25,11 @@ public:
     virtual void setAnimation();//Sets animation parameters according to animation state
     
     void handle_input(SDL_Event);
-    
-    int checkOnFloor();
-    
-    
+    int onFloor;
     
 private:
     
     int direction;
-    int onFloor;
     
 };
 
