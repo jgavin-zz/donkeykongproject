@@ -43,7 +43,7 @@ private:
     Mario mario;//Mario object
     Peach peach; //Peach object
     DonkeyKong donkeykong; //donkeykong object
-    Floor floors[6];
+    Floor floors[7];
     
 };
 

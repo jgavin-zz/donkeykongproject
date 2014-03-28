@@ -190,7 +190,7 @@ int Mario::checkOnLadder(int direction){
 
     if(floorNumber == 1)
     {
-        if ((xpos + width >= 200 && xpos + width <= 220)||(xpos + width >= 430 && xpos + width <= 450))
+        if ((xpos + width/2 >= 200 && xpos + width/2 <= 220)||(xpos + width/2 >= 430 && xpos + width/2 <= 450))
         {
             if (direction == 0)
             {
@@ -200,7 +200,57 @@ int Mario::checkOnLadder(int direction){
     }
     if(floorNumber == 2)
     {
-        if ((xpos + width >= 80 && xpos + width <= 100)||(xpos + width >= 236 && xpos + width <= 256))
+        if ((xpos + width/2 >= 80 && xpos + width/2 <= 100)||(xpos + width/2 >= 236 && xpos + width/2 <= 256))
+        {
+            if (direction == 0)
+            {
+                return 1;
+            }
+        }
+    }
+    if(floorNumber == 3)
+    {
+        if ((xpos + width/2 >= 155 && xpos + width/2 <= 175)||(xpos + width/2 >= 275 && xpos + width/2 <= 295)||(xpos + width/2 >= 432 && xpos + width/2 <= 452))
+        {
+            if (direction == 0)
+            {
+                return 1;
+            }
+        }
+    }
+    if(floorNumber == 4)
+    {
+        if ((xpos + width/2 >= 79 && xpos + width/2 <= 99)||(xpos + width/2 >= 196 && xpos + width/2 <= 216)||(xpos + width/2 >= 393 && xpos + width/2 <= 413))
+        {
+            if (direction == 0)
+            {
+                return 1;
+            }
+        }
+    }
+    if(floorNumber == 5)
+    {
+        if ((xpos + width/2 >= 235 && xpos + width/2 <= 255)||(xpos + width/2 >= 431 && xpos + width/2 <= 451))
+        {
+            if (direction == 0)
+            {
+                return 1;
+            }
+        }
+    }
+    if(floorNumber == 6)
+    {
+        if ((xpos + width/2 >= 235 && xpos + width/2 <= 255)||(xpos + width/2 >= 431 && xpos + width/2 <= 451))
+        {
+            if (direction == 0)
+            {
+                return 1;
+            }
+        }
+    }
+    if(floorNumber == 7)
+    {
+        if ((xpos + width/2 >= 191 && xpos + width/2 <= 211)||(xpos + width/2 >= 216 && xpos + width/2 <= 236)||(xpos + width/2 >= 334 && xpos + width/2 <= 354))
         {
             if (direction == 0)
             {
