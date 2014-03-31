@@ -9,42 +9,43 @@
 #include <SDL/SDL.h>
 #include <iostream>
 #include "SDL/SDL.h"
-#include "SDL_image/SDL_image.h"
-include "SDL_ttf/SDL_ttf.h"
+//#include "SDL_image/SDL_image.h"
+//include "SDL_ttf/SDL_ttf.h"
 #include <string>
 #include "DonkeyKongGame.h"
 #include "Object.h"
 #include "Mario.h"
 #include "Peach.h"
 #include "DonkeyKong.h"
-#include "SDL/SDL_mixer.h"
+#include "math.h"
+//#include "SDL/SDL_mixer.h"
 
 using namespace std;
 
 
 SDL_Event event;
 //The music that will be played
-Mix_Music *music = NULL;
+//Mix_Music *music = NULL;
 
 //Constructor for DonkeyKongGame, initializes SDL, creates screen, and loads background
 DonkeyKongGame::DonkeyKongGame(){
     SDL_Init( SDL_INIT_EVERYTHING );
-    SDL_Color textColor = { 255, 255, 255 }; // it's white for now, color of text
+   // SDL_Color textColor = { 255, 255, 255 }; // it's white for now, color of text
     screen = SDL_SetVideoMode( 550, 471, 32, SDL_SWSURFACE );
     background = SDL_LoadBMP("DonkeyKongBackground.bmp");
    
-    TTF_Font *font;
-    font = TTF_OpenFont( "kongtext.ttf", 36 ); //size 12 font
-    message = TTF_RenderText_Solid( font, "Current Score:", textColor );
+   // TTF_Font *font;
+   // font = TTF_OpenFont( "kongtext.ttf", 36 ); //size 12 font
+   // message = TTF_RenderText_Solid( font, "Current Score:", textColor );
     initializeFloors();
 }
 
 
 void DonkeyKongGame::Music() {
    
-    Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 );
-    music = Mix_LoadMUS( "intro.wav" );
-    Mix_PlayMusic(music, -1);
+   // Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 );
+  //  music = Mix_LoadMUS( "intro.wav" );
+  //  Mix_PlayMusic(music, -1);
 }
 //Display function which puts background and all objects on screen
 void DonkeyKongGame::Display(){
@@ -78,10 +79,10 @@ void DonkeyKongGame::cleanUp(){
     SDL_FreeSurface( background );
     SDL_FreeSurface( message );
     mario.cleanUp();
-    Mix_FreeMusic( music );
+   // Mix_FreeMusic( music );
     
     //Quit SDL Mixer
-    Mix_CloseAudio();
+  //  Mix_CloseAudio();
     //Quit SDL
     SDL_Quit();
 }
@@ -89,7 +90,6 @@ void DonkeyKongGame::cleanUp(){
 //Function to create gameplay
 void DonkeyKongGame::playDonkeyKong(){
     bool quit = false;
-int i=0;
     int counter = 0;
     Display();
     Music();
@@ -175,62 +175,67 @@ void DonkeyKongGame::initializeFloors(){
     floors[0].setyint(455);
     floors[0].setxmin(0);
     floors[0].setxmax(550);
-    floors[0].setymin(400);
+    floors[0].setymin(420);
     floors[0].setymax(455);
     
     floors[1].setslope(.03777);
     floors[1].setyint(388);
     floors[1].setxmin(0);
     floors[1].setxmax(503);
-    floors[1].setymin(345);
-    floors[1].setymax(410);
+    floors[1].setymin(378);
+    floors[1].setymax(415);
     
     floors[2].setslope(-.04297);
     floors[2].setyint(352);
     floors[2].setxmin(38);
     floors[2].setxmax(550);
-    floors[2].setymin(292);
-    floors[2].setymax(354);
+    floors[2].setymin(322);
+    floors[2].setymax(361);
     
     floors[3].setslope(.04118);
     floors[3].setyint(277);
     floors[3].setxmin(0);
     floors[3].setxmax(510);
-    floors[3].setymin(236);
-    floors[3].setymax(298);
+    floors[3].setymin(265);
+    floors[3].setymax(303);
     
     floors[4].setslope(-.0435);
     floors[4].setyint(245);
     floors[4].setxmin(38);
     floors[4].setxmax(550);
-    floors[4].setymin(192);
-    floors[4].setymax(241);
+    floors[4].setymin(201);
+    floors[4].setymax(250);
     
     floors[5].setslope(.01569);
     floors[5].setyint(180);
     floors[5].setxmin(0);
     floors[5].setxmax(510);
-    floors[5].setymin(0);
-    floors[5].setymax(188);
+    floors[5].setymin(140);
+    floors[5].setymax(195);
     
     floors[6].setslope(0);
     floors[6].setyint(123);
     floors[6].setxmin(235);
     floors[6].setxmax(353);
     floors[6].setymin(0);
-    floors[6].setymax(123);
+    floors[6].setymax(130);
 }
 
 int DonkeyKongGame::checkOnFloor(int xpos, int ypos, int width, int height){
     int yfloor;
-    
+    cout << "Floor number = " << mario.floorNumber << endl;
+    cout << "Mario pos: " << ypos + height << endl;
     if(( ypos + height < floors[6].getymax() )&&( ypos + height > floors[6].getymin() )){
+        
         if(( xpos < floors[6].getxmax() )&&( xpos + width > floors[6].getxmin() )){
             
             yfloor =  floors[6].getslope() * mario.xpos + floors[6].getyint();
             //cout << "yfloor = " << yfloor << endl;
             
-            if( ypos + height >= yfloor ){
+            cout << "yfloor = " << yfloor << endl;
+            
+            if( ((ypos + height) - yfloor <= 10 )&&((ypos + height) - yfloor >= 0 )){
+                cout << "got here" << endl;
                 mario.ypos = (yfloor) - height;
                 mario.vy = 0;
                 mario.onFloor = 1;
@@ -244,8 +249,8 @@ int DonkeyKongGame::checkOnFloor(int xpos, int ypos, int width, int height){
             
             yfloor =  floors[5].getslope() * mario.xpos + floors[5].getyint();
             //cout << "yfloor = " << yfloor << endl;
-            
-            if( ypos + height >= yfloor ){
+            cout << "yfloor = " << yfloor << endl;
+            if( ((ypos + height) - yfloor <= 10 )&&((ypos + height) - yfloor >= 0 )){
                 mario.ypos = (yfloor) - height;
                 mario.vy = 0;
                 mario.onFloor = 1;
@@ -260,7 +265,7 @@ int DonkeyKongGame::checkOnFloor(int xpos, int ypos, int width, int height){
             yfloor =  floors[4].getslope() * mario.xpos + floors[4].getyint();
            // cout << "yfloor = " << yfloor << endl;
             
-            if( ypos + height >= yfloor ){
+            if( ((ypos + height) - yfloor <= 10 )&&((ypos + height) - yfloor >= 0 )){
                 mario.ypos = (yfloor) - height;
                 mario.vy = 0;
                 mario.onFloor = 1;
@@ -275,7 +280,7 @@ int DonkeyKongGame::checkOnFloor(int xpos, int ypos, int width, int height){
             yfloor =  floors[3].getslope() * mario.xpos + floors[3].getyint();
           //  cout << "yfloor = " << yfloor << endl;
             
-            if( ypos + height >= yfloor ){
+            if( ((ypos + height) - yfloor <= 10 )&&((ypos + height) - yfloor >= 0 )){
                 mario.ypos = (yfloor) - height;
                 mario.vy = 0;
                 mario.onFloor = 1;
@@ -289,7 +294,7 @@ int DonkeyKongGame::checkOnFloor(int xpos, int ypos, int width, int height){
             
             yfloor =  floors[2].getslope() * mario.xpos + floors[2].getyint();
             
-            if( ypos + height >= yfloor ){
+            if( ((ypos + height) - yfloor <= 10 )&&((ypos + height) - yfloor >= 0 )){
                 mario.ypos = (yfloor) - height;
                 mario.vy = 0;
                 mario.onFloor = 1;
@@ -304,7 +309,7 @@ int DonkeyKongGame::checkOnFloor(int xpos, int ypos, int width, int height){
             
             yfloor =  floors[1].getslope() * mario.xpos + floors[1].getyint();
             
-            if( ypos + height >= yfloor ){
+            if( ((ypos + height) - yfloor <= 10 )&&((ypos + height) - yfloor >= 0 )){
                 mario.ypos = (yfloor) - height;
                 mario.vy = 0;
                 mario.onFloor = 1;
@@ -317,7 +322,7 @@ int DonkeyKongGame::checkOnFloor(int xpos, int ypos, int width, int height){
         
         yfloor =  floors[0].getslope() * mario.xpos + floors[0].getyint();
         
-        if( ypos + height >= yfloor ){
+        if( ((ypos + height) - yfloor <= 10 )&&((ypos + height) - yfloor >= 0 )){
             mario.ypos = (yfloor) - height;
             mario.onFloor = 1;
             mario.vy = 0;

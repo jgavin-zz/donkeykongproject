@@ -35,9 +35,6 @@
 		D93CD76418E5031C00B7ECD2 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D93CD75418E5031C00B7ECD2 /* Timer.cpp */; };
 		D93CD76518E5031C00B7ECD2 /* Timer.cpp~ in Resources */ = {isa = PBXBuildFile; fileRef = D93CD75518E5031C00B7ECD2 /* Timer.cpp~ */; };
 		D93CD76618E5031C00B7ECD2 /* Timer.h~ in Resources */ = {isa = PBXBuildFile; fileRef = D93CD75718E5031C00B7ECD2 /* Timer.h~ */; };
-		D93CD76A18E6186B00B7ECD2 /* SDL_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D93CD76918E6186B00B7ECD2 /* SDL_image.framework */; };
-		D93CD76C18E618E100B7ECD2 /* SDL_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D93CD76B18E618E100B7ECD2 /* SDL_ttf.framework */; };
-		D93CD76E18E619BD00B7ECD2 /* SDL_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D93CD76D18E619BD00B7ECD2 /* SDL_mixer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,9 +91,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D93CD76E18E619BD00B7ECD2 /* SDL_mixer.framework in Frameworks */,
-				D93CD76C18E618E100B7ECD2 /* SDL_ttf.framework in Frameworks */,
-				D93CD76A18E6186B00B7ECD2 /* SDL_image.framework in Frameworks */,
 				D91C07A118D826FD0054233A /* Cocoa.framework in Frameworks */,
 				D91C07C118D8279D0054233A /* SDL.framework in Frameworks */,
 				D93CD75918E5031C00B7ECD2 /* DonkeyKongGame.o in Frameworks */,
@@ -360,11 +354,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "donkeykong/donkeykong-Prefix.pch";
 				GCC_VERSION = "";
-				HEADER_SEARCH_PATHS = (
-					"/Library/Frameworks/SDL_image.framework/Headers\n/Library/Frameworks/SDL_mixer.framework/Headers\n/Library/Frameworks/SDL_ttf.framework/Headers\n$SRCROOT/include",
-					/Library/Frameworks/SDL_ttf.framework/Headers,
-					/Library/Frameworks/SDL_mixer.framework/Headers,
-				);
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "donkeykong/donkeykong-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -384,11 +374,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "donkeykong/donkeykong-Prefix.pch";
 				GCC_VERSION = "";
-				HEADER_SEARCH_PATHS = (
-					"/Library/Frameworks/SDL_image.framework/Headers\n/Library/Frameworks/SDL_mixer.framework/Headers\n/Library/Frameworks/SDL_ttf.framework/Headers\n$SRCROOT/include",
-					/Library/Frameworks/SDL_ttf.framework/Headers,
-					/Library/Frameworks/SDL_mixer.framework/Headers,
-				);
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "donkeykong/donkeykong-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

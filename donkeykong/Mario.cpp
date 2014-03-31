@@ -169,8 +169,8 @@ void Mario::handle_input(SDL_Event event)
         {
             case SDLK_UP: if(checkOnLadder(0)) {vy = -2; climbing = 1; currentState = 9; setAnimation();} break;
             case SDLK_DOWN: if(checkOnLadder(1)) {vy = 2; climbing = 1; currentState = 9; setAnimation();} break;
-            case SDLK_LEFT: vx = -2; currentState = 3; climbing = 0; direction = 0; setAnimation(); break;
-            case SDLK_RIGHT: vx = 2; currentState = 4; climbing = 0; setAnimation(); direction = 1; break;
+            case SDLK_LEFT: vx = -4; currentState = 3; climbing = 0; direction = 0; setAnimation(); break;
+            case SDLK_RIGHT: vx = 4; currentState = 4; climbing = 0; setAnimation(); direction = 1; break;
             case SDLK_SPACE:
                 if(onFloor){
                     onFloor = 0;
@@ -201,7 +201,7 @@ void Mario::handle_input(SDL_Event event)
 }
 
 int Mario::checkOnLadder(int direction){
-
+    cout << floorNumber << endl;
     if(floorNumber == 1)
     {
         if ((xpos + width/2 >= 200 && xpos + width/2 <= 220)||(xpos + width/2 >= 430 && xpos + width/2 <= 450))
@@ -254,8 +254,9 @@ int Mario::checkOnLadder(int direction){
     }
     if(floorNumber == 6)
     {
-        if ((xpos + width/2 >= 235 && xpos + width/2 <= 255)||(xpos + width/2 >= 431 && xpos + width/2 <= 451))
+        if ((xpos + width/2 >= 191 && xpos + width/2 <= 211)||(xpos + width/2 >= 216 && xpos + width/2 <= 236)||(xpos + width/2 >= 334 && xpos + width/2 <= 354))
         {
+            cout << "Ladder found" << endl;
             if (direction == 0)
             {
                 return 1;
@@ -264,8 +265,10 @@ int Mario::checkOnLadder(int direction){
     }
     if(floorNumber == 7)
     {
+        cout << "Ladder not found" << endl;
         if ((xpos + width/2 >= 191 && xpos + width/2 <= 211)||(xpos + width/2 >= 216 && xpos + width/2 <= 236)||(xpos + width/2 >= 334 && xpos + width/2 <= 354))
         {
+            cout << "Ladder found" << endl;
             if (direction == 0)
             {
                 return 1;
