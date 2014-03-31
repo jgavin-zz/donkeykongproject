@@ -1,18 +1,6 @@
-//
-//  Peach.cpp
-//  donkeykong
-//
+
 //  Created by Jacob Gavin on 3/27/14.
 //  Copyright (c) 2014 Jacob Gavin. All rights reserved.
-//
-
-//
-//  Peach.cpp
-//  SDL_Tutorial
-//
-//  Created by Jacob Gavin on 3/25/14.
-//  Copyright (c) 2014 Ryan Moran. All rights reserved.
-//
 
 #include "Object.h"
 #include "Peach.h"
@@ -41,7 +29,7 @@ void Peach::updateAnimation(){
 void Peach::setAnimation(){
     switch(currentState){
         case 1: //running left
-            spritesheetx = 102;
+            spritesheetx = 80;
             spritesheety = 124;
             currentFrame = 1;
             maxFrames = 2;

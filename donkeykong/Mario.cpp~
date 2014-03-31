@@ -171,7 +171,7 @@ void Mario::handle_input(SDL_Event event)
             case SDLK_DOWN: if(checkOnLadder(1)) {vy = 2; climbing = 1; currentState = 9; setAnimation();} break;
             case SDLK_LEFT: vx = -2; currentState = 3; climbing = 0; direction = 0; setAnimation(); break;
             case SDLK_RIGHT: vx = 2; currentState = 4; climbing = 0; setAnimation(); direction = 1; break;
-            case SDLK_a:
+            case SDLK_SPACE:
                 if(onFloor){
                     onFloor = 0;
                     vy = -10; climbing = 0; ypos--;
@@ -195,7 +195,7 @@ void Mario::handle_input(SDL_Event event)
             case SDLK_DOWN: if (!onFloor) {vy = 0; currentState = 10; climbing = 0; setAnimation();} else {vx = 0; currentState = 2; climbing = 0; setAnimation();}  break;
             case SDLK_LEFT: vx = 0; currentState = 1; climbing = 0; setAnimation(); break;
             case SDLK_RIGHT: vx = 0; currentState = 2; climbing = 0; setAnimation(); break;
-            case SDLK_a: climbing = 0; 
+            case SDLK_SPACE: climbing = 0; 
         }
     }
 }
