@@ -35,6 +35,9 @@
 		D93CD76418E5031C00B7ECD2 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D93CD75418E5031C00B7ECD2 /* Timer.cpp */; };
 		D93CD76518E5031C00B7ECD2 /* Timer.cpp~ in Resources */ = {isa = PBXBuildFile; fileRef = D93CD75518E5031C00B7ECD2 /* Timer.cpp~ */; };
 		D93CD76618E5031C00B7ECD2 /* Timer.h~ in Resources */ = {isa = PBXBuildFile; fileRef = D93CD75718E5031C00B7ECD2 /* Timer.h~ */; };
+		D93CD76A18E6186B00B7ECD2 /* SDL_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D93CD76918E6186B00B7ECD2 /* SDL_image.framework */; };
+		D93CD76C18E618E100B7ECD2 /* SDL_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D93CD76B18E618E100B7ECD2 /* SDL_ttf.framework */; };
+		D93CD76E18E619BD00B7ECD2 /* SDL_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D93CD76D18E619BD00B7ECD2 /* SDL_mixer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +82,10 @@
 		D93CD75518E5031C00B7ECD2 /* Timer.cpp~ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Timer.cpp~"; sourceTree = "<group>"; };
 		D93CD75618E5031C00B7ECD2 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
 		D93CD75718E5031C00B7ECD2 /* Timer.h~ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Timer.h~"; sourceTree = "<group>"; };
+		D93CD76718E6178300B7ECD2 /* SDL_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL_image.framework; path = donkeykong/SDL_image.framework; sourceTree = "<group>"; };
+		D93CD76918E6186B00B7ECD2 /* SDL_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL_image.framework; path = ../../../../Library/Frameworks/SDL_image.framework; sourceTree = "<group>"; };
+		D93CD76B18E618E100B7ECD2 /* SDL_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL_ttf.framework; path = ../../../../Library/Frameworks/SDL_ttf.framework; sourceTree = "<group>"; };
+		D93CD76D18E619BD00B7ECD2 /* SDL_mixer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL_mixer.framework; path = ../../../../Library/Frameworks/SDL_mixer.framework; sourceTree = "<group>"; };
 		D9F8A1A018DFAFBA00B96292 /* makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = makefile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,6 +94,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D93CD76E18E619BD00B7ECD2 /* SDL_mixer.framework in Frameworks */,
+				D93CD76C18E618E100B7ECD2 /* SDL_ttf.framework in Frameworks */,
+				D93CD76A18E6186B00B7ECD2 /* SDL_image.framework in Frameworks */,
 				D91C07A118D826FD0054233A /* Cocoa.framework in Frameworks */,
 				D91C07C118D8279D0054233A /* SDL.framework in Frameworks */,
 				D93CD75918E5031C00B7ECD2 /* DonkeyKongGame.o in Frameworks */,
@@ -102,6 +112,9 @@
 		D91C079418D826FD0054233A = {
 			isa = PBXGroup;
 			children = (
+				D93CD76D18E619BD00B7ECD2 /* SDL_mixer.framework */,
+				D93CD76B18E618E100B7ECD2 /* SDL_ttf.framework */,
+				D93CD76918E6186B00B7ECD2 /* SDL_image.framework */,
 				D91C07C018D8279D0054233A /* SDL.framework */,
 				D91C07A618D826FD0054233A /* donkeykong */,
 				D91C079F18D826FD0054233A /* Frameworks */,
@@ -129,6 +142,7 @@
 		D91C07A218D826FD0054233A /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D93CD76718E6178300B7ECD2 /* SDL_image.framework */,
 				D91C07A318D826FD0054233A /* AppKit.framework */,
 				D91C07A418D826FD0054233A /* CoreData.framework */,
 				D91C07A518D826FD0054233A /* Foundation.framework */,
@@ -341,10 +355,16 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/donkeykong\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "donkeykong/donkeykong-Prefix.pch";
 				GCC_VERSION = "";
+				HEADER_SEARCH_PATHS = (
+					"/Library/Frameworks/SDL_image.framework/Headers\n/Library/Frameworks/SDL_mixer.framework/Headers\n/Library/Frameworks/SDL_ttf.framework/Headers\n$SRCROOT/include",
+					/Library/Frameworks/SDL_ttf.framework/Headers,
+					/Library/Frameworks/SDL_mixer.framework/Headers,
+				);
 				INFOPLIST_FILE = "donkeykong/donkeykong-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -359,10 +379,16 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/donkeykong\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "donkeykong/donkeykong-Prefix.pch";
 				GCC_VERSION = "";
+				HEADER_SEARCH_PATHS = (
+					"/Library/Frameworks/SDL_image.framework/Headers\n/Library/Frameworks/SDL_mixer.framework/Headers\n/Library/Frameworks/SDL_ttf.framework/Headers\n$SRCROOT/include",
+					/Library/Frameworks/SDL_ttf.framework/Headers,
+					/Library/Frameworks/SDL_mixer.framework/Headers,
+				);
 				INFOPLIST_FILE = "donkeykong/donkeykong-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
