@@ -29,7 +29,7 @@ void Peach::updateAnimation(){
 void Peach::setAnimation(){
     switch(currentState){
         case 1: //running left
-            spritesheetx = 102;
+            spritesheetx = 110;
             spritesheety = 124;
             currentFrame = 1;
             maxFrames = 2;

@@ -28,7 +28,7 @@ void DonkeyKong::updateAnimation(){
 void DonkeyKong::setAnimation(){
     switch(currentState){
         case 1: //standing still
-            spritesheetx = 105;
+            spritesheetx = 58;
             spritesheety = 150;
             currentFrame = 1;
             maxFrames = 1;

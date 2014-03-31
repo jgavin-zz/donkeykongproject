@@ -18,7 +18,7 @@ void DonkeyKong::updateAnimation(){
     oldTime = SDL_GetTicks();
     currentFrame++;
     if(currentFrame >= maxFrames) {
-        SDL_Delay( ( 1000 / FRAMES_PER_SECOND ) - fps.get_ticks() );
+        currentFrame = 0;
     }
     //(*this).setAnimation();
 }
@@ -33,7 +33,7 @@ void DonkeyKong::setAnimation(){
             currentFrame = 1;
             maxFrames = 1;
             height = 33;
-            width = 47;
+            width = 0;
             break;
         case 2: //left hand raise
             spritesheetx = 154;
