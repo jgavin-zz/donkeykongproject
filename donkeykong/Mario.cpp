@@ -42,8 +42,8 @@ void Mario::move(){
     }
 
 
-    cout << "xpos: " << xpos << endl;
-    cout << "ypos: " << ypos << endl;
+    //cout << "xpos: " << xpos << endl;
+    //cout << "ypos: " << ypos << endl;
 }
 
 

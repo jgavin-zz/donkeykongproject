@@ -89,6 +89,7 @@ void DonkeyKongGame::cleanUp(){
 //Function to create gameplay
 void DonkeyKongGame::playDonkeyKong(){
     bool quit = false;
+int i=0;
     int counter = 0;
     Display();
     Music();
@@ -111,6 +112,39 @@ void DonkeyKongGame::playDonkeyKong(){
             }
             
         }
+	if(counter%150==0 && donkeykong.currentState==2) {
+		if(donkeykong.currentFrame==0){
+		donkeykong.updateAnimation();
+		donkeykong.updateAnimation();
+		donkeykong.updateAnimation();
+		}
+		else{
+			donkeykong.updateAnimation();
+		}
+            
+        }
+	if(counter%100==0 && donkeykong.currentState==3){
+		if(donkeykong.currentFrame ==2){
+			donkeykong.updateAnimation();
+			donkeykong.updateAnimation();
+			donkeykong.updateAnimation();
+			donkeykong.updateAnimation();
+		}
+		else if(donkeykong.currentFrame ==0){
+			donkeykong.updateAnimation();
+			donkeykong.updateAnimation();
+			donkeykong.updateAnimation();
+		}
+		else if(donkeykong.currentFrame ==3){
+			donkeykong.updateAnimation();
+			donkeykong.updateAnimation();
+		}
+		else{
+			donkeykong.updateAnimation();
+			donkeykong.updateAnimation();
+			donkeykong.updateAnimation();
+		}
+	}
         while( SDL_PollEvent( &event ) )
         {
             checkOnFloor(mario.getxpos(), mario.getypos(), mario.getwidth(), mario.getheight());
@@ -194,7 +228,7 @@ int DonkeyKongGame::checkOnFloor(int xpos, int ypos, int width, int height){
         if(( xpos < floors[6].getxmax() )&&( xpos + width > floors[6].getxmin() )){
             
             yfloor =  floors[6].getslope() * mario.xpos + floors[6].getyint();
-            cout << "yfloor = " << yfloor << endl;
+            //cout << "yfloor = " << yfloor << endl;
             
             if( ypos + height >= yfloor ){
                 mario.ypos = (yfloor) - height;
@@ -209,7 +243,7 @@ int DonkeyKongGame::checkOnFloor(int xpos, int ypos, int width, int height){
         if(( xpos < floors[5].getxmax() )&&( xpos + width > floors[5].getxmin() )){
             
             yfloor =  floors[5].getslope() * mario.xpos + floors[5].getyint();
-            cout << "yfloor = " << yfloor << endl;
+            //cout << "yfloor = " << yfloor << endl;
             
             if( ypos + height >= yfloor ){
                 mario.ypos = (yfloor) - height;
@@ -224,7 +258,7 @@ int DonkeyKongGame::checkOnFloor(int xpos, int ypos, int width, int height){
         if(( xpos < floors[4].getxmax() )&&( xpos + width > floors[4].getxmin() )){
             
             yfloor =  floors[4].getslope() * mario.xpos + floors[4].getyint();
-            cout << "yfloor = " << yfloor << endl;
+           // cout << "yfloor = " << yfloor << endl;
             
             if( ypos + height >= yfloor ){
                 mario.ypos = (yfloor) - height;
@@ -239,7 +273,7 @@ int DonkeyKongGame::checkOnFloor(int xpos, int ypos, int width, int height){
         if(( xpos < floors[3].getxmax() )&&( xpos + width > floors[3].getxmin() )){
             
             yfloor =  floors[3].getslope() * mario.xpos + floors[3].getyint();
-            cout << "yfloor = " << yfloor << endl;
+          //  cout << "yfloor = " << yfloor << endl;
             
             if( ypos + height >= yfloor ){
                 mario.ypos = (yfloor) - height;
