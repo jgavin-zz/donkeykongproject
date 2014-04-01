@@ -21,15 +21,24 @@ Mario::Mario() : Object(20, 20, 130, 435, 0, 0, 0, 1, 1, 2, 0, 0, 100){
     ay = 0;
     vy = 0;
     floorNumber = 1;
+    previousFloor = 1;
 }
 
 
 void Mario::move(){
+    //cout << "previousFloor = " << previousFloor << endl;
+    cout << "floorNumber = " << floorNumber << endl << endl;
     double dt = .5;
     ay = 2;
-    if( climbing == 0) vy = vy + ay * dt;
-    xpos = xpos + vx * dt;
-    ypos = ypos + vy * dt;
+    if( climbing == 0){
+        vy = vy + ay * dt;
+        xpos = xpos + vx * dt;
+        ypos = ypos + vy * dt;
+    }
+    else{
+        xpos = xpos + vx * dt;
+        ypos = ypos + vy * dt;
+    }
 
     if (xpos <= 0) {
 	xpos = 2;
@@ -40,10 +49,6 @@ void Mario::move(){
 	xpos = 529;
 	vx = 0;
     }
-
-
-    //cout << "xpos: " << xpos << endl;
-    //cout << "ypos: " << ypos << endl;
 }
 
 
@@ -167,18 +172,18 @@ void Mario::handle_input(SDL_Event event)
         //Adjust the velocity
         switch( event.key.keysym.sym )
         {
-            case SDLK_UP: if(checkOnLadder(0)) {vy = -2; climbing = 1; currentState = 9; setAnimation();} break;
-            case SDLK_DOWN: if(checkOnLadder(1)) {vy = 2; climbing = 1; currentState = 9; setAnimation();} break;
-            case SDLK_LEFT: vx = -4; currentState = 3; climbing = 0; direction = 0; setAnimation(); break;
-            case SDLK_RIGHT: vx = 4; currentState = 4; climbing = 0; setAnimation(); direction = 1; break;
+            case SDLK_UP: if(checkOnLadder(1)) {if((floorNumber < 7)&&(floorNumber == previousFloor)) floorNumber++; vy = -2; direction = 1; climbing = 1; currentState = 9; setAnimation();} break;
+            case SDLK_DOWN: if(checkOnLadder(0)) {if((floorNumber < 7)&&(floorNumber == previousFloor)) floorNumber--;vy = 2; direction = 0; climbing = 1; currentState = 9; setAnimation();} break;
+            case SDLK_LEFT: vx = -4; currentState = 3; climbing = 0; rdirection = 0; setAnimation(); break;
+            case SDLK_RIGHT: vx = 4; currentState = 4; climbing = 0; rdirection = 1; setAnimation(); break;
             case SDLK_SPACE:
                 if(onFloor){
                     onFloor = 0;
                     vy = -10; climbing = 0; ypos--;
-                    if(direction == 1) currentState = 13;
+                    if(rdirection == 1) currentState = 13;
                     setAnimation();
                     break;
-                    if(direction == 0) currentState = 12;
+                    if(rdirection == 0) currentState = 12;
                     setAnimation();
                     break;
                     
@@ -191,89 +196,11 @@ void Mario::handle_input(SDL_Event event)
         //Adjust the velocity
         switch( event.key.keysym.sym )
         {
-            case SDLK_UP: if (!onFloor) {vy = 0; currentState = 10; climbing = 0; setAnimation();} else {vx = 0; currentState = 2; climbing = 0; setAnimation();}  break;
-            case SDLK_DOWN: if (!onFloor) {vy = 0; currentState = 10; climbing = 0; setAnimation();} else {vx = 0; currentState = 2; climbing = 0; setAnimation();}  break;
-            case SDLK_LEFT: vx = 0; currentState = 1; climbing = 0; setAnimation(); break;
-            case SDLK_RIGHT: vx = 0; currentState = 2; climbing = 0; setAnimation(); break;
-            case SDLK_SPACE: climbing = 0; 
+            case SDLK_UP: if(climbing) { vy = 0; currentState = 10; climbing = 1; setAnimation(); } break;
+            case SDLK_DOWN: if( climbing) {vy = 0; currentState = 10; climbing = 1; setAnimation(); } break;
+            case SDLK_LEFT: vx = 0; currentState = 1; if(onFloor) climbing = 0; setAnimation(); break;
+            case SDLK_RIGHT: vx = 0; currentState = 2; if(onFloor) climbing = 0; setAnimation(); break;
+            case SDLK_SPACE: climbing = 0; if(rdirection == 0) currentState = 3; if(rdirection == 1) currentState = 4; break;
         }
     }
-}
-
-int Mario::checkOnLadder(int direction){
-    cout << floorNumber << endl;
-    if(floorNumber == 1)
-    {
-        if ((xpos + width/2 >= 200 && xpos + width/2 <= 220)||(xpos + width/2 >= 430 && xpos + width/2 <= 450))
-        {
-            if (direction == 0)
-            {
-                return 1;
-            }
-        }
-    }
-    if(floorNumber == 2)
-    {
-        if ((xpos + width/2 >= 80 && xpos + width/2 <= 100)||(xpos + width/2 >= 236 && xpos + width/2 <= 256))
-        {
-            if (direction == 0)
-            {
-                return 1;
-            }
-        }
-    }
-    if(floorNumber == 3)
-    {
-        if ((xpos + width/2 >= 155 && xpos + width/2 <= 175)||(xpos + width/2 >= 275 && xpos + width/2 <= 295)||(xpos + width/2 >= 432 && xpos + width/2 <= 452))
-        {
-            if (direction == 0)
-            {
-                return 1;
-            }
-        }
-    }
-    if(floorNumber == 4)
-    {
-        if ((xpos + width/2 >= 79 && xpos + width/2 <= 99)||(xpos + width/2 >= 196 && xpos + width/2 <= 216)||(xpos + width/2 >= 393 && xpos + width/2 <= 413))
-        {
-            if (direction == 0)
-            {
-                return 1;
-            }
-        }
-    }
-    if(floorNumber == 5)
-    {
-        if ((xpos + width/2 >= 235 && xpos + width/2 <= 255)||(xpos + width/2 >= 431 && xpos + width/2 <= 451))
-        {
-            if (direction == 0)
-            {
-                return 1;
-            }
-        }
-    }
-    if(floorNumber == 6)
-    {
-        if ((xpos + width/2 >= 191 && xpos + width/2 <= 211)||(xpos + width/2 >= 216 && xpos + width/2 <= 236)||(xpos + width/2 >= 334 && xpos + width/2 <= 354))
-        {
-            cout << "Ladder found" << endl;
-            if (direction == 0)
-            {
-                return 1;
-            }
-        }
-    }
-    if(floorNumber == 7)
-    {
-        cout << "Ladder not found" << endl;
-        if ((xpos + width/2 >= 191 && xpos + width/2 <= 211)||(xpos + width/2 >= 216 && xpos + width/2 <= 236)||(xpos + width/2 >= 334 && xpos + width/2 <= 354))
-        {
-            cout << "Ladder found" << endl;
-            if (direction == 0)
-            {
-                return 1;
-            }
-        }
-    }
-    return 0;
 }

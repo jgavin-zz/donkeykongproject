@@ -11,6 +11,7 @@
 
 #include <SDL/SDL.h>
 #include <string>
+#include "Floor.h"
 using namespace std;
 
 class Object{
@@ -53,6 +54,10 @@ public:
     int getclimbing();
     int getoldtime();
     int getframerate();
+    int onFloor;
+    int floorNumber;
+    int previousFloor;
+    int direction;
     
     virtual void setAnimation();//Sets animation parameters according to animation state
     void setcurrentstate(int);
@@ -65,8 +70,14 @@ public:
     
     void cleanUp();
     
-private:
+    void initializeFloors();
     
+    int checkOnFloor();
+    
+    int checkOnLadder(int);
+    
+private:
+        Floor floors[7];
 };
 
 #endif

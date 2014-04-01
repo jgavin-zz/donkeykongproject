@@ -32,12 +32,12 @@ DonkeyKongGame::DonkeyKongGame(){
     SDL_Init( SDL_INIT_EVERYTHING );
    // SDL_Color textColor = { 255, 255, 255 }; // it's white for now, color of text
     screen = SDL_SetVideoMode( 550, 471, 32, SDL_SWSURFACE );
-    background = SDL_LoadBMP("DonkeyKongBackground.bmp");
+    background = SDL_LoadBMP("/Users/jgavin/Documents/donkeykong/donkeykong/DonkeyKongBackground.bmp");
    
    // TTF_Font *font;
    // font = TTF_OpenFont( "kongtext.ttf", 36 ); //size 12 font
    // message = TTF_RenderText_Solid( font, "Current Score:", textColor );
-    initializeFloors();
+    mario.initializeFloors();
 }
 
 
@@ -147,7 +147,7 @@ void DonkeyKongGame::playDonkeyKong(){
 	}
         while( SDL_PollEvent( &event ) )
         {
-            checkOnFloor(mario.getxpos(), mario.getypos(), mario.getwidth(), mario.getheight());
+            mario.checkOnFloor();
             if(mario.getoldtime() + mario.getframerate() < SDL_GetTicks()) {
                 mario.updateAnimation();
             }
@@ -163,172 +163,10 @@ void DonkeyKongGame::playDonkeyKong(){
         }
         counter+=1;
         mario.move();
-        checkOnFloor(mario.getxpos(), mario.getypos(), mario.getwidth(), mario.getheight());
+        mario.checkOnFloor();
         Display();
     }
     SDL_Quit();
 }
 
-//Function to initialize floors
-void DonkeyKongGame::initializeFloors(){
-    floors[0].setslope(-.009107);
-    floors[0].setyint(455);
-    floors[0].setxmin(0);
-    floors[0].setxmax(550);
-    floors[0].setymin(420);
-    floors[0].setymax(455);
-    
-    floors[1].setslope(.03777);
-    floors[1].setyint(388);
-    floors[1].setxmin(0);
-    floors[1].setxmax(503);
-    floors[1].setymin(378);
-    floors[1].setymax(415);
-    
-    floors[2].setslope(-.04297);
-    floors[2].setyint(352);
-    floors[2].setxmin(38);
-    floors[2].setxmax(550);
-    floors[2].setymin(322);
-    floors[2].setymax(361);
-    
-    floors[3].setslope(.04118);
-    floors[3].setyint(277);
-    floors[3].setxmin(0);
-    floors[3].setxmax(510);
-    floors[3].setymin(265);
-    floors[3].setymax(303);
-    
-    floors[4].setslope(-.0435);
-    floors[4].setyint(245);
-    floors[4].setxmin(38);
-    floors[4].setxmax(550);
-    floors[4].setymin(201);
-    floors[4].setymax(250);
-    
-    floors[5].setslope(.01569);
-    floors[5].setyint(180);
-    floors[5].setxmin(0);
-    floors[5].setxmax(510);
-    floors[5].setymin(140);
-    floors[5].setymax(195);
-    
-    floors[6].setslope(0);
-    floors[6].setyint(123);
-    floors[6].setxmin(235);
-    floors[6].setxmax(353);
-    floors[6].setymin(0);
-    floors[6].setymax(130);
-}
 
-int DonkeyKongGame::checkOnFloor(int xpos, int ypos, int width, int height){
-    int yfloor;
-    cout << "Floor number = " << mario.floorNumber << endl;
-    cout << "Mario pos: " << ypos + height << endl;
-    if(( ypos + height < floors[6].getymax() )&&( ypos + height > floors[6].getymin() )){
-        
-        if(( xpos < floors[6].getxmax() )&&( xpos + width > floors[6].getxmin() )){
-            
-            yfloor =  floors[6].getslope() * mario.xpos + floors[6].getyint();
-            //cout << "yfloor = " << yfloor << endl;
-            
-            cout << "yfloor = " << yfloor << endl;
-            
-            if( ((ypos + height) - yfloor <= 10 )&&((ypos + height) - yfloor >= 0 )){
-                cout << "got here" << endl;
-                mario.ypos = (yfloor) - height;
-                mario.vy = 0;
-                mario.onFloor = 1;
-                mario.floorNumber = 7;
-                return 1;
-            }
-        }
-    }
-    if(( ypos + height < floors[5].getymax() )&&( ypos + height > floors[5].getymin() )){
-        if(( xpos < floors[5].getxmax() )&&( xpos + width > floors[5].getxmin() )){
-            
-            yfloor =  floors[5].getslope() * mario.xpos + floors[5].getyint();
-            //cout << "yfloor = " << yfloor << endl;
-            cout << "yfloor = " << yfloor << endl;
-            if( ((ypos + height) - yfloor <= 10 )&&((ypos + height) - yfloor >= 0 )){
-                mario.ypos = (yfloor) - height;
-                mario.vy = 0;
-                mario.onFloor = 1;
-                mario.floorNumber = 6;
-                return 1;
-            }
-        }
-    }
-    if(( ypos + height < floors[4].getymax() )&&( ypos + height > floors[4].getymin() )){
-        if(( xpos < floors[4].getxmax() )&&( xpos + width > floors[4].getxmin() )){
-            
-            yfloor =  floors[4].getslope() * mario.xpos + floors[4].getyint();
-           // cout << "yfloor = " << yfloor << endl;
-            
-            if( ((ypos + height) - yfloor <= 10 )&&((ypos + height) - yfloor >= 0 )){
-                mario.ypos = (yfloor) - height;
-                mario.vy = 0;
-                mario.onFloor = 1;
-                mario.floorNumber = 5;
-                return 1;
-            }
-        }
-    }
-    if(( ypos + height < floors[3].getymax() )&&( ypos + height > floors[3].getymin() )){
-        if(( xpos < floors[3].getxmax() )&&( xpos + width > floors[3].getxmin() )){
-            
-            yfloor =  floors[3].getslope() * mario.xpos + floors[3].getyint();
-          //  cout << "yfloor = " << yfloor << endl;
-            
-            if( ((ypos + height) - yfloor <= 10 )&&((ypos + height) - yfloor >= 0 )){
-                mario.ypos = (yfloor) - height;
-                mario.vy = 0;
-                mario.onFloor = 1;
-                mario.floorNumber = 4;
-                return 1;
-            }
-        }
-    }
-    if(( ypos + height < floors[2].getymax() )&&( ypos + height > floors[2].getymin() )){
-        if(( xpos < floors[2].getxmax() )&&( xpos + width > floors[2].getxmin() )){
-            
-            yfloor =  floors[2].getslope() * mario.xpos + floors[2].getyint();
-            
-            if( ((ypos + height) - yfloor <= 10 )&&((ypos + height) - yfloor >= 0 )){
-                mario.ypos = (yfloor) - height;
-                mario.vy = 0;
-                mario.onFloor = 1;
-                mario.floorNumber = 3;
-                return 1;
-            }
-        }
-    }
-    
-    if(( ypos + height < floors[1].getymax() )&&( ypos + height > floors[1].getymin() )){
-        if(( xpos < floors[1].getxmax() )&&( xpos + width > floors[1].getxmin() )){
-            
-            yfloor =  floors[1].getslope() * mario.xpos + floors[1].getyint();
-            
-            if( ((ypos + height) - yfloor <= 10 )&&((ypos + height) - yfloor >= 0 )){
-                mario.ypos = (yfloor) - height;
-                mario.vy = 0;
-                mario.onFloor = 1;
-                mario.floorNumber = 2;
-                return 1;
-            }
-        }
-    }
-    if( ypos + height > floors[0].getymin() ){
-        
-        yfloor =  floors[0].getslope() * mario.xpos + floors[0].getyint();
-        
-        if( ((ypos + height) - yfloor <= 10 )&&((ypos + height) - yfloor >= 0 )){
-            mario.ypos = (yfloor) - height;
-            mario.onFloor = 1;
-            mario.vy = 0;
-            mario.floorNumber = 1;
-            return 1;
-        }
-    }
-    return 0;
-}
