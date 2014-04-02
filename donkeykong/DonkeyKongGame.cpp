@@ -32,7 +32,7 @@ DonkeyKongGame::DonkeyKongGame(){
     SDL_Init( SDL_INIT_EVERYTHING );
    // SDL_Color textColor = { 255, 255, 255 }; // it's white for now, color of text
     screen = SDL_SetVideoMode( 550, 471, 32, SDL_SWSURFACE );
-    background = SDL_LoadBMP("/Users/jgavin/Documents/donkeykong/donkeykong/DonkeyKongBackground.bmp");
+    background = SDL_LoadBMP("DonkeyKongBackground.bmp");
    
    // TTF_Font *font;
    // font = TTF_OpenFont( "kongtext.ttf", 36 ); //size 12 font

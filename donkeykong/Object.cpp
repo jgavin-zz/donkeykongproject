@@ -7,7 +7,7 @@
 //
 
 #include "Object.h"
-#include "Math.h"
+#include "math.h"
 #include <iostream>
 
 
@@ -28,7 +28,7 @@ Object::Object(int h, int w, int x, int y, double velX, double velY, double acce
     climbing=climb;
     oldTime=oTime;
     frameRate=fRate;
-    marioSurface = SDL_LoadBMP("/Users/jgavin/Documents/donkeykong/donkeykong/DonkeyKong.bmp");
+    marioSurface = SDL_LoadBMP("DonkeyKong.bmp");
     setAnimation();
     Transparent(marioSurface, 255, 0, 255);
     
