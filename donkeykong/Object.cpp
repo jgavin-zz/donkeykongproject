@@ -354,8 +354,6 @@ int Object::checkOnFloor(){
     }
     if(( ypos + height < floors[4].getymax() )&&( ypos + height > floors[4].getymin() )){
         if(( xpos < floors[4].getxmax() )&&( xpos + width > floors[4].getxmin() )){
-
-            // cout << "yfloor = " << yfloor << endl;
             
             if( ((ypos + height) - yfloor[4] <= 10 )&&((ypos + height) - yfloor[4] >= 0 )){
                 ypos = (yfloor[4]) - height;
@@ -369,8 +367,6 @@ int Object::checkOnFloor(){
     }
     if(( ypos + height < floors[3].getymax() )&&( ypos + height > floors[3].getymin() )){
         if(( xpos < floors[3].getxmax() )&&( xpos + width > floors[3].getxmin() )){
-
-            //  cout << "yfloor = " << yfloor << endl;
             
             if( ((ypos + height) - yfloor[3] <= 10 )&&((ypos + height) - yfloor[3] >= 0 )){
                 ypos = (yfloor[3]) - height;
@@ -430,7 +426,26 @@ int Object::checkOnLadder(int direction){
     {
         if ((xpos + width/2 >= 200 && xpos + width/2 <= 220)||(xpos + width/2 >= 430 && xpos + width/2 <= 450))
         {
-            return 1;
+            if((xpos + width/2 >= 200 && xpos + width/2 <= 220)&&(ypos <= 436)){
+                return 2;
+            }
+            else{
+                return 1;
+            }
+        }
+    }
+    if(((previousFloor == 1)||(previousFloor == 2))&&((floorNumber == 1) || (floorNumber == 2)) && (onFloor == 0)){
+        if ((xpos + width/2 >= 200 && xpos + width/2 <= 220)||(xpos + width/2 >= 430 && xpos + width/2 <= 450))
+        {
+            if((direction == 1)&&(xpos + width/2 >= 200 && xpos + width/2 <= 220)&&(ypos <= 436)){
+                return 2;
+            }
+            else if((previousFloor == 2)&&(direction == 0)&&(xpos + width/2 >= 200 && xpos + width/2 <= 220)&&(ypos + height >= 420)){
+                return 2;
+            }
+            else{
+                return 1;
+            }
         }
     }
     if((previousFloor == 2)&&( direction == 1))
@@ -444,14 +459,38 @@ int Object::checkOnLadder(int direction){
     {
         if ((xpos + width/2 >= 200 && xpos + width/2 <= 220)||(xpos + width/2 >= 430 && xpos + width/2 <= 450))
         {
-            return 1;
+            if((xpos + width/2 >= 200 && xpos + width/2 <= 220)&&(ypos <= 436)){
+                return 2;
+            }
+            else{
+                return 1;
+            }
+        }
+    }
+    if(((previousFloor == 2)||(previousFloor == 3))&&((floorNumber == 2) || (floorNumber == 3)) && (onFloor == 0)){
+        if ((xpos + width/2 >= 80 && xpos + width/2 <= 100)||(xpos + width/2 >= 236 && xpos + width/2 <= 256))
+        {
+            if((xpos + width/2 >= 200 && xpos + width/2 <= 220)&&(ypos <= 436)&&(direction == 0)){
+                return 2;
+            }
+            else if((direction == 1)&&(xpos + width/2 >= 200 && xpos + width/2 <= 220)&&(ypos <= 318)){
+                return 2;
+            }
+            else{
+                return 1;
+            }
         }
     }
     if((previousFloor == 3)&&( direction == 1))
     {
         if ((xpos + width/2 >= 155 && xpos + width/2 <= 175)||(xpos + width/2 >= 275 && xpos + width/2 <= 295)||(xpos + width/2 >= 432 && xpos + width/2 <= 452))
         {
-            return 1;
+            if((xpos + width/2 >= 155 && xpos + width/2 <= 175)&&(ypos <= 318)){
+                return 2;
+            }
+            else{
+                return 1;
+            }
         }
     }
     if((previousFloor == 3)&&( direction == 0))
@@ -461,32 +500,85 @@ int Object::checkOnLadder(int direction){
             return 1;
         }
     }
+    if(((previousFloor == 3)||(previousFloor == 4))&&((floorNumber == 3) || (floorNumber == 4)) && (onFloor == 0)){
+        if ((xpos + width/2 >= 155 && xpos + width/2 <= 175)||(xpos + width/2 >= 275 && xpos + width/2 <= 295)||(xpos + width/2 >= 432 && xpos + width/2 <= 452))
+        {
+            if(xpos + width/2 >= 155 && xpos + width/2 <= 175){
+                return 2;
+            }
+            else{
+                return 1;
+            }
+        }
+    }
     if((previousFloor == 4)&&(direction == 1))
     {
         if ((xpos + width/2 >= 79 && xpos + width/2 <= 99)||(xpos + width/2 >= 196 && xpos + width/2 <= 216)||(xpos + width/2 >= 393 && xpos + width/2 <= 413))
         {
+            if(xpos + width/2 >= 393 && xpos + width/2 <= 413){
+                return 2;
+            }
+            else{
                 return 1;
+            }
         }
     }
     if((previousFloor == 4)&&( direction == 0))
     {
         if ((xpos + width/2 >= 155 && xpos + width/2 <= 175)||(xpos + width/2 >= 275 && xpos + width/2 <= 295)||(xpos + width/2 >= 432 && xpos + width/2 <= 452))
         {
-            return 1;
+            if(xpos + width/2 >= 155 && xpos + width/2 <= 175){
+                return 2;
+            }
+            else{
+                return 1;
+            }
+        }
+    }
+    if(((previousFloor == 4)||(previousFloor == 5))&&((floorNumber == 4) || (floorNumber == 5)) && (onFloor == 0)){
+        if ((xpos + width/2 >= 79 && xpos + width/2 <= 99)||(xpos + width/2 >= 196 && xpos + width/2 <= 216)||(xpos + width/2 >= 393 && xpos + width/2 <= 413))
+        {
+            if(xpos + width/2 >= 393 && xpos + width/2 <= 413){
+                return 2;
+            }
+            else{
+                return 1;
+            }
         }
     }
     if((previousFloor == 5)&&(direction == 1))
     {
         if ((xpos + width/2 >= 235 && xpos + width/2 <= 255)||(xpos + width/2 >= 431 && xpos + width/2 <= 451))
         {
+            if(xpos + width/2 >= 235 && xpos + width/2 <= 255){
+                return 2;
+            }
+            else{
                 return 1;
+            }
         }
     }
     if((previousFloor == 5)&&(direction == 0))
     {
         if ((xpos + width/2 >= 79 && xpos + width/2 <= 99)||(xpos + width/2 >= 196 && xpos + width/2 <= 216)||(xpos + width/2 >= 393 && xpos + width/2 <= 413))
         {
-            return 1;
+            if(xpos + width/2 >= 393 && xpos + width/2 <= 413){
+                return 2;
+            }
+            else{
+                return 1;
+            }
+        }
+    }
+    if(((previousFloor == 5)||(previousFloor == 6))&&((floorNumber == 5) || (floorNumber == 6)) && (onFloor == 0)){
+        if ((xpos + width/2 >= 235 && xpos + width/2 <= 255)||(xpos + width/2 >= 431 && xpos + width/2 <= 451))
+        {
+            if(xpos + width/2 >= 235 && xpos + width/2 <= 255){
+                return 2;
+            }
+            else{
+                return 1;
+            }
         }
     }
     if((previousFloor == 6)&&(direction == 1))
@@ -500,7 +592,18 @@ int Object::checkOnLadder(int direction){
     {
         if ((xpos + width/2 >= 235 && xpos + width/2 <= 255)||(xpos + width/2 >= 431 && xpos + width/2 <= 451))
         {
+            if(xpos + width/2 >= 235 && xpos + width/2 <= 255){
+                return 2;
+            }
+            else{
                 return 1;
+            }
+        }
+    }
+    if(((previousFloor == 6)||(previousFloor == 7))&&((floorNumber == 6) || (floorNumber == 7)) && (onFloor == 0)){
+        if ((xpos + width/2 >= 191 && xpos + width/2 <= 211)||(xpos + width/2 >= 216 && xpos + width/2 <= 236)||(xpos + width/2 >= 334 && xpos + width/2 <= 354))
+        {
+            return 1;
         }
     }
     if((previousFloor == 7)&&(direction == 0))
