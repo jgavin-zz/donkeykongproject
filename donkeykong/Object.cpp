@@ -28,7 +28,7 @@ Object::Object(int h, int w, int x, int y, double velX, double velY, double acce
     climbing=climb;
     oldTime=oTime;
     frameRate=fRate;
-    marioSurface = SDL_LoadBMP("DonkeyKong.bmp");
+    marioSurface = SDL_LoadBMP("/Users/jgavin/Documents/donkeykong/donkeykong/DonkeyKong.bmp");
     setAnimation();
     Transparent(marioSurface, 255, 0, 255);
     
@@ -80,7 +80,6 @@ void Object::updateAnimation(){
     if(currentFrame >= maxFrames) {
         currentFrame = 0;
     }
-    //(*this).setAnimation();
 }
 
 
@@ -323,100 +322,100 @@ int Object::checkOnFloor(){
     yfloor[6] =  floors[6].getslope() * xpos + floors[6].getyint();
     
     if((climbing == 0) || ((climbing == 1) && (direction == 0) && (yfloor[floorNumber-1]-(ypos+height) < 20))|| ((climbing == 1) && (direction == 1) && ((ypos+height)-yfloor[floorNumber-1] < 20))){
-    if(( ypos + height < floors[6].getymax() )&&( ypos + height > floors[6].getymin() )){
+        if(( ypos + height < floors[6].getymax() )&&( ypos + height > floors[6].getymin() )){
+            
+            if(( xpos < floors[6].getxmax() )&&( xpos + width > floors[6].getxmin() )){
+                
+                if((climbing == 1) && (direction == 0) && (ypos + height >= yfloor[6])) return 0;
+                
+                if( ((ypos + height) - yfloor[6] <= 10 )&&((ypos + height) - yfloor[6] >= 0 )){
+                    ypos = (yfloor[6]) - height;
+                    vy = 0;
+                    onFloor = 1;
+                    floorNumber = 7;
+                    previousFloor = 7;
+                    return 1;
+                }
+            }
+        }
+        if(( ypos + height < floors[5].getymax() )&&( ypos + height > floors[5].getymin() )){
+            if(( xpos < floors[5].getxmax() )&&( xpos + width > floors[5].getxmin() )){
+                
+                if( ((ypos + height) - yfloor[5] <= 10 )&&((ypos + height) - yfloor[5] >= 0 )){
+                    ypos = (yfloor[5]) - height;
+                    vy = 0;
+                    onFloor = 1;
+                    floorNumber = 6;
+                    previousFloor = 6;
+                    return 1;
+                }
+            }
+        }
+        if(( ypos + height < floors[4].getymax() )&&( ypos + height > floors[4].getymin() )){
+            if(( xpos < floors[4].getxmax() )&&( xpos + width > floors[4].getxmin() )){
+                
+                if( ((ypos + height) - yfloor[4] <= 10 )&&((ypos + height) - yfloor[4] >= 0 )){
+                    ypos = (yfloor[4]) - height;
+                    vy = 0;
+                    onFloor = 1;
+                    floorNumber = 5;
+                    previousFloor = 5;
+                    return 1;
+                }
+            }
+        }
+        if(( ypos + height < floors[3].getymax() )&&( ypos + height > floors[3].getymin() )){
+            if(( xpos < floors[3].getxmax() )&&( xpos + width > floors[3].getxmin() )){
+                
+                if( ((ypos + height) - yfloor[3] <= 10 )&&((ypos + height) - yfloor[3] >= 0 )){
+                    ypos = (yfloor[3]) - height;
+                    vy = 0;
+                    onFloor = 1;
+                    floorNumber = 4;
+                    previousFloor = 4;
+                    return 1;
+                }
+            }
+        }
+        if(( ypos + height < floors[2].getymax() )&&( ypos + height > floors[2].getymin() )){
+            if(( xpos < floors[2].getxmax() )&&( xpos + width > floors[2].getxmin() )){
+                
+                
+                if( ((ypos + height) - yfloor[2] <= 10 )&&((ypos + height) - yfloor[2] >= 0 )){
+                    ypos = (yfloor[2]) - height;
+                    vy = 0;
+                    onFloor = 1;
+                    floorNumber = 3;
+                    previousFloor = 3;
+                    return 1;
+                }
+            }
+        }
         
-        if(( xpos < floors[6].getxmax() )&&( xpos + width > floors[6].getxmin() )){
-
-            if((climbing == 1) && (direction == 0) && (ypos + height >= yfloor[6])) return 0;
+        if(( ypos + height < floors[1].getymax() )&&( ypos + height > floors[1].getymin() )){
+            if(( xpos < floors[1].getxmax() )&&( xpos + width > floors[1].getxmin() )){
+                
+                if( ((ypos + height) - yfloor[1] <= 10 )&&((ypos + height) - yfloor[1] >= 0 )){
+                    ypos = (yfloor[1]) - height;
+                    vy = 0;
+                    onFloor = 1;
+                    floorNumber = 2;
+                    previousFloor = 2;
+                    return 1;
+                }
+            }
+        }
+        if( ypos + height > floors[0].getymin() ){
             
-            if( ((ypos + height) - yfloor[6] <= 10 )&&((ypos + height) - yfloor[6] >= 0 )){
-                ypos = (yfloor[6]) - height;
-                vy = 0;
+            if( ((ypos + height) - yfloor[0] <= 10 )&&((ypos + height) - yfloor[0] >= 0 )){
+                ypos = (yfloor[0]) - height;
                 onFloor = 1;
-                floorNumber = 7;
-                previousFloor = 7;
+                vy = 0;
+                floorNumber = 1;
+                previousFloor = 1;
                 return 1;
             }
         }
-    }
-    if(( ypos + height < floors[5].getymax() )&&( ypos + height > floors[5].getymin() )){
-        if(( xpos < floors[5].getxmax() )&&( xpos + width > floors[5].getxmin() )){
-            
-            if( ((ypos + height) - yfloor[5] <= 10 )&&((ypos + height) - yfloor[5] >= 0 )){
-                ypos = (yfloor[5]) - height;
-                vy = 0;
-                onFloor = 1;
-                floorNumber = 6;
-                previousFloor = 6;
-                return 1;
-            }
-        }
-    }
-    if(( ypos + height < floors[4].getymax() )&&( ypos + height > floors[4].getymin() )){
-        if(( xpos < floors[4].getxmax() )&&( xpos + width > floors[4].getxmin() )){
-            
-            if( ((ypos + height) - yfloor[4] <= 10 )&&((ypos + height) - yfloor[4] >= 0 )){
-                ypos = (yfloor[4]) - height;
-                vy = 0;
-                onFloor = 1;
-                floorNumber = 5;
-                previousFloor = 5;
-                return 1;
-            }
-        }
-    }
-    if(( ypos + height < floors[3].getymax() )&&( ypos + height > floors[3].getymin() )){
-        if(( xpos < floors[3].getxmax() )&&( xpos + width > floors[3].getxmin() )){
-            
-            if( ((ypos + height) - yfloor[3] <= 10 )&&((ypos + height) - yfloor[3] >= 0 )){
-                ypos = (yfloor[3]) - height;
-                vy = 0;
-                onFloor = 1;
-                floorNumber = 4;
-                previousFloor = 4;
-                return 1;
-            }
-        }
-    }
-    if(( ypos + height < floors[2].getymax() )&&( ypos + height > floors[2].getymin() )){
-        if(( xpos < floors[2].getxmax() )&&( xpos + width > floors[2].getxmin() )){
-
-            
-            if( ((ypos + height) - yfloor[2] <= 10 )&&((ypos + height) - yfloor[2] >= 0 )){
-                ypos = (yfloor[2]) - height;
-                vy = 0;
-                onFloor = 1;
-                floorNumber = 3;
-                previousFloor = 3;
-                return 1;
-            }
-        }
-    }
-    
-    if(( ypos + height < floors[1].getymax() )&&( ypos + height > floors[1].getymin() )){
-        if(( xpos < floors[1].getxmax() )&&( xpos + width > floors[1].getxmin() )){
-            
-            if( ((ypos + height) - yfloor[1] <= 10 )&&((ypos + height) - yfloor[1] >= 0 )){
-                ypos = (yfloor[1]) - height;
-                vy = 0;
-                onFloor = 1;
-                floorNumber = 2;
-                previousFloor = 2;
-                return 1;
-            }
-        }
-    }
-    if( ypos + height > floors[0].getymin() ){
-        
-        if( ((ypos + height) - yfloor[0] <= 10 )&&((ypos + height) - yfloor[0] >= 0 )){
-            ypos = (yfloor[0]) - height;
-            onFloor = 1;
-            vy = 0;
-            floorNumber = 1;
-            previousFloor = 1;
-            return 1;
-        }
-    }
     }
     return 0;
 }
@@ -585,7 +584,7 @@ int Object::checkOnLadder(int direction){
     {
         if ((xpos + width/2 >= 191 && xpos + width/2 <= 211)||(xpos + width/2 >= 216 && xpos + width/2 <= 236)||(xpos + width/2 >= 334 && xpos + width/2 <= 354))
         {
-                return 1;
+            return 1;
         }
     }
     if((previousFloor == 6)&&(direction == 0))
@@ -610,7 +609,7 @@ int Object::checkOnLadder(int direction){
     {
         if ((xpos + width/2 >= 191 && xpos + width/2 <= 211)||(xpos + width/2 >= 216 && xpos + width/2 <= 236)||(xpos + width/2 >= 334 && xpos + width/2 <= 354))
         {
-                return 1;
+            return 1;
         }
     }
     return 0;

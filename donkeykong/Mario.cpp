@@ -26,26 +26,30 @@ Mario::Mario() : Object(20, 20, 130, 435, 0, 0, 0, 1, 1, 2, 0, 0, 100){
 
 
 void Mario::move(){
-    double dt = .5;
-    ay = 2;
+    double dt = .5; ay = 2;
     if( climbing == 0){
-        vy = vy + ay * dt;
-        xpos = xpos + vx * dt;
-        ypos = ypos + vy * dt;
+        vy += (ay * dt);
+        xpos += (vx * dt);
+        ypos += (vy * dt);
     }
     else{
-        xpos = xpos + vx * dt;
-        ypos = ypos + vy * dt;
+        xpos += (vx * dt);
+        ypos += (vy * dt);
     }
-
+    
     if (xpos <= 0) {
-	xpos = 2;
-	vx = 0;
+        xpos = 2;
+        vx = 0;
     }
-
+    
     if (xpos >= 531) {
-	xpos = 529;
-	vx = 0;
+        xpos = 529;
+        vx = 0;
+    }
+    
+    if ( ypos <= 49) {
+        ypos = 50;
+        vy = 0;
     }
 }
 
@@ -157,8 +161,6 @@ void Mario::setAnimation(){
             height = 20;
             width = 20;
             break;
-            
-            
     }
 }
 
@@ -171,16 +173,16 @@ void Mario::handle_input(SDL_Event event)
         switch( event.key.keysym.sym )
         {
             case SDLK_UP: if(checkOnLadder(1) == 1)
-                {
+            {
                 if((floorNumber < 7)&&(floorNumber == previousFloor)) floorNumber++;
-                    vy = -2; direction = 1; climbing = 1;
-                    onFloor = 0; currentState = 9; setAnimation();
-                }
-                 else if (checkOnLadder(1) == 2){
-                     if((floorNumber < 7)&&(floorNumber == previousFloor)) floorNumber++;
-                     vy = 0; direction = 1; climbing = 1;
-                     onFloor = 0; currentState = 9; setAnimation();
-                 }
+                vy = -2; direction = 1; climbing = 1;
+                onFloor = 0; currentState = 9; setAnimation();
+            }
+            else if (checkOnLadder(1) == 2){
+                if((floorNumber < 7)&&(floorNumber == previousFloor)) floorNumber++;
+                vy = 0; direction = 1; climbing = 1;
+                onFloor = 0; currentState = 9; setAnimation();
+            }
                 break;
             case SDLK_DOWN: if(checkOnLadder(0) == 1)
             {
@@ -194,8 +196,8 @@ void Mario::handle_input(SDL_Event event)
                 onFloor = 0; currentState = 9; setAnimation();
             }
                 break;
-            case SDLK_LEFT: vx = -4; currentState = 3; climbing = 0; rdirection = 0; setAnimation(); break;
-            case SDLK_RIGHT: vx = 4; currentState = 4; climbing = 0; rdirection = 1; setAnimation(); break;
+            case SDLK_LEFT: vx = -2; currentState = 3; climbing = 0; rdirection = 0; setAnimation(); break;
+            case SDLK_RIGHT: vx = 2; currentState = 4; climbing = 0; rdirection = 1; setAnimation(); break;
             case SDLK_SPACE:
                 if(onFloor){
                     onFloor = 0;
@@ -206,7 +208,6 @@ void Mario::handle_input(SDL_Event event)
                     if(rdirection == 0) currentState = 12;
                     setAnimation();
                     break;
-                    
                 }
         }
     }
@@ -221,6 +222,7 @@ void Mario::handle_input(SDL_Event event)
             case SDLK_LEFT: vx = 0; currentState = 1; if(onFloor) climbing = 0; setAnimation(); break;
             case SDLK_RIGHT: vx = 0; currentState = 2; if(onFloor) climbing = 0; setAnimation(); break;
             case SDLK_SPACE: climbing = 0; if(rdirection == 0) currentState = 3; if(rdirection == 1) currentState = 4; break;
+                
         }
     }
 }

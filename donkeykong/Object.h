@@ -17,13 +17,13 @@ using namespace std;
 class Object{
     
 public:
-
-     int spritesheetx;
+    
+    int spritesheetx;
     int spritesheety;
     int height;
     int width;
-    int xpos;
-    int ypos;
+    double xpos;
+    double ypos;
     double vx;
     double vy;
     double ay;
@@ -34,7 +34,8 @@ public:
     int oldTime;
     int frameRate;
     SDL_Surface* marioSurface;
-
+    Floor floors[7];
+    
     Object(int h, int w, int x, int y, double velX, double velY, double accelY, int cState, int cFrame, int mFrames, int climb, int oTime, int fRate); //non default constructor
     
     void display(SDL_Surface*, SDL_Surface*, int, int, int, int, int, int);//Displays object
@@ -63,9 +64,9 @@ public:
     void setcurrentstate(int);
     
     void Transparent(SDL_Surface* Surf_Dest, int R, int G, int B);//Makes pink background of mario image transparent
-
+    
     void handle_input(SDL_Event);
-
+    
     SDL_Surface* getMarioSurface();
     
     void cleanUp();
@@ -77,7 +78,7 @@ public:
     int checkOnLadder(int);
     
 private:
-        Floor floors[7];
+    
 };
 
 #endif

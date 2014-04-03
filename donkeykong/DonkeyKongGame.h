@@ -15,6 +15,7 @@
 #include "Mario.h"
 #include "Peach.h"
 #include "DonkeyKong.h"
+#include "Barrel.h"
 
 class DonkeyKongGame{
     
@@ -25,7 +26,7 @@ public:
     SDL_Surface* OnLoad(char*); //Function to load game background
     
     void Display(); //Renders all of the game objects and background onto the screen
-
+    
     void Music();
     
     void cleanUp(); //Cleans up all of the object in the game when it is finished
@@ -47,6 +48,7 @@ private:
     Mario mario;//Mario object
     Peach peach; //Peach object
     DonkeyKong donkeykong; //donkeykong object
+    Barrel barrel; //Barrel object
     
 };
 

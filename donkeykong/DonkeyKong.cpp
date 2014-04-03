@@ -20,7 +20,7 @@ void DonkeyKong::updateAnimation(){
     if(currentFrame >= maxFrames) {
         currentFrame = 0;
     }
-    //(*this).setAnimation();
+    
 }
 
 
@@ -43,12 +43,12 @@ void DonkeyKong::setAnimation(){
             height = 33;
             width = 47;
             break;
-	case 3: //throw barrel
-	    spritesheetx = 8;
-	    spritesheety = 149;
-	    currentFrame = 2;
-	    maxFrames = 6;
-	    height = 33;
-	    width = 48;
+        case 3: //throw barrel
+            spritesheetx = 8;
+            spritesheety = 149;
+            currentFrame = 2;
+            maxFrames = 6;
+            height = 33;
+            width = 48;
     }
 }
