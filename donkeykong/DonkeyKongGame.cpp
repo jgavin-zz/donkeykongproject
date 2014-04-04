@@ -36,7 +36,7 @@ DonkeyKongGame::DonkeyKongGame ()
     SDL_Init (SDL_INIT_EVERYTHING);
     // SDL_Color textColor = { 255, 255, 255 }; // it's white for now, color of text
     screen = SDL_SetVideoMode (550, 471, 32, SDL_SWSURFACE);
-    background = SDL_LoadBMP ("DonkeyKongBackground.bmp");
+    background = SDL_LoadBMP ("/Users/jgavin/Documents/donkeykong/donkeykong/DonkeyKongBackground.bmp");
     
     // TTF_Font *font;
     // font = TTF_OpenFont( "kongtext.ttf", 36 ); //size 12 font
@@ -242,6 +242,16 @@ void DonkeyKongGame::playDonkeyKong ()
         barrel.roll();
         mario.move ();
         mario.checkOnFloor ();
+        if(mario.checkOnLadder(mario.direction) == 1){
+            mario.onLadder = 1;
+        }
+        else if(mario.checkOnLadder(mario.direction) == 2){
+            mario.onLadder = 2;
+            mario.vy = 0;
+        }
+        else{
+            mario.onLadder = 0;
+        }
         Display ();
     }
     SDL_Quit ();

@@ -22,6 +22,7 @@ Mario::Mario() : Object(20, 20, 130, 435, 0, 0, 0, 1, 1, 2, 0, 0, 100){
     vy = 0;
     floorNumber = 1;
     previousFloor = 1;
+    onLadder = 0;
 }
 
 
@@ -172,32 +173,32 @@ void Mario::handle_input(SDL_Event event)
         //Adjust the velocity
         switch( event.key.keysym.sym )
         {
-            case SDLK_UP: if(checkOnLadder(1) == 1)
+            case SDLK_UP: if( checkOnLadder(1) == 1)
             {
                 if((floorNumber < 7)&&(floorNumber == previousFloor)) floorNumber++;
-                vy = -2; direction = 1; climbing = 1;
+                vy = -2; direction = 1; climbing = 1; onLadder = 1;
                 onFloor = 0; currentState = 9; setAnimation();
             }
-            else if (checkOnLadder(1) == 2){
+            else if ( checkOnLadder(1) == 2){
                 if((floorNumber < 7)&&(floorNumber == previousFloor)) floorNumber++;
-                vy = 0; direction = 1; climbing = 1;
+                vy = 0; direction = 1; climbing = 1; onLadder = 2;
                 onFloor = 0; currentState = 9; setAnimation();
             }
-                break;
+            break;
             case SDLK_DOWN: if(checkOnLadder(0) == 1)
             {
                 if((floorNumber < 7)&&(floorNumber == previousFloor)) floorNumber--;
-                vy = 2; direction = 0; climbing = 1;
+                vy = 2; direction = 0; climbing = 1; onLadder = 1;
                 onFloor = 0; currentState = 9; setAnimation();
             }
-            else if (checkOnLadder(0) == 2){
+            else if ( checkOnLadder(0) == 2){
                 if((floorNumber < 7)&&(floorNumber == previousFloor)) floorNumber--;
-                vy = 0; direction = 0; climbing = 1;
+                vy = 0; direction = 0; climbing = 1; onLadder = 2;
                 onFloor = 0; currentState = 9; setAnimation();
             }
                 break;
-            case SDLK_LEFT: vx = -2; currentState = 3; climbing = 0; rdirection = 0; setAnimation(); break;
-            case SDLK_RIGHT: vx = 2; currentState = 4; climbing = 0; rdirection = 1; setAnimation(); break;
+            case SDLK_LEFT: vx = -4; currentState = 3; climbing = 0; rdirection = 0; setAnimation(); break;
+            case SDLK_RIGHT: vx = 4; currentState = 4; climbing = 0; rdirection = 1; setAnimation(); break;
             case SDLK_SPACE:
                 if(onFloor){
                     onFloor = 0;

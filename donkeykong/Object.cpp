@@ -28,7 +28,7 @@ Object::Object(int h, int w, int x, int y, double velX, double velY, double acce
     climbing=climb;
     oldTime=oTime;
     frameRate=fRate;
-    marioSurface = SDL_LoadBMP("DonkeyKong.bmp");
+    marioSurface = SDL_LoadBMP("/Users/jgavin/Documents/donkeykong/donkeykong/DonkeyKong.bmp");
     setAnimation();
     Transparent(marioSurface, 255, 0, 255);
     
@@ -436,7 +436,7 @@ int Object::checkOnLadder(int direction){
     if(((previousFloor == 1)||(previousFloor == 2))&&((floorNumber == 1) || (floorNumber == 2)) && (onFloor == 0)){
         if ((xpos + width/2 >= 200 && xpos + width/2 <= 220)||(xpos + width/2 >= 430 && xpos + width/2 <= 450))
         {
-            if((direction == 1)&&(xpos + width/2 >= 200 && xpos + width/2 <= 220)&&(ypos <= 436)){
+            if((previousFloor == 1)&&(direction == 1)&&(xpos + width/2 >= 200 && xpos + width/2 <= 220)&&(ypos <= 436)){
                 return 2;
             }
             else if((previousFloor == 2)&&(direction == 0)&&(xpos + width/2 >= 200 && xpos + width/2 <= 220)&&(ypos + height >= 420)){
@@ -458,7 +458,7 @@ int Object::checkOnLadder(int direction){
     {
         if ((xpos + width/2 >= 200 && xpos + width/2 <= 220)||(xpos + width/2 >= 430 && xpos + width/2 <= 450))
         {
-            if((xpos + width/2 >= 200 && xpos + width/2 <= 220)&&(ypos <= 436)){
+            if((xpos + width/2 >= 200 && xpos + width/2 <= 220)&&(ypos + height >= 420)){
                 return 2;
             }
             else{
@@ -469,15 +469,7 @@ int Object::checkOnLadder(int direction){
     if(((previousFloor == 2)||(previousFloor == 3))&&((floorNumber == 2) || (floorNumber == 3)) && (onFloor == 0)){
         if ((xpos + width/2 >= 80 && xpos + width/2 <= 100)||(xpos + width/2 >= 236 && xpos + width/2 <= 256))
         {
-            if((xpos + width/2 >= 200 && xpos + width/2 <= 220)&&(ypos <= 436)&&(direction == 0)){
-                return 2;
-            }
-            else if((direction == 1)&&(xpos + width/2 >= 200 && xpos + width/2 <= 220)&&(ypos <= 318)){
-                return 2;
-            }
-            else{
                 return 1;
-            }
         }
     }
     if((previousFloor == 3)&&( direction == 1))
@@ -502,7 +494,7 @@ int Object::checkOnLadder(int direction){
     if(((previousFloor == 3)||(previousFloor == 4))&&((floorNumber == 3) || (floorNumber == 4)) && (onFloor == 0)){
         if ((xpos + width/2 >= 155 && xpos + width/2 <= 175)||(xpos + width/2 >= 275 && xpos + width/2 <= 295)||(xpos + width/2 >= 432 && xpos + width/2 <= 452))
         {
-            if(xpos + width/2 >= 155 && xpos + width/2 <= 175){
+            if(xpos + width/2 >= 155 && xpos + width/2 <= 175 && direction == 0 && ypos + height >= 308 && ypos + height <= 318){
                 return 2;
             }
             else{
@@ -514,7 +506,7 @@ int Object::checkOnLadder(int direction){
     {
         if ((xpos + width/2 >= 79 && xpos + width/2 <= 99)||(xpos + width/2 >= 196 && xpos + width/2 <= 216)||(xpos + width/2 >= 393 && xpos + width/2 <= 413))
         {
-            if(xpos + width/2 >= 393 && xpos + width/2 <= 413){
+            if(xpos + width/2 >= 393 && xpos + width/2 <= 413 && ypos <= 273 && ypos >= 255){
                 return 2;
             }
             else{
@@ -526,7 +518,7 @@ int Object::checkOnLadder(int direction){
     {
         if ((xpos + width/2 >= 155 && xpos + width/2 <= 175)||(xpos + width/2 >= 275 && xpos + width/2 <= 295)||(xpos + width/2 >= 432 && xpos + width/2 <= 452))
         {
-            if(xpos + width/2 >= 155 && xpos + width/2 <= 175){
+            if(xpos + width/2 >= 155 && xpos + width/2 <= 175 && ypos + height >= 308){
                 return 2;
             }
             else{
@@ -537,7 +529,10 @@ int Object::checkOnLadder(int direction){
     if(((previousFloor == 4)||(previousFloor == 5))&&((floorNumber == 4) || (floorNumber == 5)) && (onFloor == 0)){
         if ((xpos + width/2 >= 79 && xpos + width/2 <= 99)||(xpos + width/2 >= 196 && xpos + width/2 <= 216)||(xpos + width/2 >= 393 && xpos + width/2 <= 413))
         {
-            if(xpos + width/2 >= 393 && xpos + width/2 <= 413){
+            if(xpos + width/2 >= 393 && xpos + width/2 <= 413 && ypos <= 273 && ypos >= 255 && direction == 1){
+                return 2;
+            }
+            else if(xpos + width/2 >= 393 && xpos + width/2 <= 413 && ypos + height >= 251 && ypos + height <= 271 && direction == 0){
                 return 2;
             }
             else{
@@ -549,7 +544,7 @@ int Object::checkOnLadder(int direction){
     {
         if ((xpos + width/2 >= 235 && xpos + width/2 <= 255)||(xpos + width/2 >= 431 && xpos + width/2 <= 451))
         {
-            if(xpos + width/2 >= 235 && xpos + width/2 <= 255){
+            if(xpos + width/2 >= 235 && xpos + width/2 <= 255 && ypos <= 221 && ypos >= 201){
                 return 2;
             }
             else{
@@ -561,7 +556,7 @@ int Object::checkOnLadder(int direction){
     {
         if ((xpos + width/2 >= 79 && xpos + width/2 <= 99)||(xpos + width/2 >= 196 && xpos + width/2 <= 216)||(xpos + width/2 >= 393 && xpos + width/2 <= 413))
         {
-            if(xpos + width/2 >= 393 && xpos + width/2 <= 413){
+            if(xpos + width/2 >= 393 && xpos + width/2 <= 413 && ypos + height >= 251 && ypos + height <= 271){
                 return 2;
             }
             else{
@@ -572,7 +567,10 @@ int Object::checkOnLadder(int direction){
     if(((previousFloor == 5)||(previousFloor == 6))&&((floorNumber == 5) || (floorNumber == 6)) && (onFloor == 0)){
         if ((xpos + width/2 >= 235 && xpos + width/2 <= 255)||(xpos + width/2 >= 431 && xpos + width/2 <= 451))
         {
-            if(xpos + width/2 >= 235 && xpos + width/2 <= 255){
+            if(xpos + width/2 >= 235 && xpos + width/2 <= 255 && ypos <= 221 && ypos >= 241 && direction == 1){
+                return 2;
+            }
+            else if(xpos + width/2 >= 235 && xpos + width/2 <= 255 && ypos + height >= 205 && ypos + height <= 225 && direction == 0){
                 return 2;
             }
             else{
@@ -591,7 +589,7 @@ int Object::checkOnLadder(int direction){
     {
         if ((xpos + width/2 >= 235 && xpos + width/2 <= 255)||(xpos + width/2 >= 431 && xpos + width/2 <= 451))
         {
-            if(xpos + width/2 >= 235 && xpos + width/2 <= 255){
+            if(xpos + width/2 >= 235 && xpos + width/2 <= 255 && ypos + height >= 205 && ypos + height <= 225){
                 return 2;
             }
             else{
