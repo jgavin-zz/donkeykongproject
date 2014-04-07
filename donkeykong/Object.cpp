@@ -310,7 +310,7 @@ void Object::initializeFloors(){
     floors[6].setymax(130);
 }
 
-int Object::checkOnFloor(){
+int Object::checkOnFloor(int print){
     
     int yfloor[7];
     yfloor[0] =  floors[0].getslope() * xpos + floors[0].getyint();
@@ -320,6 +320,18 @@ int Object::checkOnFloor(){
     yfloor[4] =  floors[4].getslope() * xpos + floors[4].getyint();
     yfloor[5] =  floors[5].getslope() * xpos + floors[5].getyint();
     yfloor[6] =  floors[6].getslope() * xpos + floors[6].getyint();
+    
+    if(print){
+        cout << "slope = " << floors[5].getslope() << endl;
+        cout << "xpos = " << xpos << endl;
+        cout << "yint = " << floors[5].getyint() << endl;
+        cout << "floorNumber = " << floorNumber << endl;
+        cout << "Climbing = " << climbing << endl;
+        cout << "direction = " << direction << endl;
+        cout << "yfloor[floorNumber-1] = " << yfloor[5] << endl;
+        cout << "(ypos+height) = " << (ypos+height) << endl;
+    }
+    
     
     if((climbing == 0) || ((climbing == 1) && (direction == 0) && (yfloor[floorNumber-1]-(ypos+height) < 20))|| ((climbing == 1) && (direction == 1) && ((ypos+height)-yfloor[floorNumber-1] < 20))){
         if(( ypos + height < floors[6].getymax() )&&( ypos + height > floors[6].getymin() )){
@@ -334,7 +346,7 @@ int Object::checkOnFloor(){
                     onFloor = 1;
                     floorNumber = 7;
                     previousFloor = 7;
-                    return 1;
+                    return yfloor[6];
                 }
             }
         }
@@ -347,7 +359,7 @@ int Object::checkOnFloor(){
                     onFloor = 1;
                     floorNumber = 6;
                     previousFloor = 6;
-                    return 1;
+                    return yfloor[5];
                 }
             }
         }
@@ -360,7 +372,7 @@ int Object::checkOnFloor(){
                     onFloor = 1;
                     floorNumber = 5;
                     previousFloor = 5;
-                    return 1;
+                    return yfloor[4];
                 }
             }
         }
@@ -373,7 +385,7 @@ int Object::checkOnFloor(){
                     onFloor = 1;
                     floorNumber = 4;
                     previousFloor = 4;
-                    return 1;
+                    return yfloor[3];
                 }
             }
         }
@@ -387,7 +399,7 @@ int Object::checkOnFloor(){
                     onFloor = 1;
                     floorNumber = 3;
                     previousFloor = 3;
-                    return 1;
+                    return yfloor[2];
                 }
             }
         }
@@ -401,7 +413,7 @@ int Object::checkOnFloor(){
                     onFloor = 1;
                     floorNumber = 2;
                     previousFloor = 2;
-                    return 1;
+                    return yfloor[1];
                 }
             }
         }
@@ -413,7 +425,7 @@ int Object::checkOnFloor(){
                 vy = 0;
                 floorNumber = 1;
                 previousFloor = 1;
-                return 1;
+                return yfloor[0];
             }
         }
     }
@@ -469,7 +481,7 @@ int Object::checkOnLadder(int direction){
     if(((previousFloor == 2)||(previousFloor == 3))&&((floorNumber == 2) || (floorNumber == 3)) && (onFloor == 0)){
         if ((xpos + width/2 >= 80 && xpos + width/2 <= 100)||(xpos + width/2 >= 236 && xpos + width/2 <= 256))
         {
-                return 1;
+            return 1;
         }
     }
     if((previousFloor == 3)&&( direction == 1))

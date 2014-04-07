@@ -26,6 +26,7 @@ public:
     double ypos;
     double vx;
     double vy;
+    double ax;
     double ay;
     int currentState;
     int currentFrame;
@@ -73,7 +74,7 @@ public:
     
     void initializeFloors();
     
-    int checkOnFloor();
+    int checkOnFloor(int);
     
     int checkOnLadder(int);
     

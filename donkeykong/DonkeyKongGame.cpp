@@ -19,6 +19,8 @@
 #include "math.h"
 #include <stdlib.h>
 #include <time.h>
+#include <vector>
+
 //#include "SDL/SDL_mixer.h"
 //#include "SDL_image/SDL_image.h"
 //include "SDL_ttf/SDL_ttf.h"
@@ -42,6 +44,8 @@ DonkeyKongGame::DonkeyKongGame ()
     // font = TTF_OpenFont( "kongtext.ttf", 36 ); //size 12 font
     // message = TTF_RenderText_Solid( font, "Current Score:", textColor );
     mario.initializeFloors ();
+    //Barrel barrel;
+    barrels.push_back(Barrel());
 }
 
 
@@ -56,6 +60,7 @@ void DonkeyKongGame::Music ()
 //Display function which puts background and all objects on screen
 void DonkeyKongGame::Display ()
 {
+    int i;
     
     SDL_FillRect (screen, &screen->clip_rect,
                   SDL_MapRGB (screen->format, 0xFF, 0xFF, 0xFF));
@@ -96,7 +101,9 @@ void DonkeyKongGame::Display ()
                         donkeykong.getspritesheety (), donkeykong.getwidth (),
                         donkeykong.getheight ());
     
-    barrel.display(screen, barrel.getMarioSurface(), barrel.getxpos(), barrel.getypos(), barrel.getspritesheetx() + barrel.getcurrentframe()*barrel.getwidth(), barrel.getspritesheety(), barrel.getwidth(), barrel.getheight());
+    for(i = 0; i < barrels.size(); i++){
+    barrels[i].display(screen, barrels[i].getMarioSurface(), barrels[i].getxpos(), barrels[i].getypos(), barrels[i].getspritesheetx() + barrels[i].getcurrentframe()*barrels[i].getwidth(), barrels[i].getspritesheety(), barrels[i].getwidth(), barrels[i].getheight());
+    }
     
     
     SDL_Flip (screen);
@@ -125,6 +132,7 @@ void DonkeyKongGame::playDonkeyKong ()
 {
     bool quit = false;
     int counter = 0;
+    int i;
     Display ();
     Music ();
     srand (time(NULL));
@@ -194,10 +202,14 @@ void DonkeyKongGame::playDonkeyKong ()
             }
             else if (donkeykong.currentFrame == 3)
             {
-                barrel.currentState = 1;
-                barrel.currentFrame = 2;
-                barrel.updateAnimation();
-                barrel.updateAnimation();
+                Barrel barrel;
+                barrels.push_back(barrel);
+                for(i = 0; i < barrels.size(); i++){
+                    barrels[i].currentState = 1;
+                    barrels[i].currentFrame = 2;
+                    barrels[i].updateAnimation();
+                    barrels[i].updateAnimation();
+                }
                 
                 if (rand() % 10 + 1 >= 4 || mario.getypos() <= 250)
                 {
@@ -222,7 +234,7 @@ void DonkeyKongGame::playDonkeyKong ()
         }
         while (SDL_PollEvent (&event))
         {
-            mario.checkOnFloor ();
+            mario.checkOnFloor (0);
             if (mario.getoldtime () + mario.getframerate () < SDL_GetTicks ())
             {
                 mario.updateAnimation ();
@@ -238,9 +250,14 @@ void DonkeyKongGame::playDonkeyKong ()
             mario.updateAnimation ();
         }
         counter += 1;
-        barrel.roll();
+        for(i = 0; i < barrels.size(); i++){
+           barrels[i].roll();
+        }
         mario.move ();
-        mario.checkOnFloor ();
+        mario.checkOnFloor (0);
+        for(i = 0; i < barrels.size(); i++){
+            if(barrels[i].checkOnFloor(1)) cout << "hit floor" << endl;
+        }
         if(mario.checkOnLadder(mario.direction) == 1){
             mario.onLadder = 1;
         }
