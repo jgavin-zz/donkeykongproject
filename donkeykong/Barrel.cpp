@@ -105,6 +105,92 @@ void Barrel::roll(){
 			ypos = 320;
 		}
 	}
+	else if (floorNumber == 3){
+		xpos -= .5;
+		ypos+=.025;
+		updateAnimation();
+		if (currentState == 1 && currentFrame == 1){
+			updateAnimation();
+		}
+		if (currentFrame == 2 && currentState == 1){
+			currentState = 2;
+			setAnimation();
+			updateAnimation();
+			updateAnimation();
+		}
+		if (currentState == 2 && currentFrame == 2){
+			updateAnimation();
+			updateAnimation();
+		}
+		if(currentState == 2 && currentFrame == 1){
+			currentState = 1;
+			setAnimation();
+			updateAnimation();
+		}
+        
+		if (xpos <= 23){
+			floorNumber -=1;
+			ypos = 376;
+		}
+	}
+	else if (floorNumber == 2){
+		xpos += .5;
+		ypos+=.025;
+		updateAnimation();
+		if (currentState == 1 && currentFrame == 1){
+			updateAnimation();
+		}
+		if (currentFrame == 2 && currentState == 1){
+			currentState = 2;
+			setAnimation();
+			updateAnimation();
+			updateAnimation();
+		}
+		if (currentState == 2 && currentFrame == 2){
+			updateAnimation();
+			updateAnimation();
+		}
+		if(currentState == 2 && currentFrame == 1){
+			currentState = 1;
+			setAnimation();
+			updateAnimation();
+		}
+        
+		if (xpos >= 507){
+			floorNumber -=1;
+			ypos = 432;
+		}
+	}
+	else if (floorNumber == 1){
+		xpos -= .5;
+		if(xpos>267){
+		ypos+=.025;
+		}
+		updateAnimation();
+		if (currentState == 1 && currentFrame == 1){
+			updateAnimation();
+		}
+		if (currentFrame == 2 && currentState == 1){
+			currentState = 2;
+			setAnimation();
+			updateAnimation();
+			updateAnimation();
+		}
+		if (currentState == 2 && currentFrame == 2){
+			updateAnimation();
+			updateAnimation();
+		}
+		if(currentState == 2 && currentFrame == 1){
+			currentState = 1;
+			setAnimation();
+			updateAnimation();
+		}
+        
+		if (xpos <= 23){
+			currentState = 1;
+			setAnimation();
+		}
+	}
 }
 
 
