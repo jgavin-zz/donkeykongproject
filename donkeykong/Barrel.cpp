@@ -14,10 +14,11 @@ using namespace std;
 //Constructor, sets parameters and loads surface
 Barrel::Barrel() : Object(12, 18, 140, 170, 0, 0, 0, 1, 0, 2, 0, 0, 100){
     setAnimation();
-    floorNumber = 7;
+    floorNumber = 6;
 }
 
 void Barrel::roll(){
+	cout<<floorNumber<<endl;
 	if(floorNumber == 6){
 		xpos += .5;
 		if(xpos >= 350){
@@ -45,6 +46,36 @@ void Barrel::roll(){
         
 		if (xpos >= 507){
 			floorNumber -=1;
+			ypos = 215;
+		}
+	}
+	if (floorNumber == 5){
+		xpos -= .5;
+		
+			ypos+=.015;
+		updateAnimation();
+		if (currentState == 1 && currentFrame == 1){
+			updateAnimation();
+		}
+		if (currentFrame == 2 && currentState == 1){
+			currentState = 2;
+			setAnimation();
+			updateAnimation();
+			updateAnimation();
+		}
+		if (currentState == 2 && currentFrame == 2){
+			updateAnimation();
+			updateAnimation();
+		}
+		if(currentState == 2 && currentFrame == 1){
+			currentState = 1;
+			setAnimation();
+			updateAnimation();
+		}
+        
+		if (xpos <= 23){
+			floorNumber -=1;
+			ypos = 265;
 		}
 	}
 }
@@ -74,7 +105,7 @@ void Barrel::setAnimation(){
             break;
         case 2: //rolling case 2
             spritesheetx = 62;
-            spritesheety = 267;
+            spritesheety = 268;
             currentFrame = 0;
             maxFrames = 2;
             height = 12;

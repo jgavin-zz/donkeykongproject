@@ -198,7 +198,6 @@ void DonkeyKongGame::playDonkeyKong ()
                 barrel.currentFrame = 2;
                 barrel.updateAnimation();
                 barrel.updateAnimation();
-                barrel.floorNumber = 6;
                 
                 if (rand() % 10 + 1 >= 4 || mario.getypos() <= 250)
                 {
