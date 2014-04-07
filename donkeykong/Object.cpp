@@ -321,17 +321,6 @@ int Object::checkOnFloor(int print){
     yfloor[5] =  floors[5].getslope() * xpos + floors[5].getyint();
     yfloor[6] =  floors[6].getslope() * xpos + floors[6].getyint();
     
-    if(print){
-        cout << "slope = " << floors[5].getslope() << endl;
-        cout << "xpos = " << xpos << endl;
-        cout << "yint = " << floors[5].getyint() << endl;
-        cout << "floorNumber = " << floorNumber << endl;
-        cout << "Climbing = " << climbing << endl;
-        cout << "direction = " << direction << endl;
-        cout << "yfloor[floorNumber-1] = " << yfloor[5] << endl;
-        cout << "(ypos+height) = " << (ypos+height) << endl;
-    }
-    
     
     if((climbing == 0) || ((climbing == 1) && (direction == 0) && (yfloor[floorNumber-1]-(ypos+height) < 20))|| ((climbing == 1) && (direction == 1) && ((ypos+height)-yfloor[floorNumber-1] < 20))){
         if(( ypos + height < floors[6].getymax() )&&( ypos + height > floors[6].getymin() )){
@@ -341,6 +330,11 @@ int Object::checkOnFloor(int print){
                 if((climbing == 1) && (direction == 0) && (ypos + height >= yfloor[6])) return 0;
                 
                 if( ((ypos + height) - yfloor[6] <= 10 )&&((ypos + height) - yfloor[6] >= 0 )){
+                    if(alive == 0){
+                        currentState = 15;
+                        vx = 0;
+                        setAnimation();
+                    }
                     ypos = (yfloor[6]) - height;
                     vy = 0;
                     onFloor = 1;
@@ -354,6 +348,11 @@ int Object::checkOnFloor(int print){
             if(( xpos < floors[5].getxmax() )&&( xpos + width > floors[5].getxmin() )){
                 
                 if( ((ypos + height) - yfloor[5] <= 10 )&&((ypos + height) - yfloor[5] >= 0 )){
+                    if(alive == 0){
+                        currentState = 15;
+                        vx = 0;
+                        setAnimation();
+                    }
                     ypos = (yfloor[5]) - height;
                     vy = 0;
                     onFloor = 1;
@@ -367,6 +366,11 @@ int Object::checkOnFloor(int print){
             if(( xpos < floors[4].getxmax() )&&( xpos + width > floors[4].getxmin() )){
                 
                 if( ((ypos + height) - yfloor[4] <= 10 )&&((ypos + height) - yfloor[4] >= 0 )){
+                    if(alive == 0){
+                        currentState = 15;
+                        vx = 0;
+                        setAnimation();
+                    }
                     ypos = (yfloor[4]) - height;
                     vy = 0;
                     onFloor = 1;
@@ -380,6 +384,11 @@ int Object::checkOnFloor(int print){
             if(( xpos < floors[3].getxmax() )&&( xpos + width > floors[3].getxmin() )){
                 
                 if( ((ypos + height) - yfloor[3] <= 10 )&&((ypos + height) - yfloor[3] >= 0 )){
+                    if(alive == 0){
+                        currentState = 15;
+                        vx = 0;
+                        setAnimation();
+                    }
                     ypos = (yfloor[3]) - height;
                     vy = 0;
                     onFloor = 1;
@@ -394,6 +403,11 @@ int Object::checkOnFloor(int print){
                 
                 
                 if( ((ypos + height) - yfloor[2] <= 10 )&&((ypos + height) - yfloor[2] >= 0 )){
+                    if(alive == 0){
+                        currentState = 15;
+                        vx = 0;
+                        setAnimation();
+                    }
                     ypos = (yfloor[2]) - height;
                     vy = 0;
                     onFloor = 1;
@@ -408,6 +422,11 @@ int Object::checkOnFloor(int print){
             if(( xpos < floors[1].getxmax() )&&( xpos + width > floors[1].getxmin() )){
                 
                 if( ((ypos + height) - yfloor[1] <= 10 )&&((ypos + height) - yfloor[1] >= 0 )){
+                    if(alive == 0){
+                        currentState = 15;
+                        vx = 0;
+                        setAnimation();
+                    }
                     ypos = (yfloor[1]) - height;
                     vy = 0;
                     onFloor = 1;
@@ -420,6 +439,11 @@ int Object::checkOnFloor(int print){
         if( ypos + height > floors[0].getymin() ){
             
             if( ((ypos + height) - yfloor[0] <= 10 )&&((ypos + height) - yfloor[0] >= 0 )){
+                if(alive == 0){
+                    currentState = 15;
+                    setAnimation();
+                    vx = 0;
+                }
                 ypos = (yfloor[0]) - height;
                 onFloor = 1;
                 vy = 0;

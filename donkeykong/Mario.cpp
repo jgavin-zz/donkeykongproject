@@ -23,6 +23,7 @@ Mario::Mario() : Object(20, 20, 130, 435, 0, 0, 0, 1, 1, 2, 0, 0, 100){
     floorNumber = 1;
     previousFloor = 1;
     onLadder = 0;
+    alive = 1;
 }
 
 
@@ -162,6 +163,22 @@ void Mario::setAnimation(){
             height = 20;
             width = 20;
             break;
+        case 14: //Dying through air
+            spritesheetx = 71;
+            spritesheety = 105;
+            currentFrame = 1;
+            maxFrames = 4;
+            height = 20;
+            width = 20;
+            break;
+        case 15: //Dead
+            spritesheetx = 131;
+            spritesheety = 105;
+            currentFrame = 1;
+            maxFrames = 1;
+            height = 20;
+            width = 22;
+            break;
     }
 }
 
@@ -173,7 +190,7 @@ void Mario::handle_input(SDL_Event event)
         //Adjust the velocity
         switch( event.key.keysym.sym )
         {
-            case SDLK_UP: if( checkOnLadder(1) == 1)
+            case SDLK_UP: if( checkOnLadder(1) == 1 && alive)
             {
                 if((floorNumber < 7)&&(floorNumber == previousFloor)) floorNumber++;
                 vy = -2; direction = 1; climbing = 1; onLadder = 1;
@@ -185,22 +202,22 @@ void Mario::handle_input(SDL_Event event)
                 onFloor = 0; currentState = 9; setAnimation();
             }
             break;
-            case SDLK_DOWN: if(checkOnLadder(0) == 1)
+            case SDLK_DOWN: if(checkOnLadder(0) == 1 && alive)
             {
                 if((floorNumber < 7)&&(floorNumber == previousFloor)) floorNumber--;
                 vy = 2; direction = 0; climbing = 1; onLadder = 1;
                 onFloor = 0; currentState = 9; setAnimation();
             }
-            else if ( checkOnLadder(0) == 2){
+            else if ( checkOnLadder(0) == 2 && alive){
                 if((floorNumber < 7)&&(floorNumber == previousFloor)) floorNumber--;
                 vy = 0; direction = 0; climbing = 1; onLadder = 2;
                 onFloor = 0; currentState = 9; setAnimation();
             }
                 break;
-            case SDLK_LEFT: vx = -4; currentState = 3; climbing = 0; rdirection = 0; setAnimation(); break;
-            case SDLK_RIGHT: vx = 4; currentState = 4; climbing = 0; rdirection = 1; setAnimation(); break;
+            case SDLK_LEFT: if(alive){ vx = -4; currentState = 3; climbing = 0; rdirection = 0; setAnimation();} break;
+            case SDLK_RIGHT: if(alive){vx = 4; currentState = 4; climbing = 0; rdirection = 1; setAnimation();} break;
             case SDLK_SPACE:
-                if(onFloor){
+                if(onFloor && alive){
                     onFloor = 0;
                     vy = -10; climbing = 0; ypos--;
                     if(rdirection == 1) currentState = 13;
@@ -218,11 +235,11 @@ void Mario::handle_input(SDL_Event event)
         //Adjust the velocity
         switch( event.key.keysym.sym )
         {
-            case SDLK_UP: if(climbing) { vy = 0; currentState = 10; climbing = 1; setAnimation(); } break;
-            case SDLK_DOWN: if( climbing) {vy = 0; currentState = 10; climbing = 1; setAnimation(); } break;
-            case SDLK_LEFT: vx = 0; currentState = 1; if(onFloor) climbing = 0; setAnimation(); break;
-            case SDLK_RIGHT: vx = 0; currentState = 2; if(onFloor) climbing = 0; setAnimation(); break;
-            case SDLK_SPACE: climbing = 0; if(rdirection == 0) currentState = 3; if(rdirection == 1) currentState = 4; break;
+            case SDLK_UP: if(climbing && alive ) { vy = 0; currentState = 10; climbing = 1; setAnimation(); } break;
+            case SDLK_DOWN: if( climbing && alive ) {vy = 0; currentState = 10; climbing = 1; setAnimation(); } break;
+            case SDLK_LEFT: if(alive) { vx = 0; currentState = 1; if(onFloor) climbing = 0; setAnimation();} break;
+            case SDLK_RIGHT: if(alive){ vx = 0; currentState = 2; if(onFloor) climbing = 0; setAnimation();} break;
+            case SDLK_SPACE: if(alive){climbing = 0; if(rdirection == 0) currentState = 3; if(rdirection == 1) currentState = 4;} break;
                 
         }
     }

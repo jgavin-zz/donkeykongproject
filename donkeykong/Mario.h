@@ -27,10 +27,11 @@ public:
     void handle_input(SDL_Event);
     
     int onLadder;
+    int rdirection;
     
 private:
     
-    int rdirection;
+    
     
 };
 

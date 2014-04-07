@@ -40,6 +40,8 @@ public:
     
     int checkOnFloor(int, int, int, int);
     
+    int checkForCollisions();
+    
 private:
     
     SDL_Surface* screen;//Screen surface

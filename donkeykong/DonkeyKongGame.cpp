@@ -256,7 +256,7 @@ void DonkeyKongGame::playDonkeyKong ()
         mario.move ();
         mario.checkOnFloor (0);
         for(i = 0; i < barrels.size(); i++){
-            if(barrels[i].checkOnFloor(1)) cout << "hit floor" << endl;
+            barrels[i].checkOnFloor(1);
         }
         if(mario.checkOnLadder(mario.direction) == 1){
             mario.onLadder = 1;
@@ -268,7 +268,38 @@ void DonkeyKongGame::playDonkeyKong ()
         else{
             mario.onLadder = 0;
         }
+        if(checkForCollisions()){
+            cout << "Died" << endl;
+            mario.alive = 0;
+            if(mario.rdirection == 0) mario.vx = 2;
+            if(mario.rdirection == 1) mario.vx = -2;
+            mario.vy = -4;
+            mario.currentState = 14;
+            mario.setAnimation();
+        }
         Display ();
     }
     SDL_Quit ();
+}
+
+int DonkeyKongGame::checkForCollisions(){
+    int i;
+    int barrelxcenter;
+    int barrelycenter;
+    int marioxcenter = mario.xpos + mario.width/2;
+    int marioycenter = mario.ypos + mario.height/2;
+    int barrelradius = 6;
+    int marioradius = 8;
+    int mindistance;
+    double distance;
+    
+    for(i = 0; i < barrels.size(); i++){
+        barrelxcenter = barrels[i].xpos + barrels[i].width/2;
+        barrelycenter = barrels[i].ypos + barrels[i].height/2;
+        mindistance = marioradius + barrelradius;
+        distance = sqrt(pow(marioxcenter-barrelxcenter,2)+pow(marioycenter-barrelycenter,2));
+        //cout << "Barrel " << i << " distance = " << distance << endl;
+        if(distance < mindistance) return 1;
+    }
+    return 0;
 }
