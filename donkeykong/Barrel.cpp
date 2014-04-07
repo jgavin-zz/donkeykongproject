@@ -46,13 +46,12 @@ void Barrel::roll(){
         
 		if (xpos >= 507){
 			floorNumber -=1;
-			ypos = 215;
+			ypos = 212;
 		}
 	}
-	if (floorNumber == 5){
+	else if (floorNumber == 5){
 		xpos -= .5;
-		
-			ypos+=.015;
+		ypos+=.02;
 		updateAnimation();
 		if (currentState == 1 && currentFrame == 1){
 			updateAnimation();
@@ -78,6 +77,34 @@ void Barrel::roll(){
 			ypos = 265;
 		}
 	}
+	else if (floorNumber == 4){
+		xpos += .5;
+		ypos+=.025;
+		updateAnimation();
+		if (currentState == 1 && currentFrame == 1){
+			updateAnimation();
+		}
+		if (currentFrame == 2 && currentState == 1){
+			currentState = 2;
+			setAnimation();
+			updateAnimation();
+			updateAnimation();
+		}
+		if (currentState == 2 && currentFrame == 2){
+			updateAnimation();
+			updateAnimation();
+		}
+		if(currentState == 2 && currentFrame == 1){
+			currentState = 1;
+			setAnimation();
+			updateAnimation();
+		}
+        
+		if (xpos >= 507){
+			floorNumber -=1;
+			ypos = 320;
+		}
+	}
 }
 
 
@@ -97,7 +124,7 @@ void Barrel::setAnimation(){
     switch(currentState){
         case 1: //rolling case 1
             spritesheetx = 46;
-            spritesheety = 255;
+            spritesheety = 256;
             currentFrame = 0;
             maxFrames = 3;
             height = 12;
