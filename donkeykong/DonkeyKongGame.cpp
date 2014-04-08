@@ -140,6 +140,7 @@ void DonkeyKongGame::playDonkeyKong ()
     bool quit = false;
     int counter = 0;
     int i;
+    int oldState;
     Display ();
     Music ();
     srand (time(NULL));
@@ -148,7 +149,14 @@ void DonkeyKongGame::playDonkeyKong ()
         //cout << "onFloor = " << mario.onFloor << endl;
         if (mario.getoldtime () + mario.getframerate () < SDL_GetTicks ())
         {
-            mario.updateAnimation ();
+            oldState = mario.currentState;
+            mario.determineAnimation();
+            if(oldState == mario.currentState){
+                mario.updateAnimation ();
+            }
+            else{
+                mario.setAnimation();
+            }
         }
         if ((peach.getoldtime () + peach.getframerate () < SDL_GetTicks ())
             && (counter % 5) == 0)

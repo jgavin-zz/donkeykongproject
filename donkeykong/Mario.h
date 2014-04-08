@@ -32,6 +32,7 @@ public:
     int hadHammer;
     int hammerStartTime;
     int checkForHammer();
+    void determineAnimation();
     
 private:
     

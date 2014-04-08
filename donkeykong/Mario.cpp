@@ -27,6 +27,7 @@ Mario::Mario() : Object(20, 20, 130, 435, 0, 0, 0, 1, 1, 2, 0, 0, 100){
     hasHammer = 0;
     hadHammer = 0;
     hammerStartTime = 0;
+    jumping = 0;
 }
 
 
@@ -86,7 +87,7 @@ void Mario::setAnimation(){
             height = 20;
             width = 20;
             break;
-        case 4: //Running left2
+        case 4: //Running right
             spritesheetx = 172;
             spritesheety = 0;
             currentFrame = 1;
@@ -150,7 +151,7 @@ void Mario::setAnimation(){
             height = 20;
             width = 19;
             break;
-        case 12: //Running left
+        case 12: //Jumping left
             spritesheetx = 92;
             spritesheety = 0;
             currentFrame = 1;
@@ -158,7 +159,7 @@ void Mario::setAnimation(){
             height = 20;
             width = 20;
             break;
-        case 13: //Jumpng right
+        case 13: //Jumping right
             spritesheetx = 194;
             spritesheety = 0;
             currentFrame = 1;
@@ -197,38 +198,32 @@ void Mario::handle_input(SDL_Event event)
             {
                 if((floorNumber < 7)&&(floorNumber == previousFloor)) floorNumber++;
                 vy = -2; direction = 1; climbing = 1; onLadder = 1;
-                onFloor = 0; currentState = 9; setAnimation();
+                onFloor = 0;
             }
             else if ( checkOnLadder(1) == 2){
                 if((floorNumber < 7)&&(floorNumber == previousFloor)) floorNumber++;
                 vy = 0; direction = 1; climbing = 1; onLadder = 2;
-                onFloor = 0; currentState = 9; setAnimation();
+                onFloor = 0;
             }
             break;
             case SDLK_DOWN: if(checkOnLadder(0) == 1 && alive && !hasHammer)
             {
                 if((floorNumber < 7)&&(floorNumber == previousFloor)) floorNumber--;
                 vy = 2; direction = 0; climbing = 1; onLadder = 1;
-                onFloor = 0; currentState = 9; setAnimation();
+                onFloor = 0;
             }
             else if ( checkOnLadder(0) == 2 && alive){
                 if((floorNumber < 7)&&(floorNumber == previousFloor)) floorNumber--;
                 vy = 0; direction = 0; climbing = 1; onLadder = 2;
-                onFloor = 0; currentState = 9; setAnimation();
+                onFloor = 0;
             }
                 break;
-            case SDLK_LEFT: if(alive){ vx = -4; if(!hasHammer) currentState = 3; if(hasHammer) currentState = 5;  climbing = 0; rdirection = 0; setAnimation();} break;
-            case SDLK_RIGHT: if(alive){vx = 4; if(!hasHammer) currentState = 4; if(hasHammer) currentState = 6; climbing = 0; rdirection = 1; setAnimation();} break;
+            case SDLK_LEFT: if(alive){ vx = -4;  climbing = 0; rdirection = 0;} break;
+            case SDLK_RIGHT: if(alive){ vx = 4; climbing = 0; rdirection = 1;} break;
             case SDLK_SPACE:
                 if(onFloor && alive && !hasHammer){
-                    onFloor = 0;
+                    onFloor = 0; jumping = 1;
                     vy = -10; climbing = 0; ypos--;
-                    if(rdirection == 1) currentState = 13;
-                    setAnimation();
-                    break;
-                    if(rdirection == 0) currentState = 12;
-                    setAnimation();
-                    break;
                 }
         }
     }
@@ -238,11 +233,11 @@ void Mario::handle_input(SDL_Event event)
         //Adjust the velocity
         switch( event.key.keysym.sym )
         {
-            case SDLK_UP: if(climbing && alive && !hasHammer) { vy = 0; currentState = 10; climbing = 1; setAnimation(); } break;
-            case SDLK_DOWN: if( climbing && alive && !hasHammer) {vy = 0; currentState = 10; climbing = 1; setAnimation(); } break;
-            case SDLK_LEFT: if(alive) { vx = 0; if(!hasHammer) currentState = 1; if(hasHammer) currentState = 7; if(onFloor) climbing = 0; setAnimation();} break;
-            case SDLK_RIGHT: if(alive){ vx = 0; if(!hasHammer) currentState = 2; if(hasHammer) currentState = 8;  if(onFloor) climbing = 0; setAnimation();} break;
-            case SDLK_SPACE: if(alive && !hasHammer){climbing = 0; if(rdirection == 0) currentState = 3; if(rdirection == 1) currentState = 4;} break;
+            case SDLK_UP: if(climbing && alive && !hasHammer) { vy = 0; climbing = 1; } break;
+            case SDLK_DOWN: if( climbing && alive && !hasHammer) {vy = 0; climbing = 1; } break;
+            case SDLK_LEFT: if(alive) { if(vx<0) vx = 0; if(onFloor) climbing = 0;} break;
+            case SDLK_RIGHT: if(alive){ if(vx>0) vx = 0; if(onFloor) climbing = 0; setAnimation();} break;
+            case SDLK_SPACE: if(alive && !hasHammer){climbing = 0;} break;
                 
         }
     }
@@ -262,4 +257,67 @@ int Mario::checkForHammer(){
         return 0;
     }
 
+}
+
+void Mario::determineAnimation(){
+    //Facing right
+    if(onFloor && !jumping && !hasHammer && rdirection && !vx && !vy  && !onLadder && !climbing){
+        currentState = 2;
+    }
+    //Facing left
+    if(onFloor && !jumping && !hasHammer && !rdirection && !vx && !vy  && !onLadder && !climbing){
+        currentState = 1;
+    }
+    //Running left
+    if(onFloor && !jumping && !hasHammer && !rdirection && vx < 0 && !vy  && !onLadder && !climbing){
+        currentState = 3;
+    }
+    //Running right
+    if(onFloor && !jumping && !hasHammer && rdirection && vx > 0 && !vy  && !onLadder && !climbing){
+        currentState = 4;
+    }
+    //Running left with hammer
+    if(onFloor && !jumping && hasHammer && !rdirection && vx < 0 && !vy  && !onLadder && !climbing){
+        currentState = 5;
+    }
+    //Running right with hammer
+    if(onFloor && !jumping && hasHammer && rdirection && vx > 0 && !vy  && !onLadder && !climbing){
+        currentState = 6;
+    }
+    //Facing left with hammer
+    if(onFloor && !jumping && hasHammer && !rdirection && !vx && !vy  && !onLadder && !climbing){
+        currentState = 7;
+    }
+    //Facing right with hammer
+    if(onFloor && !jumping && hasHammer && rdirection && !vx && !vy  && !onLadder && !climbing){
+        currentState = 8;
+    }
+    //Climbing
+    if(!vx && vy  && onLadder && climbing){
+        currentState = 9;
+    }
+    //Not Climbing
+    if(!vx && !vy  && onLadder && climbing){
+        currentState = 10;
+    }
+    //Jumping left
+    if(!onFloor && jumping && !hasHammer && !rdirection && vx < 0 && !onLadder && !climbing){
+        currentState = 12;
+    }
+    //Jumping right
+    if(!onFloor && jumping && !hasHammer && rdirection && vx > 0 && !onLadder && !climbing){
+        currentState = 13;
+    }
+    //Dying through air
+    if(jumping && !alive){
+        currentState = 14;
+    }
+    //Dead on ground
+    if(!jumping && !alive){
+        currentState = 15;
+    }
+
+    
+    
+    
 }

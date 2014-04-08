@@ -34,6 +34,7 @@ public:
     int climbing;
     int oldTime;
     int frameRate;
+    int jumping;
      int alive;
     SDL_Surface* marioSurface;
     Floor floors[7];
