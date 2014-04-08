@@ -17,6 +17,7 @@ Barrel::Barrel() : Object(12, 18, 140, 170, 0, 0, 0, 1, 0, 2, 0, 0, 100){
     floorNumber = 6;
     climbing = 0;
     initializeFloors();
+    alive = 1;
 }
 
 void Barrel::move(){

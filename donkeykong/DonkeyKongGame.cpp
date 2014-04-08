@@ -101,8 +101,15 @@ void DonkeyKongGame::Display ()
                         donkeykong.getspritesheety (), donkeykong.getwidth (),
                         donkeykong.getheight ());
     
+    if(mario.hadHammer == 0) hammer.display (screen, hammer.getMarioSurface (),
+                        hammer.getxpos (), hammer.getypos (),
+                        hammer.getspritesheetx () +
+                        hammer.getcurrentframe () * hammer.getwidth (),
+                        hammer.getspritesheety (), hammer.getwidth (),
+                        hammer.getheight ());
+    
     for(i = 0; i < barrels.size(); i++){
-    barrels[i].display(screen, barrels[i].getMarioSurface(), barrels[i].getxpos(), barrels[i].getypos(), barrels[i].getspritesheetx() + barrels[i].getcurrentframe()*barrels[i].getwidth(), barrels[i].getspritesheety(), barrels[i].getwidth(), barrels[i].getheight());
+       if(barrels[i].alive == 1) barrels[i].display(screen, barrels[i].getMarioSurface(), barrels[i].getxpos(), barrels[i].getypos(), barrels[i].getspritesheetx() + barrels[i].getcurrentframe()*barrels[i].getwidth(), barrels[i].getspritesheety(), barrels[i].getwidth(), barrels[i].getheight());
     }
     
     
@@ -258,18 +265,20 @@ void DonkeyKongGame::playDonkeyKong ()
         for(i = 0; i < barrels.size(); i++){
             barrels[i].checkOnFloor(1);
         }
-        if(mario.checkOnLadder(mario.direction) == 1){
-            mario.onLadder = 1;
-        }
-        else if(mario.checkOnLadder(mario.direction) == 2){
-            mario.onLadder = 2;
-            mario.vy = 0;
-        }
-        else{
-            mario.onLadder = 0;
+        if(mario.hasHammer == 0){
+          if(mario.checkOnLadder(mario.direction) == 1){
+              mario.onLadder = 1;
+          }
+          else if(mario.checkOnLadder(mario.direction) == 2){
+              mario.onLadder = 2;
+              mario.vy = 0;
+          }
+          else{
+              mario.onLadder = 0;
+          }
         }
         if(checkForCollisions()){
-            cout << "Died" << endl;
+           // cout << "Died" << endl;
             mario.alive = 0;
             mario.climbing = 0;
             mario.onLadder = 0;
@@ -279,6 +288,16 @@ void DonkeyKongGame::playDonkeyKong ()
             mario.currentState = 14;
             mario.setAnimation();
         }
+        if(mario.checkForHammer()){
+            mario.hasHammer = 1;
+            mario.hammerStartTime = SDL_GetTicks();
+           // cout << "Got hammer" << endl;
+        }
+        if((SDL_GetTicks() - mario.hammerStartTime > 10000)&&(mario.hasHammer)){
+            mario.hasHammer =  0;
+            mario.currentState = 1;
+            mario.setAnimation();
+        }
         Display ();
     }
     SDL_Quit ();
@@ -286,6 +305,39 @@ void DonkeyKongGame::playDonkeyKong ()
 
 int DonkeyKongGame::checkForCollisions(){
     int i;
+    int barrelXmin;
+    int barrelXmax;
+    int barrelYcenter;
+    int hammerXmin;
+    int hammerXmax;
+    int hammerYmin;
+    int hammerYmax;
+    if(mario.rdirection == 0){
+        hammerXmin = mario.xpos;
+        hammerXmax = mario.xpos + 10;
+    }
+    if(mario.rdirection == 1){
+        hammerXmin = mario.xpos + 21;
+        hammerXmax = mario.xpos + 31;
+    }
+    hammerYmin = mario.ypos + 18;
+    hammerYmax = mario.ypos + 30;
+    
+    if(mario.hasHammer){
+      for(i = 0; i < barrels.size(); i++){
+          barrelXmin = barrels[i].xpos;
+          barrelXmax = barrels[i].xpos + barrels[i].width;
+          barrelYcenter = barrels[i].ypos + barrels[i].height/2;
+          if(((barrelXmax >= hammerXmin)&&(barrelXmin <= hammerXmax))&&((barrelYcenter >= hammerYmin)&&(barrelYcenter <= hammerYmax))){
+              barrels[i].alive = 0;
+            //  cout << "barrelYcenter = " << barrelYcenter << endl;
+            //  cout << "hamerYmin = " << hammerYmin << endl;
+            //  cout << "hammerYmax = " << hammerYmax << endl;
+          }
+      }
+    }
+    
+    
     int barrelxcenter;
     int barrelycenter;
     int marioxcenter = mario.xpos + mario.width/2;
@@ -301,7 +353,9 @@ int DonkeyKongGame::checkForCollisions(){
         mindistance = marioradius + barrelradius;
         distance = sqrt(pow(marioxcenter-barrelxcenter,2)+pow(marioycenter-barrelycenter,2));
         //cout << "Barrel " << i << " distance = " << distance << endl;
-        if(distance < mindistance) return 1;
+        if((distance < mindistance)&&(barrels[i].alive)) return 1;
     }
+    
+    
     return 0;
 }

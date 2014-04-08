@@ -18,6 +18,7 @@
 		D91C07D418D95D1D0054233A /* DonkeyKongGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91C07D318D95D1D0054233A /* DonkeyKongGame.cpp */; };
 		D91FAF5418E225E500BF9BD6 /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91FAF5318E225E400BF9BD6 /* Object.cpp */; };
 		D91FAF5718E23B7800BF9BD6 /* Floor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91FAF5618E23B7800BF9BD6 /* Floor.cpp */; };
+		D929261018F3B11200856259 /* Hammer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D929260F18F3B11200856259 /* Hammer.cpp */; };
 		D93CD74418E4F46800B7ECD2 /* DonkeyKong.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D93CD74318E4F46800B7ECD2 /* DonkeyKong.cpp */; };
 		D93CD74718E4F55700B7ECD2 /* Peach.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D93CD74618E4F55700B7ECD2 /* Peach.cpp */; };
 		D93CD75818E5031C00B7ECD2 /* DonkeyKongGame.cpp~ in Resources */ = {isa = PBXBuildFile; fileRef = D93CD74818E5031A00B7ECD2 /* DonkeyKongGame.cpp~ */; };
@@ -60,6 +61,8 @@
 		D91FAF5318E225E400BF9BD6 /* Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Object.cpp; sourceTree = "<group>"; };
 		D91FAF5518E23B5600BF9BD6 /* Floor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Floor.h; sourceTree = "<group>"; };
 		D91FAF5618E23B7800BF9BD6 /* Floor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Floor.cpp; sourceTree = "<group>"; };
+		D929260E18F3B11200856259 /* Hammer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hammer.h; sourceTree = "<group>"; };
+		D929260F18F3B11200856259 /* Hammer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hammer.cpp; sourceTree = "<group>"; };
 		D93CD74218E4F46800B7ECD2 /* DonkeyKong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DonkeyKong.h; sourceTree = "<group>"; };
 		D93CD74318E4F46800B7ECD2 /* DonkeyKong.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DonkeyKong.cpp; sourceTree = "<group>"; };
 		D93CD74518E4F55700B7ECD2 /* Peach.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Peach.h; sourceTree = "<group>"; };
@@ -165,6 +168,8 @@
 				D93CD74518E4F55700B7ECD2 /* Peach.h */,
 				D93CD74618E4F55700B7ECD2 /* Peach.cpp */,
 				D91C07D318D95D1D0054233A /* DonkeyKongGame.cpp */,
+				D929260E18F3B11200856259 /* Hammer.h */,
+				D929260F18F3B11200856259 /* Hammer.cpp */,
 				D9BE0FC418ED0B3B00C44D47 /* Barrel.h */,
 				D9BE0FC518ED0B3B00C44D47 /* Barrel.cpp */,
 				D93CD74218E4F46800B7ECD2 /* DonkeyKong.h */,
@@ -284,6 +289,7 @@
 				D93CD74718E4F55700B7ECD2 /* Peach.cpp in Sources */,
 				D93CD76418E5031C00B7ECD2 /* Timer.cpp in Sources */,
 				D9BE0FC618ED0B3B00C44D47 /* Barrel.cpp in Sources */,
+				D929261018F3B11200856259 /* Hammer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

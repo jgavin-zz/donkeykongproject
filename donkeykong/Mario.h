@@ -28,6 +28,10 @@ public:
     
     int onLadder;
     int rdirection;
+    int hasHammer;
+    int hadHammer;
+    int hammerStartTime;
+    int checkForHammer();
     
 private:
     
