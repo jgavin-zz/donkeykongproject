@@ -38,7 +38,7 @@ DonkeyKongGame::DonkeyKongGame ()
     SDL_Init (SDL_INIT_EVERYTHING);
     // SDL_Color textColor = { 255, 255, 255 }; // it's white for now, color of text
     screen = SDL_SetVideoMode (550, 471, 32, SDL_SWSURFACE);
-    background = SDL_LoadBMP ("DonkeyKongBackground.bmp");
+    background = SDL_LoadBMP ("/Users/jgavin/Documents/donkeykong/donkeykong/DonkeyKongBackground.bmp");
     
     // TTF_Font *font;
     // font = TTF_OpenFont( "kongtext.ttf", 36 ); //size 12 font
@@ -117,7 +117,7 @@ void DonkeyKongGame::cleanUp ()
     //Free the loaded image
     //SDL_FreeSurface( screen );
     SDL_FreeSurface (background);
-    SDL_FreeSurface (message);
+    //SDL_FreeSurface (message);
     mario.cleanUp ();
     // Mix_FreeMusic( music );
     
@@ -271,9 +271,11 @@ void DonkeyKongGame::playDonkeyKong ()
         if(checkForCollisions()){
             cout << "Died" << endl;
             mario.alive = 0;
+            mario.climbing = 0;
+            mario.onLadder = 0;
             if(mario.rdirection == 0) mario.vx = 2;
             if(mario.rdirection == 1) mario.vx = -2;
-            mario.vy = -4;
+            mario.vy = -6;
             mario.currentState = 14;
             mario.setAnimation();
         }

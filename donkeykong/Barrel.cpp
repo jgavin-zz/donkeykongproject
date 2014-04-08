@@ -47,7 +47,9 @@ void Barrel::move(){
 void Barrel::roll(){
 	//cout<<floorNumber<<endl;
 	if(floorNumber == 6){
-        ax = .05;
+        ax = 0;
+        vx = 4;
+        //ax = .05;
         move();
 		//xpos += .5;
 		/*if(xpos >= 350){
@@ -86,7 +88,8 @@ void Barrel::roll(){
          }*/
 	}
 	else if (floorNumber == 5){
-        ax = -.05;
+        vx = -4;
+        //ax = -.05;
         move();
 		/*xpos -= .5;
 		ypos+=.02;*/
@@ -116,7 +119,8 @@ void Barrel::roll(){
 		}*/
 	}
 	else if (floorNumber == 4){
-        ax = .05;
+        vx = 4;
+        //ax = .05;
         move();
 		/*xpos += .5;
 		ypos+=.025;*/
@@ -146,7 +150,8 @@ void Barrel::roll(){
 		}*/
 	}
 	else if (floorNumber == 3){
-        ax = -.05;
+        vx = -4;
+        //ax = .05;
         move();
 		/*xpos -= .5;
 		ypos+=.025;*/
@@ -176,7 +181,8 @@ void Barrel::roll(){
 		}*/
 	}
 	else if (floorNumber == 2){
-        ax = .05;
+        vx = 4;
+        //ax = .05;
         move();
 		/*xpos += .5;
 		ypos+=.025;*/
@@ -206,7 +212,8 @@ void Barrel::roll(){
 		}*/
 	}
 	else if (floorNumber == 1){
-        ax = -.05;
+        vx = -4;
+        //ax = .05;
         move();
 		xpos -= .5;
 		if(xpos>267){
