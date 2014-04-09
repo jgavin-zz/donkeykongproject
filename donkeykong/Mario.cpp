@@ -244,8 +244,8 @@ void Mario::handle_input(SDL_Event event)
 }
 
 int Mario::checkForHammer(){
-    int hammerXmin = 45;
-    int hammerXmax = 55;
+    int hammerXmin = 35;
+    int hammerXmax = 65;
     int hammerYmin = 315;
     int hammerYmax = 333;
 
