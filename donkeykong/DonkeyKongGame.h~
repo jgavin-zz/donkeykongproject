@@ -15,6 +15,9 @@
 #include "Mario.h"
 #include "Peach.h"
 #include "DonkeyKong.h"
+#include "Barrel.h"
+#include "Hammer.h"
+#include <vector>
 
 class DonkeyKongGame{
     
@@ -25,7 +28,7 @@ public:
     SDL_Surface* OnLoad(char*); //Function to load game background
     
     void Display(); //Renders all of the game objects and background onto the screen
-
+    
     void Music();
     
     void cleanUp(); //Cleans up all of the object in the game when it is finished
@@ -38,18 +41,20 @@ public:
     
     int checkOnFloor(int, int, int, int);
     
+    int checkForCollisions();
+    
 private:
     
     SDL_Surface* screen;//Screen surface
     SDL_Surface* background;//Surface for game background
     SDL_Surface *message;
-
-    Mix_Music (music);
     
     Mario mario;//Mario object
     Peach peach; //Peach object
     DonkeyKong donkeykong; //donkeykong object
-    Floor floors[7];
+    Hammer hammer; //hammer object
+    Oil oil; //oil can object
+    vector<Barrel> barrels; //Barrel object
     
 };
 

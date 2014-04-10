@@ -16,6 +16,7 @@
 #include "Peach.h"
 #include "DonkeyKong.h"
 #include "Barrel.h"
+#include "Oil.h"
 #include "math.h"
 #include <stdlib.h>
 #include <time.h>
@@ -93,6 +94,13 @@ void DonkeyKongGame::Display ()
                    peach.getcurrentframe () * peach.getwidth (),
                    peach.getspritesheety (), peach.getwidth (),
                    peach.getheight ());
+
+    oil.display (screen, oil.getMarioSurface (), oil.getxpos (),
+                   oil.getypos (),
+                   oil.getspritesheetx () +
+                   oil.getcurrentframe () * oil.getwidth (),
+                   oil.getspritesheety (), oil.getwidth (),
+                   oil.getheight ());
     
     donkeykong.display (screen, donkeykong.getMarioSurface (),
                         donkeykong.getxpos (), donkeykong.getypos (),
@@ -158,6 +166,10 @@ void DonkeyKongGame::playDonkeyKong ()
                 mario.setAnimation();
             }
         }
+	if (oil.getoldtime () + oil.getframerate () < SDL_GetTicks ())
+        {
+		oil.updateAnimation();
+	}
         if ((peach.getoldtime () + peach.getframerate () < SDL_GetTicks ())
             && (counter % 5) == 0)
         {

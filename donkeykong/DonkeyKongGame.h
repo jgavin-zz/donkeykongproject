@@ -17,6 +17,7 @@
 #include "DonkeyKong.h"
 #include "Barrel.h"
 #include "Hammer.h"
+#include "Oil.h"
 #include <vector>
 
 class DonkeyKongGame{
@@ -52,7 +53,8 @@ private:
     Mario mario;//Mario object
     Peach peach; //Peach object
     DonkeyKong donkeykong; //donkeykong object
-    Hammer hammer;
+    Hammer hammer; //hammer object
+    Oil oil; //oil can object
     vector<Barrel> barrels; //Barrel object
     
 };
