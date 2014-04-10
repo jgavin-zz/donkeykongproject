@@ -1,8 +1,7 @@
 //  Created by Ryan Moran on 4/10/14.
 //  Copyright (c) 2014 Ryan Moran. All rights reserved.
 
-////NOTE THAT FOR NOW USES PINK SPRITESHEET: this ended up being much simpler than trying to use two sheets
-
+////NOTE: BOUNCE FUNCTION BELOW NOT FINISHED YET. FUNCTION BELOW FROM BARREL CLASS FOR COMPARISON
 #include "Object.h"
 #include "Fireball.h"
 #include <math.h>
