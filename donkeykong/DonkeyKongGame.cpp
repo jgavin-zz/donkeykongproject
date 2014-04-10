@@ -187,18 +187,18 @@ void DonkeyKongGame::playDonkeyKong ()
         }
         if ((donkeykong.currentState == 3 && donkeykong.currentFrame == 2) || (donkeykong.currentState == 2 && donkeykong.currentFrame == 0))
         {
-            if (rand() % 10 + 1 >= 3 && donkeykong.currentState != 3 && counter % 100 == 0)
+            if (rand() % 10 + 1 >= 3 && donkeykong.currentState != 3 && counter % 150 == 0)
             {
                 donkeykong.currentState = 3;
                 donkeykong.setAnimation();
             }
-            else if (donkeykong.currentState != 2 && counter % 100 == 0)
+            else if (donkeykong.currentState != 2 && counter % 150 == 0)
             {
                 donkeykong.currentState = 2;
                 donkeykong.setAnimation();
             }
         }
-        if (counter % 100 == 0 && donkeykong.currentState == 2)
+        if (counter % 150 == 0 && donkeykong.currentState == 2)
         {
             if (donkeykong.currentFrame == 0)
             {
@@ -212,7 +212,7 @@ void DonkeyKongGame::playDonkeyKong ()
             }
             
         }
-        if (counter % 100 == 0 && donkeykong.currentState == 3)
+        if (counter % 150 == 0 && donkeykong.currentState == 3)
         {
             if (donkeykong.currentFrame == 2)
             {

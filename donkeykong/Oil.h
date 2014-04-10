@@ -20,6 +20,7 @@ public:
     
     virtual void setAnimation();//Sets animation parameters according to animation state
     virtual void updateAnimation(); //Peach specific version of update animation
+	
     
 private:
     
