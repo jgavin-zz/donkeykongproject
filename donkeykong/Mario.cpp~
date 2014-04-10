@@ -32,7 +32,7 @@ Mario::Mario() : Object(20, 20, 130, 435, 0, 0, 0, 1, 1, 2, 0, 0, 100){
 
 
 void Mario::move(){
-    double dt = .5; ay = 2;
+    double dt = .3; ay = 1.5;
     if( climbing == 0){
         vy += (ay * dt);
         xpos += (vx * dt);
@@ -244,8 +244,8 @@ void Mario::handle_input(SDL_Event event)
 }
 
 int Mario::checkForHammer(){
-    int hammerXmin = 40;
-    int hammerXmax = 60;
+    int hammerXmin = 35;
+    int hammerXmax = 65;
     int hammerYmin = 315;
     int hammerYmax = 333;
 
