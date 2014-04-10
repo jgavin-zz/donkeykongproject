@@ -18,6 +18,7 @@
 #include "Barrel.h"
 #include "Hammer.h"
 #include "Oil.h"
+#include "Fireball.h"
 #include <vector>
 
 class DonkeyKongGame{

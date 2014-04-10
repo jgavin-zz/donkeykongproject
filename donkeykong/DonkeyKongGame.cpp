@@ -17,6 +17,7 @@
 #include "DonkeyKong.h"
 #include "Barrel.h"
 #include "Oil.h"
+#include "Fireball.h"
 #include "math.h"
 #include <stdlib.h>
 #include <time.h>

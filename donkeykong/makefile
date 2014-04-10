@@ -1,7 +1,7 @@
 all:	main
 
-main: main.o DonkeyKongGame.o Mario.o Object.o Floor.o Peach.o DonkeyKong.o Barrel.o Hammer.o Oil.o
-	g++ -lSDL -lSDL_image -lSDL_mixer -lSDL_ttf main.o DonkeyKongGame.o Mario.o Object.o Floor.o Peach.o DonkeyKong.o Barrel.o Hammer.o Oil.o -o main
+main: main.o DonkeyKongGame.o Mario.o Object.o Floor.o Peach.o DonkeyKong.o Barrel.o Hammer.o Oil.o Fireball.o
+	g++ -lSDL -lSDL_image -lSDL_mixer -lSDL_ttf main.o DonkeyKongGame.o Mario.o Object.o Floor.o Peach.o DonkeyKong.o Barrel.o Hammer.o Oil.o Fireball.o -o main
 
 main.o: main.cpp
 	g++ -c main.cpp
@@ -32,6 +32,9 @@ Hammer.o: Hammer.cpp
 
 Oil.o: Oil.cpp
 	g++ -c Oil.cpp
+
+Fireball.o: Fireball.cpp
+	g++ -c Fireball.cpp
 
 clean:
 	rm -f *.o main
