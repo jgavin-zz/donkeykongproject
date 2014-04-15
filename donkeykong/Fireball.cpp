@@ -219,7 +219,7 @@ void Fireball::bounce(){ //Haven't changed this from the roll function used in b
 		if(xpos>267){
 		ypos+=.025;
 		}
-		updateAnimation();
+		//updateAnimation();
         
 		//if (xpos <= 23){
 		//	currentState = 1;
@@ -257,7 +257,7 @@ void Fireball::setAnimation(){
             currentFrame = 1;
             maxFrames = 2;
             height = 17;
-            width = 17;
+            width = 20;
             break;
        
     }
