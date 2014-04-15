@@ -16,7 +16,7 @@ Fireball::Fireball() : Object(17, 17, 25, 430, 0, 0, 0, 1, 0, 2, 0, 0, 100){
     floorNumber = 1;
     climbing = 0;
     initializeFloors();
-    alive = 1;
+    alive = 0;
 }
 
 void Fireball::move(){

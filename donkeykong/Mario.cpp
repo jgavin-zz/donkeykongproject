@@ -32,7 +32,7 @@ Mario::Mario() : Object(20, 20, 130, 435, 0, 0, 0, 1, 1, 2, 0, 0, 100){
 
 
 void Mario::move(){
-    double dt = .12; ay = 8;//student machine ay = 1.5
+    double dt = .12; ay = 1.5;//student machine ay = 1.5 and jake's comp ay = 8
     if( climbing == 0){
         vy += (ay * dt);
         xpos += (vx * dt);

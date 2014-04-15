@@ -17,6 +17,7 @@
 #include "DonkeyKong.h"
 #include "Barrel.h"
 #include "Oil.h"
+#include "Fireball.h"
 #include "math.h"
 #include <stdlib.h>
 #include <time.h>
@@ -47,6 +48,8 @@ DonkeyKongGame::DonkeyKongGame ()
     mario.initializeFloors ();
     //Barrel barrel;
     barrels.push_back(Barrel());
+    
+    level = 1;
 }
 
 
@@ -119,6 +122,14 @@ void DonkeyKongGame::Display ()
     for(i = 0; i < barrels.size(); i++){
        if(barrels[i].alive == 1) barrels[i].display(screen, barrels[i].getMarioSurface(), barrels[i].getxpos(), barrels[i].getypos(), barrels[i].getspritesheetx() + barrels[i].getcurrentframe()*barrels[i].getwidth(), barrels[i].getspritesheety(), barrels[i].getwidth(), barrels[i].getheight());
     }
+
+    if(fireball.alive == 1) fireball.display (screen, fireball.getMarioSurface (),
+                        fireball.getxpos (), fireball.getypos (),
+                        fireball.getspritesheetx () +
+                        fireball.getcurrentframe () * fireball.getwidth (),
+                        fireball.getspritesheety (), fireball.getwidth (),
+                        fireball.getheight ());
+	
     
     
     SDL_Flip (screen);
@@ -149,11 +160,15 @@ void DonkeyKongGame::playDonkeyKong ()
     int counter = 0;
     int i;
     int oldState;
+    int winner;
     Display ();
     Music ();
     srand (time(NULL));
-    while (quit == false)
-    {
+    while (quit == false){
+        winner = 0;
+        initializeLevel();
+        while(winner == 0 && quit == false)
+        {
         //cout << "onFloor = " << mario.onFloor << endl;
         if (mario.getoldtime () + mario.getframerate () < SDL_GetTicks ())
         {
@@ -318,7 +333,10 @@ void DonkeyKongGame::playDonkeyKong ()
             mario.currentState = 1;
             mario.setAnimation();
         }
+            setBarrelSpeedBoost();
         Display ();
+        winner = checkForWinner();
+    }
     }
     SDL_Quit ();
 }
@@ -375,7 +393,69 @@ int DonkeyKongGame::checkForCollisions(){
         //cout << "Barrel " << i << " distance = " << distance << endl;
         if((distance < mindistance)&&(barrels[i].alive)) return 1;
     }
+
+    int oilxcenter = oil.xpos + oil.width/2;
+    int oilycenter = oil.ypos + oil.height/2;
+    barrelradius = 6;
+    int oilradius = 8;
+
+    for(i = 0; i < barrels.size(); i++){
+        barrelxcenter = barrels[i].xpos + barrels[i].width/2;
+        barrelycenter = barrels[i].ypos + barrels[i].height/2;
+        mindistance = oilradius + barrelradius;
+        distance = sqrt(pow(oilxcenter-oilxcenter,2)+pow(oilycenter-oilycenter,2));
+        //cout << "Barrel " << i << " distance = " << distance << endl;
+        if((distance < mindistance)&&(barrels[i].alive)){
+		fireball.alive=1;
+	}
+    }
     
     
     return 0;
+}
+
+int DonkeyKongGame::checkForWinner(){
+    if(mario.ypos + mario.height <= 123){
+        level++;
+        SDL_Delay(3000);
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
+
+void DonkeyKongGame::initializeLevel(){
+    //Initialize Mario
+    mario.xpos = 130;
+    mario.ypos = 435;
+    mario.vx = 0;
+    mario.vy = 0;
+    mario.direction = 1;
+    mario.onFloor = 1;
+    mario.ay = 0;
+    mario.vy = 0;
+    mario.floorNumber = 1;
+    mario.previousFloor = 1;
+    mario.onLadder = 0;
+    mario.alive = 1;
+    mario.hasHammer = 0;
+    mario.hadHammer = 0;
+    mario.hammerStartTime = 0;
+    mario.jumping = 0;
+    mario.currentState = 1;
+    
+    //Initialize DonkeyKong
+    donkeykong.currentState = 3;
+    donkeykong.currentFrame = 0;
+    
+    //Initialize Barrels
+    barrels.clear();
+}
+
+void DonkeyKongGame::setBarrelSpeedBoost(){
+    int i;
+    for(i = 0; i < barrels.size(); i++){
+        barrels[i].speedBoost = (level - 1) * 1;
+    }
 }

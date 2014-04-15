@@ -122,6 +122,14 @@ void DonkeyKongGame::Display ()
     for(i = 0; i < barrels.size(); i++){
        if(barrels[i].alive == 1) barrels[i].display(screen, barrels[i].getMarioSurface(), barrels[i].getxpos(), barrels[i].getypos(), barrels[i].getspritesheetx() + barrels[i].getcurrentframe()*barrels[i].getwidth(), barrels[i].getspritesheety(), barrels[i].getwidth(), barrels[i].getheight());
     }
+
+    if(fireball.alive == 1) fireball.display (screen, fireball.getMarioSurface (),
+                        fireball.getxpos (), fireball.getypos (),
+                        fireball.getspritesheetx () +
+                        fireball.getcurrentframe () * fireball.getwidth (),
+                        fireball.getspritesheety (), fireball.getwidth (),
+                        fireball.getheight ());
+	
     
     
     SDL_Flip (screen);
@@ -384,6 +392,22 @@ int DonkeyKongGame::checkForCollisions(){
         distance = sqrt(pow(marioxcenter-barrelxcenter,2)+pow(marioycenter-barrelycenter,2));
         //cout << "Barrel " << i << " distance = " << distance << endl;
         if((distance < mindistance)&&(barrels[i].alive)) return 1;
+    }
+
+    int oilxcenter = oil.xpos + oil.width/2;
+    int oilycenter = oil.ypos + oil.height/2;
+    barrelradius = 6;
+    int oilradius = 8;
+
+    for(i = 0; i < barrels.size(); i++){
+        barrelxcenter = barrels[i].xpos + barrels[i].width/2;
+        barrelycenter = barrels[i].ypos + barrels[i].height/2;
+        mindistance = oilradius + barrelradius;
+        distance = sqrt(pow(oilxcenter-barrelxcenter,2)+pow(oilycenter-barrelycenter,2));
+        //cout << "Barrel " << i << " distance = " << distance << endl;
+        if((distance < mindistance)&&(barrels[i].alive)){
+		fireball.alive=1;
+	}
     }
     
     

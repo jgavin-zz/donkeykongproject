@@ -62,6 +62,7 @@ private:
     DonkeyKong donkeykong; //donkeykong object
     Hammer hammer; //hammer object
     Oil oil; //oil can object
+    Fireball fireball; //a fireball object
     vector<Barrel> barrels; //Barrel object
     
     int level;
