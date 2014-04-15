@@ -295,6 +295,7 @@ void DonkeyKongGame::playDonkeyKong ()
         for(i = 0; i < barrels.size(); i++){
            barrels[i].roll();
         }
+	fireball.bounce();
         mario.move ();
         mario.checkOnFloor (0);
         for(i = 0; i < barrels.size(); i++){

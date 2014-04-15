@@ -295,6 +295,7 @@ void DonkeyKongGame::playDonkeyKong ()
         for(i = 0; i < barrels.size(); i++){
            barrels[i].roll();
         }
+	fireball.bounce();
         mario.move ();
         mario.checkOnFloor (0);
         for(i = 0; i < barrels.size(); i++){
@@ -403,7 +404,7 @@ int DonkeyKongGame::checkForCollisions(){
         barrelxcenter = barrels[i].xpos + barrels[i].width/2;
         barrelycenter = barrels[i].ypos + barrels[i].height/2;
         mindistance = oilradius + barrelradius;
-        distance = sqrt(pow(oilxcenter-oilxcenter,2)+pow(oilycenter-oilycenter,2));
+        distance = sqrt(pow(oilxcenter-barrelxcenter,2)+pow(oilycenter-barrelycenter,2));
         //cout << "Barrel " << i << " distance = " << distance << endl;
         if((distance < mindistance)&&(barrels[i].alive)){
 		fireball.alive=1;

@@ -11,7 +11,7 @@
 using namespace std;
 
 //Constructor, sets parameters and loads surface
-Fireball::Fireball() : Object(17, 17, 25, 430, 0, 0, 0, 1, 0, 2, 0, 0, 100){
+Fireball::Fireball() : Object(17, 17, 25, 437, 0, 0, 0, 2, 0, 2, 0, 0, 100){
     setAnimation();
     floorNumber = 1;
     climbing = 0;
@@ -21,14 +21,14 @@ Fireball::Fireball() : Object(17, 17, 25, 430, 0, 0, 0, 1, 0, 2, 0, 0, 100){
 
 void Fireball::move(){
     double dt = .5; ay = 2;
-    if( climbing == 0){
+    /*if( climbing == 0){
         vx += (ax * dt);
         vy += (ay * dt);
         xpos += (vx * dt);
         ypos += (vy * dt);
-    }
-    
-    if (xpos <= 0) {
+    }*/
+    //xpos += 1;
+    /*if (xpos <= 0) {
         xpos = 2;
         vx = 0;
     }
@@ -41,7 +41,7 @@ void Fireball::move(){
     if ( ypos <= 49) {
         ypos = 50;
         vy = 0;
-    }
+    }*/
 }
 
 void Fireball::bounce(){ //Haven't changed this from the roll function used in barrel yet
@@ -212,7 +212,7 @@ void Fireball::bounce(){ //Haven't changed this from the roll function used in b
 		}*/
 	}
 	else if (floorNumber == 1){
-        vx = -1.5;
+        vx = 1.5;
         //ax = .05;
         move();
 		//xpos -= .5;
@@ -220,29 +220,11 @@ void Fireball::bounce(){ //Haven't changed this from the roll function used in b
 		ypos+=.025;
 		}
 		updateAnimation();
-		if (currentState == 1 && currentFrame == 1){
-			updateAnimation();
-		}
-		if (currentFrame == 2 && currentState == 1){
-			currentState = 2;
-			setAnimation();
-			updateAnimation();
-			updateAnimation();
-		}
-		if (currentState == 2 && currentFrame == 2){
-			updateAnimation();
-			updateAnimation();
-		}
-		if(currentState == 2 && currentFrame == 1){
-			currentState = 1;
-			setAnimation();
-			updateAnimation();
-		}
         
-		if (xpos <= 23){
-			currentState = 1;
-			setAnimation();
-		}
+		//if (xpos <= 23){
+		//	currentState = 1;
+		//	setAnimation();
+		//}
 	}
 }
 
