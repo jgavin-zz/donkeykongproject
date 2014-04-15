@@ -45,6 +45,12 @@ public:
     
     int checkForCollisions();
     
+    int checkForWinner();
+    
+    void initializeLevel();
+    
+    void setBarrelSpeedBoost();
+    
 private:
     
     SDL_Surface* screen;//Screen surface
@@ -57,6 +63,8 @@ private:
     Hammer hammer; //hammer object
     Oil oil; //oil can object
     vector<Barrel> barrels; //Barrel object
+    
+    int level;
     
 };
 

@@ -25,6 +25,7 @@ public:
     virtual void move();
 
     int hitOil;
+    double speedBoost;
     
 private:
     

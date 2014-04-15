@@ -48,6 +48,8 @@ DonkeyKongGame::DonkeyKongGame ()
     mario.initializeFloors ();
     //Barrel barrel;
     barrels.push_back(Barrel());
+    
+    level = 1;
 }
 
 
@@ -150,11 +152,15 @@ void DonkeyKongGame::playDonkeyKong ()
     int counter = 0;
     int i;
     int oldState;
+    int winner;
     Display ();
     Music ();
     srand (time(NULL));
-    while (quit == false)
-    {
+    while (quit == false){
+        winner = 0;
+        initializeLevel();
+        while(winner == 0 && quit == false)
+        {
         //cout << "onFloor = " << mario.onFloor << endl;
         if (mario.getoldtime () + mario.getframerate () < SDL_GetTicks ())
         {
@@ -319,7 +325,10 @@ void DonkeyKongGame::playDonkeyKong ()
             mario.currentState = 1;
             mario.setAnimation();
         }
+            setBarrelSpeedBoost();
         Display ();
+        winner = checkForWinner();
+    }
     }
     SDL_Quit ();
 }
@@ -379,4 +388,50 @@ int DonkeyKongGame::checkForCollisions(){
     
     
     return 0;
+}
+
+int DonkeyKongGame::checkForWinner(){
+    if(mario.ypos + mario.height <= 123){
+        level++;
+        SDL_Delay(3000);
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
+
+void DonkeyKongGame::initializeLevel(){
+    //Initialize Mario
+    mario.xpos = 130;
+    mario.ypos = 435;
+    mario.vx = 0;
+    mario.vy = 0;
+    mario.direction = 1;
+    mario.onFloor = 1;
+    mario.ay = 0;
+    mario.vy = 0;
+    mario.floorNumber = 1;
+    mario.previousFloor = 1;
+    mario.onLadder = 0;
+    mario.alive = 1;
+    mario.hasHammer = 0;
+    mario.hadHammer = 0;
+    mario.hammerStartTime = 0;
+    mario.jumping = 0;
+    mario.currentState = 1;
+    
+    //Initialize DonkeyKong
+    donkeykong.currentState = 3;
+    donkeykong.currentFrame = 0;
+    
+    //Initialize Barrels
+    barrels.clear();
+}
+
+void DonkeyKongGame::setBarrelSpeedBoost(){
+    int i;
+    for(i = 0; i < barrels.size(); i++){
+        barrels[i].speedBoost = (level - 1) * 1;
+    }
 }

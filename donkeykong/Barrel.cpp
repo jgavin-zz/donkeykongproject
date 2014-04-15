@@ -19,10 +19,13 @@ Barrel::Barrel() : Object(12, 18, 140, 170, 0, 0, 0, 1, 0, 2, 0, 0, 100){
     initializeFloors();
     hitOil=0;
     alive = 1;
+    speedBoost = 0;
 }
 
 void Barrel::move(){
     double dt = .5; ay = 2;
+    if(vx > 0) vx = vx + speedBoost;
+    if(vx < 0) vx = vx - speedBoost;
     if( climbing == 0){
         vx += (ax * dt);
         vy += (ay * dt);
@@ -50,7 +53,7 @@ void Barrel::roll(){
 	//cout<<floorNumber<<endl;
 	if(floorNumber == 6){
         ax = 0;
-        vx = 1.5;
+        vx = 1.5;//student machine vx = 1.5
         //ax = .05;
         move();
 		//xpos += .5;

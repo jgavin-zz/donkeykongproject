@@ -32,7 +32,7 @@ Mario::Mario() : Object(20, 20, 130, 435, 0, 0, 0, 1, 1, 2, 0, 0, 100){
 
 
 void Mario::move(){
-    double dt = .12; ay = 1.5;
+    double dt = .12; ay = 8;//student machine ay = 1.5
     if( climbing == 0){
         vy += (ay * dt);
         xpos += (vx * dt);
@@ -194,6 +194,7 @@ void Mario::handle_input(SDL_Event event)
         //Adjust the velocity
         switch( event.key.keysym.sym )
         {
+                //student machine vy = -2
             case SDLK_UP: if( checkOnLadder(1) == 1 && alive && !hasHammer)
             {
                 if((floorNumber < 7)&&(floorNumber == previousFloor)) floorNumber++;
@@ -208,6 +209,7 @@ void Mario::handle_input(SDL_Event event)
             break;
             case SDLK_DOWN: if(checkOnLadder(0) == 1 && alive && !hasHammer)
             {
+                //student machine vy = 2
                 if((floorNumber < 7)&&(floorNumber == previousFloor)) floorNumber--;
                 vy = 2; direction = 0; climbing = 1; onLadder = 1;
                 onFloor = 0;
@@ -218,8 +220,10 @@ void Mario::handle_input(SDL_Event event)
                 onFloor = 0;
             }
                 break;
+                //student machine vx = 4
             case SDLK_LEFT: if(alive){ vx = -4;  climbing = 0; rdirection = 0;} break;
             case SDLK_RIGHT: if(alive){ vx = 4; climbing = 0; rdirection = 1;} break;
+                //student machine vy = -10
             case SDLK_SPACE:
                 if(onFloor && alive && !hasHammer){
                     onFloor = 0; jumping = 1;
@@ -261,11 +265,11 @@ int Mario::checkForHammer(){
 
 void Mario::determineAnimation(){
     //Facing right
-    if(onFloor && !jumping && !hasHammer && rdirection && !vx && !vy  && !onLadder && !climbing){
+    if(onFloor && !jumping && !hasHammer && rdirection && !vx && !vy  && !climbing){
         currentState = 2;
     }
     //Facing left
-    if(onFloor && !jumping && !hasHammer && !rdirection && !vx && !vy  && !onLadder && !climbing){
+    if(onFloor && !jumping && !hasHammer && !rdirection && !vx && !vy  && !climbing){
         currentState = 1;
     }
     //Running left

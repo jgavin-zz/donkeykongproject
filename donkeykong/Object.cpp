@@ -436,7 +436,7 @@ int Object::checkOnFloor(int print){
 }
 
 int Object::checkOnLadder(int direction){
-    if(jumping) return 0;
+    if(jumping || vx!=0) return 0;
     if((previousFloor == 1)&&( direction == 1))
     {
         if ((xpos + width/2 >= 200 && xpos + width/2 <= 220)||(xpos + width/2 >= 430 && xpos + width/2 <= 450))
