@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D9048FBB18DAA71D005A8B83 /* Mario.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9048FBA18DAA71D005A8B83 /* Mario.cpp */; };
+		D91B1A2118F7708F00D2B605 /* Fireball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91B1A1F18F7708F00D2B605 /* Fireball.cpp */; };
+		D91B1A2418F7709900D2B605 /* Oil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91B1A2218F7709900D2B605 /* Oil.cpp */; };
 		D91C07A118D826FD0054233A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D91C07A018D826FD0054233A /* Cocoa.framework */; };
 		D91C07AD18D826FD0054233A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91C07AC18D826FD0054233A /* main.cpp */; };
 		D91C07BF18D827920054233A /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = D91C07BE18D827920054233A /* SDLMain.m */; };
@@ -42,6 +44,10 @@
 /* Begin PBXFileReference section */
 		D9048FB618DAA404005A8B83 /* Mario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mario.h; sourceTree = "<group>"; };
 		D9048FBA18DAA71D005A8B83 /* Mario.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mario.cpp; sourceTree = "<group>"; };
+		D91B1A1F18F7708F00D2B605 /* Fireball.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Fireball.cpp; sourceTree = "<group>"; };
+		D91B1A2018F7708F00D2B605 /* Fireball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fireball.h; sourceTree = "<group>"; };
+		D91B1A2218F7709900D2B605 /* Oil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Oil.cpp; sourceTree = "<group>"; };
+		D91B1A2318F7709900D2B605 /* Oil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Oil.h; sourceTree = "<group>"; };
 		D91C079D18D826FD0054233A /* donkeykong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = donkeykong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D91C07A018D826FD0054233A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D91C07A318D826FD0054233A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -168,6 +174,10 @@
 				D93CD74518E4F55700B7ECD2 /* Peach.h */,
 				D93CD74618E4F55700B7ECD2 /* Peach.cpp */,
 				D91C07D318D95D1D0054233A /* DonkeyKongGame.cpp */,
+				D91B1A2218F7709900D2B605 /* Oil.cpp */,
+				D91B1A2318F7709900D2B605 /* Oil.h */,
+				D91B1A1F18F7708F00D2B605 /* Fireball.cpp */,
+				D91B1A2018F7708F00D2B605 /* Fireball.h */,
 				D929260E18F3B11200856259 /* Hammer.h */,
 				D929260F18F3B11200856259 /* Hammer.cpp */,
 				D9BE0FC418ED0B3B00C44D47 /* Barrel.h */,
@@ -290,6 +300,8 @@
 				D93CD76418E5031C00B7ECD2 /* Timer.cpp in Sources */,
 				D9BE0FC618ED0B3B00C44D47 /* Barrel.cpp in Sources */,
 				D929261018F3B11200856259 /* Hammer.cpp in Sources */,
+				D91B1A2118F7708F00D2B605 /* Fireball.cpp in Sources */,
+				D91B1A2418F7709900D2B605 /* Oil.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
