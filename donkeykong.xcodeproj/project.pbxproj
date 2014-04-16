@@ -20,6 +20,8 @@
 		D91C07D418D95D1D0054233A /* DonkeyKongGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91C07D318D95D1D0054233A /* DonkeyKongGame.cpp */; };
 		D91FAF5418E225E500BF9BD6 /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91FAF5318E225E400BF9BD6 /* Object.cpp */; };
 		D91FAF5718E23B7800BF9BD6 /* Floor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D91FAF5618E23B7800BF9BD6 /* Floor.cpp */; };
+		D926CC3918FE47BA00F23AEC /* Intro.bmp in Resources */ = {isa = PBXBuildFile; fileRef = D926CC3818FE47BA00F23AEC /* Intro.bmp */; };
+		D926CC3D18FE4EB500F23AEC /* introScene.bmp in Resources */ = {isa = PBXBuildFile; fileRef = D926CC3C18FE4EB500F23AEC /* introScene.bmp */; };
 		D929261018F3B11200856259 /* Hammer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D929260F18F3B11200856259 /* Hammer.cpp */; };
 		D93CD74418E4F46800B7ECD2 /* DonkeyKong.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D93CD74318E4F46800B7ECD2 /* DonkeyKong.cpp */; };
 		D93CD74718E4F55700B7ECD2 /* Peach.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D93CD74618E4F55700B7ECD2 /* Peach.cpp */; };
@@ -67,6 +69,8 @@
 		D91FAF5318E225E400BF9BD6 /* Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Object.cpp; sourceTree = "<group>"; };
 		D91FAF5518E23B5600BF9BD6 /* Floor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Floor.h; sourceTree = "<group>"; };
 		D91FAF5618E23B7800BF9BD6 /* Floor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Floor.cpp; sourceTree = "<group>"; };
+		D926CC3818FE47BA00F23AEC /* Intro.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = Intro.bmp; path = ../../../Downloads/Intro.bmp; sourceTree = "<group>"; };
+		D926CC3C18FE4EB500F23AEC /* introScene.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = introScene.bmp; path = ../../../Downloads/introScene.bmp; sourceTree = "<group>"; };
 		D929260E18F3B11200856259 /* Hammer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hammer.h; sourceTree = "<group>"; };
 		D929260F18F3B11200856259 /* Hammer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hammer.cpp; sourceTree = "<group>"; };
 		D93CD74218E4F46800B7ECD2 /* DonkeyKong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DonkeyKong.h; sourceTree = "<group>"; };
@@ -168,9 +172,11 @@
 			isa = PBXGroup;
 			children = (
 				D91C07BD18D827890054233A /* SDLMain.h */,
+				D926CC3C18FE4EB500F23AEC /* introScene.bmp */,
 				D91C07BE18D827920054233A /* SDLMain.m */,
 				D91C07AC18D826FD0054233A /* main.cpp */,
 				D91C07D218D95BAD0054233A /* DonkeyKongGame.h */,
+				D926CC3818FE47BA00F23AEC /* Intro.bmp */,
 				D93CD74518E4F55700B7ECD2 /* Peach.h */,
 				D93CD74618E4F55700B7ECD2 /* Peach.cpp */,
 				D91C07D318D95D1D0054233A /* DonkeyKongGame.cpp */,
@@ -279,6 +285,8 @@
 				D93CD76318E5031C00B7ECD2 /* main.cpp~ in Resources */,
 				D93CD76518E5031C00B7ECD2 /* Timer.cpp~ in Resources */,
 				D93CD76618E5031C00B7ECD2 /* Timer.h~ in Resources */,
+				D926CC3918FE47BA00F23AEC /* Intro.bmp in Resources */,
+				D926CC3D18FE4EB500F23AEC /* introScene.bmp in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
