@@ -275,7 +275,7 @@ void Fireball::setAnimation(){
 //function to make sure fireball guy stays on screen
 
 void Fireball::ensureOnScreen(){
-	if(xpos>490){
+	if(xpos>495){
 		vx = -1;
 	}
 	else if(xpos<5){
