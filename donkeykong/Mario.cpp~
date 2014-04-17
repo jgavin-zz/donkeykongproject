@@ -1,3 +1,4 @@
+
 //
 //  Mario.cpp
 //  SDL_Tutorial
@@ -32,7 +33,7 @@ Mario::Mario() : Object(20, 20, 130, 435, 0, 0, 0, 1, 1, 2, 0, 0, 100){
 
 
 void Mario::move(){
-    double dt = .12; ay = 8;//student machine ay = 1.5
+    double dt = .12; ay = 1.5;//student machine ay = 1.5 and jake's comp ay = 8
     if( climbing == 0){
         vy += (ay * dt);
         xpos += (vx * dt);
@@ -63,7 +64,7 @@ void Mario::move(){
 //Function sets animation parameters according to state of mario
 void Mario::setAnimation(){
     switch(currentState){
-        case 1: //Facing right
+        case 1: //Facing left
             spritesheetx = 134;
             spritesheety = 0;
             currentFrame = 1;
@@ -71,7 +72,7 @@ void Mario::setAnimation(){
             height = 20;
             width = 20;
             break;
-        case 2: //Running right
+        case 2: //Facing right
             spritesheetx = 153;
             spritesheety = 0;
             currentFrame = 1;
@@ -227,7 +228,7 @@ void Mario::handle_input(SDL_Event event)
             case SDLK_SPACE:
                 if(onFloor && alive && !hasHammer){
                     onFloor = 0; jumping = 1;
-                    vy = -10; climbing = 0; ypos--;
+                    vy = -25; climbing = 0; ypos--;
                 }
         }
     }

@@ -51,11 +51,19 @@ public:
     
     void setBarrelSpeedBoost();
     
+    void runIntroScreen();
+    
+    void onLoad(char);
+    
+    void introDisplay();
+    
 private:
     
     SDL_Surface* screen;//Screen surface
     SDL_Surface* background;//Surface for game background
     SDL_Surface *message;
+    SDL_Surface* introScreen;
+    SDL_Surface* floor;
     
     Mario mario;//Mario object
     Peach peach; //Peach object

@@ -1,3 +1,4 @@
+
 //
 //  Mario.cpp
 //  SDL_Tutorial
@@ -63,7 +64,7 @@ void Mario::move(){
 //Function sets animation parameters according to state of mario
 void Mario::setAnimation(){
     switch(currentState){
-        case 1: //Facing right
+        case 1: //Facing left
             spritesheetx = 134;
             spritesheety = 0;
             currentFrame = 1;
@@ -71,7 +72,7 @@ void Mario::setAnimation(){
             height = 20;
             width = 20;
             break;
-        case 2: //Running right
+        case 2: //Facing right
             spritesheetx = 153;
             spritesheety = 0;
             currentFrame = 1;

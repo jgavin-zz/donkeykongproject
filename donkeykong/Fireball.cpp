@@ -20,14 +20,13 @@ Fireball::Fireball() : Object(17, 17, 25, 437, 0, 0, 0, 2, 0, 2, 0, 0, 100){
 }
 
 void Fireball::move(){
-    double dt = .5; ay = 2;
-    /*if( climbing == 0){
+    double dt = .12; ay = 1.5;
+    
         vx += (ax * dt);
         vy += (ay * dt);
         xpos += (vx * dt);
         ypos += (vy * dt);
-    }*/
-    //xpos += 1;
+ 
     /*if (xpos <= 0) {
         xpos = 2;
         vx = 0;
@@ -42,15 +41,20 @@ void Fireball::move(){
         ypos = 50;
         vy = 0;
     }*/
+    xpos = xpos+vx*dt;
 }
 
 void Fireball::bounce(){ //Haven't changed this from the roll function used in barrel yet
 	//cout<<floorNumber<<endl;
-	if(floorNumber == 6){
-        ax = 0;
-        vx = 1.5;
+	if(floorNumber== 7){
+		//vx = 1;
+		move();
+	}
+	else if(floorNumber == 6){
+       // vx = 1;
+	move();
         //ax = .05;
-        move();
+        //move();
 		//xpos += .5;
 		/*if(xpos >= 350){
          ypos+=.025;
@@ -88,7 +92,7 @@ void Fireball::bounce(){ //Haven't changed this from the roll function used in b
          }*/
 	}
 	else if (floorNumber == 5){
-        vx = -1.5;
+       // vx = -1;
         //ax = -.05;
         move();
 		/*xpos -= .5;
@@ -119,7 +123,7 @@ void Fireball::bounce(){ //Haven't changed this from the roll function used in b
 		}*/
 	}
 	else if (floorNumber == 4){
-        vx = 1.5;
+        //vx = 1;
         //ax = .05;
         move();
 		/*xpos += .5;
@@ -150,7 +154,7 @@ void Fireball::bounce(){ //Haven't changed this from the roll function used in b
 		}*/
 	}
 	else if (floorNumber == 3){
-        vx = -1.5;
+        //vx = -1;
         //ax = .05;
         move();
 		/*xpos -= .5;
@@ -181,7 +185,7 @@ void Fireball::bounce(){ //Haven't changed this from the roll function used in b
 		}*/
 	}
 	else if (floorNumber == 2){
-        vx = 1.5;
+        //vx = 1;
         //ax = .05;
         move();
 		/*xpos += .5;
@@ -212,7 +216,12 @@ void Fireball::bounce(){ //Haven't changed this from the roll function used in b
 		}*/
 	}
 	else if (floorNumber == 1){
-        vx = 1.5;
+	if(xpos==1){
+      //  vx = 1;
+	}
+	else if(xpos==490){
+	//vx = -1;
+	}
         //ax = .05;
         move();
 		//xpos -= .5;
@@ -261,4 +270,15 @@ void Fireball::setAnimation(){
             break;
        
     }
+}
+
+//function to make sure fireball guy stays on screen
+
+void Fireball::ensureOnScreen(){
+	if(xpos>490){
+		vx = -1;
+	}
+	else if(xpos<5){
+		vx = 1;
+	}
 }
