@@ -76,6 +76,8 @@ private:
     vector<Barrel> barrels; //Barrel object
     
     int level;
+  
+    int dkSpeed;
     
 };
 

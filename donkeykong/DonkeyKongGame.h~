@@ -56,6 +56,8 @@ public:
     void onLoad(char);
     
     void introDisplay();
+
+    void deathAnimation();
     
 private:
     

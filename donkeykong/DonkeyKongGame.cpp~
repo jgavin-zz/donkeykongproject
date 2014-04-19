@@ -177,6 +177,7 @@ void DonkeyKongGame::playDonkeyKong ()
     bool quit = false;
     int counter = 0;
     int i;
+    dkSpeed = 150;
     int oldState;
     int winner;
     Display ();
@@ -219,20 +220,21 @@ void DonkeyKongGame::playDonkeyKong ()
                 peach.setAnimation ();
             }
         }
+        cout << dkSpeed << endl;
         if ((donkeykong.currentState == 3 && donkeykong.currentFrame == 2) || (donkeykong.currentState == 2 && donkeykong.currentFrame == 0))
         {
-            if (rand() % 10 + 1 >= 3 && donkeykong.currentState != 3 && counter % 150 == 0)
+            if (rand() % 10 + 1 >= 3 && donkeykong.currentState != 3 && counter % dkSpeed == 0)
             {
                 donkeykong.currentState = 3;
                 donkeykong.setAnimation();
             }
-            else if (donkeykong.currentState != 2 && counter % 150 == 0)
+            else if (donkeykong.currentState != 2 && counter % dkSpeed == 0)
             {
                 donkeykong.currentState = 2;
                 donkeykong.setAnimation();
             }
         }
-        if (counter % 150 == 0 && donkeykong.currentState == 2)
+        if (counter % dkSpeed == 0 && donkeykong.currentState == 2)
         {
             if (donkeykong.currentFrame == 0)
             {
@@ -246,7 +248,7 @@ void DonkeyKongGame::playDonkeyKong ()
             }
             
         }
-        if (counter % 150 == 0 && donkeykong.currentState == 3)
+        if (counter % dkSpeed == 0 && donkeykong.currentState == 3)
         {
             if (donkeykong.currentFrame == 2)
             {
@@ -334,7 +336,7 @@ void DonkeyKongGame::playDonkeyKong ()
           }
         }
         if(checkForCollisions()){
-           cout << "Died" << endl;
+           //cout << "Died" << endl;
             mario.alive = 0;
             mario.climbing = 0;
             mario.onLadder = 0;
@@ -456,6 +458,7 @@ int randomnum = 0;
 int DonkeyKongGame::checkForWinner(){
     if((mario.ypos + mario.height <= 123)&&(mario.onFloor)&&(mario.currentState != 9)){
         level++;
+        dkSpeed -= 50;
         SDL_Delay(3000);
         return 1;
     }
@@ -524,7 +527,6 @@ SDL_Delay(150);
 mario.updateAnimation();
 counter++;
 }
-SDL_Delay(1000);
 if (mario.rdirection == 0)
 { 
    mario.currentState = 15;
@@ -535,7 +537,7 @@ else
 }
 mario.setAnimation();
 Display();
-SDL_Delay(3000);
+SDL_Delay(2000);
 }
 
 void DonkeyKongGame::runIntroScreen(){
