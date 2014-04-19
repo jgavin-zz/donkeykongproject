@@ -408,6 +408,7 @@ int DonkeyKongGame::checkForCollisions(){
     int marioxcenter = mario.xpos + mario.width/2;
     int marioycenter = mario.ypos + mario.height/2;
     int barrelradius = 6;
+    int fireballradius = 6;
     int marioradius = 8;
     int mindistance;
     double distance;
@@ -420,6 +421,12 @@ int DonkeyKongGame::checkForCollisions(){
         //cout << "Barrel " << i << " distance = " << distance << endl;
         if((distance < mindistance)&&(barrels[i].alive)) return 1;
     }
+
+    int fireballxcenter = fireball.xpos + fireball.width/2;
+    int fireballycenter = fireball.ypos + fireball.height/2;
+    mindistance = marioradius + fireballradius;
+    distance = sqrt(pow(marioxcenter-fireballxcenter,2)+pow(marioycenter-fireballycenter,2));
+    if((distance < mindistance)&&(fireball.alive)) return 1;
 
     int oilxcenter = oil.xpos + oil.width/2;
     int oilycenter = oil.ypos + oil.height/2;
@@ -481,6 +488,11 @@ void DonkeyKongGame::initializeLevel(){
     mario.previousFloor = 1;
     mario.onLadder = 0;
     mario.alive = 1;
+    fireball.alive = 0;
+    fireball.xpos = 25;
+    fireball.ypos = 437;
+    fireball.vx = 0;
+    fireball.vy = 0;
     mario.hasHammer = 0;
     mario.hadHammer = 0;
     mario.hammerStartTime = 0;
