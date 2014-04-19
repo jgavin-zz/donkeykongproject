@@ -176,13 +176,21 @@ void Mario::setAnimation(){
             height = 20;
             width = 20;
             break;
-        case 15: //Dead
-            spritesheetx = 131;
-            spritesheety = 105;
+        case 15: //Dead left
+            spritesheetx = 40;
+            spritesheety = 85;
             currentFrame = 1;
             maxFrames = 1;
             height = 20;
-            width = 22;
+            width = 20;
+            break;
+        case 16: //Dead right
+            spritesheetx = 186;
+            spritesheety = 85;
+            currentFrame = 1;
+            maxFrames = 1;
+            height = 20;
+            width = 20;
             break;
     }
 }
@@ -228,7 +236,7 @@ void Mario::handle_input(SDL_Event event)
             case SDLK_SPACE:
                 if(onFloor && alive && !hasHammer){
                     onFloor = 0; jumping = 1;
-                    vy = -25; climbing = 0; ypos--;
+                    vy = -10; climbing = 0; ypos--;
                 }
         }
     }

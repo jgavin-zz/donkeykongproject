@@ -334,7 +334,7 @@ void DonkeyKongGame::playDonkeyKong ()
           }
         }
         if(checkForCollisions()){
-           // cout << "Died" << endl;
+           cout << "Died" << endl;
             mario.alive = 0;
             mario.climbing = 0;
             mario.onLadder = 0;
@@ -343,6 +343,9 @@ void DonkeyKongGame::playDonkeyKong ()
             mario.vy = -6;
             mario.currentState = 14;
             mario.setAnimation();
+            SDL_Delay(1000);
+            deathAnimation();
+            initializeLevel();
         }
         if(mario.checkForHammer()){
             mario.hasHammer = 1;
@@ -507,6 +510,31 @@ void DonkeyKongGame::setBarrelSpeedBoost(){
     for(i = 0; i < barrels.size(); i++){
         barrels[i].speedBoost = (level - 1) * 1;
     }
+}
+
+void DonkeyKongGame::deathAnimation()
+{
+mario.currentState = 14;
+mario.setAnimation();
+int counter = 0;
+while (counter!=13)
+{
+Display();
+SDL_Delay(150);
+mario.updateAnimation();
+counter++;
+}
+if (mario.rdirection == 0)
+{ 
+   mario.currentState = 15;
+}
+else
+{
+   mario.currentState = 16;
+}
+mario.setAnimation();
+Display();
+SDL_Delay(1000);
 }
 
 void DonkeyKongGame::runIntroScreen(){

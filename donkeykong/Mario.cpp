@@ -176,13 +176,21 @@ void Mario::setAnimation(){
             height = 20;
             width = 20;
             break;
-        case 15: //Dead
-            spritesheetx = 131;
-            spritesheety = 105;
+        case 15: //Dead left
+            spritesheetx = 40;
+            spritesheety = 85;
             currentFrame = 1;
             maxFrames = 1;
             height = 20;
-            width = 22;
+            width = 20;
+            break;
+        case 16: //Dead right
+            spritesheetx = 206;
+            spritesheety = 85;
+            currentFrame = 1;
+            maxFrames = 1;
+            height = 20;
+            width = 20;
             break;
     }
 }
