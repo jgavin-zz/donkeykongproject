@@ -334,7 +334,7 @@ void DonkeyKongGame::playDonkeyKong ()
           }
         }
         if(checkForCollisions()){
-           cout << "Died" << endl;
+           //cout << "Died" << endl;
             mario.alive = 0;
             mario.climbing = 0;
             mario.onLadder = 0;
@@ -534,7 +534,7 @@ else
 }
 mario.setAnimation();
 Display();
-SDL_Delay(1000);
+SDL_Delay(2000);
 }
 
 void DonkeyKongGame::runIntroScreen(){
