@@ -166,13 +166,19 @@ void DonkeyKongGame::Display ()
     SDL_Flip (screen);
     
 }
-
+//Can't get the scoring below to behave properly!!!!
 void DonkeyKongGame::score(){
+	if(mario.alive==0){
+		scoreint= scoreint-100;
+	}
+	SDL_FillRect(text,NULL,0);
 	stringstream strs;
 	strs << scoreint;
+	//cout<<scoreint<<endl;
 	string temp_str = strs.str();
-	memset(&currentScore,0,sizeof(currentScore));
+	//cout<<temp_str<<endl;
 	currentScore = (char*) temp_str.c_str();
+	//cout<<currentScore<<endl;
 	SDL_Color text_color = {255,255,255};
 	text = TTF_RenderText_Solid(font,currentScore,text_color);
 
@@ -430,7 +436,8 @@ int DonkeyKongGame::checkForCollisions(){
           barrelYcenter = barrels[i].ypos + barrels[i].height/2;
           if(((barrelXmax >= hammerXmin)&&(barrelXmin <= hammerXmax))&&((barrelYcenter >= hammerYmin)&&(barrelYcenter <= hammerYmax))){
               barrels[i].alive = 0;
-	      scoreint += 100;
+	      //scoreint += 100;
+	      //cout<<scoreint<<endl;
             //  cout << "barrelYcenter = " << barrelYcenter << endl;
             //  cout << "hamerYmin = " << hammerYmin << endl;
             //  cout << "hammerYmax = " << hammerYmax << endl;
