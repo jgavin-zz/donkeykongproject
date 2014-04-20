@@ -70,6 +70,7 @@ private:
     SDL_Surface* introScreen;
     SDL_Surface* floor;
     SDL_Surface* text;
+    SDL_Surface* coverOldText;
     TTF_Font* font;
     
     Mario mario;//Mario object
@@ -85,6 +86,7 @@ private:
     int dkSpeed;
     
     int scoreint; //integer value to keep track of score
+    char* currentScore;
 };
 
 #endif

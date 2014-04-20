@@ -61,6 +61,7 @@ DonkeyKongGame::DonkeyKongGame ()
 		SDL_Quit();
 	}
 
+
     mario.initializeFloors ();
    
     
@@ -168,17 +169,13 @@ void DonkeyKongGame::Display ()
 }
 //Can't get the scoring below to behave properly!!!!
 void DonkeyKongGame::score(){
-	if(mario.alive==0){
-		scoreint= scoreint-100;
-	}
-	SDL_FillRect(text,NULL,0);
 	stringstream strs;
 	strs << scoreint;
-	//cout<<scoreint<<endl;
+	//cout<<scoreint<<endl; //not score int behaving badly
 	string temp_str = strs.str();
-	//cout<<temp_str<<endl;
+	//cout<<temp_str<<endl; //not the temp string behaving badly
 	currentScore = (char*) temp_str.c_str();
-	//cout<<currentScore<<endl;
+	//cout<<currentScore<<endl; //not currentScore behaving badly. so text must not be getting cleared correctly
 	SDL_Color text_color = {255,255,255};
 	text = TTF_RenderText_Solid(font,currentScore,text_color);
 
@@ -378,6 +375,7 @@ void DonkeyKongGame::playDonkeyKong ()
         if(checkForCollisions()){
            //cout << "Died" << endl;
             mario.alive = 0;
+	    scoreint=0;
             mario.climbing = 0;
             mario.onLadder = 0;
             if(mario.rdirection == 0) mario.vx = 2;
