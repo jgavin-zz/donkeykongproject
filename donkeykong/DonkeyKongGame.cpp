@@ -169,6 +169,11 @@ void DonkeyKongGame::Display ()
 }
 //Can't get the scoring below to behave properly!!!!
 void DonkeyKongGame::score(){
+	SDL_Rect DestR;
+        DestR.x = 120;
+	DestR.y = 12;
+	SDL_FillRect (text, &text->clip_rect,SDL_MapRGB (screen->format, 0xFF, 0xFF, 0xFF));
+	SDL_BlitSurface(text, NULL, background, &DestR);
 	stringstream strs;
 	strs << scoreint;
 	//cout<<scoreint<<endl; //not score int behaving badly
@@ -178,11 +183,6 @@ void DonkeyKongGame::score(){
 	//cout<<currentScore<<endl; //not currentScore behaving badly. so text must not be getting cleared correctly
 	SDL_Color text_color = {255,255,255};
 	text = TTF_RenderText_Solid(font,currentScore,text_color);
-
-	SDL_Rect DestR;
-    
-    DestR.x = 120;
-    DestR.y = 12;
 
 
 	SDL_BlitSurface(text, NULL, background, &DestR);
@@ -375,7 +375,7 @@ void DonkeyKongGame::playDonkeyKong ()
         if(checkForCollisions()){
            //cout << "Died" << endl;
             mario.alive = 0;
-	    scoreint=0;
+	    scoreint=scoreint-100;
             mario.climbing = 0;
             mario.onLadder = 0;
             if(mario.rdirection == 0) mario.vx = 2;
@@ -433,8 +433,10 @@ int DonkeyKongGame::checkForCollisions(){
           barrelXmax = barrels[i].xpos + barrels[i].width;
           barrelYcenter = barrels[i].ypos + barrels[i].height/2;
           if(((barrelXmax >= hammerXmin)&&(barrelXmin <= hammerXmax))&&((barrelYcenter >= hammerYmin)&&(barrelYcenter <= hammerYmax))){
+	      if(barrels[i].alive==1){
+	      	scoreint += 200;
+	      }
               barrels[i].alive = 0;
-	      //scoreint += 100;
 	      //cout<<scoreint<<endl;
             //  cout << "barrelYcenter = " << barrelYcenter << endl;
             //  cout << "hamerYmin = " << hammerYmin << endl;
