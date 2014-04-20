@@ -313,6 +313,7 @@ void Object::initializeFloors(){
 int Object::checkOnFloor(int print){
     
     int yfloor[7];
+    cout << b.type;
     yfloor[0] =  floors[0].getslope() * xpos + floors[0].getyint();
     yfloor[1] =  floors[1].getslope() * xpos + floors[1].getyint();
     yfloor[2] =  floors[2].getslope() * xpos + floors[2].getyint();
@@ -423,7 +424,7 @@ int Object::checkOnFloor(int print){
             if( ((ypos + height) - yfloor[0] <= 10 )&&((ypos + height) - yfloor[0] >= 0 )){
                 if(!alive) vx = 0;
                 if(jumping) jumping = 0;
-                ypos = (yfloor[0]) - height-10;
+                ypos = (yfloor[0]) - height;
                 onFloor = 1;
                 vy = 0;
                 floorNumber = 1;
@@ -436,7 +437,7 @@ int Object::checkOnFloor(int print){
 }
 
 int Object::checkOnLadder(int direction){
-    if(jumping) return 0;
+    if(jumping || vx!=0) return 0;
     if((previousFloor == 1)&&( direction == 1))
     {
         if ((xpos + width/2 >= 200 && xpos + width/2 <= 220)||(xpos + width/2 >= 430 && xpos + width/2 <= 450))

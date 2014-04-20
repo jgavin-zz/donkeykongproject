@@ -26,6 +26,7 @@ public:
 
     int hitOil;
     double speedBoost;
+    int type;
     
 private:
     

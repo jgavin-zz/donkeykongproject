@@ -23,6 +23,8 @@ Barrel::Barrel() : Object(12, 18, 140, 170, 0, 0, 0, 1, 0, 2, 0, 0, 100){
 }
 
 void Barrel::move(){
+    if (type == 1)
+    {
     double dt = .5; ay = 2;
     if(vx > 0) vx = vx + speedBoost;
     if(vx < 0) vx = vx - speedBoost;
@@ -47,9 +49,18 @@ void Barrel::move(){
         ypos = 50;
         vy = 0;
     }
+    }
+    else
+    {
+        double dt = .1; ay = 2;
+        vy += (ay*dt);
+        ypos += (vy * dt);
+    }
 }
 
 void Barrel::roll(){
+        if (type == 1)
+        {
 	//cout<<floorNumber<<endl;
 	if(floorNumber == 6){
         ax = 0;
@@ -249,6 +260,20 @@ void Barrel::roll(){
 			setAnimation();
 		}
 	}
+        }
+        else
+        {
+           move();
+           if (currentState == 3)
+           {
+                currentState = 4;
+           }
+           else
+           {
+                currentState = 3;
+           }
+           setAnimation();
+        }
 }
 
 
@@ -284,14 +309,14 @@ void Barrel::setAnimation(){
             break;
         case 3: //falling barrel top row
             spritesheetx = 93;
-            spritesheety = 255;
+            spritesheety = 250;
             currentFrame = 0;
             maxFrames = 1;
             height = 12;
             width = 18;
         case 4: //falling barrel bottom row
             spritesheetx = 93;
-            spritesheety = 267;
+            spritesheety = 258;
             currentFrame = 0;
             maxFrames = 1;
             height = 12;
