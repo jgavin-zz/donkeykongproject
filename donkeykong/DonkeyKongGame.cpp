@@ -10,6 +10,7 @@
 #include <ctime>
 #include <iostream>
 #include "SDL/SDL.h"
+#include <SDL/SDL_ttf.h>
 #include <string>
 #include "DonkeyKongGame.h"
 #include "Object.h"
@@ -21,8 +22,10 @@
 #include "Fireball.h"
 #include "math.h"
 #include <stdlib.h>
+#include <stdio.h>
 #include <time.h>
 #include <vector>
+#include <sstream>
 
 //#include "SDL/SDL_mixer.h"
 //#include "SDL_image/SDL_image.h"
@@ -44,14 +47,26 @@ DonkeyKongGame::DonkeyKongGame ()
     background = SDL_LoadBMP ("DonkeyKongBackground.bmp");
     introScreen = OnLoad("Intro.bmp");
     floor = OnLoad("introScene.bmp");
-    
-    // TTF_Font *font;
-    // font = TTF_OpenFont( "kongtext.ttf", 36 ); //size 12 font
-    // message = TTF_RenderText_Solid( font, "Current Score:", textColor );
+    SDL_WM_SetCaption("Donkey Kong", "Donkey Kong");
+   //Stuff for writing score and level on screen:
+   if(TTF_Init()!=0){
+		cout<<"Error loading TTF libary"<<endl;
+		SDL_Quit();
+	}
+
+	font = TTF_OpenFont("kongtext.ttf", 10);
+	if (font == NULL){
+		cout<<"Error opening font "<< TTF_GetError()<<endl;
+		TTF_Quit();
+		SDL_Quit();
+	}
+
     mario.initializeFloors ();
    
     
     level = 1;
+
+    scoreint = 100;
 }
 
 SDL_Surface* DonkeyKongGame::OnLoad(char* File) {
@@ -152,6 +167,25 @@ void DonkeyKongGame::Display ()
     
 }
 
+void DonkeyKongGame::score(){
+	stringstream strs;
+	strs << scoreint;
+	string temp_str = strs.str();
+	memset(&currentScore,0,sizeof(currentScore));
+	currentScore = (char*) temp_str.c_str();
+	SDL_Color text_color = {255,255,255};
+	text = TTF_RenderText_Solid(font,currentScore,text_color);
+
+	SDL_Rect DestR;
+    
+    DestR.x = 120;
+    DestR.y = 12;
+
+
+	SDL_BlitSurface(text, NULL, background, &DestR);
+	SDL_Flip (background);
+}
+
 //Function to clean up game when over
 void DonkeyKongGame::cleanUp ()
 {
@@ -220,7 +254,7 @@ void DonkeyKongGame::playDonkeyKong ()
                 peach.setAnimation ();
             }
         }
-        cout << dkSpeed << endl;
+        //cout << dkSpeed << endl;
         if ((donkeykong.currentState == 3 && donkeykong.currentFrame == 2) || (donkeykong.currentState == 2 && donkeykong.currentFrame == 0))
         {
             if (rand() % 10 + 1 >= 3 && donkeykong.currentState != 3 && counter % dkSpeed == 0)
@@ -361,6 +395,7 @@ void DonkeyKongGame::playDonkeyKong ()
         }
 	fireball.ensureOnScreen();
         setBarrelSpeedBoost();
+	score();
         Display ();
         winner = checkForWinner();
     }
@@ -395,6 +430,7 @@ int DonkeyKongGame::checkForCollisions(){
           barrelYcenter = barrels[i].ypos + barrels[i].height/2;
           if(((barrelXmax >= hammerXmin)&&(barrelXmin <= hammerXmax))&&((barrelYcenter >= hammerYmin)&&(barrelYcenter <= hammerYmax))){
               barrels[i].alive = 0;
+	      scoreint += 100;
             //  cout << "barrelYcenter = " << barrelYcenter << endl;
             //  cout << "hamerYmin = " << hammerYmin << endl;
             //  cout << "hammerYmax = " << hammerYmax << endl;

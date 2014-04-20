@@ -11,6 +11,7 @@
 
 #include "Floor.h"
 #include <SDL/SDL.h>
+#include <SDL/SDL_ttf.h>
 #include "Object.h"
 #include "Mario.h"
 #include "Peach.h"
@@ -32,6 +33,8 @@ public:
     void Display(); //Renders all of the game objects and background onto the screen
     
     void Music();
+
+    void score(); //keeps track of player score and prints it on screen
     
     void cleanUp(); //Cleans up all of the object in the game when it is finished
     
@@ -66,6 +69,8 @@ private:
     SDL_Surface *message;
     SDL_Surface* introScreen;
     SDL_Surface* floor;
+    SDL_Surface* text;
+    TTF_Font* font;
     
     Mario mario;//Mario object
     Peach peach; //Peach object
@@ -79,6 +84,8 @@ private:
   
     int dkSpeed;
     
+    int scoreint; //integer value to keep track of score
+    char* currentScore;
 };
 
 #endif
