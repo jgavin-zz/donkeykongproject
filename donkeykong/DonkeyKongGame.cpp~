@@ -512,13 +512,15 @@ void DonkeyKongGame::playDonkeyKong ()
             {
                 barrels[i].checkOnFloor(1);
             }
-            else if ((barrels[i].ypos < mario.ypos + 50 && barrels[i].ypos > mario.ypos - 50) || barrels[i].ypos > 400)
+            else if ((barrels[i].ypos < mario.ypos + 50 && barrels[i].ypos > mario.ypos - 50) || barrels[i].ypos > 450)
             {
-                barrels[i].checkOnFloor(1);
-                barrels[i].type = 1; 
-                barrels[i].currentState = 1;
-                barrels[i].currentFrame = 2;
-                barrels[i].setAnimation();
+                if (barrels[i].checkOnFloor(1))
+                {
+                     barrels[i].type = 1; 
+                     barrels[i].currentState = 1;
+                     barrels[i].currentFrame = 2;
+                     barrels[i].setAnimation();
+                }
             }
         }
         if(mario.hasHammer == 0){
@@ -574,9 +576,6 @@ void DonkeyKongGame::playDonkeyKong ()
 	Music_backgroundMusic();
         if (lives == 0)
         {
-            level = 1;
-            scoreint = 0;
-            lives = 3;
             break;
         }
     }
@@ -915,7 +914,9 @@ void DonkeyKongGame::runIntroScreen(){
 void DonkeyKongGame::introDisplay(){
     
     int i;
-    lives = 3;
+    lives = 1;
+    scoreint = 0;
+    level = 1;
     SDL_FillRect (screen, &screen->clip_rect,
                   SDL_MapRGB (screen->format, 0xFF, 0xFF, 0xFF));
     

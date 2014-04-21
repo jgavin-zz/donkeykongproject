@@ -433,7 +433,7 @@ void DonkeyKongGame::playDonkeyKong ()
             }
             else if (donkeykong.currentFrame == 3)
             {     
-                if (rand() % 10 + 1 >= 5 || mario.getypos() <= 250)
+                if (rand() % 10 + 1 >= 11 || mario.getypos() <= 250)
                 {
                     donkeykong.updateAnimation ();
                     donkeykong.updateAnimation ();
@@ -512,13 +512,15 @@ void DonkeyKongGame::playDonkeyKong ()
             {
                 barrels[i].checkOnFloor(1);
             }
-            else if ((barrels[i].ypos < mario.ypos + 50 && barrels[i].ypos > mario.ypos - 50) || barrels[i].ypos > 400)
+            else if ((barrels[i].ypos < mario.ypos + 50 && barrels[i].ypos > mario.ypos - 50) || barrels[i].ypos > 450)
             {
-                barrels[i].checkOnFloor(1);
-                barrels[i].type = 1; 
-                barrels[i].currentState = 1;
-                barrels[i].currentFrame = 2;
-                barrels[i].setAnimation();
+                if (barrels[i].checkOnFloor(1))
+                {
+                     barrels[i].type = 1; 
+                     barrels[i].currentState = 1;
+                     barrels[i].currentFrame = 2;
+                     barrels[i].setAnimation();
+                }
             }
         }
         if(mario.hasHammer == 0){
