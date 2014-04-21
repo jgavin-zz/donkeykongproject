@@ -20,14 +20,12 @@ public:
     Mario();//Default Constructor
     
     void move();
+    void Music_walkingMusic ();
     
     
     virtual void setAnimation();//Sets animation parameters according to animation state
     
     void handle_input(SDL_Event);
-       void Music_introMusic();
-    void Music_backgroundMusic();
-    void Music_walkingMusic();
     
     int onLadder;
     int rdirection;
