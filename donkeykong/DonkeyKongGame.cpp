@@ -674,7 +674,7 @@ int DonkeyKongGame::checkForWinner(){
         level++;
         scoreint+=500;
         dkSpeed -= 20;
-        SDL_Delay(3000);
+        SDL_Delay(3980);
         return 1;
     }
     else{
