@@ -518,10 +518,12 @@ void DonkeyKongGame::playDonkeyKong ()
         if(mario.hasHammer == 0){
           if(mario.checkOnLadder(mario.direction) == 1){
               mario.onLadder = 1;
+
           } 
           else if(mario.checkOnLadder(mario.direction) == 2){
               mario.onLadder = 2;
               mario.vy = 0;
+
           }
           else{
               mario.onLadder = 0;
@@ -529,6 +531,7 @@ void DonkeyKongGame::playDonkeyKong ()
         }
         if(checkForCollisions()){
            //cout << "Died" << endl;
+	    Music_deathMusic ();
             mario.alive = 0;
 	    scoreint=scoreint-100;
             mario.climbing = 0;
@@ -541,14 +544,17 @@ void DonkeyKongGame::playDonkeyKong ()
             SDL_Delay(1000);
             deathAnimation();
             initializeLevel();
+	    Music_backgroundMusic ();
         }
         if(mario.checkForHammer()){
             mario.hasHammer = 1;
+	    Music_hammerMusic ();
             mario.hammerStartTime = SDL_GetTicks();
            // cout << "Got hammer" << endl;
         }
         if((SDL_GetTicks() - mario.hammerStartTime > 10000)&&(mario.hasHammer)){
             mario.hasHammer =  0;
+            Music_backgroundMusic();
             mario.currentState = 1;
             mario.setAnimation();
         }
@@ -557,7 +563,9 @@ void DonkeyKongGame::playDonkeyKong ()
 	scoreAndLevel();
         Display ();
         winner = checkForWinner();
+
     }
+	Music_backgroundMusic();
     }
     SDL_Quit ();
 }
@@ -662,6 +670,7 @@ int randomnum = 0;
 
 int DonkeyKongGame::checkForWinner(){
     if((mario.ypos + mario.height <= 123)&&(mario.onFloor)&&(mario.currentState != 9)){
+	Music_completeMusic();
         level++;
         scoreint+=500;
         dkSpeed -= 20;
