@@ -28,8 +28,7 @@
 #include <vector>
 #include <sstream>
 
-//#include "SDL/SDL_mixer.h"
-//#include "SDL_image/SDL_image.h"
+#include "SDL/SDL_mixer.h"
 //include "SDL_ttf/SDL_ttf.h"
 
 using namespace std;
@@ -37,13 +36,12 @@ using namespace std;
 
 SDL_Event event;
 //The music that will be played
-//Mix_Music *music = NULL;
+Mix_Music *music = NULL;
 
 //Constructor for DonkeyKongGame, initializes SDL, creates screen, and loads background
 DonkeyKongGame::DonkeyKongGame ()
 {
     SDL_Init (SDL_INIT_EVERYTHING);
-    // SDL_Color textColor = { 255, 255, 255 }; // it's white for now, color of text
     screen = SDL_SetVideoMode (550, 471, 32, SDL_SWSURFACE);
     background = SDL_LoadBMP ("DonkeyKongBackground.bmp");
     introScreen = OnLoad("Intro.bmp");
@@ -89,9 +87,9 @@ SDL_Surface* DonkeyKongGame::OnLoad(char* File) {
 void DonkeyKongGame::Music ()
 {
     
-    // Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 );
-    //  music = Mix_LoadMUS( "intro.wav" );
-    //  Mix_PlayMusic(music, -1);
+    Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 );
+    music = Mix_LoadMUS( "intro.wav" );
+    Mix_PlayMusic(music, -1);
 }
 
 //Display function which puts background and all objects on screen
@@ -173,14 +171,13 @@ void DonkeyKongGame::cleanUp ()
 {
     
     //Free the loaded image
-    //SDL_FreeSurface( screen );
     SDL_FreeSurface (background);
     //SDL_FreeSurface (message);
     mario.cleanUp ();
-    // Mix_FreeMusic( music );
+    Mix_FreeMusic( music );
     
     //Quit SDL Mixer
-    //  Mix_CloseAudio();
+    Mix_CloseAudio();
     //Quit SDL
     SDL_Quit ();
 }
@@ -739,7 +736,6 @@ void DonkeyKongGame::runIntroScreen(){
         
         //Move mario if he's jumping
         if(jumping == 1){
-	    cout<< "got here"<<endl;
             vy = vy + ay*dt;
             mario.ypos = mario.ypos + vy*dt + .5*ay*pow(dt,2);
         }
