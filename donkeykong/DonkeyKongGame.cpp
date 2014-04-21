@@ -116,6 +116,55 @@ void DonkeyKongGame::Music_walkingMusic ()
     Mix_PlayMusic(background_sound, -1);
 }
 
+void DonkeyKongGame::Music_completeMusic ()
+{
+    
+    Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 );
+    background_sound = Mix_LoadMUS( "complete.wav" );
+    Mix_PlayMusic(background_sound, -1);
+}
+
+void DonkeyKongGame::Music_deathMusic ()
+{
+    
+    Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 );
+    background_sound = Mix_LoadMUS( "death.wav" );
+    Mix_PlayMusic(background_sound, -1);
+}
+
+void DonkeyKongGame::Music_hammerMusic ()
+{
+    
+    Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 );
+    background_sound = Mix_LoadMUS( "hammer.wav" );
+    Mix_PlayMusic(background_sound, -1);
+}
+
+void DonkeyKongGame::Music_jumpMusic ()
+{
+    
+    Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 );
+    background_sound = Mix_LoadMUS( "jump.wav" );
+    Mix_PlayMusic(background_sound, -1);
+}
+
+void DonkeyKongGame::Music_jumpbarrelMusic ()
+{
+    
+    Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 );
+    background_sound = Mix_LoadMUS( "jumpbarrel.wav" );
+    Mix_PlayMusic(background_sound, -1);
+}
+
+void DonkeyKongGame::Music_timeMusic ()
+{
+    
+    Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 );
+    background_sound = Mix_LoadMUS( "time.wav" );
+    Mix_PlayMusic(background_sound, -1);
+}
+
+
 
 
 //Display function which puts background and all objects on screen

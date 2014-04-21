@@ -35,6 +35,12 @@ public:
     void Music_introMusic();
     void Music_backgroundMusic();
     void Music_walkingMusic();
+    void Music_completeMusic();
+    void Music_deathMusic();
+    void Music_hammerMusic();
+    void Music_jumpMusic();
+    void Music_jumpbarrelMusic();
+    void Music_timeMusic();
 
     void scoreAndLevel(); //keeps track of player score and prints it on screen
     

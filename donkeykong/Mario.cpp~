@@ -185,7 +185,7 @@ void Mario::setAnimation(){
             width = 20;
             break;
         case 16: //Dead right
-            spritesheetx = 186;
+            spritesheetx = 206;
             spritesheety = 85;
             currentFrame = 1;
             maxFrames = 1;
@@ -230,7 +230,7 @@ void Mario::handle_input(SDL_Event event)
             }
                 break;
                 //student machine vx = 4
-            case SDLK_LEFT: if(alive){ vx = -4;  climbing = 0; rdirection = 0;} break;
+            case SDLK_LEFT: if(alive){ (*this).Music_walkingMusic ();vx = -4;  climbing = 0; rdirection = 0;} break;
             case SDLK_RIGHT: if(alive){ vx = 4; climbing = 0; rdirection = 1;} break;
                 //student machine vy = -10
             case SDLK_SPACE:

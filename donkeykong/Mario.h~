@@ -22,11 +22,24 @@ public:
     void move();
     
     
-    virtual void setAnimation() const;//Sets animation parameters according to animation state
+    virtual void setAnimation();//Sets animation parameters according to animation state
     
     void handle_input(SDL_Event);
+       void Music_introMusic();
+    void Music_backgroundMusic();
+    void Music_walkingMusic();
+    
+    int onLadder;
+    int rdirection;
+    int hasHammer;
+    int hadHammer;
+    int hammerStartTime;
+    int checkForHammer();
+    void determineAnimation();
     
 private:
+    
+    
     
 };
 
