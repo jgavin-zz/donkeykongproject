@@ -34,8 +34,9 @@ public:
     
     void Music();
 
-    void score(); //keeps track of player score and prints it on screen
+    void scoreAndLevel(); //keeps track of player score and prints it on screen
     
+
     void cleanUp(); //Cleans up all of the object in the game when it is finished
     
     void playDonkeyKong(); //Initiates gameplay and calls all other functions
@@ -81,11 +82,12 @@ private:
     vector<Barrel> barrels; //Barrel object
     
     int level;
+	
   
     int dkSpeed;
     
     int scoreint; //integer value to keep track of score
-    char* currentScore;
+    //char* currentScore;
 };
 
 #endif

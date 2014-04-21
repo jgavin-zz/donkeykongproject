@@ -32,7 +32,7 @@ public:
     
     void Display(); //Renders all of the game objects and background onto the screen
     
-    void Music();
+    void Music_intro();
 
     void scoreAndLevel(); //keeps track of player score and prints it on screen
     

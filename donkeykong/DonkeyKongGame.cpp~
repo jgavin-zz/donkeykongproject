@@ -36,7 +36,7 @@ using namespace std;
 
 SDL_Event event;
 //The music that will be played
-Mix_Music *music = NULL;
+Mix_Music *intro = NULL;
 
 //Constructor for DonkeyKongGame, initializes SDL, creates screen, and loads background
 DonkeyKongGame::DonkeyKongGame ()
@@ -171,6 +171,7 @@ void DonkeyKongGame::cleanUp ()
 {
     
     //Free the loaded image
+    //SDL_FreeSurface( screen );
     SDL_FreeSurface (background);
     //SDL_FreeSurface (message);
     mario.cleanUp ();
@@ -257,7 +258,7 @@ void DonkeyKongGame::playDonkeyKong ()
     int oldState;
     int winner;
     Display ();
-    Music ();
+    Music_intro ();
     srand (time(NULL));
     while (quit == false){
         winner = 0;
