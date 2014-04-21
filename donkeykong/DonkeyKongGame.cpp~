@@ -674,7 +674,7 @@ int DonkeyKongGame::checkForWinner(){
         level++;
         scoreint+=500;
         dkSpeed -= 20;
-        SDL_Delay(4000);
+        SDL_Delay(3980);
         return 1;
     }
     else{
@@ -777,17 +777,16 @@ void DonkeyKongGame::runIntroScreen(){
     double vy = 0;
     double dt = .12;
     bool quit = false;
-    Barrel barrel;
-            barrels.push_back(barrel);
-            size = barrels.size();
-            barrels[size-1].xpos = 550 - barrels[size-1].width;
-            barrels[size-1].ypos = 428 - barrels[size-1].height;
-            barrels[size-1].currentState = 1;
-            barrels[size-1].currentFrame = 2;
-            barrels[size-1].updateAnimation();
-            barrels[size-1].updateAnimation();
+
+    int overallcounter = 0;
+    int total = 4000;
+    int time1 = 4000;
+
+    if (overallcounter == 0) {
+    	Music_introMusic();
+	overallcounter ++;
+    }   
     while(quit == false){
-        
         
         int i;
         for(i = 0; i < barrels.size(); i++){
@@ -803,9 +802,7 @@ void DonkeyKongGame::runIntroScreen(){
         }
         
         //Make mario jump
-        if(count == 1000){
-            
-            
+        if(count == time1) {
             Barrel barrel;
             barrels.push_back(barrel);
             size = barrels.size();
@@ -831,7 +828,6 @@ void DonkeyKongGame::runIntroScreen(){
         
         //Move mario if he's jumping
         if(jumping == 1){
-	    cout<< "got here"<<endl;
             vy = vy + ay*dt;
             mario.ypos = mario.ypos + vy*dt + .5*ay*pow(dt,2);
         }
@@ -855,22 +851,48 @@ void DonkeyKongGame::runIntroScreen(){
             barrels[i].xpos -= .1;
             barrels[i].ypos += .005;
         }
-        
+
+	if (overallcounter == 1) {
+		total = 4000;
+	}
+
+	else if (overallcounter == 2) {
+		total = 700;
+		time1 = 1000;
+	}
+
+	else if (overallcounter == 3 || overallcounter == 4 || overallcounter == 5  || overallcounter == 6) {
+		total = 400;
+	}
+
+	else if (overallcounter == 7) {
+		total = 3900;
+		time1 = 3900;
+		donkeycount = 0;
+		overallcounter = 0;
+	}
+
         //Update donkey kong
-        if(donkeycount == 300){
-            if(donkeykong.currentFrame == 0){
-                donkeykong.currentFrame = 3;
-            }
-            else{
-                donkeykong.currentFrame = 0;
-            }
-            donkeycount = 0;
+        if(donkeycount == total){
+	    overallcounter++;
+
+	    donkeycount = 0;
+            if ( overallcounter != 0 ) {
+		    if(donkeykong.currentFrame == 0){
+		        donkeykong.currentFrame = 3;
+		    }
+		    else{
+		        donkeykong.currentFrame = 0;
+		    }
+	    }
+	
+	    
         }
+       
         
         //Update counters
         count++;
         donkeycount++;
-        
         introDisplay();
     }
 }
