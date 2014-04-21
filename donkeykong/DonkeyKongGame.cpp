@@ -92,13 +92,31 @@ SDL_Surface* DonkeyKongGame::OnLoad(char* File) {
     return Surf_Return;
 }
 
-void DonkeyKongGame::Music_intro ()
+void DonkeyKongGame::Music_introMusic ()
 {
     
     Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 );
     intro_sound = Mix_LoadMUS( "intro.wav" );
     Mix_PlayMusic(intro_sound, -1);
 }
+
+void DonkeyKongGame::Music_backgroundMusic ()
+{
+    
+    Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 );
+    background_sound = Mix_LoadMUS( "bacmusic.wav" );
+    Mix_PlayMusic(background_sound, -1);
+}
+
+void DonkeyKongGame::Music_walkingMusic ()
+{
+    
+    Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 );
+    background_sound = Mix_LoadMUS( "walking.wav" );
+    Mix_PlayMusic(background_sound, -1);
+}
+
+
 
 //Display function which puts background and all objects on screen
 void DonkeyKongGame::Display ()
@@ -276,7 +294,7 @@ void DonkeyKongGame::playDonkeyKong ()
     int oldState;
     int winner;
     Display ();
-    Music_intro ();
+    Music_backgroundMusic ();
     srand (time(NULL));
     while (quit == false){
         winner = 0;

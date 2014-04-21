@@ -36,15 +36,15 @@ using namespace std;
 
 SDL_Event event;
 //The music that will be played
-Mix_Music *intro = NULL; //intro music
-Mix_Music *background = NULL; // background music
-Mix_Music *walking = NULL;  // walking music
-Mix_Music *complete = NULL; // level is done
-Mix_Music *death = NULL; // mario died
-Mix_Music *hammer = NULL; // mario got a hammer
-Mix_Music *jump = NULL; // mario jumped
-Mix_Music *jumpbarrel = NULL; // mario jumped a barrel
-Mix_Music *time = NULL; // time is up
+Mix_Music *intro_sound = NULL; //intro music
+Mix_Music *background_sound = NULL; // background music
+Mix_Music *walking_sound = NULL;  // walking music
+Mix_Music *complete_sound = NULL; // level is done
+Mix_Music *death_sound = NULL; // mario died
+Mix_Music *hammer_sound = NULL; // mario got a hammer
+Mix_Music *jump_sound = NULL; // mario jumped
+Mix_Music *jumpbarrel_sound = NULL; // mario jumped a barrel
+Mix_Music *time_sound = NULL; // time is up
 
 //Constructor for DonkeyKongGame, initializes SDL, creates screen, and loads background
 DonkeyKongGame::DonkeyKongGame ()
@@ -96,9 +96,18 @@ void DonkeyKongGame::Music_intro ()
 {
     
     Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 );
-    intro = Mix_LoadMUS( "intro.wav" );
-    Mix_PlayMusic(intro, -1);
+    intro_sound = Mix_LoadMUS( "intro.wav" );
+    Mix_PlayMusic(intro_sound, -1);
 }
+
+void DonkeyKongGame::Music_backgroundMusic ()
+{
+    
+    Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 );
+    background_sound = Mix_LoadMUS( "bacmusic.wav" );
+    Mix_PlayMusic(background_sound, -1);
+}
+
 
 //Display function which puts background and all objects on screen
 void DonkeyKongGame::Display ()
@@ -185,15 +194,15 @@ void DonkeyKongGame::cleanUp ()
     mario.cleanUp ();
 
     // free all sound files
-    Mix_FreeMusic( intro );
-    Mix_FreeMusic( background );
-    Mix_FreeMusic( walking );
-    Mix_FreeMusic( complete );
-    Mix_FreeMusic( death );
-    Mix_FreeMusic( hammer );
-    Mix_FreeMusic( jump );
-    Mix_FreeMusic( jumpbarrel );
-    Mix_FreeMusic( time );
+    Mix_FreeMusic( intro_sound );
+    Mix_FreeMusic( background_sound );
+    Mix_FreeMusic( walking_sound );
+    Mix_FreeMusic( complete_sound );
+    Mix_FreeMusic( death_sound );
+    Mix_FreeMusic( hammer_sound );
+    Mix_FreeMusic( jump_sound );
+    Mix_FreeMusic( jumpbarrel_sound );
+    Mix_FreeMusic( time_sound );
     
     //Quit SDL Mixer
     Mix_CloseAudio();
@@ -276,7 +285,7 @@ void DonkeyKongGame::playDonkeyKong ()
     int oldState;
     int winner;
     Display ();
-    Music_intro ();
+    Music_backgroundMusic ();
     srand (time(NULL));
     while (quit == false){
         winner = 0;
