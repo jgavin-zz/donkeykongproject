@@ -310,6 +310,7 @@ void DonkeyKongGame::scoreAndLevel(){
 		highscore = scoreint;
 	}
 	myReadFile.close();
+
 	ofstream myWriteFile;
 	myWriteFile.open("highScore.txt");
 	myWriteFile << highscore;
@@ -355,6 +356,18 @@ void DonkeyKongGame::playDonkeyKong ()
         {
         if (lives == 0)
         {
+	    level=1;
+	    scoreint=0;
+	    ofstream myWriteFile;
+		myWriteFile.open("levelSave.txt");
+		myWriteFile << level;
+		myWriteFile.close();
+		myWriteFile.open("liveSave.txt");
+		myWriteFile << lives;
+		myWriteFile.close();
+		myWriteFile.open("scoreSave.txt");
+		myWriteFile << scoreint;
+		myWriteFile.close();
             break;
         }
         //cout << "onFloor = " << mario.onFloor << endl;
@@ -433,7 +446,7 @@ void DonkeyKongGame::playDonkeyKong ()
             }
             else if (donkeykong.currentFrame == 3)
             {     
-                if (rand() % 10 + 1 >= 11 || mario.getypos() <= 250)
+                if (rand() % 10 + 1 >= 5 || mario.getypos() <= 250)
                 {
                     donkeykong.updateAnimation ();
                     donkeykong.updateAnimation ();
@@ -496,6 +509,16 @@ void DonkeyKongGame::playDonkeyKong ()
             {
                 //Quit the program
                 quit = true;
+		ofstream myWriteFile;
+		myWriteFile.open("levelSave.txt");
+		myWriteFile << level;
+		myWriteFile.close();
+		myWriteFile.open("liveSave.txt");
+		myWriteFile << lives;
+		myWriteFile.close();
+		myWriteFile.open("scoreSave.txt");
+		myWriteFile << scoreint;
+		myWriteFile.close();
             }
             mario.updateAnimation ();
         }
@@ -914,9 +937,28 @@ void DonkeyKongGame::runIntroScreen(){
 void DonkeyKongGame::introDisplay(){
     
     int i;
-    lives = 1;
-    scoreint = 0;
-    level = 1;
+    ifstream myReadFile;
+    myReadFile.open("levelSave.txt");
+    while(!myReadFile.eof()){
+		myReadFile >> level;
+	}
+    myReadFile.close();
+    myReadFile.open("liveSave.txt");
+     while(!myReadFile.eof()){
+		myReadFile >> lives;
+	}
+    myReadFile.close();
+    myReadFile.open("scoreSave.txt");
+    while(!myReadFile.eof()){
+		myReadFile >> scoreint;
+	}
+    myReadFile.close();
+    if(lives<=0){
+	lives=3;
+	level=1;
+	scoreint=0;
+    }
+    
     SDL_FillRect (screen, &screen->clip_rect,
                   SDL_MapRGB (screen->format, 0xFF, 0xFF, 0xFF));
     
