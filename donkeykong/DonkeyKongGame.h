@@ -91,6 +91,7 @@ private:
     
     int level;
 	
+    int lives;
   
     int dkSpeed;
     

@@ -235,9 +235,10 @@ void DonkeyKongGame::Display ()
                         fireball.getcurrentframe () * fireball.getwidth (),
                         fireball.getspritesheety (), fireball.getwidth (),
                         fireball.getheight ());
-	
-    
-    
+       for (int i = 0; i < lives; i++)
+       { 
+              mario.display (screen, mario.getMarioSurface (), 5 + (i*20), 30, 194 + 0 * 20, 0, 20, 20);
+       }
     SDL_Flip (screen);
     
 }
@@ -334,9 +335,10 @@ void DonkeyKongGame::scoreAndLevel(){
 //Function to create gameplay
 void DonkeyKongGame::playDonkeyKong ()
 {
-    runIntroScreen();
-    srand(time(0));
     bool quit = false;
+    while (quit == false)
+    {
+    runIntroScreen();
     int counter = 0;
     int i;
     dkSpeed = 150;
@@ -344,13 +346,17 @@ void DonkeyKongGame::playDonkeyKong ()
     int winner;
     Display ();
     Music_backgroundMusic ();
-    srand (time(NULL));
+    srand (time(NULL));    
     while (quit == false){
         winner = 0;
         initializeLevel();
         counter = 0;
         while(winner == 0 && quit == false)
         {
+        if (lives == 0)
+        {
+            break;
+        }
         //cout << "onFloor = " << mario.onFloor << endl;
         if (mario.getoldtime () + mario.getframerate () < SDL_GetTicks ())
         {
@@ -566,6 +572,11 @@ void DonkeyKongGame::playDonkeyKong ()
 
     }
 	Music_backgroundMusic();
+        if (lives == 0)
+        {
+            break;
+        }
+    }
     }
     SDL_Quit ();
 }
@@ -758,6 +769,7 @@ else
 mario.setAnimation();
 Display();
 SDL_Delay(2000);
+lives--;
 }
 
 void DonkeyKongGame::runIntroScreen(){
@@ -900,6 +912,9 @@ void DonkeyKongGame::runIntroScreen(){
 void DonkeyKongGame::introDisplay(){
     
     int i;
+    lives = 1;
+    scoreint = 0;
+    level = 1;
     SDL_FillRect (screen, &screen->clip_rect,
                   SDL_MapRGB (screen->format, 0xFF, 0xFF, 0xFF));
     
