@@ -63,7 +63,7 @@ public:
     
     void setBarrelSpeedBoost();
     
-    void runIntroScreen();
+    int runIntroScreen();
     
     void onLoad(char);
     
@@ -71,7 +71,7 @@ public:
 
     void deathAnimation();
  
-    void gameOver();
+    int gameOver();
     
 private:
     

@@ -339,13 +339,13 @@ void DonkeyKongGame::playDonkeyKong ()
     bool quit = false;
     while (quit == false)
     {
-    runIntroScreen();
+    if(runIntroScreen()) quit = true;
     int counter = 0;
     int i;
     dkSpeed = 150;
     int oldState;
     int winner;
-    Display ();
+    //Display ();
     Music_backgroundMusic ();
     srand (time(NULL));    
     while (quit == false){
@@ -599,7 +599,7 @@ void DonkeyKongGame::playDonkeyKong ()
 	Music_backgroundMusic();
         if (lives == 0)
         {
-            gameOver();
+            if(gameOver()) quit = true;
             break;
         }
     }
@@ -798,7 +798,7 @@ SDL_Delay(2000);
 lives--;
 }
 
-void DonkeyKongGame::gameOver()
+int DonkeyKongGame::gameOver()
 {
    int counter = 0;
    donkeykong.xpos = 50;
@@ -827,6 +827,14 @@ void DonkeyKongGame::gameOver()
     SDL_BlitSurface (floor, &SrcR, screen, &DestR);
     while (counter != 50)
     {
+	//Check for event
+        while (SDL_PollEvent (&event))
+        {
+	if (event.type == SDL_QUIT)
+            {
+		return 1;
+            }
+        }
          SDL_FillRect (screen, NULL,
                   SDL_MapRGB (screen->format, 0, 0, 0));
         SDL_BlitSurface (floor, &SrcR, screen, &DestR);
@@ -884,7 +892,7 @@ void DonkeyKongGame::gameOver()
 }
    
 
-void DonkeyKongGame::runIntroScreen(){
+int DonkeyKongGame::runIntroScreen(){
     donkeykong.xpos = 50;
     donkeykong.ypos = 383 - donkeykong.height;
     donkeykong.spritesheetx = 57;
@@ -971,6 +979,7 @@ void DonkeyKongGame::runIntroScreen(){
             }
             else if (event.type == SDL_QUIT)
             {
+		return 1;
                 SDL_Quit();
                 exit(0);
             }
@@ -1024,6 +1033,7 @@ void DonkeyKongGame::runIntroScreen(){
         donkeycount++;
         introDisplay();
     }
+    return 0;
 }
 
 void DonkeyKongGame::introDisplay(){

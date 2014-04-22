@@ -63,13 +63,15 @@ public:
     
     void setBarrelSpeedBoost();
     
-    void runIntroScreen();
+    int runIntroScreen();
     
     void onLoad(char);
     
     void introDisplay();
 
     void deathAnimation();
+ 
+    void gameOver();
     
 private:
     
