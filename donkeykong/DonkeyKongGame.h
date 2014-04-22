@@ -70,6 +70,8 @@ public:
     void introDisplay();
 
     void deathAnimation();
+ 
+    void gameOver();
     
 private:
     

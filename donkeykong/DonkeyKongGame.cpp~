@@ -446,7 +446,7 @@ void DonkeyKongGame::playDonkeyKong ()
             }
             else if (donkeykong.currentFrame == 3)
             {     
-                if (rand() % 10 + 1 >= 5 || mario.getypos() <= 250)
+                if (rand() % 10 + 1 >= 11 || mario.getypos() <= 250)
                 {
                     donkeykong.updateAnimation ();
                     donkeykong.updateAnimation ();
@@ -599,6 +599,7 @@ void DonkeyKongGame::playDonkeyKong ()
 	Music_backgroundMusic();
         if (lives == 0)
         {
+            gameOver();
             break;
         }
     }
@@ -797,6 +798,92 @@ SDL_Delay(2000);
 lives--;
 }
 
+void DonkeyKongGame::gameOver()
+{
+   int counter = 0;
+   donkeykong.xpos = 50;
+   donkeykong.ypos = 383 - donkeykong.height;
+   donkeykong.spritesheetx = 57;
+   donkeykong.spritesheety = 149;
+   donkeykong.currentFrame = 0;
+   mario.xpos = 50;
+   mario.currentState = 2;
+   mario.ypos = 450 - mario.height;
+   introScreen = OnLoad("game_over.bmp");
+   SDL_FillRect (screen, NULL,
+                  SDL_MapRGB (screen->format, 0, 0, 0));
+    
+    SDL_Rect DestR;
+
+    DestR.x = 0;
+    DestR.y = 273;
+
+    SDL_Rect SrcR;
+
+    SrcR.x = 0;
+    SrcR.y = 2;
+    SrcR.w = 550;
+    SrcR.h = 200;
+    SDL_BlitSurface (floor, &SrcR, screen, &DestR);
+    while (counter != 50)
+    {
+         SDL_FillRect (screen, NULL,
+                  SDL_MapRGB (screen->format, 0, 0, 0));
+        SDL_BlitSurface (floor, &SrcR, screen, &DestR);
+         mario.display (screen, mario.getMarioSurface (), mario.getxpos (),
+                   mario.getypos (),
+                   mario.getspritesheetx () +
+                   mario.getcurrentframe () * mario.getwidth (),
+                   mario.getspritesheety (), mario.getwidth (),
+                   mario.getheight ());
+    
+        donkeykong.display (screen, donkeykong.getMarioSurface (),
+                        donkeykong.getxpos (), donkeykong.getypos (),
+                        donkeykong.getspritesheetx () +
+                        donkeykong.getcurrentframe () * donkeykong.getwidth (),
+                        donkeykong.getspritesheety (), donkeykong.getwidth (),
+                        donkeykong.getheight ());
+         
+        if(donkeykong.currentFrame == 0 && counter % 3 == 0)
+        {
+            donkeykong.currentFrame = 3;
+        }
+        else if (counter % 3 == 0)
+        {
+            donkeykong.currentFrame = 0;
+        }
+        if (counter == 18)
+        {
+            mario.currentState = 14;
+            mario.setAnimation();
+        }
+        else if (counter > 24 && counter < 37)
+        {
+             mario.updateAnimation();
+        }
+        else if (counter == 37)
+        {
+            mario.currentState = 16;
+            mario.setAnimation();
+        }
+        SDL_Flip(screen);
+        SDL_Delay(150);
+        counter++;
+        
+    }  
+    DestR.x = 100;
+    DestR.y = 50;
+    SDL_BlitSurface (introScreen, &SrcR, screen, &DestR);
+    SDL_Delay(1000);
+    SDL_Flip(screen);
+    SDL_Delay(4000);
+    mario.currentState = 2;
+    mario.setAnimation();
+    mario.currentFrame = 0;
+    introScreen = OnLoad("Intro.bmp");
+}
+   
+
 void DonkeyKongGame::runIntroScreen(){
     donkeykong.xpos = 50;
     donkeykong.ypos = 383 - donkeykong.height;
@@ -882,6 +969,11 @@ void DonkeyKongGame::runIntroScreen(){
                 }
             
             }
+            else if (event.type == SDL_QUIT)
+            {
+                SDL_Quit();
+                exit(0);
+            }
         }
         //move barrels
         for(i = 0; i < barrels.size(); i++){
@@ -954,12 +1046,11 @@ void DonkeyKongGame::introDisplay(){
 	}
     myReadFile.close();
     if(lives<=0){
-	lives=3;
+	lives=1;
 	level=1;
 	scoreint=0;
     }
     
-    scoreint = 0;
     SDL_FillRect (screen, &screen->clip_rect,
                   SDL_MapRGB (screen->format, 0xFF, 0xFF, 0xFF));
     

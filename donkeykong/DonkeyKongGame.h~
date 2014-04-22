@@ -70,8 +70,6 @@ public:
     void introDisplay();
 
     void deathAnimation();
-
-    void drawLives(int);
     
 private:
     
