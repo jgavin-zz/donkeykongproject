@@ -923,7 +923,7 @@ int DonkeyKongGame::runIntroScreen(){
         int i;
         for(i = 0; i < barrels.size(); i++){
             if(barrels[i].xpos <=78 && barrels[i].xpos >= 77.5){
-              vy = -3;
+              vy = -2.5;
 	     // cout << count <<endl;
               jumping = 1;
               mario.spritesheetx = 172;
@@ -947,6 +947,7 @@ int DonkeyKongGame::runIntroScreen(){
             count = 0;
             
         }
+		
         
         //Mario lands on ground
         if((jumping == 1)&&(mario.ypos + mario.height > 450)){

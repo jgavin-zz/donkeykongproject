@@ -599,7 +599,7 @@ void DonkeyKongGame::playDonkeyKong ()
 	Music_backgroundMusic();
         if (lives == 0)
         {
-            gameOver();
+            if(gameOver()) quit = true;
             break;
         }
     }
@@ -923,7 +923,7 @@ int DonkeyKongGame::runIntroScreen(){
         int i;
         for(i = 0; i < barrels.size(); i++){
             if(barrels[i].xpos <=78 && barrels[i].xpos >= 77.5){
-              vy = -3;
+              vy = -2.5;
 	     // cout << count <<endl;
               jumping = 1;
               mario.spritesheetx = 172;
@@ -947,6 +947,14 @@ int DonkeyKongGame::runIntroScreen(){
             count = 0;
             
         }
+
+	if(count % 10 == 0){
+		for(i = 0; i < barrels.size(); i++){
+            		if(barrels[i].currentFrame = 2) barrels[i].currentFrame = 1;
+			if(barrels[i].currentFrame = 1) barrels[i].currentFrame = 2;
+		}
+        }
+		
         
         //Mario lands on ground
         if((jumping == 1)&&(mario.ypos + mario.height > 450)){
