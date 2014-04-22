@@ -310,7 +310,7 @@ void Object::initializeFloors(){
     floors[6].setymax(130);
 }
 
-int Object::checkOnFloor(int print){
+int Object::checkOnFloor(int hasHammer){
     
     int yfloor[7];
     yfloor[0] =  floors[0].getslope() * xpos + floors[0].getyint();
@@ -371,6 +371,23 @@ int Object::checkOnFloor(int print){
                 }
             }
         }
+	if(hasHammer && previousFloor != 2){
+		if(( ypos + height - 5 < floors[3].getymax() )&&( ypos + height > floors[3].getymin() )){
+		    if(( xpos < floors[3].getxmax() )&&( xpos + width > floors[3].getxmin() )){
+		        
+		        if( ((ypos + height) - yfloor[3] <= 20 )&&((ypos + height) - yfloor[3] >= 0 )){
+		            if(!alive) vx = 0;
+		            if(jumping) jumping = 0;
+		            ypos = (yfloor[3]) - height;
+		            vy = 0;
+		            onFloor = 1;
+		            floorNumber = 4;
+		            previousFloor = 4;
+		            return yfloor[3];
+		        }
+		    }
+		}
+	}
         if(( ypos + height < floors[3].getymax() )&&( ypos + height > floors[3].getymin() )){
             if(( xpos < floors[3].getxmax() )&&( xpos + width > floors[3].getxmin() )){
                 
@@ -386,11 +403,28 @@ int Object::checkOnFloor(int print){
                 }
             }
         }
-        if(( ypos + height < floors[2].getymax() )&&( ypos + height > floors[2].getymin() )){
+	if(hasHammer && previousFloor != 1){
+		if(( ypos + height - 5 < floors[2].getymax() )&&( ypos + height > floors[2].getymin() )){
+		    if(( xpos < floors[2].getxmax() )&&( xpos + width > floors[2].getxmin() )){		        
+		        
+		        if( ((ypos + height) - yfloor[2] <= 20 )&&((ypos + height) - yfloor[2] >= 0 )){
+		            if(!alive) vx = 0;
+		            if(jumping) jumping = 0;
+		            ypos = (yfloor[2]) - height;
+		            vy = 0;
+		            onFloor = 1;
+		            floorNumber = 3;
+		            previousFloor = 3;
+		            return yfloor[2];
+		        }
+		    }
+		}
+	}
+	if(( ypos + height < floors[2].getymax() )&&( ypos + height > floors[2].getymin() )){
             if(( xpos < floors[2].getxmax() )&&( xpos + width > floors[2].getxmin() )){
                 
                 
-                if( ((ypos + height) - yfloor[2] <= 10 )&&((ypos + height) - yfloor[2] >= 0 )){
+                if( ((ypos + height - 10) - yfloor[2] <= 10 )&&((ypos + height) - yfloor[2] >= 0 )){
                     if(!alive) vx = 0;
                     if(jumping) jumping = 0;
                     ypos = (yfloor[2]) - height;
@@ -406,7 +440,7 @@ int Object::checkOnFloor(int print){
         if(( ypos + height < floors[1].getymax() )&&( ypos + height > floors[1].getymin() )){
             if(( xpos < floors[1].getxmax() )&&( xpos + width > floors[1].getxmin() )){
                 
-                if( ((ypos + height) - yfloor[1] <= 10 )&&((ypos + height) - yfloor[1] >= 0 )){
+                if( ((ypos + height - 10) - yfloor[1] <= 10 )&&((ypos + height) - yfloor[1] >= 0 )){
                     if(!alive) vx = 0;
                     if(jumping) jumping = 0;
                     ypos = (yfloor[1]) - height;

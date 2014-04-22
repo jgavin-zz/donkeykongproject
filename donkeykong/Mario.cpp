@@ -33,7 +33,7 @@ Mario::Mario() : Object(20, 20, 130, 435, 0, 0, 0, 1, 1, 2, 0, 0, 100){
 
 
 void Mario::move(){
-    double dt = .12; ay = 1.5;//student machine ay = 1.5 and jake's comp ay = 8
+    double dt = .12; ay = 1.2;//student machine ay = 1.5 and jake's comp ay = 8
     if( climbing == 0){
         vy += (ay * dt);
         xpos += (vx * dt);
@@ -234,9 +234,9 @@ void Mario::handle_input(SDL_Event event)
             case SDLK_RIGHT: if(alive){ vx = 4; climbing = 0; rdirection = 1;} break;
                 //student machine vy = -10
             case SDLK_SPACE:
-                if(onFloor && alive && !hasHammer){
+                if(onFloor && alive){
                     onFloor = 0; jumping = 1;
-                    vy = -10; climbing = 0; ypos--;
+                    vy = -7.5; climbing = 0; ypos--;
                 }
         }
     }

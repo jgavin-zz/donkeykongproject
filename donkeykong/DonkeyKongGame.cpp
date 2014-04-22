@@ -497,7 +497,7 @@ void DonkeyKongGame::playDonkeyKong ()
         }
         while (SDL_PollEvent (&event))
         {
-            mario.checkOnFloor (0);
+            mario.checkOnFloor (mario.hasHammer);
             if (mario.getoldtime () + mario.getframerate () < SDL_GetTicks ())
             {
                 mario.updateAnimation ();
@@ -529,7 +529,7 @@ void DonkeyKongGame::playDonkeyKong ()
         if(fireball.alive == 1) fireball.bounce();
         fireball.checkOnFloor(0);
         mario.move ();
-        mario.checkOnFloor (0);
+        mario.checkOnFloor (mario.hasHammer);
         for(i = 0; i < barrels.size(); i++){
             if (barrels[i].type == 1)
             {
@@ -768,7 +768,7 @@ void DonkeyKongGame::initializeLevel(){
 void DonkeyKongGame::setBarrelSpeedBoost(){
     int i;
     for(i = 0; i < barrels.size(); i++){
-        barrels[i].speedBoost = (level - 1) * 1;
+        barrels[i].speedBoost = (level - 1) *.5;
     }
 }
 

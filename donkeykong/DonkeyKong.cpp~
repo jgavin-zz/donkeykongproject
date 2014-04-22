@@ -1,3 +1,4 @@
+//Random change
 //  Created by Jacob Gavin on 3/27/14.
 //  Copyright (c) 2014 Jacob Gavin. All rights reserved.
 
@@ -10,7 +11,7 @@
 using namespace std;
 
 //Constructor, sets parameters and loads surface
-DonkeyKong::DonkeyKong() : Object(33, 43, 94, 150, 0, 0, 0, 2, 0, 2, 0, 0, 100){
+DonkeyKong::DonkeyKong() : Object(33, 43, 94, 150, 0, 0, 0, 3, 0, 2, 0, 0, 100){
     setAnimation();
 }
 
@@ -20,7 +21,7 @@ void DonkeyKong::updateAnimation(){
     if(currentFrame >= maxFrames) {
         currentFrame = 0;
     }
-    //(*this).setAnimation();
+    
 }
 
 
@@ -43,12 +44,12 @@ void DonkeyKong::setAnimation(){
             height = 33;
             width = 47;
             break;
-	case 3: //throw barrel
-	    spritesheetx = 8;
-	    spritesheety = 149;
-	    currentFrame = 2;
-	    maxFrames = 6;
-	    height = 33;
-	    width = 48;
+        case 3: //throw barrel
+            spritesheetx = 8;
+            spritesheety = 149;
+            currentFrame = 2;
+            maxFrames = 6;
+            height = 33;
+            width = 48;
     }
 }

@@ -20,7 +20,6 @@ public:
     Mario();//Default Constructor
     
     void move();
-    void Music_walkingMusic ();
     
     
     virtual void setAnimation();//Sets animation parameters according to animation state
@@ -29,7 +28,6 @@ public:
     
     int onLadder;
     int rdirection;
-    int hasHammer;
     int hadHammer;
     int hammerStartTime;
     int checkForHammer();

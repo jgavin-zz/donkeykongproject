@@ -11,20 +11,22 @@
 
 #include <SDL/SDL.h>
 #include <string>
+#include "Floor.h"
 using namespace std;
 
 class Object{
     
 public:
-
-     int spritesheetx;
+    
+    int spritesheetx;
     int spritesheety;
     int height;
     int width;
-    int xpos;
-    int ypos;
+    double xpos;
+    double ypos;
     double vx;
     double vy;
+    double ax;
     double ay;
     int currentState;
     int currentFrame;
@@ -32,8 +34,12 @@ public:
     int climbing;
     int oldTime;
     int frameRate;
+    int jumping;
+     int alive;
+    int hasHammer;
     SDL_Surface* marioSurface;
-
+    Floor floors[7];
+    
     Object(int h, int w, int x, int y, double velX, double velY, double accelY, int cState, int cFrame, int mFrames, int climb, int oTime, int fRate); //non default constructor
     
     void display(SDL_Surface*, SDL_Surface*, int, int, int, int, int, int);//Displays object
@@ -53,15 +59,27 @@ public:
     int getclimbing();
     int getoldtime();
     int getframerate();
+    int onFloor;
+    int floorNumber;
+    int previousFloor;
+    int direction;
     
-    virtual void setAnimation()=0;//Sets animation parameters according to animation state
+    virtual void setAnimation();//Sets animation parameters according to animation state
     void setcurrentstate(int);
     
     void Transparent(SDL_Surface* Surf_Dest, int R, int G, int B);//Makes pink background of mario image transparent
-
+    
     void handle_input(SDL_Event);
-
+    
     SDL_Surface* getMarioSurface();
+    
+    void cleanUp();
+    
+    void initializeFloors();
+    
+    int checkOnFloor(int);
+    
+    int checkOnLadder(int);
     
 private:
     
