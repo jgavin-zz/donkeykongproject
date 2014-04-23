@@ -599,7 +599,7 @@ void DonkeyKongGame::playDonkeyKong ()
 	Music_backgroundMusic();
         if (lives == 0)
         {
-            if(gameOver()) quit = true;
+            gameOver();
             break;
         }
     }
