@@ -662,3 +662,71 @@ int Object::checkOnLadder(int direction){
     }
     return 0;
 }
+
+int Object::checkOnLadderBarrel(){
+        if (xpos < 433 && xpos > 431 && ypos > 205 && ypos < 207)
+        {
+            return 2;
+        }
+        if (xpos > 196 && xpos < 198 && ypos > 264 && ypos < 266)
+        {
+            return 2;
+        }
+        if (xpos > 76 && xpos < 78 && ypos > 259 && ypos < 261)
+        {
+            return 2;
+        }
+        if (xpos > 274 && xpos < 276 && ypos > 319 && ypos < 321)
+        {
+            return 2;
+        }
+        if (xpos > 431 && xpos < 433 && ypos > 312 && ypos < 314)
+        {
+            return 2;
+        }
+        if (xpos > 235 && xpos < 237 && ypos > 375 && ypos < 376)
+        {
+            return 2;
+        }
+        if (xpos > 78 && xpos < 80 && ypos > 369 && ypos < 371)
+        {
+            return 2;
+        }
+        if (xpos > 433 && xpos < 435 && ypos > 438 && ypos < 440)
+        {
+            return 2;
+        }
+        if(xpos > 196 && xpos < 198 && ypos == 224)
+        {
+           return 1;
+        }
+        if (xpos > 76 && xpos < 78 && ypos == 229)
+        {
+             return 1;
+        }
+        if (xpos > 431 && xpos < 433 && ypos == 174)
+        {
+            return 1;
+        }
+        if (xpos > 274 && xpos < 276 && ypos == 276)
+        {
+            return 1;
+        }
+        if (xpos > 431 && xpos < 433 && ypos == 282)
+        {
+            return 1;
+        }
+        if (xpos > 235 && xpos < 237 && ypos == 329)
+        {
+            return 1;
+        }
+        if (xpos > 78 && xpos < 80 && ypos == 336)
+        {
+            return 1;
+        }
+        if (xpos > 433 && xpos < 435 && ypos == 392)
+        {
+            return 1;
+        }
+    return 0;
+}

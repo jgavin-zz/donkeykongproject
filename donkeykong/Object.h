@@ -79,6 +79,8 @@ public:
     int checkOnFloor(int);
     
     int checkOnLadder(int);
+
+    int checkOnLadderBarrel();
     
 private:
     

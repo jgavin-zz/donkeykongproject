@@ -36,7 +36,6 @@ public:
     int frameRate;
     int jumping;
      int alive;
-    int hasHammer;
     SDL_Surface* marioSurface;
     Floor floors[7];
     
