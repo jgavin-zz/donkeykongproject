@@ -266,7 +266,7 @@ void DonkeyKongGame::cleanUp ()
     //Quit SDL Mixer
     Mix_CloseAudio();
     //Quit SDL
-    SDL_Quit ();
+    //SDL_Quit ();
 }
 
 void DonkeyKongGame::scoreAndLevel(){
@@ -617,6 +617,7 @@ void DonkeyKongGame::playDonkeyKong ()
 	Music_backgroundMusic();
         if (lives == 0)
         {
+            barrels.clear();
             gameOver();
             break;
         }
@@ -778,6 +779,9 @@ void DonkeyKongGame::initializeLevel(){
     donkeykong.frameRate=100;
     donkeykong.setAnimation();
 
+    peach.xpos = 250;
+    peach.ypos = 100;
+
     //Initialize Barrels
     barrels.clear();
 }
@@ -828,6 +832,8 @@ int DonkeyKongGame::gameOver()
    mario.xpos = 50;
    mario.currentState = 2;
    mario.ypos = 450 - mario.height;
+   peach.xpos = 100;
+   peach.ypos = 362;
    introScreen = OnLoad("game_over.bmp");
    SDL_FillRect (screen, NULL,
                   SDL_MapRGB (screen->format, 0, 0, 0));
@@ -847,13 +853,13 @@ int DonkeyKongGame::gameOver()
     while (counter != 50)
     {
 	//Check for event
-        while (SDL_PollEvent (&event))
+        /*while (SDL_PollEvent (&event))
         {
 	if (event.type == SDL_QUIT)
             {
 		return 1;
             }
-        }
+        }*/
          SDL_FillRect (screen, NULL,
                   SDL_MapRGB (screen->format, 0, 0, 0));
         SDL_BlitSurface (floor, &SrcR, screen, &DestR);
@@ -871,6 +877,23 @@ int DonkeyKongGame::gameOver()
                         donkeykong.getspritesheety (), donkeykong.getwidth (),
                         donkeykong.getheight ());
          
+         peach.display (screen, peach.getMarioSurface (), peach.getxpos (),
+                   peach.getypos (),
+                   peach.getspritesheetx () +
+                   peach.getcurrentframe () * peach.getwidth (),
+                   peach.getspritesheety (), peach.getwidth (),
+                   peach.getheight ());
+        peach.updateAnimation();
+        if (peach.currentState == 1 && counter % 4 == 0)
+        {
+             peach.currentState = 2;
+             peach.setAnimation();
+        }
+        else if (peach.currentState == 2 && counter % 4 == 0)
+        {
+             peach.currentState = 1;
+             peach.setAnimation();
+        }
         if(donkeykong.currentFrame == 0 && counter % 3 == 0)
         {
             donkeykong.currentFrame = 3;

@@ -52,7 +52,7 @@ void Barrel::move(){
     }
     else
     {
-        double dt = .1; ay = 2;
+        double dt = .1; ay = 1;
         vy += (ay*dt);
         ypos += (vy * dt);
     }
