@@ -5,7 +5,7 @@
 //  Created by Jacob Gavin on 3/19/14.
 //  Copyright (c) 2014 Jacob Gavin. All rights reserved.
 //
-
+//#include <python2.6/Python.h>
 #include <SDL/SDL.h>
 #include <ctime>
 #include <iostream>
@@ -310,6 +310,7 @@ void DonkeyKongGame::scoreAndLevel(){
 		highscore = scoreint;
 	}
 	myReadFile.close();
+	
 
 	ofstream myWriteFile;
 	myWriteFile.open("highScore.txt");
@@ -617,7 +618,6 @@ void DonkeyKongGame::playDonkeyKong ()
 	Music_backgroundMusic();
         if (lives == 0)
         {
-            barrels.clear();
             gameOver();
             break;
         }
@@ -682,6 +682,10 @@ int DonkeyKongGame::checkForCollisions(){
         distance = sqrt(pow(marioxcenter-barrelxcenter,2)+pow(marioycenter-barrelycenter,2));
         //cout << "Barrel " << i << " distance = " << distance << endl;
         if((distance < mindistance)&&(barrels[i].alive)) return 1;
+    }
+
+    if((mario.xpos<27 && mario.ypos>400)||(mario.xpos<140 && mario.ypos<200 && mario.ypos>150)){
+	return 1;
     }
 
     int fireballxcenter = fireball.xpos + fireball.width/2;
