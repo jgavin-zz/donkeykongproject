@@ -193,9 +193,9 @@ void Fireball::setAnimation(){
 //function to make sure fireball guy stays on screen
 void Fireball::ensureOnScreen(){
 	if(xpos>495){
-		vx = -1;
+		vx = -1; //makes fireball move left if he moves too far right
 	}
 	else if(xpos<5){
-		vx = 1;
+		vx = 1; //makes fireball move right if he progresses too far left
 	}
 }
