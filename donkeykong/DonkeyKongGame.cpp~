@@ -336,6 +336,7 @@ void DonkeyKongGame::scoreAndLevel(){
 //Function to create gameplay
 void DonkeyKongGame::playDonkeyKong ()
 {
+    gameOver();
     bool quit = false;
     while (quit == false)
     {
@@ -946,13 +947,6 @@ int DonkeyKongGame::runIntroScreen(){
             barrels[size-1].updateAnimation();
             count = 0;
             
-        }
-
-	if(count % 10 == 0){
-		for(i = 0; i < barrels.size(); i++){
-            		if(barrels[i].currentFrame = 2) barrels[i].currentFrame = 1;
-			if(barrels[i].currentFrame = 1) barrels[i].currentFrame = 2;
-		}
         }
 		
         

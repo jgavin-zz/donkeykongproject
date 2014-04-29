@@ -17,6 +17,8 @@ using namespace std;
 
 //Constructor, sets parameters and loads surface
 Mario::Mario() : Object(20, 20, 130, 435, 0, 0, 0, 1, 1, 2, 0, 0, 100){
+
+	//Initialize variables at start
     direction = 1;
     onFloor = 1;
     ay = 0;
@@ -33,27 +35,35 @@ Mario::Mario() : Object(20, 20, 130, 435, 0, 0, 0, 1, 1, 2, 0, 0, 100){
 
 
 void Mario::move(){
+	//Set a dt variable and variable for gravity
     double dt = .12; ay = 1.2;//student machine ay = 1.5 and jake's comp ay = 8
+
+	//If mario is not climbing, move him according to acceleration and velocity
     if( climbing == 0){
         vy += (ay * dt);
         xpos += (vx * dt);
         ypos += (vy * dt);
     }
+
+	//If mario is climbing, move him according to only velocity
     else{
         xpos += (vx * dt);
         ypos += (vy * dt);
     }
     
+	//Dont let mario go off the screen to the left
     if (xpos <= 0) {
         xpos = 2;
         vx = 0;
     }
     
+	//Dont let mario go off the screen to the right
     if (xpos >= 531) {
         xpos = 529;
         vx = 0;
     }
     
+	//Don't let mario fall through first floor
     if ( ypos <= 49) {
         ypos = 50;
         vy = 0;
@@ -195,6 +205,8 @@ void Mario::setAnimation(){
     }
 }
 
+
+//Function to handle input from keyboard and set mario's variables accordingly
 void Mario::handle_input(SDL_Event event)
 {
     //If a key was pressed
@@ -203,19 +215,23 @@ void Mario::handle_input(SDL_Event event)
         //Adjust the velocity
         switch( event.key.keysym.sym )
         {
-                //student machine vy = -2
+             //student machine vy = -2
+			//Mario wants to move up a ladder, check to see if he is on ladder, if so, set variables accordingly
             case SDLK_UP: if( checkOnLadder(1) == 1 && alive && !hasHammer)
             {
                 if((floorNumber < 7)&&(floorNumber == previousFloor)) floorNumber++;
                 vy = -2; direction = 1; climbing = 1; onLadder = 1;
                 onFloor = 0;
             }
+			//Check to see if mario is on broken ladder, don't let him move
             else if ( checkOnLadder(1) == 2){
                 if((floorNumber < 7)&&(floorNumber == previousFloor)) floorNumber++;
                 vy = 0; direction = 1; climbing = 1; onLadder = 2;
                 onFloor = 0;
             }
             break;
+
+			//Mario wants to move down ladder, check to see if he is on ladder, if so, set variables accordingly
             case SDLK_DOWN: if(checkOnLadder(0) == 1 && alive && !hasHammer)
             {
                 //student machine vy = 2
@@ -223,6 +239,8 @@ void Mario::handle_input(SDL_Event event)
                 vy = 2; direction = 0; climbing = 1; onLadder = 1;
                 onFloor = 0;
             }
+
+			//If he is on broken ladder, don't let him move
             else if ( checkOnLadder(0) == 2 && alive){
                 if((floorNumber < 7)&&(floorNumber == previousFloor)) floorNumber--;
                 vy = 0; direction = 0; climbing = 1; onLadder = 2;
@@ -230,13 +248,18 @@ void Mario::handle_input(SDL_Event event)
             }
                 break;
                 //student machine vx = 4
+
+			//Make mario move left
             case SDLK_LEFT: if(alive){ vx = -4;  climbing = 0; rdirection = 0;} break;
+
+			//Make mario move right
             case SDLK_RIGHT: if(alive){ vx = 4; climbing = 0; rdirection = 1;} break;
                 //student machine vy = -10
+			//Make mario jummp
             case SDLK_SPACE:
                 if(onFloor && alive){
                     onFloor = 0; jumping = 1;
-                    vy = -8; climbing = 0; ypos--;
+                    vy = -7.5; climbing = 0; ypos--;
                 }
         }
     }
