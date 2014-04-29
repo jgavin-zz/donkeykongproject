@@ -535,7 +535,7 @@ void DonkeyKongGame::playDonkeyKong ()
         for(i = 0; i < barrels.size(); i++){
            barrels[i].roll();
         }
-        if(fireball.alive == 1) fireball.bounce();
+        if(fireball.alive == 1) fireball.bounce(); //animates fireball character when he is alive
         fireball.checkOnFloor(0);
         mario.move ();
         mario.checkOnFloor (mario.hasHammer);

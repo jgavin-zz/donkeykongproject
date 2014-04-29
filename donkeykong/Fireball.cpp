@@ -13,52 +13,30 @@ using namespace std;
 //Constructor, sets parameters and loads surface
 Fireball::Fireball() : Object(17, 17, 25, 437, 0, 0, 0, 2, 0, 2, 0, 0, 100){
     setAnimation();
-    floorNumber = 1;
+    floorNumber = 1; //fireball always begins on floor one
     climbing = 0;
     initializeFloors();
-    alive = 0;
+    alive = 0; //fireball doesn't become alive (alive=1) until the first live barrel hits the oil can
 }
 
+//Fireball specific move function that governs physical movement of the fireball on screen
 void Fireball::move(){
+    //Set a dt variable and variable for gravity
     double dt = .12; ay = 1.5;
     
         vx += (ax * dt);
         vy += (ay * dt);
         xpos += (vx * dt);
         ypos += (vy * dt);
- 
-    /*if (xpos <= 0) {
-        xpos = 2;
-        vx = 0;
-    }
-    
-    if (xpos >= 531) {
-        xpos = 529;
-        vx = 0;
-    }
-    
-    if ( ypos <= 49) {
-        ypos = 50;
-        vy = 0;
-    }*/
     xpos = xpos+vx*dt;
 }
 
-void Fireball::bounce(){ //Haven't changed this from the roll function used in barrel yet
-	//cout<<floorNumber<<endl;
+void Fireball::bounce(){
 	if(floorNumber== 7){
-		//vx = 1;
 		move();
 	}
 	else if(floorNumber == 6){
-       // vx = 1;
 	move();
-        //ax = .05;
-        //move();
-		//xpos += .5;
-		/*if(xpos >= 350){
-         ypos+=.025;
-         }*/
 		updateAnimation();
 		if (currentState == 1 && currentFrame == 1){
 			updateAnimation();
@@ -78,25 +56,9 @@ void Fireball::bounce(){ //Haven't changed this from the roll function used in b
 			setAnimation();
 			updateAnimation();
 		}
-        
-		/*if (xpos >= 507){
-         floorNumber -=1;
-         ypos = 215;
-         }*/
-        /*if(checkOnFloor()){
-         ypos = checkOnFloor() - height;
-         vy = 0;
-         onFloor = 1;
-         floorNumber = 7;
-         previousFloor = 7;
-         }*/
 	}
 	else if (floorNumber == 5){
-       // vx = -1;
-        //ax = -.05;
         move();
-		/*xpos -= .5;
-		ypos+=.02;*/
 		updateAnimation();
 		if (currentState == 1 && currentFrame == 1){
 			updateAnimation();
@@ -116,18 +78,9 @@ void Fireball::bounce(){ //Haven't changed this from the roll function used in b
 			setAnimation();
 			updateAnimation();
 		}
-        
-		/*if (xpos <= 23){
-			floorNumber -=1;
-			ypos = 265;
-		}*/
 	}
 	else if (floorNumber == 4){
-        //vx = 1;
-        //ax = .05;
         move();
-		/*xpos += .5;
-		ypos+=.025;*/
 		updateAnimation();
 		if (currentState == 1 && currentFrame == 1){
 			updateAnimation();
@@ -147,18 +100,9 @@ void Fireball::bounce(){ //Haven't changed this from the roll function used in b
 			setAnimation();
 			updateAnimation();
 		}
-        
-		/*if (xpos >= 507){
-			floorNumber -=1;
-			ypos = 320;
-		}*/
 	}
 	else if (floorNumber == 3){
-        //vx = -1;
-        //ax = .05;
         move();
-		/*xpos -= .5;
-		ypos+=.025;*/
 		updateAnimation();
 		if (currentState == 1 && currentFrame == 1){
 			updateAnimation();
@@ -178,18 +122,9 @@ void Fireball::bounce(){ //Haven't changed this from the roll function used in b
 			setAnimation();
 			updateAnimation();
 		}
-        
-		/*if (xpos <= 23){
-			floorNumber -=1;
-			ypos = 376;
-		}*/
 	}
 	else if (floorNumber == 2){
-        //vx = 1;
-        //ax = .05;
         move();
-		/*xpos += .5;
-		ypos+=.025;*/
 		updateAnimation();
 		if (currentState == 1 && currentFrame == 1){
 			updateAnimation();
@@ -209,54 +144,37 @@ void Fireball::bounce(){ //Haven't changed this from the roll function used in b
 			setAnimation();
 			updateAnimation();
 		}
-        
-		/*if (xpos >= 507){
-			floorNumber -=1;
-			ypos = 432;
-		}*/
 	}
 	else if (floorNumber == 1){
 	if(xpos==1){
-      //  vx = 1;
 	}
 	else if(xpos==490){
-	//vx = -1;
 	}
-        //ax = .05;
         move();
-		//xpos -= .5;
 		if(xpos>267){
 		ypos+=.025;
 		}
-		//updateAnimation();
-        
-		//if (xpos <= 23){
-		//	currentState = 1;
-		//	setAnimation();
-		//}
 	}
 }
 
-
-
+//Function that flips through frames of spritesheet to animate fireball
 void Fireball::updateAnimation(){
     oldTime = SDL_GetTicks();
     currentFrame++;
     if(currentFrame >= maxFrames) {
         currentFrame = 0;
     }
-    //(*this).setAnimation();
 }
 
 
-//Function sets animation parameters according to state of mario
+//Function sets animation parameters according to state of fireball
 void Fireball::setAnimation(){
     switch(currentState){
         case 1: //moving left
-            spritesheetx = 111;
-            spritesheety = 220;
-            currentFrame = 1;
-            maxFrames = 2;
+            spritesheetx = 111; //x location on sprite sheet
+            spritesheety = 220; //y location on sprite sheet
+            currentFrame = 1; //always begins at frame 1
+            maxFrames = 2; //two total frames to flip between
             height = 17;
             width = 17;
             break;
@@ -273,7 +191,6 @@ void Fireball::setAnimation(){
 }
 
 //function to make sure fireball guy stays on screen
-
 void Fireball::ensureOnScreen(){
 	if(xpos>495){
 		vx = -1;

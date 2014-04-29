@@ -337,7 +337,6 @@ void DonkeyKongGame::scoreAndLevel(){
 //Function to create gameplay
 void DonkeyKongGame::playDonkeyKong ()
 {
-    gameOver();
     bool quit = false;
     while (quit == false)
     {
@@ -685,7 +684,7 @@ int DonkeyKongGame::checkForCollisions(){
         if((distance < mindistance)&&(barrels[i].alive)) return 1;
     }
 
-    if((mario.xpos<27 && mario.ypos>400)||(mario.xpos<140 && mario.ypos<200 && mario.ypos>150)){
+    if((mario.xpos<27 && mario.ypos>400)||(mario.xpos<138 && mario.ypos<200 && mario.ypos>150)){
 	return 1;
     }
 
