@@ -1,10 +1,3 @@
-//
-//  DonkeyKong.h
-//  donkeykong
-//
-//  Created by Jacob Gavin on 3/27/14.
-//  Copyright (c) 2014 Jacob Gavin. All rights reserved.
-//
 
 //
 //  DonkeyKong.h
@@ -17,7 +10,7 @@
 #ifndef DONKEYKONG_H
 #define DONKEYKONG_H
 
-#include "Object.h"
+#include "Object.h" //uses inheritance to access functions of base object class
 #include <SDL/SDL.h>
 #include <SDL/SDL_ttf.h>
 #include <string>
@@ -29,7 +22,7 @@ public:
     DonkeyKong();//Default Constructor
     
     virtual void setAnimation();//Sets animation parameters according to animation state
-    virtual void updateAnimation(); //Peach specific version of update animation
+    virtual void updateAnimation(); //Donkey Kong specific version of update animation
     
 private:
     
