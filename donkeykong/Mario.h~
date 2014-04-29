@@ -26,13 +26,15 @@ public:
     
     void handle_input(SDL_Event);
     
-    int onLadder;
-    int rdirection;
-    int hasHammer;
-    int hadHammer;
-    int hammerStartTime;
-    int checkForHammer();
-    void determineAnimation();
+    int onLadder;//1 if onLadder, zero if not
+    int rdirection;//0 if running left, 1 if right
+    int hasHammer;//1 if has the hammer, 0 if not
+    int hadHammer;//1 if he has already had the hammer, 0 if not
+    int hammerStartTime;//variable used to set time when hammer is obtained
+
+
+    int checkForHammer();//Function to check to see if mario is in front of hammer
+    void determineAnimation();//Function to determine animation based on mario's variables
     
 private:
     

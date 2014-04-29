@@ -5,7 +5,7 @@
 //  Created by Jacob Gavin on 3/19/14.
 //  Copyright (c) 2014 Jacob Gavin. All rights reserved.
 //
-
+//#include <python2.6/Python.h>
 #include <SDL/SDL.h>
 #include <ctime>
 #include <iostream>
@@ -266,7 +266,7 @@ void DonkeyKongGame::cleanUp ()
     //Quit SDL Mixer
     Mix_CloseAudio();
     //Quit SDL
-    SDL_Quit ();
+    //SDL_Quit ();
 }
 
 void DonkeyKongGame::scoreAndLevel(){
@@ -310,6 +310,7 @@ void DonkeyKongGame::scoreAndLevel(){
 		highscore = scoreint;
 	}
 	myReadFile.close();
+	
 
 	ofstream myWriteFile;
 	myWriteFile.open("highScore.txt");
@@ -342,7 +343,6 @@ void DonkeyKongGame::playDonkeyKong ()
     if(runIntroScreen()) quit = true;
     int counter = 0;
     int i;
-    dkSpeed = 150;
     int oldState;
     int winner;
     //Display ();
@@ -354,6 +354,7 @@ void DonkeyKongGame::playDonkeyKong ()
         counter = 0;
         while(winner == 0 && quit == false)
         {
+        //cout << mario.getxpos() << " " << mario.getypos() << endl;
         if (lives == 0)
         {
 	    level=1;
@@ -402,6 +403,14 @@ void DonkeyKongGame::playDonkeyKong ()
             }
         }
         //cout << dkSpeed << endl;
+        if (mario.getypos() <= 250)
+        {
+            dkSpeed = 150 - ((level-1)*20) - 20;
+        }
+        else
+        {
+                dkSpeed = 150 - ((level-1)*20);
+        }
         if ((donkeykong.currentState == 3 && donkeykong.currentFrame == 2) || (donkeykong.currentState == 2 && donkeykong.currentFrame == 0))
         {
             if (rand() % 10 + 1 >= 3 && donkeykong.currentState != 3 && counter % dkSpeed == 0)
@@ -409,7 +418,7 @@ void DonkeyKongGame::playDonkeyKong ()
                 donkeykong.currentState = 3;
                 donkeykong.setAnimation();
             }
-            else if (donkeykong.currentState != 2 && counter % dkSpeed == 0)
+            else if (donkeykong.currentState != 2 && counter % dkSpeed == 0  && mario.getypos() > 250)
             {
                 donkeykong.currentState = 2;
                 donkeykong.setAnimation();
@@ -446,7 +455,7 @@ void DonkeyKongGame::playDonkeyKong ()
             }
             else if (donkeykong.currentFrame == 3)
             {     
-                if (rand() % 10 + 1 >= 11 || mario.getypos() <= 250)
+                if (rand() % 10 + 1 >= 5 || mario.getypos() <= 250)
                 {
                     donkeykong.updateAnimation ();
                     donkeykong.updateAnimation ();
@@ -535,7 +544,18 @@ void DonkeyKongGame::playDonkeyKong ()
             {
                 barrels[i].checkOnFloor(1);
             }
-            else if ((barrels[i].ypos < mario.ypos + 50 && barrels[i].ypos > mario.ypos - 50) || barrels[i].ypos > 450)
+            if (barrels[i].checkOnLadderBarrel() == 2)
+            {
+                  barrels[i].type = 1;  
+                  barrels[i].currentState = 1;
+                  barrels[i].currentFrame = 2;
+                  barrels[i].setAnimation();
+            }
+            else if (barrels[i].checkOnLadderBarrel() == 1 && rand() % 10 + 1 >= 9)
+            {
+                  barrels[i].type = 3;
+            }
+            else if (((barrels[i].ypos < mario.ypos + 50 && barrels[i].ypos > mario.ypos - 50) || barrels[i].ypos > 450) && barrels[i].type == 2)
             {
                 if (barrels[i].checkOnFloor(1))
                 {
@@ -572,7 +592,6 @@ void DonkeyKongGame::playDonkeyKong ()
             mario.vy = -6;
             mario.currentState = 14;
             mario.setAnimation();
-            SDL_Delay(1000);
             deathAnimation();
             initializeLevel();
 	    Music_backgroundMusic ();
@@ -599,7 +618,7 @@ void DonkeyKongGame::playDonkeyKong ()
 	Music_backgroundMusic();
         if (lives == 0)
         {
-            if(gameOver()) quit = true;
+            gameOver();
             break;
         }
     }
@@ -665,6 +684,10 @@ int DonkeyKongGame::checkForCollisions(){
         if((distance < mindistance)&&(barrels[i].alive)) return 1;
     }
 
+    if((mario.xpos<27 && mario.ypos>400)||(mario.xpos<138 && mario.ypos<200 && mario.ypos>150)){
+	return 1;
+    }
+
     int fireballxcenter = fireball.xpos + fireball.width/2;
     int fireballycenter = fireball.ypos + fireball.height/2;
     mindistance = marioradius + fireballradius;
@@ -710,7 +733,6 @@ int DonkeyKongGame::checkForWinner(){
 	Music_completeMusic();
         level++;
         scoreint+=500;
-        dkSpeed -= 20;
         SDL_Delay(3980);
         return 1;
     }
@@ -760,7 +782,10 @@ void DonkeyKongGame::initializeLevel(){
     donkeykong.oldTime=0;
     donkeykong.frameRate=100;
     donkeykong.setAnimation();
-    
+
+    peach.xpos = 250;
+    peach.ypos = 100;
+
     //Initialize Barrels
     barrels.clear();
 }
@@ -777,12 +802,14 @@ void DonkeyKongGame::deathAnimation()
 mario.currentState = 14;
 mario.setAnimation();
 int counter = 0;
+Display();
+SDL_Delay(1000);
 while (counter!=13)
 {
-Display();
 SDL_Delay(150);
 mario.updateAnimation();
 counter++;
+Display();
 }
 if (mario.rdirection == 0)
 { 
@@ -809,6 +836,8 @@ int DonkeyKongGame::gameOver()
    mario.xpos = 50;
    mario.currentState = 2;
    mario.ypos = 450 - mario.height;
+   peach.xpos = 100;
+   peach.ypos = 362;
    introScreen = OnLoad("game_over.bmp");
    SDL_FillRect (screen, NULL,
                   SDL_MapRGB (screen->format, 0, 0, 0));
@@ -828,13 +857,13 @@ int DonkeyKongGame::gameOver()
     while (counter != 50)
     {
 	//Check for event
-        while (SDL_PollEvent (&event))
+        /*while (SDL_PollEvent (&event))
         {
 	if (event.type == SDL_QUIT)
             {
 		return 1;
             }
-        }
+        }*/
          SDL_FillRect (screen, NULL,
                   SDL_MapRGB (screen->format, 0, 0, 0));
         SDL_BlitSurface (floor, &SrcR, screen, &DestR);
@@ -852,6 +881,23 @@ int DonkeyKongGame::gameOver()
                         donkeykong.getspritesheety (), donkeykong.getwidth (),
                         donkeykong.getheight ());
          
+         peach.display (screen, peach.getMarioSurface (), peach.getxpos (),
+                   peach.getypos (),
+                   peach.getspritesheetx () +
+                   peach.getcurrentframe () * peach.getwidth (),
+                   peach.getspritesheety (), peach.getwidth (),
+                   peach.getheight ());
+        peach.updateAnimation();
+        if (peach.currentState == 1 && counter % 4 == 0)
+        {
+             peach.currentState = 2;
+             peach.setAnimation();
+        }
+        else if (peach.currentState == 2 && counter % 4 == 0)
+        {
+             peach.currentState = 1;
+             peach.setAnimation();
+        }
         if(donkeykong.currentFrame == 0 && counter % 3 == 0)
         {
             donkeykong.currentFrame = 3;

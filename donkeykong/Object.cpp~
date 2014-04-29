@@ -832,63 +832,170 @@ int Object::checkOnLadder(int direction){
             }
         }
     }
+
+	//Check when object is on floor 5 and trying to move down
     if((previousFloor == 5)&&(direction == 0))
     {
+
+		//Check to see if object is above a ladder
         if ((xpos + width/2 >= 79 && xpos + width/2 <= 99)||(xpos + width/2 >= 196 && xpos + width/2 <= 216)||(xpos + width/2 >= 393 && xpos + width/2 <= 413))
         {
+
+			//Return 2 if object is above broken ladder
             if(xpos + width/2 >= 393 && xpos + width/2 <= 413 && ypos + height >= 251 && ypos + height <= 271){
                 return 2;
             }
+
+			//Else return 1
             else{
                 return 1;
             }
         }
     }
+
+	//Check for when object is between floors 5 and 6
     if(((previousFloor == 5)||(previousFloor == 6))&&((floorNumber == 5) || (floorNumber == 6)) && (onFloor == 0)){
+
+		//Check to see if object is in front of a ladder
         if ((xpos + width/2 >= 235 && xpos + width/2 <= 255)||(xpos + width/2 >= 431 && xpos + width/2 <= 451))
         {
+
+			//Return 2 if object is in front of a broken ladder and moving up
             if(xpos + width/2 >= 235 && xpos + width/2 <= 255 && ypos <= 221 && ypos >= 241 && direction == 1){
                 return 2;
             }
+
+			//Return 2 if object is infront of broken ladder and moving down
             else if(xpos + width/2 >= 235 && xpos + width/2 <= 255 && ypos + height >= 205 && ypos + height <= 225 && direction == 0){
                 return 2;
             }
+			//Else return 1
             else{
                 return 1;
             }
         }
     }
+
+	//Check when object is on floor 6 and trying to move up
     if((previousFloor == 6)&&(direction == 1))
     {
+
+		//Return 1 if object is in front of ladder
         if ((xpos + width/2 >= 191 && xpos + width/2 <= 211)||(xpos + width/2 >= 216 && xpos + width/2 <= 236)||(xpos + width/2 >= 334 && xpos + width/2 <= 354))
         {
             return 1;
         }
     }
+
+	//Check when object is on floor 6 and trying to move down
     if((previousFloor == 6)&&(direction == 0))
     {
+
+		//Check to see if object is above ladder
         if ((xpos + width/2 >= 235 && xpos + width/2 <= 255)||(xpos + width/2 >= 431 && xpos + width/2 <= 451))
         {
+
+			//Return 2 if object is above broken ladder
             if(xpos + width/2 >= 235 && xpos + width/2 <= 255 && ypos + height >= 205 && ypos + height <= 225){
                 return 2;
             }
+
+			//Else return 1
             else{
                 return 1;
             }
         }
     }
+
+	//Check when object is in between floors 6 and 7
     if(((previousFloor == 6)||(previousFloor == 7))&&((floorNumber == 6) || (floorNumber == 7)) && (onFloor == 0)){
+
+		//Check to see if object is infront of ladder and return 1
         if ((xpos + width/2 >= 191 && xpos + width/2 <= 211)||(xpos + width/2 >= 216 && xpos + width/2 <= 236)||(xpos + width/2 >= 334 && xpos + width/2 <= 354))
         {
             return 1;
         }
     }
+
+	//Check when object is on floor 7 and trying to move down
     if((previousFloor == 7)&&(direction == 0))
     {
+
+		//Return 1 if in front of ladder
         if ((xpos + width/2 >= 191 && xpos + width/2 <= 211)||(xpos + width/2 >= 216 && xpos + width/2 <= 236)||(xpos + width/2 >= 334 && xpos + width/2 <= 354))
         {
             return 1;
         }
     }
+
+	//Return 0 because object is not in front of ladder
+    return 0;
+}
+
+int Object::checkOnLadderBarrel(){
+        if (xpos < 433 && xpos > 431 && ypos > 205 && ypos < 207)
+        {
+            return 2;
+        }
+        if (xpos > 196 && xpos < 198 && ypos > 264 && ypos < 266)
+        {
+            return 2;
+        }
+        if (xpos > 76 && xpos < 78 && ypos > 259 && ypos < 261)
+        {
+            return 2;
+        }
+        if (xpos > 274 && xpos < 276 && ypos > 319 && ypos < 321)
+        {
+            return 2;
+        }
+        if (xpos > 431 && xpos < 433 && ypos > 312 && ypos < 314)
+        {
+            return 2;
+        }
+        if (xpos > 235 && xpos < 237 && ypos > 375 && ypos < 376)
+        {
+            return 2;
+        }
+        if (xpos > 78 && xpos < 80 && ypos > 369 && ypos < 371)
+        {
+            return 2;
+        }
+        if (xpos > 433 && xpos < 435 && ypos > 438 && ypos < 440)
+        {
+            return 2;
+        }
+        if(xpos > 196 && xpos < 198 && ypos == 224)
+        {
+           return 1;
+        }
+        if (xpos > 76 && xpos < 78 && ypos == 229)
+        {
+             return 1;
+        }
+        if (xpos > 431 && xpos < 433 && ypos == 174)
+        {
+            return 1;
+        }
+        if (xpos > 274 && xpos < 276 && ypos == 276)
+        {
+            return 1;
+        }
+        if (xpos > 431 && xpos < 433 && ypos == 282)
+        {
+            return 1;
+        }
+        if (xpos > 235 && xpos < 237 && ypos == 329)
+        {
+            return 1;
+        }
+        if (xpos > 78 && xpos < 80 && ypos == 336)
+        {
+            return 1;
+        }
+        if (xpos > 433 && xpos < 435 && ypos == 392)
+        {
+            return 1;
+        }
     return 0;
 }

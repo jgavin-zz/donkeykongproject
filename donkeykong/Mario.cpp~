@@ -279,12 +279,17 @@ void Mario::handle_input(SDL_Event event)
     }
 }
 
+//Check to see if mario is within the radius of the hammer, return 1 if so
 int Mario::checkForHammer(){
+
+	//Set hammer parameters
     int hammerXmin = 35;
     int hammerXmax = 65;
     int hammerYmin = 315;
     int hammerYmax = 333;
 
+
+	//If mario is within radius of hammer, return 1, else return 0
     if(((xpos + width/2 >= hammerXmin)&&(xpos + width/2 <= hammerXmax))&&((ypos + height/2 >= hammerYmin)&&(ypos + height/2 <= hammerYmax))&&(hadHammer == 0)){
         hadHammer = 1;
         return 1;
@@ -295,6 +300,8 @@ int Mario::checkForHammer(){
 
 }
 
+
+//Function to determine mario's animation state based on his current variable values
 void Mario::determineAnimation(){
     //Facing right
     if(onFloor && !jumping && !hasHammer && rdirection && !vx && !vy  && !climbing){

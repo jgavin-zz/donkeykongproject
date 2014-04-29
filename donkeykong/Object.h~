@@ -65,7 +65,7 @@ public:
     int onFloor;     //1 when object is on floor, 0 when not
     int floorNumber; //tells which floor object is on
     int previousFloor;//tells which floor object was on when last placed on a floor
-    int direction;   //0 when object is going left, 1 when going right
+    int direction;   //0 when object is going down, 1 when going up
     
     virtual void setAnimation();//Sets animation parameters according to animation state
     void setcurrentstate(int); //Determines animation state based on objects current variables
@@ -80,7 +80,13 @@ public:
     
     int checkOnFloor(int);  //Function to check whether or not an object is on top of a floor
     
+<<<<<<< HEAD
     int checkOnLadder(int); //Function to check whether an object is on a ladder
+=======
+    int checkOnLadder(int);
+
+    int checkOnLadderBarrel();
+>>>>>>> d2e7b7616acc24a7572db31b943fdcd9ef818c31
     
 private:
     
