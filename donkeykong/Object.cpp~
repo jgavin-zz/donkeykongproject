@@ -932,6 +932,8 @@ int Object::checkOnLadder(int direction){
     return 0;
 }
 
+// Checks to see if barrel is above or below a ladder
+// Return 2 means below a ladder, 1 means above a ladder, 0 if neither
 int Object::checkOnLadderBarrel(){
         if (xpos < 433 && xpos > 431 && ypos > 205 && ypos < 207)
         {

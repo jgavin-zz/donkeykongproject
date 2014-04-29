@@ -1,10 +1,9 @@
 //  Created by Ryan Moran on 4/1/14.
 //  Copyright (c) 2014 Ryan Moran. All rights reserved.
 
-////NOTE THAT FOR NOW USES PINK SPRITESHEET: this ended up being much simpler than trying to use two sheets
 
-#include "Object.h"
-#include "Barrel.h"
+#include "Object.h" //using inheritance so that object functions are accessible
+#include "Barrel.h" //include header file for barrel class
 #include <math.h>
 #include <iostream>
 
@@ -14,19 +13,20 @@ using namespace std;
 //Constructor, sets parameters and loads surface
 Barrel::Barrel() : Object(12, 18, 140, 170, 0, 0, 0, 1, 0, 2, 0, 0, 100){
     setAnimation();
-    floorNumber = 6;
+    floorNumber = 6; //barrel always starts on top floor where donkey kong is
     climbing = 0;
     initializeFloors();
-    hitOil=0;
-    alive = 1;
+    hitOil=0; //barrel has not hit the oil can on the bottom floor yet
+    alive = 1; //barrel is alive and has not been destroyed by oil can or by hammer
     speedBoost = 0;
 }
-
+//function to control movement of barrel object on screen
 void Barrel::move(){
-    if (type == 1)
+    if (type == 1) //barrel type 1 is rolling down a floor
     {
+    //Set a dt variable and variable for gravity
     double dt = .5; ay = 2;
-    if(vx > 0) vx = vx + speedBoost;
+    if(vx > 0) vx = vx + speedBoost; //update speed based on level (determines speedboost)
     if(vx < 0) vx = vx - speedBoost;
     if( climbing == 0){
         vx += (ax * dt);
@@ -50,27 +50,23 @@ void Barrel::move(){
         vy = 0;
     }
     }
-    else
+    else //covers other two barrel types: dropped straight down by dk and those that randomly fall down ladders after rolling
     {
         double dt = .1; ay = 1;
         vy += (ay*dt);
         ypos += (vy * dt);
     }
 }
-
+//function that calls move to physically move a barrel and animates its rolling by calling updateAnimation();
 void Barrel::roll(){
-        if (type == 1)
+        if (type == 1) //a barrel rolling horizontally on the floors
         {
-	//cout<<floorNumber<<endl;
+	//series of if statements to cover a rolling barrel on specific floors
 	if(floorNumber == 6){
         ax = 0;
         vx = 1;//student machine vx = 1.5
-        //ax = .05;
-        move();
-		//xpos += .5;
-		/*if(xpos >= 350){
-         ypos+=.025;
-         }*/
+        move(); //moves the barrel on the screen
+		//series of if statements to flip to the next correct spritesheet frame
 		updateAnimation();
 		if (currentState == 1 && currentFrame == 1){
 			updateAnimation();
@@ -90,25 +86,10 @@ void Barrel::roll(){
 			setAnimation();
 			updateAnimation();
 		}
-        
-		/*if (xpos >= 507){
-         floorNumber -=1;
-         ypos = 215;
-         }*/
-        /*if(checkOnFloor()){
-         ypos = checkOnFloor() - height;
-         vy = 0;
-         onFloor = 1;
-         floorNumber = 7;
-         previousFloor = 7;
-         }*/
 	}
 	else if (floorNumber == 5){
         vx = -1;
-        //ax = -.05;
         move();
-		/*xpos -= .5;
-		ypos+=.02;*/
 		updateAnimation();
 		if (currentState == 1 && currentFrame == 1){
 			updateAnimation();
@@ -128,18 +109,10 @@ void Barrel::roll(){
 			setAnimation();
 			updateAnimation();
 		}
-        
-		/*if (xpos <= 23){
-			floorNumber -=1;
-			ypos = 265;
-		}*/
 	}
 	else if (floorNumber == 4){
         vx = 1;
-        //ax = .05;
         move();
-		/*xpos += .5;
-		ypos+=.025;*/
 		updateAnimation();
 		if (currentState == 1 && currentFrame == 1){
 			updateAnimation();
@@ -159,18 +132,10 @@ void Barrel::roll(){
 			setAnimation();
 			updateAnimation();
 		}
-        
-		/*if (xpos >= 507){
-			floorNumber -=1;
-			ypos = 320;
-		}*/
 	}
 	else if (floorNumber == 3){
         vx = -1;
-        //ax = .05;
         move();
-		/*xpos -= .5;
-		ypos+=.025;*/
 		updateAnimation();
 		if (currentState == 1 && currentFrame == 1){
 			updateAnimation();
@@ -190,18 +155,10 @@ void Barrel::roll(){
 			setAnimation();
 			updateAnimation();
 		}
-        
-		/*if (xpos <= 23){
-			floorNumber -=1;
-			ypos = 376;
-		}*/
 	}
 	else if (floorNumber == 2){
         vx = 1;
-        //ax = .05;
         move();
-		/*xpos += .5;
-		ypos+=.025;*/
 		updateAnimation();
 		if (currentState == 1 && currentFrame == 1){
 			updateAnimation();
@@ -221,17 +178,10 @@ void Barrel::roll(){
 			setAnimation();
 			updateAnimation();
 		}
-        
-		/*if (xpos >= 507){
-			floorNumber -=1;
-			ypos = 432;
-		}*/
 	}
 	else if (floorNumber == 1){
         vx = -1;
-        //ax = .05;
         move();
-		//xpos -= .5;
 		if(xpos>267){
 		ypos+=.025;
 		}
@@ -276,21 +226,19 @@ void Barrel::roll(){
         }
 }
 
-
-
+//Function updates animation frames from spite sheet
 void Barrel::updateAnimation(){
     oldTime = SDL_GetTicks();
     currentFrame++;
     if(currentFrame >= maxFrames) {
         currentFrame = 0;
     }
-    //(*this).setAnimation();
 }
 
 
-//Function sets animation parameters according to state of mario
+//Function sets animation parameters according to state of barrel
 void Barrel::setAnimation(){
-    switch(currentState){
+    switch(currentState){ //our spritesheet had barrel animations split between two rows so each situation has two cases, one for each row
         case 1: //rolling case 1
             spritesheetx = 46;
             spritesheety = 256;

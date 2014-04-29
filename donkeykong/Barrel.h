@@ -21,12 +21,12 @@ public:
     void roll(); //handles rolling a barrel down the floors
     
     virtual void setAnimation();//Sets animation parameters according to animation state
-    virtual void updateAnimation(); //Peach specific version of update animation
-    virtual void move();
+    virtual void updateAnimation(); //barrel specific version of update animation. flips through frames on sprite sheet
+    virtual void move(); //handles velocities and changing x and y positions of the barrel on the screen
 
-    int hitOil;
-    double speedBoost;
-    int type;
+    int hitOil; //1 if barrel has hit the oil can. 0 if it has not
+    double speedBoost; //parameter to increase speed every level. 
+    int type; //used to differentiate between falling barrels, rolling barrels, and rolling barrels that randomly fall down ladders
     
 private:
     
