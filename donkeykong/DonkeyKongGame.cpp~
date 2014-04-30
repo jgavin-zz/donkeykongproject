@@ -96,7 +96,7 @@ void DonkeyKongGame::Music_introMusic ()
 {
     
     Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 );
-    intro_sound = Mix_LoadMUS( "intro.wav" );
+    intro_sound = Mix_LoadMUS( "intro2.wav" );
     Mix_PlayMusic(intro_sound, -1);
 }
 
@@ -160,7 +160,7 @@ void DonkeyKongGame::Music_timeMusic ()
 {
     
     Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 );
-    background_sound = Mix_LoadMUS( "time.wav" );
+    background_sound = Mix_LoadMUS( "jumpbarrel.wav" );
     Mix_PlayMusic(background_sound, -1);
 }
 
@@ -828,6 +828,7 @@ lives--;
 int DonkeyKongGame::gameOver()
 {
    int counter = 0;
+   Music_backgroundMusic();
    donkeykong.xpos = 50;
    donkeykong.ypos = 383 - donkeykong.height;
    donkeykong.spritesheetx = 57;
@@ -857,13 +858,15 @@ int DonkeyKongGame::gameOver()
     while (counter != 50)
     {
 	//Check for event
-        /*while (SDL_PollEvent (&event))
+        while (SDL_PollEvent (&event))
         {
 	if (event.type == SDL_QUIT)
-            {
-		return 1;
-            }
-        }*/
+        	{
+                	SDL_Quit();
+                	exit(0);
+         
+        	}
+	}
          SDL_FillRect (screen, NULL,
                   SDL_MapRGB (screen->format, 0, 0, 0));
         SDL_BlitSurface (floor, &SrcR, screen, &DestR);
@@ -908,6 +911,7 @@ int DonkeyKongGame::gameOver()
         }
         if (counter == 18)
         {
+	    Music_deathMusic();
             mario.currentState = 14;
             mario.setAnimation();
         }
@@ -920,6 +924,11 @@ int DonkeyKongGame::gameOver()
             mario.currentState = 16;
             mario.setAnimation();
         }
+	else if (counter > 44)
+	{
+	     Mix_PauseMusic();
+	}
+
         SDL_Flip(screen);
         SDL_Delay(150);
         counter++;
@@ -1020,7 +1029,7 @@ int DonkeyKongGame::runIntroScreen(){
                 switch( event.key.keysym.sym )
                 {
                     //Enter game
-                    case SDLK_RETURN: quit = true;
+                    case SDLK_RETURN: Music_timeMusic(); quit = true;
                 }
             
             }
@@ -1080,6 +1089,7 @@ int DonkeyKongGame::runIntroScreen(){
         donkeycount++;
         introDisplay();
     }
+    SDL_Delay(500);
     return 0;
 }
 
