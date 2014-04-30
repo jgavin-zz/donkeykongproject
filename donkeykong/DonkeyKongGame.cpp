@@ -442,7 +442,6 @@ DonkeyKongGame::playDonkeyKong ()
 		      peach.setAnimation ();
 		    }
 		}
-	      //cout << dkSpeed << endl;
 	      if (mario.getypos () <= 250)
 		{
 		  dkSpeed = 150 - ((level - 1) * 20) - 20;
@@ -656,19 +655,19 @@ DonkeyKongGame::playDonkeyKong ()
 		  mario.setAnimation ();
 		  deathAnimation ();
 		  initializeLevel (); //setting things up for next play through
-		  Music_backgroundMusic ();
+		  Music_backgroundMusic (); //play normal background level music
 		}
 	      if (mario.checkForHammer ())
 		{//everything that must be done when Mario grabs the hammer
 		  mario.hasHammer = 1;
-		  Music_hammerMusic ();
+		  Music_hammerMusic (); //play hammer music while Mario has the hammer
 		  mario.hammerStartTime = SDL_GetTicks ();
 		}
 	      if ((SDL_GetTicks () - mario.hammerStartTime > 10000)
 		  && (mario.hasHammer))
 		{//limits amount of time Mario has the hammer until it disappears
 		  mario.hasHammer = 0;
-		  Music_backgroundMusic ();
+		  Music_backgroundMusic (); //play background level music
 		  mario.currentState = 1;
 		  mario.setAnimation ();
 		}
@@ -679,7 +678,7 @@ DonkeyKongGame::playDonkeyKong ()
 	      winner = checkForWinner ();
 
 	    }
-	  Music_backgroundMusic ();
+	  Music_backgroundMusic (); //play background level music
 	  if (lives == 0)
 	    {
 	      gameOver ();
@@ -862,7 +861,7 @@ DonkeyKongGame::initializeLevel ()
   mario.currentState = 1;
   mario.setAnimation ();
 
-  //Initialize DonkeyKong
+  //Initialize Donkey Kong and all of his variables
   donkeykong.height = 33;
   donkeykong.width = 43;
   donkeykong.xpos = 94;
@@ -892,7 +891,7 @@ DonkeyKongGame::setBarrelSpeedBoost ()
   int i;
   for (i = 0; i < barrels.size (); i++)
     {
-      barrels[i].speedBoost = (level - 1) * .5;
+      barrels[i].speedBoost = (level - 1) * .3;
     }
 }
 
@@ -923,7 +922,7 @@ DonkeyKongGame::deathAnimation ()
   mario.setAnimation ();
   Display ();
   SDL_Delay (2000);
-  lives--;
+  lives--; //lose a life when you die
 }
 
 //function that is called once player loses all their lives
@@ -956,7 +955,7 @@ DonkeyKongGame::gameOver ()
   SrcR.y = 2;
   SrcR.w = 550;
   SrcR.h = 200;
-  SDL_BlitSurface (floor, &SrcR, screen, &DestR);
+  SDL_BlitSurface (floor, &SrcR, screen, &DestR); //blit a surface to the screen
   while (counter != 60)
     {
       //Check for event
@@ -969,8 +968,8 @@ DonkeyKongGame::gameOver ()
 
 	    }
 	}
-      SDL_FillRect (screen, NULL, SDL_MapRGB (screen->format, 0, 0, 0));
-      SDL_BlitSurface (floor, &SrcR, screen, &DestR);
+      SDL_FillRect (screen, NULL, SDL_MapRGB (screen->format, 0, 0, 0)); //fill in surface screen with black to blit over
+      SDL_BlitSurface (floor, &SrcR, screen, &DestR); //blit over newly black, blank screen
       mario.display (screen, mario.getMarioSurface (), mario.getxpos (),
 		     mario.getypos (),
 		     mario.getspritesheetx () +
@@ -1095,7 +1094,7 @@ DonkeyKongGame::runIntroScreen ()
 
 	}
 
-      //Make mario jump
+      //Make mario jump over the stream of barrels
       if (count == time1)
 	{
 	  Barrel barrel;
@@ -1190,10 +1189,11 @@ DonkeyKongGame::runIntroScreen ()
   return 0;
 }
 
+//Function for the intro screen the user first sees
 void
 DonkeyKongGame::introDisplay ()
 {
-
+  //first read in all necessary saved data from txt files such as previously saved lives, level, score, highscore
   int i;
   ifstream myReadFile;
   myReadFile.open ("levelSave.txt");
@@ -1215,16 +1215,16 @@ DonkeyKongGame::introDisplay ()
     }
   myReadFile.close ();
   if (lives <= 0)
-    {
+    { //reset everything to initial values if user exited with 0 lives previously
       lives = 3;
       level = 1;
       scoreint = 0;
     }
 
   SDL_FillRect (screen, &screen->clip_rect,
-		SDL_MapRGB (screen->format, 0xFF, 0xFF, 0xFF));
+		SDL_MapRGB (screen->format, 0xFF, 0xFF, 0xFF)); //makes the screen surface blank
 
-  SDL_BlitSurface (introScreen, NULL, screen, NULL);
+  SDL_BlitSurface (introScreen, NULL, screen, NULL); //blit the introScreen surface to the screen surface
 
   SDL_Rect DestR;
 
@@ -1238,7 +1238,7 @@ DonkeyKongGame::introDisplay ()
   SrcR.w = 550;
   SrcR.h = 200;
 
-  SDL_BlitSurface (floor, &SrcR, screen, &DestR);
+  SDL_BlitSurface (floor, &SrcR, screen, &DestR); //blit the floor to the screen surface
 
   mario.display (screen, mario.getMarioSurface (), mario.getxpos (),
 		 mario.getypos (),
