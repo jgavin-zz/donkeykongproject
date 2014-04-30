@@ -854,7 +854,7 @@ DonkeyKongGame::initializeLevel ()
   donkeykong.height = 33;
   donkeykong.width = 43;
   donkeykong.xpos = 94;
-  donkeykong.ypos = 150;
+  donkeykong.ypos = 147;
   donkeykong.vx = 0;
   donkeykong.vy = 0;
   donkeykong.ay = 0;

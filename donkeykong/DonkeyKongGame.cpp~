@@ -746,7 +746,7 @@ DonkeyKongGame::checkForCollisions ()
     }
 
   if ((mario.xpos < 27 && mario.ypos > 400)
-      || (mario.xpos < 138 && mario.ypos < 200 && mario.ypos > 170))
+      || (mario.xpos < 138 && mario.ypos < 180 && mario.ypos > 150))
     {
       return 1;			//kills Mario if he runs into oil can or donkey kong objects on screen using their screen positions as death pts
     }

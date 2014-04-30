@@ -11,7 +11,7 @@
 using namespace std;
 
 //Constructor, sets parameters and loads surface
-DonkeyKong::DonkeyKong ():Object (33, 43, 94, 150, 0, 0, 0, 3, 0, 2, 0, 0, 100)
+DonkeyKong::DonkeyKong ():Object (33, 43, 94, 147, 0, 0, 0, 3, 0, 2, 0, 0, 100)
 {
   setAnimation ();
 }
