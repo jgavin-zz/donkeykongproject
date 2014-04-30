@@ -152,7 +152,7 @@ void DonkeyKongGame::Music_jumpbarrelMusic ()
 {
     
     Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 );
-    background_sound = Mix_LoadMUS( "jumpbarrel.wav" );
+    background_sound = Mix_LoadMUS( "insert.wav" );
     Mix_PlayMusic(background_sound, -1);
 }
 
@@ -160,7 +160,7 @@ void DonkeyKongGame::Music_timeMusic ()
 {
     
     Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 );
-    background_sound = Mix_LoadMUS( "jumpbarrel.wav" );
+    background_sound = Mix_LoadMUS( "wah.wav" );
     Mix_PlayMusic(background_sound, -1);
 }
 
@@ -828,7 +828,7 @@ lives--;
 int DonkeyKongGame::gameOver()
 {
    int counter = 0;
-   Music_backgroundMusic();
+   Music_timeMusic();
    donkeykong.xpos = 50;
    donkeykong.ypos = 383 - donkeykong.height;
    donkeykong.spritesheetx = 57;
@@ -855,7 +855,7 @@ int DonkeyKongGame::gameOver()
     SrcR.w = 550;
     SrcR.h = 200;
     SDL_BlitSurface (floor, &SrcR, screen, &DestR);
-    while (counter != 50)
+    while (counter != 60)
     {
 	//Check for event
         while (SDL_PollEvent (&event))
@@ -909,22 +909,22 @@ int DonkeyKongGame::gameOver()
         {
             donkeykong.currentFrame = 0;
         }
-        if (counter == 18)
+        if (counter == 28)
         {
 	    Music_deathMusic();
             mario.currentState = 14;
             mario.setAnimation();
         }
-        else if (counter > 24 && counter < 37)
+        else if (counter > 34 && counter < 47)
         {
              mario.updateAnimation();
         }
-        else if (counter == 37)
+        else if (counter == 47)
         {
             mario.currentState = 16;
             mario.setAnimation();
         }
-	else if (counter > 44)
+	else if (counter > 54)
 	{
 	     Mix_PauseMusic();
 	}
@@ -966,8 +966,8 @@ int DonkeyKongGame::runIntroScreen(){
     bool quit = false;
 
     int overallcounter = 0;
-    int total = 4000;
-    int time1 = 4000;
+    int total = 2000;
+    int time1 = 1200;
 
     if (overallcounter == 0) {
     	Music_introMusic();
@@ -1029,7 +1029,7 @@ int DonkeyKongGame::runIntroScreen(){
                 switch( event.key.keysym.sym )
                 {
                     //Enter game
-                    case SDLK_RETURN: Music_timeMusic(); quit = true;
+                    case SDLK_RETURN: Music_jumpbarrelMusic(); quit = true;
                 }
             
             }
@@ -1046,30 +1046,10 @@ int DonkeyKongGame::runIntroScreen(){
             barrels[i].ypos += .005;
         }
 
-	if (overallcounter == 1) {
-		total = 4000;
-	}
-
-	else if (overallcounter == 2) {
-		total = 700;
-		time1 = 1000;
-	}
-
-	else if (overallcounter == 3 || overallcounter == 4 || overallcounter == 5  || overallcounter == 6) {
-		total = 400;
-	}
-
-	else if (overallcounter == 7) {
-		total = 3950;
-		time1 = 3950;
-		donkeycount = 0;
-		overallcounter = 0;
-	}
-
+	
         //Update donkey kong
         if(donkeycount == total){
 	    overallcounter++;
-
 	    donkeycount = 0;
             if ( overallcounter != 0 ) {
 		    if(donkeykong.currentFrame == 0){
