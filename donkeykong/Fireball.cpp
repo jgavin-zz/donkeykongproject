@@ -32,7 +32,7 @@ void Fireball::move(){
 }
 
 void Fireball::bounce(){
-	move();
+	move(); //fireball guy ended up looking better unanimated rather than flipping through b/c spritesheet we use doesn't supply enough images of fireball. so changed bounce to simply call move
 }
 
 //Function that flips through frames of spritesheet to animate fireball
