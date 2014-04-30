@@ -896,6 +896,7 @@ DonkeyKongGame::setBarrelSpeedBoost ()
     }
 }
 
+//function to display Mario's death animation when he dies
 void
 DonkeyKongGame::deathAnimation ()
 {
@@ -925,6 +926,7 @@ DonkeyKongGame::deathAnimation ()
   lives--;
 }
 
+//function that is called once player loses all their lives
 int
 DonkeyKongGame::gameOver ()
 {
@@ -940,7 +942,7 @@ DonkeyKongGame::gameOver ()
   mario.ypos = 450 - mario.height;
   peach.xpos = 100;
   peach.ypos = 362;
-  introScreen = OnLoad ("game_over.bmp");
+  introScreen = OnLoad ("game_over.bmp"); //load game over screen into sdl surface introScreen
   SDL_FillRect (screen, NULL, SDL_MapRGB (screen->format, 0, 0, 0));
 
   SDL_Rect DestR;
@@ -1043,10 +1045,10 @@ DonkeyKongGame::gameOver ()
   mario.currentState = 2;
   mario.setAnimation ();
   mario.currentFrame = 0;
-  introScreen = OnLoad ("Intro.bmp");
+  introScreen = OnLoad ("Intro.bmp"); //load intro bitmap into SDL surface introScreen
 }
 
-
+//Function that controls everything occurring on intro screen including dk movement, mario movement, barrels, etc
 int
 DonkeyKongGame::runIntroScreen ()
 {

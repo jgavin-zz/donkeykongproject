@@ -926,6 +926,7 @@ DonkeyKongGame::deathAnimation ()
   lives--;
 }
 
+//function that is called once player loses all their lives
 int
 DonkeyKongGame::gameOver ()
 {
@@ -941,7 +942,7 @@ DonkeyKongGame::gameOver ()
   mario.ypos = 450 - mario.height;
   peach.xpos = 100;
   peach.ypos = 362;
-  introScreen = OnLoad ("game_over.bmp");
+  introScreen = OnLoad ("game_over.bmp"); //load game over screen into sdl surface introScreen
   SDL_FillRect (screen, NULL, SDL_MapRGB (screen->format, 0, 0, 0));
 
   SDL_Rect DestR;
@@ -1044,10 +1045,10 @@ DonkeyKongGame::gameOver ()
   mario.currentState = 2;
   mario.setAnimation ();
   mario.currentFrame = 0;
-  introScreen = OnLoad ("Intro.bmp");
+  introScreen = OnLoad ("Intro.bmp"); //load intro bitmap into SDL surface introScreen
 }
 
-
+//Function that controls everything occurring on intro screen including dk movement, mario movement, barrels, etc
 int
 DonkeyKongGame::runIntroScreen ()
 {
@@ -1086,7 +1087,6 @@ DonkeyKongGame::runIntroScreen ()
 	  if (barrels[i].xpos <= 78 && barrels[i].xpos >= 77.5)
 	    {
 	      vy = -2.5;
-	      // cout << count <<endl;
 	      jumping = 1;
 	      mario.spritesheetx = 172;
 	      mario.spritesheety = 0;
