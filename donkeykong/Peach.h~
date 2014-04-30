@@ -9,7 +9,7 @@
 #ifndef PEACH_H
 #define PEACH_H
 
-#include "Object.h"
+#include "Object.h" //use inheritance for access to base class functions
 #include <SDL/SDL.h>
 #include <string>
 using namespace std;

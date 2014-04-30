@@ -29,7 +29,6 @@
 #include <sstream>
 
 #include "SDL/SDL_mixer.h"
-//include "SDL_ttf/SDL_ttf.h"
 
 using namespace std;
 
@@ -274,9 +273,7 @@ DonkeyKongGame::cleanUp ()
 {
 
   //Free the loaded image
-  //SDL_FreeSurface( screen );
   SDL_FreeSurface (background);
-  //SDL_FreeSurface (message);
   mario.cleanUp ();
 
   // free all sound files
@@ -292,8 +289,6 @@ DonkeyKongGame::cleanUp ()
 
   //Quit SDL Mixer
   Mix_CloseAudio ();
-  //Quit SDL
-  //SDL_Quit ();
 }
 
 void
@@ -307,11 +302,8 @@ DonkeyKongGame::scoreAndLevel ()
   SDL_BlitSurface (text, NULL, background, &DestR);
   stringstream strs;
   strs << scoreint;
-  //cout<<scoreint<<endl; //not score int behaving badly
   string temp_str = strs.str ();
-  //cout<<temp_str<<endl; //not the temp string behaving badly
   char *currentScore = (char *) temp_str.c_str ();
-  //cout<<currentScore<<endl; //not currentScore behaving badly. so text must not be getting cleared correctly
   SDL_Color text_color = { 255, 255, 255 };
   text = TTF_RenderText_Solid (font, currentScore, text_color);
 
@@ -381,7 +373,6 @@ DonkeyKongGame::playDonkeyKong ()
       int i;
       int oldState;
       int winner;
-      //Display ();
       Music_backgroundMusic ();
       srand (time (NULL));
       while (quit == false)
@@ -391,7 +382,6 @@ DonkeyKongGame::playDonkeyKong ()
 	  counter = 0;
 	  while (winner == 0 && quit == false)
 	    {
-	      //cout << mario.getxpos() << " " << mario.getypos() << endl;
 	      if (lives == 0)
 		{
 		  level = 1;
@@ -408,7 +398,6 @@ DonkeyKongGame::playDonkeyKong ()
 		  myWriteFile.close ();
 		  break;
 		}
-	      //cout << "onFloor = " << mario.onFloor << endl;
 	      if (mario.getoldtime () + mario.getframerate () <
 		  SDL_GetTicks ())
 		{
@@ -640,10 +629,10 @@ DonkeyKongGame::playDonkeyKong ()
 		    }
 		}
 	      if (checkForCollisions ())
-		{ //everything that must be done if checkForCollisions() returns 1 and thus Mario died.
+		{		//everything that must be done if checkForCollisions() returns 1 and thus Mario died.
 		  Music_deathMusic ();
-		  mario.alive = 0; //set Mario to dead
-		  scoreint = scoreint - 100; //lose points when you die
+		  mario.alive = 0;	//set Mario to dead
+		  scoreint = scoreint - 100;	//lose points when you die
 		  mario.climbing = 0;
 		  mario.onLadder = 0;
 		  if (mario.rdirection == 0)
@@ -654,31 +643,31 @@ DonkeyKongGame::playDonkeyKong ()
 		  mario.currentState = 14;
 		  mario.setAnimation ();
 		  deathAnimation ();
-		  initializeLevel (); //setting things up for next play through
-		  Music_backgroundMusic (); //play normal background level music
+		  initializeLevel ();	//setting things up for next play through
+		  Music_backgroundMusic ();	//play normal background level music
 		}
 	      if (mario.checkForHammer ())
-		{//everything that must be done when Mario grabs the hammer
+		{		//everything that must be done when Mario grabs the hammer
 		  mario.hasHammer = 1;
-		  Music_hammerMusic (); //play hammer music while Mario has the hammer
+		  Music_hammerMusic ();	//play hammer music while Mario has the hammer
 		  mario.hammerStartTime = SDL_GetTicks ();
 		}
 	      if ((SDL_GetTicks () - mario.hammerStartTime > 10000)
 		  && (mario.hasHammer))
-		{//limits amount of time Mario has the hammer until it disappears
+		{		//limits amount of time Mario has the hammer until it disappears
 		  mario.hasHammer = 0;
-		  Music_backgroundMusic (); //play background level music
+		  Music_backgroundMusic ();	//play background level music
 		  mario.currentState = 1;
 		  mario.setAnimation ();
 		}
-	      fireball.ensureOnScreen (); //makes sure fireball character never surpasses screen boundaries
+	      fireball.ensureOnScreen ();	//makes sure fireball character never surpasses screen boundaries
 	      setBarrelSpeedBoost ();
-	      scoreAndLevel (); //function that uses SDL surface text to write high score, score, level, etc to screen
+	      scoreAndLevel ();	//function that uses SDL surface text to write high score, score, level, etc to screen
 	      Display ();
 	      winner = checkForWinner ();
 
 	    }
-	  Music_backgroundMusic (); //play background level music
+	  Music_backgroundMusic ();	//play background level music
 	  if (lives == 0)
 	    {
 	      gameOver ();
@@ -714,21 +703,21 @@ DonkeyKongGame::checkForCollisions ()
   hammerYmax = mario.ypos + 30;
 
   if (mario.hasHammer)
-    { //means Mario can now destroy barrels for points
+    {				//means Mario can now destroy barrels for points
       for (i = 0; i < barrels.size (); i++)
-	{ //loop to check for every barrel object in our barrel vector
+	{			//loop to check for every barrel object in our barrel vector
 	  barrelXmin = barrels[i].xpos;
 	  barrelXmax = barrels[i].xpos + barrels[i].width;
 	  barrelYcenter = barrels[i].ypos + barrels[i].height / 2;
 	  if (((barrelXmax >= hammerXmin) && (barrelXmin <= hammerXmax))
 	      && ((barrelYcenter >= hammerYmin)
 		  && (barrelYcenter <= hammerYmax)))
-	    { //if barrels are in destroying range of Mario with hammer
+	    {			//if barrels are in destroying range of Mario with hammer
 	      if (barrels[i].alive == 1)
 		{
-		  scoreint += 200; //score 200 pts for each killed barrel
+		  scoreint += 200;	//score 200 pts for each killed barrel
 		}
-	      barrels[i].alive = 0; //sets barrel to dead when Mario hits it with hammer
+	      barrels[i].alive = 0;	//sets barrel to dead when Mario hits it with hammer
 	    }
 	}
     }
@@ -745,7 +734,7 @@ DonkeyKongGame::checkForCollisions ()
   double distance;
 
   for (i = 0; i < barrels.size (); i++)
-    { //loop to check Mario's position in relation to every barrel object in our vector of barrels
+    {				//loop to check Mario's position in relation to every barrel object in our vector of barrels
       barrelxcenter = barrels[i].xpos + barrels[i].width / 2;
       barrelycenter = barrels[i].ypos + barrels[i].height / 2;
       mindistance = marioradius + barrelradius;
@@ -753,13 +742,13 @@ DonkeyKongGame::checkForCollisions ()
 	sqrt (pow (marioxcenter - barrelxcenter, 2) +
 	      pow (marioycenter - barrelycenter, 2));
       if ((distance < mindistance) && (barrels[i].alive))
-	return 1; //return 1 if Mario is within death distance of a live barrel. This results in Mario being killed
+	return 1;		//return 1 if Mario is within death distance of a live barrel. This results in Mario being killed
     }
 
   if ((mario.xpos < 27 && mario.ypos > 400)
       || (mario.xpos < 138 && mario.ypos < 200 && mario.ypos > 150))
     {
-      return 1; //kills Mario if he runs into oil can or donkey kong objects on screen using their screen positions as death pts
+      return 1;			//kills Mario if he runs into oil can or donkey kong objects on screen using their screen positions as death pts
     }
 
   int fireballxcenter = fireball.xpos + fireball.width / 2;
@@ -769,7 +758,7 @@ DonkeyKongGame::checkForCollisions ()
     sqrt (pow (marioxcenter - fireballxcenter, 2) +
 	  pow (marioycenter - fireballycenter, 2));
   if ((distance < mindistance) && (fireball.alive))
-    return 1; //kills Mario if he is within death distance of a live fireball
+    return 1;			//kills Mario if he is within death distance of a live fireball
 
   int oilxcenter = oil.xpos + oil.width / 2;
   int oilycenter = oil.ypos + oil.height / 2;
@@ -778,7 +767,7 @@ DonkeyKongGame::checkForCollisions ()
   int randomnum = 0;
 
   for (i = 0; i < barrels.size (); i++)
-    {//loop to check every barrel object in our vector of barrels
+    {				//loop to check every barrel object in our vector of barrels
       barrelxcenter = barrels[i].xpos + barrels[i].width / 2;
       barrelycenter = barrels[i].ypos + barrels[i].height / 2;
       mindistance = oilradius + barrelradius;
@@ -789,16 +778,16 @@ DonkeyKongGame::checkForCollisions ()
 	{
 	  if (fireball.alive != 1)
 	    {
-	      fireball.alive = 1; //set fireball character to alive when first live barrel hits the oil can
+	      fireball.alive = 1;	//set fireball character to alive when first live barrel hits the oil can
 	      fireball.vx = 1;
 	    }
 	  if (i % 3 == 0 && fireball.floorNumber != 5
 	      && fireball.floorNumber != 6 && fireball.floorNumber != 7)
-	    { //makes fireball jump to a new floor every third time a live barrel hits the oil can
-	      fireball.vy = -(rand () % (30 - 1) + 1); //randomized y velocity
+	    {			//makes fireball jump to a new floor every third time a live barrel hits the oil can
+	      fireball.vy = -(rand () % (30 - 1) + 1);	//randomized y velocity
 	      randomnum = rand () % (2 - 1) + 1;
 	      if (randomnum == 1)
-		{ //randomly decide wether to move fireball character right or left on floor
+		{		//randomly decide wether to move fireball character right or left on floor
 		  fireball.vx = 1;
 		}
 	      else
@@ -816,13 +805,13 @@ DonkeyKongGame::checkForCollisions ()
 //function to check if Mario reached Peach at top of map
 int
 DonkeyKongGame::checkForWinner ()
-{//ultimately results in Mario reaching a harder level
+{				//ultimately results in Mario reaching a harder level
   if ((mario.ypos + mario.height <= 123) && (mario.onFloor)
       && (mario.currentState != 9))
-    {//if Mario reaches the floor level that Peach is standing on
+    {				//if Mario reaches the floor level that Peach is standing on
       Music_completeMusic ();
-      level++; //increment level
-      scoreint += 500; //score 500 pts by reaching Peach
+      level++;			//increment level
+      scoreint += 500;		//score 500 pts by reaching Peach
       SDL_Delay (3980);
       return 1;
     }
@@ -837,7 +826,7 @@ void
 DonkeyKongGame::initializeLevel ()
 {
   //Initialize Mario
-  mario.xpos = 130; //place Mario in the starting position at bottom of the screen
+  mario.xpos = 130;		//place Mario in the starting position at bottom of the screen
   mario.ypos = 435;
   mario.vx = 0;
   mario.vy = 0;
@@ -845,11 +834,11 @@ DonkeyKongGame::initializeLevel ()
   mario.onFloor = 1;
   mario.ay = 0;
   mario.vy = 0;
-  mario.floorNumber = 1; //start on bottom floor
+  mario.floorNumber = 1;	//start on bottom floor
   mario.previousFloor = 1;
   mario.onLadder = 0;
-  mario.alive = 1; //Mario is alive not dead
-  fireball.alive = 0; //fireball is not alive until first live barrel hits the oil can
+  mario.alive = 1;		//Mario is alive not dead
+  fireball.alive = 0;		//fireball is not alive until first live barrel hits the oil can
   fireball.xpos = 25;
   fireball.ypos = 437;
   fireball.vx = 0;
@@ -881,7 +870,7 @@ DonkeyKongGame::initializeLevel ()
   peach.ypos = 100;
 
   //Initialize Barrels
-  barrels.clear (); //resets vector of barrels for clean use for new level
+  barrels.clear ();		//resets vector of barrels for clean use for new level
 }
 
 //function to set speed of barrels based on level. makes each level harder
@@ -922,7 +911,7 @@ DonkeyKongGame::deathAnimation ()
   mario.setAnimation ();
   Display ();
   SDL_Delay (2000);
-  lives--; //lose a life when you die
+  lives--;			//lose a life when you die
 }
 
 //function that is called once player loses all their lives
@@ -941,7 +930,7 @@ DonkeyKongGame::gameOver ()
   mario.ypos = 450 - mario.height;
   peach.xpos = 100;
   peach.ypos = 362;
-  introScreen = OnLoad ("game_over.bmp"); //load game over screen into sdl surface introScreen
+  introScreen = OnLoad ("game_over.bmp");	//load game over screen into sdl surface introScreen
   SDL_FillRect (screen, NULL, SDL_MapRGB (screen->format, 0, 0, 0));
 
   SDL_Rect DestR;
@@ -955,7 +944,7 @@ DonkeyKongGame::gameOver ()
   SrcR.y = 2;
   SrcR.w = 550;
   SrcR.h = 200;
-  SDL_BlitSurface (floor, &SrcR, screen, &DestR); //blit a surface to the screen
+  SDL_BlitSurface (floor, &SrcR, screen, &DestR);	//blit a surface to the screen
   while (counter != 60)
     {
       //Check for event
@@ -968,8 +957,8 @@ DonkeyKongGame::gameOver ()
 
 	    }
 	}
-      SDL_FillRect (screen, NULL, SDL_MapRGB (screen->format, 0, 0, 0)); //fill in surface screen with black to blit over
-      SDL_BlitSurface (floor, &SrcR, screen, &DestR); //blit over newly black, blank screen
+      SDL_FillRect (screen, NULL, SDL_MapRGB (screen->format, 0, 0, 0));	//fill in surface screen with black to blit over
+      SDL_BlitSurface (floor, &SrcR, screen, &DestR);	//blit over newly black, blank screen
       mario.display (screen, mario.getMarioSurface (), mario.getxpos (),
 		     mario.getypos (),
 		     mario.getspritesheetx () +
@@ -1044,7 +1033,7 @@ DonkeyKongGame::gameOver ()
   mario.currentState = 2;
   mario.setAnimation ();
   mario.currentFrame = 0;
-  introScreen = OnLoad ("Intro.bmp"); //load intro bitmap into SDL surface introScreen
+  introScreen = OnLoad ("Intro.bmp");	//load intro bitmap into SDL surface introScreen
 }
 
 //Function that controls everything occurring on intro screen including dk movement, mario movement, barrels, etc
@@ -1215,16 +1204,15 @@ DonkeyKongGame::introDisplay ()
     }
   myReadFile.close ();
   if (lives <= 0)
-    { //reset everything to initial values if user exited with 0 lives previously
+    {				//reset everything to initial values if user exited with 0 lives previously
       lives = 3;
       level = 1;
       scoreint = 0;
     }
 
-  SDL_FillRect (screen, &screen->clip_rect,
-		SDL_MapRGB (screen->format, 0xFF, 0xFF, 0xFF)); //makes the screen surface blank
+  SDL_FillRect (screen, &screen->clip_rect, SDL_MapRGB (screen->format, 0xFF, 0xFF, 0xFF));	//makes the screen surface blank
 
-  SDL_BlitSurface (introScreen, NULL, screen, NULL); //blit the introScreen surface to the screen surface
+  SDL_BlitSurface (introScreen, NULL, screen, NULL);	//blit the introScreen surface to the screen surface
 
   SDL_Rect DestR;
 
@@ -1238,7 +1226,7 @@ DonkeyKongGame::introDisplay ()
   SrcR.w = 550;
   SrcR.h = 200;
 
-  SDL_BlitSurface (floor, &SrcR, screen, &DestR); //blit the floor to the screen surface
+  SDL_BlitSurface (floor, &SrcR, screen, &DestR);	//blit the floor to the screen surface
 
   mario.display (screen, mario.getMarioSurface (), mario.getxpos (),
 		 mario.getypos (),

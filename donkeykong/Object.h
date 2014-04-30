@@ -15,8 +15,10 @@
   using namespace std;
 class Object
 {
-public:Object (int h, int w, int x, int y, double velX, double velY, double accelY, int cState, int cFrame, int mFrames, int climb, int oTime, int fRate);
-																			//non default constructor
+public:Object (int h, int w, int x, int y, double velX, double velY,
+	    double accelY, int cState, int cFrame, int mFrames, int climb,
+	    int oTime, int fRate);
+  //non default constructor
   int spritesheetx;		//Variable for x position of image on sprite sheet
   int spritesheety;		//Variable for y position of image on sprite sheet
   int height;			//Height of image on sprite sheet
@@ -70,4 +72,4 @@
 private:};
 
 
-#endif	/*  */
+#endif /*  */

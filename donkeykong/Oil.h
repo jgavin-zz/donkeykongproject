@@ -8,7 +8,7 @@
 #ifndef OIL_H
 #define OIL_H
 
-#include "Object.h" //uses inheritance from base class
+#include "Object.h"		//uses inheritance from base class
 #include <SDL/SDL.h>
 #include <string>
 using namespace std;

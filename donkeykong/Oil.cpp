@@ -39,7 +39,7 @@ Oil::setAnimation ()
       spritesheetx = 125;
       spritesheety = 255;
       currentFrame = 1;
-      maxFrames = 2; //flipping through two image frames
+      maxFrames = 2;		//flipping through two image frames
       height = 25;
       width = 19;
       break;

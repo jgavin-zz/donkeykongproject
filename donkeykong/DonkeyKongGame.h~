@@ -92,14 +92,13 @@ private:
   Fireball fireball;		//a fireball object
     vector < Barrel > barrels;	//a STL vector of barrel object
 
-  int level;
+  int level; //keeps track of current level. incremented each time Mario reaches Peach
 
-  int lives;
+  int lives; //integer to keep track of Mario's remaining lives
 
-  int dkSpeed;
+  int dkSpeed; //variable for how fast donkey kong moves. Used to make higher levels harder.
 
   int scoreint;			//integer value to keep track of score
-  //char* currentScore;
 };
 
 #endif

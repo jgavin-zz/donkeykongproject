@@ -8,7 +8,7 @@
 #ifndef OIL_H
 #define OIL_H
 
-#include "Object.h"
+#include "Object.h" //uses inheritance from base class
 #include <SDL/SDL.h>
 #include <string>
 using namespace std;
@@ -20,7 +20,7 @@ public:
   Oil ();			//Default Constructor
 
   virtual void setAnimation ();	//Sets animation parameters according to animation state
-  virtual void updateAnimation ();	//Peach specific version of update animation
+  virtual void updateAnimation ();	//Oil specific version of update animation
 
 
 private:

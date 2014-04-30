@@ -10,7 +10,5 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface SDLMain : NSObject
-@end
-
+@ interface SDLMain:NSObject @ end
 #endif /* _SDLMain_h_ */

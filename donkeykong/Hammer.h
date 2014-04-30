@@ -8,7 +8,7 @@
 #ifndef HAMMER_H
 #define HAMMER_H
 
-#include "Object.h" //using inheritance to enable access to base class functions
+#include "Object.h"		//using inheritance to enable access to base class functions
 #include <SDL/SDL.h>
 #include <string>
 using namespace std;

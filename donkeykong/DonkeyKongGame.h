@@ -20,7 +20,7 @@
 #include "Hammer.h"
 #include "Oil.h"
 #include "Fireball.h"
-#include <vector> //vector to be used for storing barrel objects
+#include <vector>		//vector to be used for storing barrel objects
 
 class DonkeyKongGame
 {
@@ -54,9 +54,9 @@ public:
 
   void initializeFloors ();
 
-  int checkOnFloor (int, int, int, int); //used to ensure Mario/fireball/etc. are on the floor
+  int checkOnFloor (int, int, int, int);	//used to ensure Mario/fireball/etc. are on the floor
 
-  int checkForCollisions (); //used to detect Mario colliding with barrel, smashing barrel, etc & initiate response to collision
+  int checkForCollisions ();	//used to detect Mario colliding with barrel, smashing barrel, etc & initiate response to collision
 
   int checkForWinner ();
 
@@ -81,8 +81,8 @@ private:
   SDL_Surface *message;
   SDL_Surface *introScreen;
   SDL_Surface *floor;
-  SDL_Surface *text; //surface reused for all text written on screen such as highscore, level, current score, etc.
-  TTF_Font *font; //font loaded in for use when writing text to screen
+  SDL_Surface *text;		//surface reused for all text written on screen such as highscore, level, current score, etc.
+  TTF_Font *font;		//font loaded in for use when writing text to screen
 
   Mario mario;			//Mario object
   Peach peach;			//Peach object
@@ -92,11 +92,11 @@ private:
   Fireball fireball;		//a fireball object
     vector < Barrel > barrels;	//a STL vector of barrel object
 
-  int level; //keeps track of current level. incremented each time Mario reaches Peach
+  int level;			//keeps track of current level. incremented each time Mario reaches Peach
 
-  int lives; //integer to keep track of Mario's remaining lives
+  int lives;			//integer to keep track of Mario's remaining lives
 
-  int dkSpeed; //variable for how fast donkey kong moves. Used to make higher levels harder.
+  int dkSpeed;			//variable for how fast donkey kong moves. Used to make higher levels harder.
 
   int scoreint;			//integer value to keep track of score
 };

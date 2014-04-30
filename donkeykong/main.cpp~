@@ -11,10 +11,11 @@
 #include "DonkeyKongGame.h"
 using namespace std;
 
-int main(int argc, char *argv[])
+int
+main (int argc, char *argv[])
 {
-    DonkeyKongGame game;
-    game.playDonkeyKong();
-    game.cleanUp();
-    return 0;
+  DonkeyKongGame game;
+  game.playDonkeyKong ();
+  game.cleanUp ();
+  return 0;
 }
