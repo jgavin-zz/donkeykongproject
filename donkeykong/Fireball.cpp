@@ -32,129 +32,7 @@ void Fireball::move(){
 }
 
 void Fireball::bounce(){
-	if(floorNumber== 7){
-		move();
-	}
-	else if(floorNumber == 6){
 	move();
-		updateAnimation();
-		if (currentState == 1 && currentFrame == 1){
-			updateAnimation();
-		}
-		if (currentFrame == 2 && currentState == 1){
-			currentState = 2;
-			setAnimation();
-			updateAnimation();
-			updateAnimation();
-		}
-		if (currentState == 2 && currentFrame == 2){
-			updateAnimation();
-			updateAnimation();
-		}
-		if(currentState == 2 && currentFrame == 1){
-			currentState = 1;
-			setAnimation();
-			updateAnimation();
-		}
-	}
-	else if (floorNumber == 5){
-        move();
-		updateAnimation();
-		if (currentState == 1 && currentFrame == 1){
-			updateAnimation();
-		}
-		if (currentFrame == 2 && currentState == 1){
-			currentState = 2;
-			setAnimation();
-			updateAnimation();
-			updateAnimation();
-		}
-		if (currentState == 2 && currentFrame == 2){
-			updateAnimation();
-			updateAnimation();
-		}
-		if(currentState == 2 && currentFrame == 1){
-			currentState = 1;
-			setAnimation();
-			updateAnimation();
-		}
-	}
-	else if (floorNumber == 4){
-        move();
-		updateAnimation();
-		if (currentState == 1 && currentFrame == 1){
-			updateAnimation();
-		}
-		if (currentFrame == 2 && currentState == 1){
-			currentState = 2;
-			setAnimation();
-			updateAnimation();
-			updateAnimation();
-		}
-		if (currentState == 2 && currentFrame == 2){
-			updateAnimation();
-			updateAnimation();
-		}
-		if(currentState == 2 && currentFrame == 1){
-			currentState = 1;
-			setAnimation();
-			updateAnimation();
-		}
-	}
-	else if (floorNumber == 3){
-        move();
-		updateAnimation();
-		if (currentState == 1 && currentFrame == 1){
-			updateAnimation();
-		}
-		if (currentFrame == 2 && currentState == 1){
-			currentState = 2;
-			setAnimation();
-			updateAnimation();
-			updateAnimation();
-		}
-		if (currentState == 2 && currentFrame == 2){
-			updateAnimation();
-			updateAnimation();
-		}
-		if(currentState == 2 && currentFrame == 1){
-			currentState = 1;
-			setAnimation();
-			updateAnimation();
-		}
-	}
-	else if (floorNumber == 2){
-        move();
-		updateAnimation();
-		if (currentState == 1 && currentFrame == 1){
-			updateAnimation();
-		}
-		if (currentFrame == 2 && currentState == 1){
-			currentState = 2;
-			setAnimation();
-			updateAnimation();
-			updateAnimation();
-		}
-		if (currentState == 2 && currentFrame == 2){
-			updateAnimation();
-			updateAnimation();
-		}
-		if(currentState == 2 && currentFrame == 1){
-			currentState = 1;
-			setAnimation();
-			updateAnimation();
-		}
-	}
-	else if (floorNumber == 1){
-	if(xpos==1){
-	}
-	else if(xpos==490){
-	}
-        move();
-		if(xpos>267){
-		ypos+=.025;
-		}
-	}
 }
 
 //Function that flips through frames of spritesheet to animate fireball
@@ -193,9 +71,11 @@ void Fireball::setAnimation(){
 //function to make sure fireball guy stays on screen
 void Fireball::ensureOnScreen(){
 	if(xpos>495){
+		currentState = 1;
 		vx = -1; //makes fireball move left if he moves too far right
 	}
 	else if(xpos<5){
+		currentState = 2;
 		vx = 1; //makes fireball move right if he progresses too far left
 	}
 }
