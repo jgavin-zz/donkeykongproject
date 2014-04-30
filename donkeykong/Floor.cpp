@@ -12,62 +12,79 @@
 
 
 
-Floor::Floor(){
-    
+Floor::Floor ()
+{
+
 }
 
-double Floor::getslope(){
-    return slope;
+double
+Floor::getslope ()
+{
+  return slope;
 }
 
-double Floor::getyint(){
-    return yint;
+double
+Floor::getyint ()
+{
+  return yint;
 }
 
-int Floor::getxmin(){
-    return xmin;
+int
+Floor::getxmin ()
+{
+  return xmin;
 }
 
-int Floor::getxmax(){
-    return xmax;
+int
+Floor::getxmax ()
+{
+  return xmax;
 }
 
-int Floor::getymin(){
-    return ymin;
+int
+Floor::getymin ()
+{
+  return ymin;
 }
 
-int Floor::getymax(){
-    return ymax;
+int
+Floor::getymax ()
+{
+  return ymax;
 }
 
-void Floor::setslope(double value){
-    slope = value;
+void
+Floor::setslope (double value)
+{
+  slope = value;
 }
 
-void Floor::setyint(double value){
-    yint = value;
+void
+Floor::setyint (double value)
+{
+  yint = value;
 }
 
-void Floor::setxmin(int value){
-    xmin = value;
+void
+Floor::setxmin (int value)
+{
+  xmin = value;
 }
 
-void Floor::setxmax(int value){
-    xmax = value;
+void
+Floor::setxmax (int value)
+{
+  xmax = value;
 }
 
-void Floor::setymin(int value){
-    ymin = value;
+void
+Floor::setymin (int value)
+{
+  ymin = value;
 }
 
-void Floor::setymax(int value){
-    ymax = value;
+void
+Floor::setymax (int value)
+{
+  ymax = value;
 }
-
-
-
-
-
-
-
-

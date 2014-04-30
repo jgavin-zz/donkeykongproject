@@ -13,19 +13,18 @@
 #include <string>
 using namespace std;
 
-class Oil:public Object
-{
-
+class Oil : public Object{
+    
 public:
-  Oil ();			//Default Constructor
-
-  virtual void setAnimation ();	//Sets animation parameters according to animation state
-  virtual void updateAnimation ();	//Peach specific version of update animation
-
-
+    Oil();//Default Constructor
+    
+    virtual void setAnimation();//Sets animation parameters according to animation state
+    virtual void updateAnimation(); //Peach specific version of update animation
+	
+    
 private:
-
-
+    
+    
 };
 
 #endif

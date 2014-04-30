@@ -14,18 +14,17 @@
 #include <string>
 using namespace std;
 
-class Peach:public Object
-{
-
+class Peach : public Object{
+    
 public:
-  Peach ();			//Default Constructor
-
-  virtual void setAnimation ();	//Sets animation parameters according to animation state
-  virtual void updateAnimation ();	//Peach specific version of update animation
-
+    Peach();//Default Constructor
+    
+    virtual void setAnimation();//Sets animation parameters according to animation state
+    virtual void updateAnimation(); //Peach specific version of update animation
+    
 private:
-
-
+    
+    
 };
 
 #endif

@@ -12,26 +12,23 @@
 using namespace std;
 
 //Constructor, sets parameters and loads surface
-Hammer::Hammer ():Object (18, 10, 45, 315, 0, 0, 0, 1, 1, 1, 0, 0, 100)
-{
-  setAnimation ();
+Hammer::Hammer() : Object(18, 10, 45, 315, 0, 0, 0, 1, 1, 1, 0, 0, 100){
+    setAnimation();
 }
 
 
 
 //Function sets animation parameters according to state of mario
-void
-Hammer::setAnimation ()
-{
-  switch (currentState)
-    {
-    case 1:
-      spritesheetx = 195;
-      spritesheety = 263;
-      currentFrame = 0;
-      maxFrames = 1;
-      height = 18;
-      width = 10;
-      break;
+void Hammer::setAnimation(){
+    switch(currentState){
+        case 1:
+           spritesheetx = 195;
+           spritesheety = 263;
+           currentFrame = 0;
+           maxFrames = 1;
+           height = 18;
+           width = 10;
+           break;
     }
 }
+

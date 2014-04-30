@@ -80,13 +80,9 @@ public:
     
     int checkOnFloor(int);  //Function to check whether or not an object is on top of a floor
     
-<<<<<<< HEAD
     int checkOnLadder(int); //Function to check whether an object is on a ladder
-=======
-    int checkOnLadder(int);
-
-    int checkOnLadderBarrel();
->>>>>>> d2e7b7616acc24a7572db31b943fdcd9ef818c31
+    
+    int checkOnLadderBarrel(); // Checks to see if barrel is above or below a ladder
     
 private:
     

@@ -71,7 +71,7 @@ public:
 
     void deathAnimation();
  
-    void gameOver();
+    int gameOver();
     
 private:
     

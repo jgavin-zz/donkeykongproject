@@ -13,17 +13,16 @@
 #include <string>
 using namespace std;
 
-class Hammer:public Object
-{
-
+class Hammer : public Object{
+    
 public:
-  Hammer ();			//Default Constructor
+    Hammer();//Default Constructor
 
-  virtual void setAnimation ();	//Sets animation parameters according to animation state
-
+    virtual void setAnimation();//Sets animation parameters according to animation state
+    
 private:
-
-
+    
+    
 };
 
 #endif

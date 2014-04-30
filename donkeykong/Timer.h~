@@ -31,3 +31,5 @@ class Timer
     bool is_started();
     bool is_paused();
 };
+
+#endif

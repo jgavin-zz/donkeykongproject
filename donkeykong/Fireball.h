@@ -13,21 +13,22 @@
 #include <string>
 using namespace std;
 
-class Fireball : public Object{
-    
+class Fireball:public Object
+{
+
 public:
-    Fireball();//Default Constructor
-    
-    void bounce(); //handles rolling a barrel down the floors
-    void ensureOnScreen(); //makes sure fireball stays on screen at all times
-    
-    virtual void setAnimation();//Sets animation parameters according to animation state
-    virtual void updateAnimation(); //Peach specific version of update animation
-    virtual void move();
-    
+  Fireball ();			//Default Constructor
+
+  void bounce ();		//handles rolling a barrel down the floors
+  void ensureOnScreen ();	//makes sure fireball stays on screen at all times
+
+  virtual void setAnimation ();	//Sets animation parameters according to animation state
+  virtual void updateAnimation ();	//Peach specific version of update animation
+  virtual void move ();
+
 private:
-    
-    
+
+
 };
 
 #endif
