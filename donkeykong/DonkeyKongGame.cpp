@@ -5,7 +5,7 @@
 //  Created by Jacob Gavin on 3/19/14.
 //  Copyright (c) 2014 Jacob Gavin. All rights reserved.
 //
-//#include <python2.6/Python.h>
+//include all necessary libraries and header files for all other objects/classes
 #include <SDL/SDL.h>
 #include <ctime>
 #include <iostream>

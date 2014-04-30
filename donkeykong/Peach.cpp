@@ -2,7 +2,7 @@
 //  Created by Jacob Gavin on 3/27/14.
 //  Copyright (c) 2014 Jacob Gavin. All rights reserved.
 
-#include "Object.h"
+#include "Object.h" //using inheritance from base class
 #include "Peach.h"
 #include <math.h>
 #include <iostream>
