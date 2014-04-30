@@ -433,11 +433,11 @@ DonkeyKongGame::playDonkeyKong ()
 		}
 	      if (mario.getypos () <= 250)
 		{
-		  dkSpeed = 150 - ((level - 1) * 20) - 20;
+		  dkSpeed = 250 - ((level - 1) * 20) - 20;
 		}
 	      else
 		{
-		  dkSpeed = 150 - ((level - 1) * 20);
+		  dkSpeed = 250 - ((level - 1) * 20);
 		}
 	      if ((donkeykong.currentState == 3
 		   && donkeykong.currentFrame == 2)

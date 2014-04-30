@@ -433,11 +433,11 @@ DonkeyKongGame::playDonkeyKong ()
 		}
 	      if (mario.getypos () <= 250)
 		{
-		  dkSpeed = 150 - ((level - 1) * 20) - 20;
+		  dkSpeed = 200 - ((level - 1) * 20) - 20;
 		}
 	      else
 		{
-		  dkSpeed = 150 - ((level - 1) * 20);
+		  dkSpeed = 200 - ((level - 1) * 20);
 		}
 	      if ((donkeykong.currentState == 3
 		   && donkeykong.currentFrame == 2)
@@ -854,7 +854,7 @@ DonkeyKongGame::initializeLevel ()
   donkeykong.height = 33;
   donkeykong.width = 43;
   donkeykong.xpos = 94;
-  donkeykong.ypos = 150;
+  donkeykong.ypos = 147;
   donkeykong.vx = 0;
   donkeykong.vy = 0;
   donkeykong.ay = 0;

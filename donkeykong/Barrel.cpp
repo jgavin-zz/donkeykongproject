@@ -29,8 +29,8 @@ Barrel::move ()
   if (type == 1)		//barrel type 1 is rolling down a floor
     {
       //Set a dt variable and variable for gravity
-      double dt = .5;
-      ay = 2;
+      double dt = .2;
+      ay = 1;
       if (vx > 0)
 	vx = vx + speedBoost;	//update speed based on level (determines speedboost)
       if (vx < 0)
@@ -64,7 +64,7 @@ Barrel::move ()
   else				//covers other two barrel types: dropped straight down by dk and those that randomly fall down ladders after rolling
     {
       double dt = .1;
-      ay = 1;
+      ay = .3;
       vy += (ay * dt);
       ypos += (vy * dt);
     }
