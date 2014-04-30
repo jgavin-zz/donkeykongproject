@@ -439,6 +439,9 @@ DonkeyKongGame::playDonkeyKong ()
 		{
 		  dkSpeed = 250 - ((level - 1) * 20);
 		}
+              if(level>10){
+		  dkSpeed = 250 - ((10 - 1) * 20);
+	      }
 	      if ((donkeykong.currentState == 3
 		   && donkeykong.currentFrame == 2)
 		  || (donkeykong.currentState == 2
