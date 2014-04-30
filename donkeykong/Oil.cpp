@@ -16,6 +16,7 @@ Oil::Oil ():Object (25, 19, 16, 430, 0, 0, 0, 1, 1, 2, 0, 0, 100)
   setAnimation ();
 }
 
+//function used to flip through images of sprite sheet for animation
 void
 Oil::updateAnimation ()
 {
@@ -25,7 +26,6 @@ Oil::updateAnimation ()
     {
       currentFrame = 0;
     }
-  //(*this).setAnimation();
 }
 
 
@@ -39,7 +39,7 @@ Oil::setAnimation ()
       spritesheetx = 125;
       spritesheety = 255;
       currentFrame = 1;
-      maxFrames = 2;
+      maxFrames = 2; //flipping through two image frames
       height = 25;
       width = 19;
       break;
